@@ -1,0 +1,1 @@
+import{o as n,c as s,d as a}from"./app.3e2b91f7.js";const e='{"title":"GitHub Pages发布脚本","description":"","frontmatter":{},"relativePath":"summary/other/deploy.md","lastUpdated":1619078566233}',p={},t=a('',3);p.render=function(a,e,p,l,r,i){return n(),s("div",null,[t])};export default p;export{e as __pageData};
