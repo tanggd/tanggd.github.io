@@ -1,0 +1,1 @@
+import{o as a,c as n,e as s}from"./app.17264aa3.js";const e='{"title":"数据驱动","description":"","frontmatter":{},"headers":[{"level":2,"title":"new Vue()","slug":"new-vue"}],"relativePath":"vue-source-code/data-driven.md","lastUpdated":1633616877889}',p={},t=[s('',8)];p.render=function(s,e,p,l,o,c){return a(),n("div",null,t)};export{e as __pageData,p as default};

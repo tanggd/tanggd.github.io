@@ -1,0 +1,1 @@
+import{o as e,c as r,e as s}from"./app.17264aa3.js";const a='{"title":"vue-server-renderer","description":"","frontmatter":{},"relativePath":"vue-source-code/vue2.6.14/packages/vue-server-renderer/README.md","lastUpdated":1633616877893}',t={},n=[s('',4)];t.render=function(s,a,t,o,l,u){return e(),r("div",null,n)};export{a as __pageData,t as default};
