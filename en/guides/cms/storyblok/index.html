@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en" class="initial astro-KR5WJSBZ">
+	<head>
+		<!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="hsl(256, 44%, 15%)" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="hsl(273, 37%, 93%)" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="alternate icon" type="image/x-icon" href="/favicon.ico">
+<link rel="sitemap" href="/sitemap-index.xml">
+
+<!-- Global CSS -->
+<link rel="stylesheet" href="/theme.css">
+<link rel="stylesheet" href="/index.css">
+
+<!-- Scrollable a11y code helper -->
+<script type="module" src="/make-scrollable-code-focusable.js"></script>
+
+<!-- This is intentionally inlined to avoid FOUC -->
+
+
+<!-- Double-click to highlight code blocks (inline only). -->
+
+<!-- Fathom - beautiful, simple website analytics -->
+<script src="https://certain-quality.astro.build/script.js" data-site="EZBHTSIG" defer></script>
+
+		<!-- Page Metadata --><link rel="canonical" href="https://tanggd.github.io/en/guides/cms/storyblok/">
+
+
+<link rel="alternate" href="https://tanggd.github.io/en/guides/cms/storyblok/" hreflang="en"><link rel="alternate" href="https://tanggd.github.io/zh-cn/guides/cms/storyblok/" hreflang="zh-CN">
+
+<!-- Algolia docsearch language facet -->
+<meta name="docsearch:language" content="en">
+
+<!-- OpenGraph Tags -->
+<meta property="og:title" content="Storyblok &#38; Astro">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tanggd.github.io/en/guides/cms/storyblok/">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://tanggd.github.io/open-graph/en/guides/cms/storyblok.png">
+<meta property="og:image:alt" content="">
+<meta name="description" property="og:description" content="Add content to your Astro project using Storyblok as a CMS">
+<meta property="og:site_name" content="Astro Documentation">
+
+<!-- Twitter Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="astrodotbuild">
+<meta name="twitter:title" content="Storyblok &#38; Astro">
+<meta name="twitter:description" content="Add content to your Astro project using Storyblok as a CMS">
+<meta name="twitter:image" content="https://tanggd.github.io/open-graph/en/guides/cms/storyblok.png">
+<meta name="twitter:image:alt" content="">
+
+<!--
+  TODO: Add json+ld data, maybe https://schema.org/APIReference makes sense?
+  Docs: https://developers.google.com/search/docs/advanced/structured-data/intro-structured-data
+  https://www.npmjs.com/package/schema-dts seems like a great resource for implementing this.
+  Even better, there’s a React component that integrates with `schema-dts`: https://github.com/google/react-schemaorg
+-->
+
+		<title>Storyblok & Astro 🚀 Astro Documentation</title>
+		
+		<script>
+			// This code was migrated/copied from ThemToggleBotton to make the
+			// dark mode toggle instant, vs. hidden inside of a Preact useEffect() call.
+			const theme = (() => {
+				if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+					return localStorage.getItem('theme');
+				}
+				if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+					return 'dark';
+				}
+				return 'light';
+			})();
+			if (theme === 'light') {
+				document.documentElement.classList.remove('theme-dark');
+			} else {
+				document.documentElement.classList.add('theme-dark');
+			}
+		</script>
+	<link rel="stylesheet" href="/assets/404.6d6787e2.css" />
+<link rel="stylesheet" href="/assets/sharing-state.21559701.css" />
+<link rel="stylesheet" href="/assets/alpinejs.6dd7e965.css" />
+<link rel="stylesheet" href="/assets/auto.444a50d9.css" />
+<link rel="stylesheet" href="/assets/builderio.b64bc458.css" />
+<link rel="stylesheet" href="/assets/builderio.d1870a6c.css" />
+<link rel="stylesheet" href="/assets/builderio.273de9b9.css" />
+<link rel="stylesheet" href="/assets/builderio.fb4fe658.css" />
+<link rel="stylesheet" href="/assets/builderio.1507b30a.css" />
+<link rel="stylesheet" href="/assets/builderio.66e01f42.css" />
+<link rel="stylesheet" href="/assets/builderio.1ae522cb.css" /><script type="module" src="/hoisted.66b9b87c.js"></script></head>
+
+	<body class="astro-KR5WJSBZ">
+		<header class="astro-I6GUSDXI">
+	<a href="#article" class="sr-only focus:not-sr-only skiplink astro-VODYIZTE">
+	<span class="astro-VODYIZTE">Skip to Content
+</span>
+</a>
+
+
+	<nav class="nav-wrapper astro-I6GUSDXI" aria-label="Top">
+		<div dir="ltr" lang="en" class="logo flex astro-I6GUSDXI">
+			<ul class="astro-I6GUSDXI">
+				<li class="astro-I6GUSDXI">
+					<a class="docs astro-I6GUSDXI" href="/en/getting-started/">
+						<span class="sr-only astro-I6GUSDXI">Docs</span>
+						<svg xmlns="http://www.w3.org/2000/svg" width="226" height="102" viewBox="0 0 226 102" fill="none" class="astro-I6GUSDXI">
+							<path class="docs-path astro-I6GUSDXI" fill="currentColor" d="M25.805 68c14.688 0 24.883-8.41 24.883-21.14 0-12.786-9.62-19.756-24.653-19.756H0V68h25.805zm-14.17-33.005H24.25c8.352 0 14.17 4.09 14.17 12.039 0 8.236-5.3 13.075-14.113 13.075H11.635V34.995zM82.673 69.382c16.704 0 27.418-8.582 27.418-21.83 0-13.248-10.771-21.83-27.418-21.83-16.589 0-27.418 8.582-27.418 21.83 0 13.19 10.83 21.83 27.418 21.83zm0-8.64c-9.1 0-15.149-5.299-15.149-13.19 0-7.891 6.048-13.19 15.15-13.19 9.1 0 15.205 5.299 15.205 13.19 0 7.891-6.105 13.19-15.206 13.19zM141.497 69.382c13.306 0 22.637-5.299 25.978-14.572l-11.866-2.535c-1.67 5.415-6.393 8.295-13.709 8.295-9.216 0-15.033-5.127-15.033-13.018 0-8.006 5.702-13.018 14.918-13.018 7.43 0 12.154 3.053 13.709 8.64l12.038-2.13c-2.707-9.562-12.268-15.322-25.574-15.322-16.128 0-27.302 9.043-27.302 22.003 0 13.133 10.425 21.657 26.841 21.657zM194.94 69.382c14.745 0 23.212-5.01 23.212-14.054 0-7.603-4.665-10.944-15.955-12.096l-11.289-1.094c-5.242-.576-6.97-1.556-6.97-4.09 0-2.765 3.456-4.262 9.792-4.262 7.834 0 13.709 2.476 16.762 6.508l7.315-6.163c-5.069-5.702-13.133-8.41-23.501-8.41-13.997 0-21.888 4.781-21.888 12.903 0 7.546 4.781 11.232 14.803 12.326l12.557 1.383c4.896.518 6.624 1.555 6.624 4.09 0 3.225-3.456 4.723-10.886 4.723-8.352 0-14.688-3.226-18.087-8.007l-8.294 5.818c4.205 6.451 13.709 10.425 25.805 10.425z"></path>
+						</svg>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<style>astro-island,astro-slot{display:contents}</style><script>(self.Astro=self.Astro||{}).visible=(s,c,n)=>{const r=async()=>{await(await s())()};let i=new IntersectionObserver(e=>{for(const t of e)if(!!t.isIntersecting){i.disconnect(),r();break}});for(let e=0;e<n.children.length;e++){const t=n.children[e];i.observe(t)}},window.dispatchEvent(new Event("astro:visible"));var l;{const c={0:t=>t,1:t=>JSON.parse(t,o),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(JSON.parse(t,o)),5:t=>new Set(JSON.parse(t,o)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(JSON.parse(t)),9:t=>new Uint16Array(JSON.parse(t)),10:t=>new Uint32Array(JSON.parse(t))},o=(t,s)=>{if(t===""||!Array.isArray(s))return s;const[e,n]=s;return e in c?c[e](n):void 0};customElements.get("astro-island")||customElements.define("astro-island",(l=class extends HTMLElement{constructor(){super(...arguments);this.hydrate=()=>{if(!this.hydrator||this.parentElement&&this.parentElement.closest("astro-island[ssr]"))return;const s=this.querySelectorAll("astro-slot"),e={},n=this.querySelectorAll("template[data-astro-template]");for(const r of n){const i=r.closest(this.tagName);!i||!i.isSameNode(this)||(e[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(const r of s){const i=r.closest(this.tagName);!i||!i.isSameNode(this)||(e[r.getAttribute("name")||"default"]=r.innerHTML)}const a=this.hasAttribute("props")?JSON.parse(this.getAttribute("props"),o):{};this.hydrator(this)(this.Component,a,e,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),window.removeEventListener("astro:hydrate",this.hydrate),window.dispatchEvent(new CustomEvent("astro:hydrate"))}}connectedCallback(){!this.hasAttribute("await-children")||this.firstChild?this.childrenConnectedCallback():new MutationObserver((s,e)=>{e.disconnect(),this.childrenConnectedCallback()}).observe(this,{childList:!0})}async childrenConnectedCallback(){window.addEventListener("astro:hydrate",this.hydrate);let s=this.getAttribute("before-hydration-url");s&&await import(s),this.start()}start(){const s=JSON.parse(this.getAttribute("opts")),e=this.getAttribute("client");if(Astro[e]===void 0){window.addEventListener(`astro:${e}`,()=>this.start(),{once:!0});return}Astro[e](async()=>{const n=this.getAttribute("renderer-url"),[a,{default:r}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),i=this.getAttribute("component-export")||"default";if(!i.includes("."))this.Component=a[i];else{this.Component=a;for(const d of i.split("."))this.Component=this.Component[d]}return this.hydrator=r,this.hydrate},s,this)}attributeChangedCallback(){this.hydrator&&this.hydrate()}},l.observedAttributes=["props"],l))}</script><astro-island uid="2tcXi2" component-url="/ThemeToggleButton.6de6281e.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{&quot;labels&quot;:[0,{&quot;useLight&quot;:[0,&quot;Use light theme&quot;],&quot;useDark&quot;:[0,&quot;Use dark theme&quot;]}],&quot;isInsideHeader&quot;:[0,true]}" ssr="" client="visible" opts="{&quot;name&quot;:&quot;ThemeToggleButton&quot;,&quot;value&quot;:true}" await-children=""><div class="theme-toggle hide-toggle-on-smaller-screens"><label title="Use light theme" class=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path></svg><input type="radio" name="theme-toggle" aria-label="Use light theme" value="light"/></label><label title="Use dark theme" class=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg><input type="radio" name="theme-toggle" aria-label="Use dark theme" value="dark"/></label></div></astro-island>
+		<!-- {lang && <LanguageSelect lang={lang} client:idle />} -->
+		<!-- 
+			TODO：搜索功能
+			后期再做，暂时隐藏
+			参考文档 https://blog.csdn.net/weixin_40026797/article/details/126063524 -->
+		<!-- <Search {lang} labels={docsearchStrings} /> -->
+		<a class="astro astro-I6GUSDXI" href="https://github.com/tanggd" target="_blank" rel="noopener noreferrer">
+			<img src="/assets/github.4e28406c.svg" alt="github" class="astro-I6GUSDXI">
+		</a>
+		<script>(self.Astro=self.Astro||{}).idle=t=>{const e=async()=>{await(await t())()};"requestIdleCallback"in window?window.requestIdleCallback(e):setTimeout(e,200)},window.dispatchEvent(new Event("astro:idle"));</script><astro-island uid="Z1Iw7D6" component-url="/SidebarToggle.2303dca7.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{}" ssr="" client="idle" opts="{&quot;name&quot;:&quot;SidebarToggle&quot;,&quot;value&quot;:true}" await-children=""><button id="menu-toggle" class="header-button" type="button" aria-pressed="false"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg><span class="sr-only">Toggle sidebar</span></button></astro-island>
+	</nav>
+</header>
+
+
+		<main class="layout astro-KR5WJSBZ">
+			<aside id="left-sidebar" class="sidebar astro-KR5WJSBZ">
+				
+					<nav aria-label="Primary" class="astro-VHM34O3D">
+	<script>(self.Astro=self.Astro||{}).load=a=>{(async()=>await(await a())())()},window.dispatchEvent(new Event("astro:load"));</script><astro-island uid="Z1KQCLa" component-url="/SidebarToggleTabGroup.2446d59c.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{&quot;defaultActiveTab&quot;:[0,&quot;learn&quot;],&quot;labels&quot;:[0,{&quot;learn&quot;:[0,&quot;Learn&quot;],&quot;api&quot;:[0,&quot;Tools&quot;]}]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;SidebarToggleTabGroup&quot;,&quot;value&quot;:true}" await-children=""><div class="TabGroup"><button class="active">Learn</button><button class="">Tools</button></div></astro-island>
+	<ul class="nav-groups astro-VHM34O3D">
+		<li class="nav-group learn active astro-Q2W3FM2V">
+			<details open class="astro-Q2W3FM2V">
+				<summary class="nav-group-title astro-Q2W3FM2V">
+					<h2 class="astro-Q2W3FM2V">
+						CSS
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 1 16 16" width="16" height="16" aria-hidden="true" class="astro-Q2W3FM2V">
+							<path fill-rule="evenodd" d="M6.22 3.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 010-1.06z" class="astro-Q2W3FM2V"></path>
+						</svg>
+					</h2>
+				</summary>
+				<ul class="astro-Q2W3FM2V">
+					<li class="nav-link astro-Q2W3FM2V">
+							<a href="/en/css/xxx/" aria-current="false" data-current-parent="false" class="astro-Q2W3FM2V">
+								CSS世界 <sup class="fallback astro-Q2W3FM2V">EN</sup>
+							</a>
+						</li>
+				</ul>
+			</details>
+		</li>
+
+
+		<li class="nav-group api astro-Q2W3FM2V">
+			<details open class="astro-Q2W3FM2V">
+				<summary class="nav-group-title astro-Q2W3FM2V">
+					<h2 class="astro-Q2W3FM2V">
+						小工具
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 1 16 16" width="16" height="16" aria-hidden="true" class="astro-Q2W3FM2V">
+							<path fill-rule="evenodd" d="M6.22 3.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 010-1.06z" class="astro-Q2W3FM2V"></path>
+						</svg>
+					</h2>
+				</summary>
+				<ul class="astro-Q2W3FM2V">
+					<li class="nav-link astro-Q2W3FM2V">
+							<a href="/en/tools/make-certificate-photos/" aria-current="false" data-current-parent="false" class="astro-Q2W3FM2V">
+								制作证件照 <sup class="fallback astro-Q2W3FM2V">EN</sup>
+							</a>
+						</li>
+				</ul>
+			</details>
+		</li>
+
+
+		<li style="text-align: center;" class="astro-VHM34O3D">
+			<astro-island uid="1IhUvw" component-url="/ThemeToggleButton.6de6281e.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{&quot;labels&quot;:[0,{&quot;useLight&quot;:[0,&quot;Use light theme&quot;],&quot;useDark&quot;:[0,&quot;Use dark theme&quot;]}]}" ssr="" client="visible" opts="{&quot;name&quot;:&quot;ThemeToggleButton&quot;,&quot;value&quot;:true}" await-children=""><div class="theme-toggle "><label title="Use light theme" class=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path></svg><input type="radio" name="theme-toggle" aria-label="Use light theme" value="light"/></label><label title="Use dark theme" class=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg><input type="radio" name="theme-toggle" aria-label="Use dark theme" value="dark"/></label></div></astro-island>
+		</li>
+	</ul>
+</nav>
+
+
+
+
+				
+			</aside>
+			<aside id="right-sidebar" class="sidebar astro-KR5WJSBZ">
+				<script>(self.Astro=self.Astro||{}).media=(s,a)=>{const t=async()=>{await(await s())()};if(a.value){const e=matchMedia(a.value);e.matches?t():e.addEventListener("change",t,{once:!0})}},window.dispatchEvent(new Event("astro:media"));</script><nav aria-label="Secondary" class="astro-TFI5F24A">
+	<astro-island uid="1KkOIy" component-url="/TableOfContents.dc58575b.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{&quot;headings&quot;:[1,&quot;[[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;integrating-with-astro\&quot;],\&quot;text\&quot;:[0,\&quot;Integrating with Astro\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;prerequisites\&quot;],\&quot;text\&quot;:[0,\&quot;Prerequisites\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;setting-up-credentials\&quot;],\&quot;text\&quot;:[0,\&quot;Setting up credentials\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;installing-dependencies\&quot;],\&quot;text\&quot;:[0,\&quot;Installing dependencies\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;configuring-storyblok\&quot;],\&quot;text\&quot;:[0,\&quot;Configuring Storyblok\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;connecting-bloks-to-astro-components\&quot;],\&quot;text\&quot;:[0,\&quot;Connecting Bloks to Astro components\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;fetching-data\&quot;],\&quot;text\&quot;:[0,\&quot;Fetching data\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;making-a-blog-with-astro-and-storyblok\&quot;],\&quot;text\&quot;:[0,\&quot;Making a blog with Astro and Storyblok\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;prerequisites-1\&quot;],\&quot;text\&quot;:[0,\&quot;Prerequisites\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;creating-a-blok-library\&quot;],\&quot;text\&quot;:[0,\&quot;Creating a blok library\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;creating-content\&quot;],\&quot;text\&quot;:[0,\&quot;Creating content\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;connecting-bloks-to-components\&quot;],\&quot;text\&quot;:[0,\&quot;Connecting Bloks to components\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;generating-pages\&quot;],\&quot;text\&quot;:[0,\&quot;Generating pages\&quot;]}],[0,{\&quot;depth\&quot;:[0,4],\&quot;slug\&quot;:[0,\&quot;static-site-generation\&quot;],\&quot;text\&quot;:[0,\&quot;Static site generation\&quot;]}],[0,{\&quot;depth\&quot;:[0,4],\&quot;slug\&quot;:[0,\&quot;server-side-rendering\&quot;],\&quot;text\&quot;:[0,\&quot;Server-side rendering\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;publishing-your-site\&quot;],\&quot;text\&quot;:[0,\&quot;Publishing your site\&quot;]}],[0,{\&quot;depth\&quot;:[0,4],\&quot;slug\&quot;:[0,\&quot;rebuild-on-storyblok-changes\&quot;],\&quot;text\&quot;:[0,\&quot;Rebuild on Storyblok changes\&quot;]}],[0,{\&quot;depth\&quot;:[0,5],\&quot;slug\&quot;:[0,\&quot;netlify\&quot;],\&quot;text\&quot;:[0,\&quot;Netlify\&quot;]}],[0,{\&quot;depth\&quot;:[0,5],\&quot;slug\&quot;:[0,\&quot;vercel\&quot;],\&quot;text\&quot;:[0,\&quot;Vercel\&quot;]}],[0,{\&quot;depth\&quot;:[0,5],\&quot;slug\&quot;:[0,\&quot;adding-a-webhook-to-storyblok\&quot;],\&quot;text\&quot;:[0,\&quot;Adding a webhook to Storyblok\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;official-resources\&quot;],\&quot;text\&quot;:[0,\&quot;Official Resources\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;community-resources\&quot;],\&quot;text\&quot;:[0,\&quot;Community Resources\&quot;]}]]&quot;],&quot;labels&quot;:[0,{&quot;onThisPage&quot;:[0,&quot;On this page&quot;],&quot;overview&quot;:[0,&quot;Overview&quot;]}],&quot;isMobile&quot;:[0,false]}" ssr="" client="media" opts="{&quot;name&quot;:&quot;TableOfContents&quot;,&quot;value&quot;:&quot;(min-width: 50em)&quot;}" await-children=""><h2 class="heading" id="on-this-page-heading">On this page</h2><ul><li class="header-link depth-2 current-header-link"><a href="#overview">Overview</a></li><li class="header-link depth-2"><a href="#integrating-with-astro">Integrating with Astro</a></li><li class="header-link depth-3"><a href="#prerequisites">Prerequisites</a></li><li class="header-link depth-3"><a href="#setting-up-credentials">Setting up credentials</a></li><li class="header-link depth-3"><a href="#installing-dependencies">Installing dependencies</a></li><li class="header-link depth-3"><a href="#configuring-storyblok">Configuring Storyblok</a></li><li class="header-link depth-3"><a href="#connecting-bloks-to-astro-components">Connecting Bloks to Astro components</a></li><li class="header-link depth-3"><a href="#fetching-data">Fetching data</a></li><li class="header-link depth-2"><a href="#making-a-blog-with-astro-and-storyblok">Making a blog with Astro and Storyblok</a></li><li class="header-link depth-3"><a href="#prerequisites-1">Prerequisites</a></li><li class="header-link depth-3"><a href="#creating-a-blok-library">Creating a blok library</a></li><li class="header-link depth-3"><a href="#creating-content">Creating content</a></li><li class="header-link depth-3"><a href="#connecting-bloks-to-components">Connecting Bloks to components</a></li><li class="header-link depth-3"><a href="#generating-pages">Generating pages</a></li><li class="header-link depth-3"><a href="#publishing-your-site">Publishing your site</a></li><li class="header-link depth-2"><a href="#official-resources">Official Resources</a></li><li class="header-link depth-2"><a href="#community-resources">Community Resources</a></li></ul></astro-island>
+</nav>
+
+
+			</aside>
+			<div id="main-content" class="main-column astro-KR5WJSBZ">
+				<div dir="ltr" class="astro-2XBDZOYQ">
+	<div class="fixed-mobile-bar astro-2XBDZOYQ" dir="ltr">
+					<nav>
+						<astro-island uid="Zf0STm" component-url="/TableOfContents.dc58575b.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{&quot;headings&quot;:[1,&quot;[[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;integrating-with-astro\&quot;],\&quot;text\&quot;:[0,\&quot;Integrating with Astro\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;prerequisites\&quot;],\&quot;text\&quot;:[0,\&quot;Prerequisites\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;setting-up-credentials\&quot;],\&quot;text\&quot;:[0,\&quot;Setting up credentials\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;installing-dependencies\&quot;],\&quot;text\&quot;:[0,\&quot;Installing dependencies\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;configuring-storyblok\&quot;],\&quot;text\&quot;:[0,\&quot;Configuring Storyblok\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;connecting-bloks-to-astro-components\&quot;],\&quot;text\&quot;:[0,\&quot;Connecting Bloks to Astro components\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;fetching-data\&quot;],\&quot;text\&quot;:[0,\&quot;Fetching data\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;making-a-blog-with-astro-and-storyblok\&quot;],\&quot;text\&quot;:[0,\&quot;Making a blog with Astro and Storyblok\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;prerequisites-1\&quot;],\&quot;text\&quot;:[0,\&quot;Prerequisites\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;creating-a-blok-library\&quot;],\&quot;text\&quot;:[0,\&quot;Creating a blok library\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;creating-content\&quot;],\&quot;text\&quot;:[0,\&quot;Creating content\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;connecting-bloks-to-components\&quot;],\&quot;text\&quot;:[0,\&quot;Connecting Bloks to components\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;generating-pages\&quot;],\&quot;text\&quot;:[0,\&quot;Generating pages\&quot;]}],[0,{\&quot;depth\&quot;:[0,4],\&quot;slug\&quot;:[0,\&quot;static-site-generation\&quot;],\&quot;text\&quot;:[0,\&quot;Static site generation\&quot;]}],[0,{\&quot;depth\&quot;:[0,4],\&quot;slug\&quot;:[0,\&quot;server-side-rendering\&quot;],\&quot;text\&quot;:[0,\&quot;Server-side rendering\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;publishing-your-site\&quot;],\&quot;text\&quot;:[0,\&quot;Publishing your site\&quot;]}],[0,{\&quot;depth\&quot;:[0,4],\&quot;slug\&quot;:[0,\&quot;rebuild-on-storyblok-changes\&quot;],\&quot;text\&quot;:[0,\&quot;Rebuild on Storyblok changes\&quot;]}],[0,{\&quot;depth\&quot;:[0,5],\&quot;slug\&quot;:[0,\&quot;netlify\&quot;],\&quot;text\&quot;:[0,\&quot;Netlify\&quot;]}],[0,{\&quot;depth\&quot;:[0,5],\&quot;slug\&quot;:[0,\&quot;vercel\&quot;],\&quot;text\&quot;:[0,\&quot;Vercel\&quot;]}],[0,{\&quot;depth\&quot;:[0,5],\&quot;slug\&quot;:[0,\&quot;adding-a-webhook-to-storyblok\&quot;],\&quot;text\&quot;:[0,\&quot;Adding a webhook to Storyblok\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;official-resources\&quot;],\&quot;text\&quot;:[0,\&quot;Official Resources\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;community-resources\&quot;],\&quot;text\&quot;:[0,\&quot;Community Resources\&quot;]}]]&quot;],&quot;labels&quot;:[0,{&quot;onThisPage&quot;:[0,&quot;On this page&quot;],&quot;overview&quot;:[0,&quot;Overview&quot;]}],&quot;isMobile&quot;:[0,true]}" ssr="" client="media" opts="{&quot;name&quot;:&quot;TableOfContents&quot;,&quot;value&quot;:&quot;(max-width: 72em)&quot;}" await-children=""><details class="toc-mobile-container"><summary class="toc-mobile-header"><div class="toc-mobile-header-content"><div class="toc-toggle"><h2 class="heading" id="on-this-page-heading">On this page</h2><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 1 16 16" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M6.22 3.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 010-1.06z"></path></svg></div></div></summary><ul><li class="header-link depth-2 current-header-link"><a href="#overview">Overview</a></li><li class="header-link depth-2"><a href="#integrating-with-astro">Integrating with Astro</a></li><li class="header-link depth-3"><a href="#prerequisites">Prerequisites</a></li><li class="header-link depth-3"><a href="#setting-up-credentials">Setting up credentials</a></li><li class="header-link depth-3"><a href="#installing-dependencies">Installing dependencies</a></li><li class="header-link depth-3"><a href="#configuring-storyblok">Configuring Storyblok</a></li><li class="header-link depth-3"><a href="#connecting-bloks-to-astro-components">Connecting Bloks to Astro components</a></li><li class="header-link depth-3"><a href="#fetching-data">Fetching data</a></li><li class="header-link depth-2"><a href="#making-a-blog-with-astro-and-storyblok">Making a blog with Astro and Storyblok</a></li><li class="header-link depth-3"><a href="#prerequisites-1">Prerequisites</a></li><li class="header-link depth-3"><a href="#creating-a-blok-library">Creating a blok library</a></li><li class="header-link depth-3"><a href="#creating-content">Creating content</a></li><li class="header-link depth-3"><a href="#connecting-bloks-to-components">Connecting Bloks to components</a></li><li class="header-link depth-3"><a href="#generating-pages">Generating pages</a></li><li class="header-link depth-3"><a href="#publishing-your-site">Publishing your site</a></li><li class="header-link depth-2"><a href="#official-resources">Official Resources</a></li><li class="header-link depth-2"><a href="#community-resources">Community Resources</a></li></ul></details></astro-island>
+					</nav>
+				</div><div class="spacer astro-2XBDZOYQ"></div>
+	<article id="article" class="content astro-2XBDZOYQ">
+		<section class="main-section astro-2XBDZOYQ">
+			<header class="astro-2XBDZOYQ">
+				
+				<h1 class="content-title astro-2XBDZOYQ" id="overview">Storyblok & Astro</h1>
+				
+			</header>
+			
+			<p><a href="https://www.storyblok.com/">Storyblok</a> is a component based headless CMS that allows you to manage your content by creating reusable components called Bloks.</p><div class="heading-wrapper level-h2" tabindex="-1"><h2 id="integrating-with-astro">Integrating with Astro</h2><a class="anchor-link" href="#integrating-with-astro"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Integrating with Astro</span></a></div><p>In this section, we will use the <a href="https://github.com/storyblok/storyblok-astro">Storyblok integration</a> to connect Storyblok to Astro.</p><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="prerequisites">Prerequisites</h3><a class="anchor-link" href="#prerequisites"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Prerequisites</span></a></div><p>To get started, you will need to have the following:</p><ol>
+<li>
+<p><strong>An Astro project</strong> - If you don’t have an Astro project yet, our <a href="/en/install/auto/">Installation guide</a> will get you up and running in no time.</p>
+</li>
+<li>
+<p><strong>A Storyblok account and space</strong> - If you don’t have an account yet, <a href="https://app.storyblok.com/#/signup">sign up for free</a> and create a new space.</p>
+</li>
+<li>
+<p><strong>Storyblok API tokens</strong> - You can find and generate your API tokens in the Access Tokens tab of your Storyblok space settings.</p>
+<ul>
+<li><strong>Preview token</strong> - This token will be used in development to fetch drafts or unpublished versions of your content.</li>
+<li><strong>Public token</strong> - This token will be used in production builds to fetch only published content.</li>
+</ul>
+</li>
+</ol><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="setting-up-credentials">Setting up credentials</h3><a class="anchor-link" href="#setting-up-credentials"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Setting up credentials</span></a></div><p>To add your Storyblok credentials to Astro, create a <code>.env</code> file in the root of your project with the following variables:</p>
+<figure class="code-snippet has-title lang-ini">
+	<figcaption class="header"><span class="title">.env</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#FF657C">STORYBLOK_PREVIEW_TOKEN</span><span style="color:#C7C5D3">=</span><span style="color:#D8DEE9">YOUR_PREVIEW_TOKEN</span></span>
+<span class="line"><span style="color:#FF657C">STORYBLOK_PUBLIC_TOKEN</span><span style="color:#C7C5D3">=</span><span style="color:#D8DEE9">YOUR_PUBLIC_TOKEN</span></span></code></pre>
+</figure><p>Now, you should be able to use these environment variables in your project.</p><p>Your root directory should now include this new file:</p>
+<figure class="code-snippet has-title lang-ini">
+	<figcaption class="header"><span class="title">Project Structure</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#D8DEE9">├── src/</span></span>
+<span class="line ins"><span style="color:#d8dee9">├── .env</span></span>
+<span class="line"><span style="color:#D8DEE9">├── astro.config.mjs</span></span>
+<span class="line"><span style="color:#D8DEE9">└── package.json</span></span></code></pre>
+</figure><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="installing-dependencies">Installing dependencies</h3><a class="anchor-link" href="#installing-dependencies"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Installing dependencies</span></a></div><p>To connect Astro with your Storyblok space, install the official <a href="https://github.com/storyblok/storyblok-astro">Storyblok integration</a> using the single command below for your preferred package manager:</p><astro-island uid="2aqqfU" component-url="/Tabs.2df3b852.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{&quot;sharedStore&quot;:[0,&quot;package-managers&quot;]}" ssr="" client="visible" opts="{&quot;name&quot;:&quot;Tabs&quot;,&quot;value&quot;:true}" await-children=""><div class="_container_8folw_1"><div class="_tab-scroll-overflow_8folw_6"><div class="_tablist_8folw_31 TabGroup no-flex" role="tablist"><button aria-selected="true" tabindex="0" role="tab" type="button" class="_tab_8folw_6" id="40-tab.npm"><astro-slot name="tab.npm">npm</astro-slot></button><button aria-selected="false" tabindex="-1" role="tab" type="button" class="_tab_8folw_6" id="40-tab.pnpm"><astro-slot name="tab.pnpm">pnpm</astro-slot></button><button aria-selected="false" tabindex="-1" role="tab" type="button" class="_tab_8folw_6" id="40-tab.yarn"><astro-slot name="tab.yarn">Yarn</astro-slot></button><span class="_selectedIndicator_8folw_35" aria-hidden="true"></span></div></div><div role="tabpanel" aria-labelledby="40-tab.npm" class="_tabpanel_8folw_27"><astro-slot name="panel.npm">
+<figure class="code-snippet is-terminal lang-shell">
+	<figcaption class="header"></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#D8DEE9">npm install @storyblok/astro</span></span></code></pre>
+</figure></astro-slot></div><div hidden="" role="tabpanel" aria-labelledby="40-tab.pnpm" class="_tabpanel_8folw_27"><astro-slot name="panel.pnpm">
+<figure class="code-snippet is-terminal lang-shell">
+	<figcaption class="header"></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#D8DEE9">pnpm install @storyblok/astro axios@^0.27.2 vite</span></span></code></pre>
+</figure></astro-slot></div><div hidden="" role="tabpanel" aria-labelledby="40-tab.yarn" class="_tabpanel_8folw_27"><astro-slot name="panel.yarn">
+<figure class="code-snippet is-terminal lang-shell">
+	<figcaption class="header"></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#D8DEE9">yarn add @storyblok/astro </span></span></code></pre>
+</figure></astro-slot></div></div></astro-island><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="configuring-storyblok">Configuring Storyblok</h3><a class="anchor-link" href="#configuring-storyblok"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Configuring Storyblok</span></a></div><p>Modify your Astro config file to include the Storyblok integration:</p>
+<figure class="code-snippet has-title lang-js">
+	<figcaption class="header"><span class="title">astro.config.mjs</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">defineConfig</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;astro/config&#39;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">storyblok</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;@storyblok/astro&#39;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">loadEnv</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;vite&#39;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> env </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> </span><span style="color:#66ADFF">loadEnv</span><span style="color:#D8DEE9">(</span><span style="color:#FF657C">import</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">meta</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">env</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">MODE</span><span style="color:#C7C5D3">,</span><span style="color:#D8DEE9"> process</span><span style="color:#C7C5D3">.</span><span style="color:#66ADFF">cwd</span><span style="color:#D8DEE9">()</span><span style="color:#C7C5D3">,</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;STORYBLOK&#39;</span><span style="color:#D8DEE9">)</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF657C">export</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">default</span><span style="color:#D8DEE9"> </span><span style="color:#66ADFF">defineConfig</span><span style="color:#D8DEE9">(</span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#66ADFF">integrations</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> [</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#66ADFF">storyblok</span><span style="color:#D8DEE9">(</span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">      </span><span style="color:#66ADFF">accessToken</span><span style="color:#C7C5D3">:</span></span>
+<span class="line"><span style="color:#D8DEE9">        </span><span style="color:#FF657C">import</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">meta</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">env</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">MODE </span><span style="color:#FF657C">===</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;development&#39;</span></span>
+<span class="line"><span style="color:#D8DEE9">          </span><span style="color:#FF657C">?</span><span style="color:#D8DEE9"> env</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">STORYBLOK_PREVIEW_TOKEN</span></span>
+<span class="line"><span style="color:#D8DEE9">          </span><span style="color:#FF657C">:</span><span style="color:#D8DEE9"> env</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">STORYBLOK_PUBLIC_TOKEN</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">      </span><span style="color:#66ADFF">components</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#C7C5D3">        </span><span style="color:#ABA8BD">// Add your components here</span></span>
+<span class="line"><span style="color:#D8DEE9">      </span><span style="color:#C7C5D3">},</span></span>
+<span class="line"><span style="color:#D8DEE9">      </span><span style="color:#66ADFF">apiOptions</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#C7C5D3">        </span><span style="color:#ABA8BD">// Choose your Storyblok space region </span></span>
+<span class="line"><span style="color:#D8DEE9">        </span><span style="color:#66ADFF">region</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;us&#39;</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">      </span><span style="color:#C7C5D3">},</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9">)</span></span>
+<span class="line"><span style="color:#D8DEE9">  ]</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9">)</span><span style="color:#C7C5D3">;</span></span></code></pre>
+</figure><p>The Storyblok integration requires an object with the following properties:</p><ol>
+<li>
+<p><code>accessToken</code> - This references the Storyblok API tokens that we added in the previous step. We will use the preview token in development and the public token in production.</p>
+<aside class="content tip astro-J4JMU3BW" aria-label="Tip">
+	<p class="title astro-J4JMU3BW" aria-hidden="true">
+		<span class="icon astro-J4JMU3BW">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" width="16" height="16" class="astro-J4JMU3BW">
+				<path fill-rule="evenodd" d="M14 0a8.8 8.8 0 0 0-6 2.6l-.5.4-.9 1H3.3a1.8 1.8 0 0 0-1.5.8L.1 7.6a.8.8 0 0 0 .4 1.1l3.1 1 .2.1 2.4 2.4.1.2 1 3a.8.8 0 0 0 1 .5l2.9-1.7a1.8 1.8 0 0 0 .8-1.5V9.5l1-1 .4-.4A8.8 8.8 0 0 0 16 2v-.1A1.8 1.8 0 0 0 14.2 0h-.1zm-3.5 10.6-.3.2L8 12.3l.5 1.8 2-1.2a.3.3 0 0 0 .1-.2v-2zM3.7 8.1l1.5-2.3.2-.3h-2a.3.3 0 0 0-.3.1l-1.2 2 1.8.5zm5.2-4.5a7.3 7.3 0 0 1 5.2-2.1h.1a.3.3 0 0 1 .3.3v.1a7.3 7.3 0 0 1-2.1 5.2l-.5.4a15.2 15.2 0 0 1-2.5 2L7.1 11 5 9l1.5-2.3a15.3 15.3 0 0 1 2-2.5l.4-.5zM12 5a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm-8.4 9.6a1.5 1.5 0 1 0-2.2-2.2 7 7 0 0 0-1.1 3 .2.2 0 0 0 .3.3c.6 0 2.2-.4 3-1.1z" class="astro-J4JMU3BW"></path>
+			</svg>
+		</span>
+		Tip
+	</p>
+	<section class="astro-J4JMU3BW">
+		<p>Since the Astro config file does not normally support environment variables, use the <code>loadEnv</code> function from Vite to load them.</p>
+	</section>
+</aside>
+
+
+</li>
+<li>
+<p><code>components</code> - An object that maps Storyblok component names to paths to your local components. This is required to render your Storyblok components in Astro.</p>
+<aside class="content note astro-J4JMU3BW" aria-label="Note">
+	<p class="title astro-J4JMU3BW" aria-hidden="true">
+		<span class="icon astro-J4JMU3BW">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" width="16" height="16" class="astro-J4JMU3BW">
+				<path fill-rule="evenodd" d="M0 3.75C0 2.784.784 2 1.75 2h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0114.25 14H1.75A1.75 1.75 0 010 12.25v-8.5zm1.75-.25a.25.25 0 00-.25.25v8.5c0 .138.112.25.25.25h12.5a.25.25 0 00.25-.25v-8.5a.25.25 0 00-.25-.25H1.75zM3.5 6.25a.75.75 0 01.75-.75h7a.75.75 0 010 1.5h-7a.75.75 0 01-.75-.75zm.75 2.25a.75.75 0 000 1.5h4a.75.75 0 000-1.5h-4z" class="astro-J4JMU3BW"></path>
+			</svg>
+		</span>
+		Note
+	</p>
+	<section class="astro-J4JMU3BW">
+		<p>The component paths are relative to the <code>src</code> directory.</p>
+	</section>
+</aside>
+
+
+</li>
+<li>
+<p><code>apiOptions</code> - An object containing <a href="https://github.com/storyblok/storyblok-astro#options">Storyblok API options</a>.</p>
+<aside class="content caution astro-J4JMU3BW" aria-label="Caution">
+	<p class="title astro-J4JMU3BW" aria-hidden="true">
+		<span class="icon astro-J4JMU3BW">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 1 18 18" width="16" height="16" class="astro-J4JMU3BW">
+				<path fill-rule="evenodd" d="M8.9 1.5C8.7 1.2 8.4 1 8 1s-.7.2-.9.5l-7 12a1 1 0 0 0 0 1c.2.3.6.5 1 .5H15c.4 0 .7-.2.9-.5a1 1 0 0 0 0-1l-7-12zM9 13H7v-2h2v2zm0-3H7V6h2v4z" class="astro-J4JMU3BW"></path>
+			</svg>
+		</span>
+		Caution
+	</p>
+	<section class="astro-J4JMU3BW">
+		<p>The default region is <code>eu</code>. If your Storyblok space was created in the US region, you will need to set the <code>region: 'us'</code>.</p>
+	</section>
+</aside>
+
+
+</li>
+</ol><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="connecting-bloks-to-astro-components">Connecting Bloks to Astro components</h3><a class="anchor-link" href="#connecting-bloks-to-astro-components"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Connecting Bloks to Astro components</span></a></div><p>To connect your Bloks to Astro, create a new folder named <code>storyblok</code> in the <code>src</code> directory. This folder will contain all the Astro components that will match your Bloks in your Storyblok Blok library.</p><p>In this example, we have a <code>blogPost</code> Blok content type in our Storyblok library with the following fields:</p><ul>
+<li><code>title</code> - A text field</li>
+<li><code>description</code> - A text field</li>
+<li><code>content</code> - A rich text field</li>
+</ul><p>Our goal is to create the equivalent Astro component that will use these fields to render its content. To do this, create a new file named <code>BlogPost.astro</code> inside <code>src/storyblok</code> with the following content:</p>
+<figure class="code-snippet has-title lang-astro">
+	<figcaption class="header"><span class="title">src/<wbr/>storyblok/<wbr/>BlogPost.astro</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> storyblokEditable</span><span style="color:#C7C5D3">,</span><span style="color:#D8DEE9"> renderRichText </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;@storyblok/astro&#39;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> blok </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> Astro</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">props</span></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> content </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> </span><span style="color:#66ADFF">renderRichText</span><span style="color:#ABA8BD">(</span><span style="color:#D8DEE9">blok</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">content</span><span style="color:#ABA8BD">)</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">article</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">{...</span><span style="color:#66ADFF">storyblokEditable</span><span style="color:#ABA8BD">(</span><span style="color:#D8DEE9">blok</span><span style="color:#ABA8BD">)</span><span style="color:#FF657C">}</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">h1</span><span style="color:#C7C5D3">&gt;</span><span style="color:#FF657C">{</span><span style="color:#D8DEE9">blok</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">title</span><span style="color:#FF657C">}</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">h1</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">p</span><span style="color:#C7C5D3">&gt;</span><span style="color:#FF657C">{</span><span style="color:#D8DEE9">blok</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">description</span><span style="color:#FF657C">}</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">p</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FFBD2E">Fragment</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">set:html</span><span style="color:#C7C5D3">=</span><span style="color:#FF657C">{</span><span style="color:#D8DEE9">content</span><span style="color:#FF657C">}</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">/&gt;</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">article</span><span style="color:#C7C5D3">&gt;</span></span></code></pre>
+</figure><p>The <code>blok</code> property contains the data that we will receive from Storyblok. It contains the values of the fields that we defined in the <code>blogPost</code> Blok in Storyblok.</p><p>To render our content, the integration provides utility functions such as:</p><ul>
+<li><code>storyblokEditable</code> - it adds the necessary attributes to the elements so that you can edit them in Storyblok.</li>
+<li><code>renderRichText</code> - it transforms the rich text field into HTML.</li>
+</ul><p>Your root directory should include this new file:</p>
+<figure class="code-snippet has-title lang-ini">
+	<figcaption class="header"><span class="title">Project Structure</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#D8DEE9">├── src/</span></span>
+<span class="line"><span style="color:#D8DEE9">│   └── storyblok/</span></span>
+<span class="line ins"><span style="color:#d8dee9">│       └── BlogPost.astro</span></span>
+<span class="line"><span style="color:#D8DEE9">├── .env</span></span>
+<span class="line"><span style="color:#D8DEE9">├── astro.config.mjs</span></span>
+<span class="line"><span style="color:#D8DEE9">└── package.json</span></span></code></pre>
+</figure><p>Finally, to connect the <code>blogPost</code> Blok to the <code>BlogPost</code> component, add a new property to your components object in your Astro config file. The key is the name of the Blok and the value is the path to the component.</p>
+<figure class="code-snippet has-title lang-js">
+	<figcaption class="header"><span class="title">astro.config.mjs</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">defineConfig</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;astro/config&#39;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">storyblok</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;@storyblok/astro&#39;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">loadEnv</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;vite&#39;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> env </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> </span><span style="color:#66ADFF">loadEnv</span><span style="color:#D8DEE9">(</span><span style="color:#FF657C">import</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">meta</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">env</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">MODE</span><span style="color:#C7C5D3">,</span><span style="color:#D8DEE9"> process</span><span style="color:#C7C5D3">.</span><span style="color:#66ADFF">cwd</span><span style="color:#D8DEE9">()</span><span style="color:#C7C5D3">,</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;STORYBLOK&#39;</span><span style="color:#D8DEE9">)</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF657C">export</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">default</span><span style="color:#D8DEE9"> </span><span style="color:#66ADFF">defineConfig</span><span style="color:#D8DEE9">(</span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#66ADFF">integrations</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> [</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#66ADFF">storyblok</span><span style="color:#D8DEE9">(</span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">      </span><span style="color:#66ADFF">accessToken</span><span style="color:#C7C5D3">:</span></span>
+<span class="line"><span style="color:#D8DEE9">        </span><span style="color:#FF657C">import</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">meta</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">env</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">MODE </span><span style="color:#FF657C">===</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;development&#39;</span></span>
+<span class="line"><span style="color:#D8DEE9">          </span><span style="color:#FF657C">?</span><span style="color:#D8DEE9"> env</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">STORYBLOK_PREVIEW_TOKEN</span></span>
+<span class="line"><span style="color:#D8DEE9">          </span><span style="color:#FF657C">:</span><span style="color:#D8DEE9"> env</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">STORYBLOK_PUBLIC_TOKEN</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">      </span><span style="color:#66ADFF">components</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span></span>
+<span class="line ins"><span style="color:#d8dee9">        </span><span style="color:#86beff">blogPost</span><span style="color:#c7c5d3">:</span><span style="color:#d8dee9"> </span><span style="color:#4fcfa1">&#39;storyblok/BlogPost&#39;</span><span style="color:#c7c5d3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">      </span><span style="color:#C7C5D3">},</span></span>
+<span class="line"><span style="color:#D8DEE9">      </span><span style="color:#66ADFF">apiOptions</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> </span></span>
+<span class="line"><span style="color:#D8DEE9">        </span><span style="color:#66ADFF">region</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;us&#39;</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">      </span><span style="color:#C7C5D3">},</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9">)</span></span>
+<span class="line"><span style="color:#D8DEE9">  ]</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9">)</span><span style="color:#C7C5D3">;</span></span></code></pre>
+</figure><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="fetching-data">Fetching data</h3><a class="anchor-link" href="#fetching-data"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Fetching data</span></a></div><p>To test the setup, in Storyblok create a new story with the <code>blogPost</code> content type named <code>test-post</code>.</p><p>In Astro, create a new page in the <code>src/pages</code> directory named <code>test-post.astro</code> with the following content:</p>
+<figure class="code-snippet has-title lang-astro">
+	<figcaption class="header"><span class="title">pages/<wbr/>test-post.astro</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> useStoryblokApi </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;@storyblok/astro&#39;</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> StoryblokComponent </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;@storyblok/astro/StoryblokComponent.astro&#39;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> storyblokApi </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> </span><span style="color:#66ADFF">useStoryblokApi</span><span style="color:#ABA8BD">()</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> data </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">await</span><span style="color:#D8DEE9"> storyblokApi</span><span style="color:#C7C5D3">.</span><span style="color:#66ADFF">get</span><span style="color:#ABA8BD">(</span><span style="color:#16C082">&quot;cdn/stories/test-post&quot;</span><span style="color:#C7C5D3">,</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">  version</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">import</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">meta</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">env</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">DEV </span><span style="color:#FF657C">?</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;draft&quot;</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;published&quot;</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#C7C5D3">}</span><span style="color:#ABA8BD">)</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> content </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> data</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">story</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">content</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FFBD2E">StoryblokComponent</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">blok</span><span style="color:#C7C5D3">=</span><span style="color:#FF657C">{</span><span style="color:#D8DEE9">content</span><span style="color:#FF657C">}</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">/&gt;</span></span></code></pre>
+</figure><p>To query our data, we will use the <code>useStoryblokApi</code> hook. This will initialize a new client instance using our integration configuration.</p><p>To render our content, pass the <code>content</code> property of the Story to the <code>StoryblokComponent</code> as <code>blok</code>. This component will render the Bloks that are defined inside the <code>content</code> property. In our case, it will render the <code>BlogPost</code> component.</p><div class="heading-wrapper level-h2" tabindex="-1"><h2 id="making-a-blog-with-astro-and-storyblok">Making a blog with Astro and Storyblok</h2><a class="anchor-link" href="#making-a-blog-with-astro-and-storyblok"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Making a blog with Astro and Storyblok</span></a></div><p>With the integration set up, we can now create a blog with Astro and Storyblok.</p><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="prerequisites-1">Prerequisites</h3><a class="anchor-link" href="#prerequisites-1"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Prerequisites</span></a></div><ol>
+<li>
+<p><strong>A Storyblok space</strong> - For this tutorial, we recommend using a new space. If you already have a space with Bloks, feel free to use them, but you will need to modify the code to match the Blok names and content types.</p>
+</li>
+<li>
+<p><strong>An Astro project integraded with Storyblok</strong> - See <a href="#integrating-with-astro">integrating with Astro</a> for instructions on how to set up the integration.</p>
+</li>
+</ol><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="creating-a-blok-library">Creating a blok library</h3><a class="anchor-link" href="#creating-a-blok-library"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Creating a blok library</span></a></div><p>To create Bloks, go to the Storyblok app and click on the <strong>Block Library</strong> tab. Click on the <kbd>+ New blok</kbd> button and create the following Bloks:</p><ol>
+<li>
+<p><code>blogPost</code> - A content type Blok with the following fields:</p>
+<ul>
+<li><code>title</code> - A text field</li>
+<li><code>description</code> - A text field</li>
+<li><code>content</code> - A rich text field</li>
+</ul>
+</li>
+<li>
+<p><code>blogPostList</code> - An empty nestable Blok</p>
+</li>
+<li>
+<p><code>page</code> - A content type Blok with the following fields:</p>
+<ul>
+<li><code>body</code> - A nestable Blok</li>
+</ul>
+</li>
+</ol><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="creating-content">Creating content</h3><a class="anchor-link" href="#creating-content"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Creating content</span></a></div><p>To add content, go to the content section by clicking the <strong>Content</strong> tab. Using the Blok library that we created in the previous step, create the following stories:</p><ol>
+<li>
+<p><code>home</code> - A content type story with the <code>page</code> Blok. Inside the <code>body</code> field, add a <code>blogPostList</code> Blok.</p>
+</li>
+<li>
+<p><code>blog/no-javascript</code> - A story with the <code>blogPost</code> content type inside the blog folder.</p>
+
+<figure class="code-snippet lang-yaml">
+	<figcaption class="header"></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#FFBD2E">title</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">No JavaScript</span></span>
+<span class="line"><span style="color:#FFBD2E">description</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">A sample blog post</span></span>
+<span class="line"><span style="color:#FFBD2E">content</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">Hi there! This blog post doesn&#39;t use JavaScript.</span></span></code></pre>
+</figure>
+</li>
+<li>
+<p><code>blog/astro-is-amazing</code> - A story with the <code>blogPost</code> content type inside the blog folder.</p>
+
+<figure class="code-snippet lang-yaml">
+	<figcaption class="header"></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#FFBD2E">title</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">Astro is amazing</span></span>
+<span class="line"><span style="color:#FFBD2E">description</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">We love Astro</span></span>
+<span class="line"><span style="color:#FFBD2E">content</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">Hi there! This blog post was build with Astro.</span></span></code></pre>
+</figure>
+</li>
+</ol><p>Now that we have our content ready, we can switch to our Astro project and start building our blog.</p><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="connecting-bloks-to-components">Connecting Bloks to components</h3><a class="anchor-link" href="#connecting-bloks-to-components"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Connecting Bloks to components</span></a></div><p>To connect your newly created Bloks to Astro components, create a new folder named <code>storyblok</code> in your <code>src</code> directory and add the following files:</p><p><code>Page.astro</code> is a nestable Block content type component that will recursively render all the Bloks inside the <code>body</code> property of the <code>page</code> Blok. It also adds the <code>storyblokEditable</code> attributes to the parent element which will allow us to edit the page in Storyblok.</p>
+<figure class="code-snippet has-title lang-astro">
+	<figcaption class="header"><span class="title">src/<wbr/>storyblok/<wbr/>Page.astro</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> storyblokEditable </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;@storyblok/astro&#39;</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> StoryblokComponent </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;@storyblok/astro/StoryblokComponent.astro&#39;</span></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> blok </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> Astro</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">props</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">main</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">{...</span><span style="color:#66ADFF">storyblokEditable</span><span style="color:#ABA8BD">(</span><span style="color:#D8DEE9">blok</span><span style="color:#ABA8BD">)</span><span style="color:#FF657C">}</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#FF657C">{</span></span>
+<span class="line"><span style="color:#D8DEE9">    blok</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">body</span><span style="color:#C7C5D3">?.</span><span style="color:#66ADFF">map</span><span style="color:#ABA8BD">(</span><span style="color:#D8DEE9">(blok) </span><span style="color:#FF657C">=&gt;</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">      </span><span style="color:#FF657C">return</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FFBD2E">StoryblokComponent</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">blok</span><span style="color:#FF657C">={</span><span style="color:#D8DEE9">blok</span><span style="color:#FF657C">}</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">/&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">}</span><span style="color:#ABA8BD">)</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#FF657C">}</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">main</span><span style="color:#C7C5D3">&gt;</span></span></code></pre>
+</figure><p><code>BlogPost.astro</code> will render the <code>title</code>, <code>description</code> and <code>content</code> properties of the <code>blogPost</code> Blok.</p><p>To transform the <code>content</code> property from a rich text field to HTML, we use the <code>renderRichText</code> function.</p>
+<figure class="code-snippet has-title lang-astro">
+	<figcaption class="header"><span class="title">src/<wbr/>storyblok/<wbr/>BlogPost.astro</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> storyblokEditable</span><span style="color:#C7C5D3">,</span><span style="color:#D8DEE9"> renderRichText </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;@storyblok/astro&#39;</span></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> blok </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> Astro</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">props</span></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> content </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> </span><span style="color:#66ADFF">renderRichText</span><span style="color:#ABA8BD">(</span><span style="color:#D8DEE9">blok</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">content</span><span style="color:#ABA8BD">)</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">article</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">{...</span><span style="color:#66ADFF">storyblokEditable</span><span style="color:#ABA8BD">(</span><span style="color:#D8DEE9">blok</span><span style="color:#ABA8BD">)</span><span style="color:#FF657C">}</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">h1</span><span style="color:#C7C5D3">&gt;</span><span style="color:#FF657C">{</span><span style="color:#D8DEE9">blok</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">title</span><span style="color:#FF657C">}</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">h1</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">p</span><span style="color:#C7C5D3">&gt;</span><span style="color:#FF657C">{</span><span style="color:#D8DEE9">blok</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">description</span><span style="color:#FF657C">}</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">p</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FFBD2E">Fragment</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">set:html</span><span style="color:#C7C5D3">=</span><span style="color:#FF657C">{</span><span style="color:#D8DEE9">content</span><span style="color:#FF657C">}</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">/&gt;</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">article</span><span style="color:#C7C5D3">&gt;</span></span></code></pre>
+</figure><p><code>BlogPostList.astro</code> is a nestable Blok content type component that will render a list of blog posts previews.</p><p>It uses the <code>useStoryblokApi</code> hook to fetch all the stories with the content type of <code>blogPost</code>. It uses the <code>version</code> query parameter to fetch the draft versions of the stories when in development mode and the published versions when building for production.</p>
+<figure class="code-snippet has-title lang-astro">
+	<figcaption class="header"><span class="title">src/<wbr/>pages/<wbr/>blogPostList.astro</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> useStoryblokApi </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;@storyblok/astro&#39;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> storyblokApi </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> </span><span style="color:#66ADFF">useStoryblokApi</span><span style="color:#ABA8BD">()</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> data </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">await</span><span style="color:#D8DEE9"> storyblokApi</span><span style="color:#C7C5D3">.</span><span style="color:#66ADFF">get</span><span style="color:#ABA8BD">(</span><span style="color:#16C082">&#39;cdn/stories&#39;</span><span style="color:#C7C5D3">,</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">  version</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">import</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">meta</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">env</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">DEV </span><span style="color:#FF657C">?</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;draft&quot;</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;published&quot;</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">  content_type</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;blogPost&#39;</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#C7C5D3">}</span><span style="color:#ABA8BD">)</span></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> posts </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> data</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">stories</span><span style="color:#C7C5D3">.</span><span style="color:#66ADFF">map</span><span style="color:#ABA8BD">(</span><span style="color:#D8DEE9">story </span><span style="color:#FF657C">=&gt;</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#FF657C">return</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">    title</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> story</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">content</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">title</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">    date</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">new</span><span style="color:#D8DEE9"> </span><span style="color:#66ADFF">Date</span><span style="color:#ABA8BD">(</span><span style="color:#D8DEE9">story</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">published_at</span><span style="color:#ABA8BD">)</span><span style="color:#C7C5D3">.</span><span style="color:#66ADFF">toLocaleDateString</span><span style="color:#ABA8BD">(</span><span style="color:#16C082">&quot;en-US&quot;</span><span style="color:#C7C5D3">,</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9">dateStyle</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;full&quot;</span><span style="color:#C7C5D3">}</span><span style="color:#ABA8BD">)</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">    description</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> story</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">content</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">description</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">    slug</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> story</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">full_slug</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">}</span></span>
+<span class="line"><span style="color:#C7C5D3">}</span><span style="color:#ABA8BD">)</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">h1</span><span style="color:#C7C5D3">&gt;</span><span style="color:#D8DEE9">My blog</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">h1</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">ul</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#FF657C">{</span><span style="color:#D8DEE9">posts</span><span style="color:#C7C5D3">.</span><span style="color:#66ADFF">map</span><span style="color:#ABA8BD">(</span><span style="color:#D8DEE9">post </span><span style="color:#FF657C">=&gt;</span><span style="color:#D8DEE9"> </span><span style="color:#ABA8BD">(</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">li</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">      </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">time</span><span style="color:#C7C5D3">&gt;</span><span style="color:#FF657C">{</span><span style="color:#D8DEE9">post</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">date</span><span style="color:#FF657C">}</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">time</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">      </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">a</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">href</span><span style="color:#FF657C">={</span><span style="color:#D8DEE9">post</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">slug</span><span style="color:#FF657C">}</span><span style="color:#C7C5D3">&gt;</span><span style="color:#FF657C">{</span><span style="color:#D8DEE9">post</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">title</span><span style="color:#FF657C">}</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">a</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">      </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">p</span><span style="color:#C7C5D3">&gt;</span><span style="color:#FF657C">{</span><span style="color:#D8DEE9">post</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">description</span><span style="color:#FF657C">}</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">p</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">li</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#ABA8BD">))</span><span style="color:#FF657C">}</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">ul</span><span style="color:#C7C5D3">&gt;</span></span></code></pre>
+</figure><p>Finally, add your components to the <code>components</code> property of the <code>astro.config.mjs</code> file. Each key is the name of the Blok in Storyblok, and the value is the path to the component relative to <code>src</code>.</p>
+<figure class="code-snippet has-title lang-js">
+	<figcaption class="header"><span class="title">astro.config.mjs</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">defineConfig</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;astro/config&#39;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">storyblok</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;@storyblok/astro&#39;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">loadEnv</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;vite&#39;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> env </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> </span><span style="color:#66ADFF">loadEnv</span><span style="color:#D8DEE9">(</span><span style="color:#FF657C">import</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">meta</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">env</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">MODE</span><span style="color:#C7C5D3">,</span><span style="color:#D8DEE9"> process</span><span style="color:#C7C5D3">.</span><span style="color:#66ADFF">cwd</span><span style="color:#D8DEE9">()</span><span style="color:#C7C5D3">,</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;STORYBLOK&#39;</span><span style="color:#D8DEE9">)</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF657C">export</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">default</span><span style="color:#D8DEE9"> </span><span style="color:#66ADFF">defineConfig</span><span style="color:#D8DEE9">(</span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#66ADFF">integrations</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> [</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#66ADFF">storyblok</span><span style="color:#D8DEE9">(</span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">      </span><span style="color:#66ADFF">accessToken</span><span style="color:#C7C5D3">:</span></span>
+<span class="line"><span style="color:#D8DEE9">        </span><span style="color:#FF657C">import</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">meta</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">env</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">MODE </span><span style="color:#FF657C">===</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;development&#39;</span></span>
+<span class="line"><span style="color:#D8DEE9">          </span><span style="color:#FF657C">?</span><span style="color:#D8DEE9"> env</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">STORYBLOK_PREVIEW_TOKEN</span></span>
+<span class="line"><span style="color:#D8DEE9">          </span><span style="color:#FF657C">:</span><span style="color:#D8DEE9"> env</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">STORYBLOK_PUBLIC_TOKEN</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">      </span><span style="color:#66ADFF">components</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span></span>
+<span class="line ins"><span style="color:#d8dee9">        </span><span style="color:#86beff">blogPost</span><span style="color:#c7c5d3">:</span><span style="color:#d8dee9"> </span><span style="color:#4fcfa1">&#39;storyblok/BlogPost&#39;</span><span style="color:#c7c5d3">,</span></span>
+<span class="line ins"><span style="color:#d8dee9">        </span><span style="color:#86beff">blogPostList</span><span style="color:#c7c5d3">:</span><span style="color:#d8dee9"> </span><span style="color:#4fcfa1">&#39;storyblok/BlogPostList&#39;</span><span style="color:#c7c5d3">,</span></span>
+<span class="line ins"><span style="color:#d8dee9">        </span><span style="color:#86beff">page</span><span style="color:#c7c5d3">:</span><span style="color:#d8dee9"> </span><span style="color:#4fcfa1">&#39;storyblok/Page&#39;</span><span style="color:#c7c5d3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">      </span><span style="color:#C7C5D3">},</span></span>
+<span class="line"><span style="color:#D8DEE9">      </span><span style="color:#66ADFF">apiOptions</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> </span></span>
+<span class="line"><span style="color:#D8DEE9">        </span><span style="color:#66ADFF">region</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;us&#39;</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">      </span><span style="color:#C7C5D3">},</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9">)</span></span>
+<span class="line"><span style="color:#D8DEE9">  ]</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9">)</span><span style="color:#C7C5D3">;</span></span></code></pre>
+</figure><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="generating-pages">Generating pages</h3><a class="anchor-link" href="#generating-pages"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Generating pages</span></a></div><div class="heading-wrapper level-h4" tabindex="-1"><h4 id="static-site-generation">Static site generation</h4><a class="anchor-link" href="#static-site-generation"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Static site generation</span></a></div><p>If you are using Astro’s default static site generation, you will use <a href="/en/core-concepts/routing/#dynamic-routes">dynamic routes</a> and the <code>getStaticPaths</code> function to generate your project pages.</p><p>Create a new file in the <code>src/pages</code> directory called <code>[...slug].astro</code> and add the following code:</p>
+<figure class="code-snippet has-title lang-astro">
+	<figcaption class="header"><span class="title">src/<wbr/>pages/<wbr/>[...slug].astro</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> useStoryblokApi </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;@storyblok/astro&#39;</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> StoryblokComponent </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;@storyblok/astro/StoryblokComponent.astro&#39;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF657C">export</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">async</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">function</span><span style="color:#D8DEE9"> </span><span style="color:#66ADFF">getStaticPaths</span><span style="color:#D8DEE9">() </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> storyblokApi </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> </span><span style="color:#66ADFF">useStoryblokApi</span><span style="color:#ABA8BD">()</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> data </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">await</span><span style="color:#D8DEE9"> storyblokApi</span><span style="color:#C7C5D3">.</span><span style="color:#66ADFF">get</span><span style="color:#ABA8BD">(</span><span style="color:#16C082">&quot;cdn/stories&quot;</span><span style="color:#C7C5D3">,</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">    version</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">import</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">meta</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">env</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">DEV </span><span style="color:#FF657C">?</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;draft&quot;</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;published&quot;</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">}</span><span style="color:#ABA8BD">)</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> pages </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> data</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">stories</span><span style="color:#C7C5D3">.</span><span style="color:#66ADFF">map</span><span style="color:#ABA8BD">(</span><span style="color:#D8DEE9">story </span><span style="color:#FF657C">=&gt;</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#FF657C">return</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">      params</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">        slug</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> story</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">full_slug </span><span style="color:#FF657C">===</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;home&#39;</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">?</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">undefined</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">:</span><span style="color:#D8DEE9"> story</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">full_slug</span></span>
+<span class="line"><span style="color:#D8DEE9">      </span><span style="color:#C7C5D3">},</span></span>
+<span class="line"><span style="color:#D8DEE9">      props</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">        content</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> story</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">content</span></span>
+<span class="line"><span style="color:#D8DEE9">      </span><span style="color:#C7C5D3">}</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">}</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">}</span><span style="color:#ABA8BD">)</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#FF657C">return</span><span style="color:#D8DEE9"> pages</span></span>
+<span class="line"><span style="color:#C7C5D3">}</span></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> content </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> Astro</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">props</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">html</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">lang</span><span style="color:#C7C5D3">=</span><span style="color:#16C082">&quot;en&quot;</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">head</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">title</span><span style="color:#C7C5D3">&gt;</span><span style="color:#D8DEE9">Storyblok &amp; Astro</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">title</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">head</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">body</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FFBD2E">StoryblokComponent</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">blok</span><span style="color:#C7C5D3">=</span><span style="color:#FF657C">{</span><span style="color:#D8DEE9">content</span><span style="color:#FF657C">}</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">/&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">body</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">html</span><span style="color:#C7C5D3">&gt;</span></span></code></pre>
+</figure><p>This file will generate a page for each story, with the slug and content fetched from the Storyblok API. If the story’s slug is <code>home</code>, we return an undefined slug, which generates the <code>/</code> route.</p><div class="heading-wrapper level-h4" tabindex="-1"><h4 id="server-side-rendering">Server-side rendering</h4><a class="anchor-link" href="#server-side-rendering"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Server-side rendering</span></a></div><p>If you’ve <a href="/en/guides/server-side-rendering/#enabling-ssr-in-your-project">opted in to SSR mode</a>, you will use a dynamic route that uses a slug parameter to fetch the page data from Storyblok.</p>
+<figure class="code-snippet has-title lang-astro">
+	<figcaption class="header"><span class="title">src/<wbr/>pages/<wbr/>[...slug].astro</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> useStoryblokApi </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;@storyblok/astro&#39;</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> StoryblokComponent </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;@storyblok/astro/StoryblokComponent.astro&#39;</span></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> storyblokApi </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> </span><span style="color:#66ADFF">useStoryblokApi</span><span style="color:#ABA8BD">()</span></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> slug </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> Astro</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">params</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">slug </span><span style="color:#FF657C">===</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">undefined</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">?</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;home&quot;</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">:</span><span style="color:#D8DEE9"> Astro</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">params</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">slug</span></span>
+<span class="line"><span style="color:#FF657C">let</span><span style="color:#D8DEE9"> content</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#FF657C">try</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> data </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">await</span><span style="color:#D8DEE9"> storyblokApi</span><span style="color:#C7C5D3">.</span><span style="color:#66ADFF">get</span><span style="color:#ABA8BD">(</span><span style="color:#C7C5D3">`</span><span style="color:#16C082">cdn/stories/</span><span style="color:#C7C5D3">${</span><span style="color:#D8DEE9">slug</span><span style="color:#C7C5D3">}`</span><span style="color:#C7C5D3">,</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">    version</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">import</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">meta</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">env</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">DEV </span><span style="color:#FF657C">?</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;draft&quot;</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;published&quot;</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">}</span><span style="color:#ABA8BD">)</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#D8DEE9">  content </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> data</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">story</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">content</span></span>
+<span class="line"><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">catch</span><span style="color:#D8DEE9"> </span><span style="color:#ABA8BD">(</span><span style="color:#D8DEE9">error</span><span style="color:#ABA8BD">)</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#FF657C">return</span><span style="color:#D8DEE9"> Astro</span><span style="color:#C7C5D3">.</span><span style="color:#66ADFF">redirect</span><span style="color:#ABA8BD">(</span><span style="color:#16C082">&#39;/404&#39;</span><span style="color:#ABA8BD">)</span></span>
+<span class="line"><span style="color:#C7C5D3">}</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">html</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">lang</span><span style="color:#C7C5D3">=</span><span style="color:#16C082">&quot;en&quot;</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">head</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">title</span><span style="color:#C7C5D3">&gt;</span><span style="color:#D8DEE9">Storyblok &amp; Astro</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">title</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">head</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">body</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FFBD2E">StoryblokComponent</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">blok</span><span style="color:#C7C5D3">=</span><span style="color:#FF657C">{</span><span style="color:#D8DEE9">content</span><span style="color:#FF657C">}</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">/&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">body</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">html</span><span style="color:#C7C5D3">&gt;</span></span></code></pre>
+</figure><p>This file will fetch and render the page data from Storyblok that matches the dynamic <code>slug</code> parameter.</p><p>If the story is not found, it will redirect to the 404 page.</p><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="publishing-your-site">Publishing your site</h3><a class="anchor-link" href="#publishing-your-site"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Publishing your site</span></a></div><p>To deploy your website, visit our <a href="/en/guides/deploy/">deployment guides</a> and follow the instructions for your preferred hosting provider.</p><div class="heading-wrapper level-h4" tabindex="-1"><h4 id="rebuild-on-storyblok-changes">Rebuild on Storyblok changes</h4><a class="anchor-link" href="#rebuild-on-storyblok-changes"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Rebuild on Storyblok changes</span></a></div><p>If your project is using Astro’s default static mode, you will need to set up a webhook to trigger a new build when your content changes. If you are using Netlify or Vercel as your hosting provider, you can use its webhook feature to trigger a new build from Storyblok events.</p><div class="heading-wrapper level-h5" tabindex="-1"><h5 id="netlify">Netlify</h5><a class="anchor-link" href="#netlify"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Netlify</span></a></div><p>To set up a webhook in Netlify:</p><ol>
+<li>
+<p>Go to your site dashboard and click on <strong>Build & deploy</strong>.</p>
+</li>
+<li>
+<p>Under the <strong>Continuous Deployment</strong> tab, find the <strong>Build hooks</strong> section and click on <strong>Add build hook</strong>.</p>
+</li>
+<li>
+<p>Provide a name for your webhook and select the branch you want to trigger the build on. Click on <strong>Save</strong> and copy the generated URL.</p>
+</li>
+</ol><div class="heading-wrapper level-h5" tabindex="-1"><h5 id="vercel">Vercel</h5><a class="anchor-link" href="#vercel"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Vercel</span></a></div><p>To set up a webhook in Vercel:</p><ol>
+<li>
+<p>Go to your project dashboard and click on <strong>Settings</strong>.</p>
+</li>
+<li>
+<p>Under the <strong>Git</strong> tab, find the <strong>Deploy Hooks</strong> section.</p>
+</li>
+<li>
+<p>Provide a name for your webhook and the branch you want to trigger the build on. Click <strong>Add</strong> and copy the generated URL.</p>
+</li>
+</ol><div class="heading-wrapper level-h5" tabindex="-1"><h5 id="adding-a-webhook-to-storyblok">Adding a webhook to Storyblok</h5><a class="anchor-link" href="#adding-a-webhook-to-storyblok"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Adding a webhook to Storyblok</span></a></div><p>In your Storyblok space <strong>Settings</strong>, click on the <strong>Webhooks</strong> tab. Paste the webhook URL you copied in the <strong>Story published & unpublished</strong> box. Finally, hit <kbd>Save</kbd> to create the webhook.</p><p>Now, whenever you publish a new story, a new build will be triggered and your blog will be updated.</p><div class="heading-wrapper level-h2" tabindex="-1"><h2 id="official-resources">Official Resources</h2><a class="anchor-link" href="#official-resources"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Official Resources</span></a></div><ul>
+<li>Storyblok provides an <a href="https://www.storyblok.com/mp/announcing-storyblok-astro">Astro Integration</a> to add Storyblok to your project.</li>
+</ul><div class="heading-wrapper level-h2" tabindex="-1"><h2 id="community-resources">Community Resources</h2><a class="anchor-link" href="#community-resources"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Community Resources</span></a></div><ul>
+<li>Add yours!</li>
+</ul><h2 class="astro-UUNPUKEN">More CMS guides
+</h2><section class="cms-nav astro-3ETKNB4S">
+	<section class="cards-nav astro-3ETKNB4S astro-GMBXUO6P">
+	
+	<ul class="fluid-grid fluid-grid--minimal astro-7LFSRJY5">
+	<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .3em .25em .25em;">
+			<img src="/logos/storyblok.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/en/guides/cms/storyblok/" aria-current="page" class="astro-7CCKPCAY">
+				Storyblok
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .05em;">
+			<img src="/logos/contentful.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/en/guides/cms/contentful/" aria-current="false" class="astro-7CCKPCAY">
+				Contentful
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .1875em;">
+			<img src="/logos/buttercms.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/en/guides/cms/buttercms/" aria-current="false" class="astro-7CCKPCAY">
+				ButterCMS
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .25em;">
+			<img src="/logos/builderio.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/en/guides/cms/builderio/" aria-current="false" class="astro-7CCKPCAY">
+				Builder.io
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: 0 .1em;">
+			<img src="/logos/directus.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/en/guides/cms/directus/" aria-current="false" class="astro-7CCKPCAY">
+				Directus
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .125em;">
+			<img src="/logos/ghost.png" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/en/guides/cms/ghost/" aria-current="false" class="astro-7CCKPCAY">
+				Ghost
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .1625em;">
+			<img src="/logos/netlify-cms.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/en/guides/cms/netlify-cms/" aria-current="false" class="astro-7CCKPCAY">
+				Netlify CMS
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .3em .25em .3em .3em;">
+			<img src="/logos/payload.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/en/guides/cms/payload/" aria-current="false" class="astro-7CCKPCAY">
+				Payload CMS
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .25em;">
+			<img src="/logos/prismic.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/en/guides/cms/prismic/" aria-current="false" class="astro-7CCKPCAY">
+				Prismic
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: 0 .1em;">
+			<img src="/logos/sanity.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/en/guides/cms/sanity/" aria-current="false" class="astro-7CCKPCAY">
+				Sanity
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .2em;">
+			<img src="/logos/wordpress.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/en/guides/cms/wordpress/" aria-current="false" class="astro-7CCKPCAY">
+				WordPress
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+
+</ul>
+
+
+</section>
+
+
+</section>
+
+
+		</section>
+		
+	</article>
+</div>
+
+
+				<span id="docsearch-lvl0" hidden class="astro-KR5WJSBZ">Learn</span>
+			</div>
+		</main>
+		<div class="main-column astro-KR5WJSBZ">
+		</div>
+	</body></html>
+

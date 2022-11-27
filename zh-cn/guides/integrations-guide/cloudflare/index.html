@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="zh-CN" class="initial astro-KR5WJSBZ">
+	<head>
+		<!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="hsl(256, 44%, 15%)" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="hsl(273, 37%, 93%)" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="alternate icon" type="image/x-icon" href="/favicon.ico">
+<link rel="sitemap" href="/sitemap-index.xml">
+
+<!-- Global CSS -->
+<link rel="stylesheet" href="/theme.css">
+<link rel="stylesheet" href="/index.css">
+
+<!-- Scrollable a11y code helper -->
+<script type="module" src="/make-scrollable-code-focusable.js"></script>
+
+<!-- This is intentionally inlined to avoid FOUC -->
+
+
+<!-- Double-click to highlight code blocks (inline only). -->
+
+<!-- Fathom - beautiful, simple website analytics -->
+<script src="https://certain-quality.astro.build/script.js" data-site="EZBHTSIG" defer></script>
+
+		<!-- Page Metadata --><link rel="canonical" href="https://tanggd.github.io/en/guides/integrations-guide/cloudflare/">
+
+
+<link rel="alternate" href="https://tanggd.github.io/en/guides/integrations-guide/cloudflare/" hreflang="en"><link rel="alternate" href="https://tanggd.github.io/zh-cn/guides/integrations-guide/cloudflare/" hreflang="zh-CN">
+
+<!-- Algolia docsearch language facet -->
+<meta name="docsearch:language" content="en">
+
+<!-- OpenGraph Tags -->
+<meta property="og:title" content="@astrojs/cloudflare">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tanggd.github.io/en/guides/integrations-guide/cloudflare/">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://tanggd.github.io/open-graph/en/guides/integrations-guide/cloudflare.png">
+<meta property="og:image:alt" content="">
+<meta name="description" property="og:description" content="Learn how to use the @astrojs/cloudflare SSR adapter to deploy your Astro project.">
+<meta property="og:site_name" content="Astro 文档">
+
+<!-- Twitter Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="astrodotbuild">
+<meta name="twitter:title" content="@astrojs/cloudflare">
+<meta name="twitter:description" content="Learn how to use the @astrojs/cloudflare SSR adapter to deploy your Astro project.">
+<meta name="twitter:image" content="https://tanggd.github.io/open-graph/en/guides/integrations-guide/cloudflare.png">
+<meta name="twitter:image:alt" content="">
+
+<!--
+  TODO: Add json+ld data, maybe https://schema.org/APIReference makes sense?
+  Docs: https://developers.google.com/search/docs/advanced/structured-data/intro-structured-data
+  https://www.npmjs.com/package/schema-dts seems like a great resource for implementing this.
+  Even better, there’s a React component that integrates with `schema-dts`: https://github.com/google/react-schemaorg
+-->
+
+		<title>@astrojs/cloudflare 🚀 Astro 文档</title>
+		
+		<script>
+			// This code was migrated/copied from ThemToggleBotton to make the
+			// dark mode toggle instant, vs. hidden inside of a Preact useEffect() call.
+			const theme = (() => {
+				if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+					return localStorage.getItem('theme');
+				}
+				if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+					return 'dark';
+				}
+				return 'light';
+			})();
+			if (theme === 'light') {
+				document.documentElement.classList.remove('theme-dark');
+			} else {
+				document.documentElement.classList.add('theme-dark');
+			}
+		</script>
+	<link rel="stylesheet" href="/assets/404.6d6787e2.css" />
+<link rel="stylesheet" href="/assets/builderio.d1870a6c.css" />
+<link rel="stylesheet" href="/assets/1.6704f5b4.css" />
+<link rel="stylesheet" href="/assets/1.991d08ef.css" />
+<link rel="stylesheet" href="/assets/alpinejs.6dd7e965.css" />
+<link rel="stylesheet" href="/assets/builderio.fb4fe658.css" />
+<link rel="stylesheet" href="/assets/builderio.1507b30a.css" />
+<link rel="stylesheet" href="/assets/index.16def24c.css" />
+<link rel="stylesheet" href="/assets/alpinejs.72d31541.css" />
+<link rel="stylesheet" href="/assets/builderio.1ae522cb.css" />
+<link rel="stylesheet" href="/assets/builderio.b64bc458.css" />
+<link rel="stylesheet" href="/assets/builderio.273de9b9.css" />
+<link rel="stylesheet" href="/assets/1.82a0ea88.css" />
+<link rel="stylesheet" href="/assets/alpinejs.38dd9f86.css" />
+<link rel="stylesheet" href="/assets/aws.a70cc2c3.css" />
+<link rel="stylesheet" href="/assets/builderio.66e01f42.css" />
+<link rel="stylesheet" href="/assets/index.5f19c5b3.css" />
+<link rel="stylesheet" href="/assets/sharing-state.21559701.css" />
+<link rel="stylesheet" href="/assets/auto.444a50d9.css" />
+<link rel="stylesheet" href="/assets/aws.7883a754.css" />
+<link rel="stylesheet" href="/assets/getting-started.91454097.css" />
+<link rel="stylesheet" href="/assets/islands.9a7a18c3.css" /><script type="module" src="/hoisted.5da8b481.js"></script></head>
+
+	<body class="astro-KR5WJSBZ">
+		<header class="astro-I6GUSDXI">
+	<a href="#article" class="sr-only focus:not-sr-only skiplink astro-VODYIZTE">
+	<span class="astro-VODYIZTE">跳转到内容
+</span>
+</a>
+
+
+	<nav class="nav-wrapper astro-I6GUSDXI" aria-label="导航顶部">
+		<div dir="ltr" lang="en" class="logo flex astro-I6GUSDXI">
+			<ul class="astro-I6GUSDXI">
+				<li class="astro-I6GUSDXI">
+					<a class="docs astro-I6GUSDXI" href="/zh-cn/getting-started/">
+						<span class="sr-only astro-I6GUSDXI">Docs</span>
+						<svg xmlns="http://www.w3.org/2000/svg" width="226" height="102" viewBox="0 0 226 102" fill="none" class="astro-I6GUSDXI">
+							<path class="docs-path astro-I6GUSDXI" fill="currentColor" d="M25.805 68c14.688 0 24.883-8.41 24.883-21.14 0-12.786-9.62-19.756-24.653-19.756H0V68h25.805zm-14.17-33.005H24.25c8.352 0 14.17 4.09 14.17 12.039 0 8.236-5.3 13.075-14.113 13.075H11.635V34.995zM82.673 69.382c16.704 0 27.418-8.582 27.418-21.83 0-13.248-10.771-21.83-27.418-21.83-16.589 0-27.418 8.582-27.418 21.83 0 13.19 10.83 21.83 27.418 21.83zm0-8.64c-9.1 0-15.149-5.299-15.149-13.19 0-7.891 6.048-13.19 15.15-13.19 9.1 0 15.205 5.299 15.205 13.19 0 7.891-6.105 13.19-15.206 13.19zM141.497 69.382c13.306 0 22.637-5.299 25.978-14.572l-11.866-2.535c-1.67 5.415-6.393 8.295-13.709 8.295-9.216 0-15.033-5.127-15.033-13.018 0-8.006 5.702-13.018 14.918-13.018 7.43 0 12.154 3.053 13.709 8.64l12.038-2.13c-2.707-9.562-12.268-15.322-25.574-15.322-16.128 0-27.302 9.043-27.302 22.003 0 13.133 10.425 21.657 26.841 21.657zM194.94 69.382c14.745 0 23.212-5.01 23.212-14.054 0-7.603-4.665-10.944-15.955-12.096l-11.289-1.094c-5.242-.576-6.97-1.556-6.97-4.09 0-2.765 3.456-4.262 9.792-4.262 7.834 0 13.709 2.476 16.762 6.508l7.315-6.163c-5.069-5.702-13.133-8.41-23.501-8.41-13.997 0-21.888 4.781-21.888 12.903 0 7.546 4.781 11.232 14.803 12.326l12.557 1.383c4.896.518 6.624 1.555 6.624 4.09 0 3.225-3.456 4.723-10.886 4.723-8.352 0-14.688-3.226-18.087-8.007l-8.294 5.818c4.205 6.451 13.709 10.425 25.805 10.425z"></path>
+						</svg>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<style>astro-island,astro-slot{display:contents}</style><script>(self.Astro=self.Astro||{}).visible=(s,c,n)=>{const r=async()=>{await(await s())()};let i=new IntersectionObserver(e=>{for(const t of e)if(!!t.isIntersecting){i.disconnect(),r();break}});for(let e=0;e<n.children.length;e++){const t=n.children[e];i.observe(t)}},window.dispatchEvent(new Event("astro:visible"));var l;{const c={0:t=>t,1:t=>JSON.parse(t,o),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(JSON.parse(t,o)),5:t=>new Set(JSON.parse(t,o)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(JSON.parse(t)),9:t=>new Uint16Array(JSON.parse(t)),10:t=>new Uint32Array(JSON.parse(t))},o=(t,s)=>{if(t===""||!Array.isArray(s))return s;const[e,n]=s;return e in c?c[e](n):void 0};customElements.get("astro-island")||customElements.define("astro-island",(l=class extends HTMLElement{constructor(){super(...arguments);this.hydrate=()=>{if(!this.hydrator||this.parentElement&&this.parentElement.closest("astro-island[ssr]"))return;const s=this.querySelectorAll("astro-slot"),e={},n=this.querySelectorAll("template[data-astro-template]");for(const r of n){const i=r.closest(this.tagName);!i||!i.isSameNode(this)||(e[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(const r of s){const i=r.closest(this.tagName);!i||!i.isSameNode(this)||(e[r.getAttribute("name")||"default"]=r.innerHTML)}const a=this.hasAttribute("props")?JSON.parse(this.getAttribute("props"),o):{};this.hydrator(this)(this.Component,a,e,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),window.removeEventListener("astro:hydrate",this.hydrate),window.dispatchEvent(new CustomEvent("astro:hydrate"))}}connectedCallback(){!this.hasAttribute("await-children")||this.firstChild?this.childrenConnectedCallback():new MutationObserver((s,e)=>{e.disconnect(),this.childrenConnectedCallback()}).observe(this,{childList:!0})}async childrenConnectedCallback(){window.addEventListener("astro:hydrate",this.hydrate);let s=this.getAttribute("before-hydration-url");s&&await import(s),this.start()}start(){const s=JSON.parse(this.getAttribute("opts")),e=this.getAttribute("client");if(Astro[e]===void 0){window.addEventListener(`astro:${e}`,()=>this.start(),{once:!0});return}Astro[e](async()=>{const n=this.getAttribute("renderer-url"),[a,{default:r}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),i=this.getAttribute("component-export")||"default";if(!i.includes("."))this.Component=a[i];else{this.Component=a;for(const d of i.split("."))this.Component=this.Component[d]}return this.hydrator=r,this.hydrate},s,this)}attributeChangedCallback(){this.hydrator&&this.hydrate()}},l.observedAttributes=["props"],l))}</script><astro-island uid="Zp9foH" component-url="/ThemeToggleButton.6de6281e.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{&quot;labels&quot;:[0,{&quot;useLight&quot;:[0,&quot;使用浅色主题&quot;],&quot;useDark&quot;:[0,&quot;使用深色主题&quot;]}],&quot;isInsideHeader&quot;:[0,true]}" ssr="" client="visible" opts="{&quot;name&quot;:&quot;ThemeToggleButton&quot;,&quot;value&quot;:true}" await-children=""><div class="theme-toggle hide-toggle-on-smaller-screens"><label title="使用浅色主题" class=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path></svg><input type="radio" name="theme-toggle" aria-label="使用浅色主题" value="light"/></label><label title="使用深色主题" class=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg><input type="radio" name="theme-toggle" aria-label="使用深色主题" value="dark"/></label></div></astro-island>
+		<!-- {lang && <LanguageSelect lang={lang} client:idle />} -->
+		<!-- 
+			TODO：搜索功能
+			后期再做，暂时隐藏
+			参考文档 https://blog.csdn.net/weixin_40026797/article/details/126063524 -->
+		<!-- <Search {lang} labels={docsearchStrings} /> -->
+		<a class="astro astro-I6GUSDXI" href="https://github.com/tanggd" target="_blank" rel="noopener noreferrer">
+			<img src="/assets/github.4e28406c.svg" alt="github" class="astro-I6GUSDXI">
+		</a>
+		<script>(self.Astro=self.Astro||{}).idle=t=>{const e=async()=>{await(await t())()};"requestIdleCallback"in window?window.requestIdleCallback(e):setTimeout(e,200)},window.dispatchEvent(new Event("astro:idle"));</script><astro-island uid="Z1Iw7D6" component-url="/SidebarToggle.2303dca7.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{}" ssr="" client="idle" opts="{&quot;name&quot;:&quot;SidebarToggle&quot;,&quot;value&quot;:true}" await-children=""><button id="menu-toggle" class="header-button" type="button" aria-pressed="false"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg><span class="sr-only">Toggle sidebar</span></button></astro-island>
+	</nav>
+</header>
+
+
+		<main class="layout astro-KR5WJSBZ">
+			<aside id="left-sidebar" class="sidebar astro-KR5WJSBZ">
+				
+					<nav aria-label="站点导航" class="astro-VHM34O3D">
+	<script>(self.Astro=self.Astro||{}).load=a=>{(async()=>await(await a())())()},window.dispatchEvent(new Event("astro:load"));</script><astro-island uid="14sDdn" component-url="/SidebarToggleTabGroup.2446d59c.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{&quot;defaultActiveTab&quot;:[0,&quot;learn&quot;],&quot;labels&quot;:[0,{&quot;learn&quot;:[0,&quot;学习&quot;],&quot;api&quot;:[0,&quot;工具&quot;]}]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;SidebarToggleTabGroup&quot;,&quot;value&quot;:true}" await-children=""><div class="TabGroup"><button class="active">学习</button><button class="">工具</button></div></astro-island>
+	<ul class="nav-groups astro-VHM34O3D">
+		<li class="nav-group learn active astro-Q2W3FM2V">
+			<details open class="astro-Q2W3FM2V">
+				<summary class="nav-group-title astro-Q2W3FM2V">
+					<h2 class="astro-Q2W3FM2V">
+						CSS
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 1 16 16" width="16" height="16" aria-hidden="true" class="astro-Q2W3FM2V">
+							<path fill-rule="evenodd" d="M6.22 3.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 010-1.06z" class="astro-Q2W3FM2V"></path>
+						</svg>
+					</h2>
+				</summary>
+				<ul class="astro-Q2W3FM2V">
+					<li class="nav-link astro-Q2W3FM2V">
+							<a href="/zh-cn/css/xxx/" aria-current="false" data-current-parent="false" class="astro-Q2W3FM2V">
+								CSS世界 
+							</a>
+						</li>
+				</ul>
+			</details>
+		</li>
+
+
+		<li class="nav-group api astro-Q2W3FM2V">
+			<details open class="astro-Q2W3FM2V">
+				<summary class="nav-group-title astro-Q2W3FM2V">
+					<h2 class="astro-Q2W3FM2V">
+						小工具
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 1 16 16" width="16" height="16" aria-hidden="true" class="astro-Q2W3FM2V">
+							<path fill-rule="evenodd" d="M6.22 3.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 010-1.06z" class="astro-Q2W3FM2V"></path>
+						</svg>
+					</h2>
+				</summary>
+				<ul class="astro-Q2W3FM2V">
+					<li class="nav-link astro-Q2W3FM2V">
+							<a href="/zh-cn/tools/make-certificate-photos/" aria-current="false" data-current-parent="false" class="astro-Q2W3FM2V">
+								制作证件照 
+							</a>
+						</li>
+				</ul>
+			</details>
+		</li>
+
+
+		<li style="text-align: center;" class="astro-VHM34O3D">
+			<astro-island uid="1MlLjn" component-url="/ThemeToggleButton.6de6281e.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{&quot;labels&quot;:[0,{&quot;useLight&quot;:[0,&quot;使用浅色主题&quot;],&quot;useDark&quot;:[0,&quot;使用深色主题&quot;]}]}" ssr="" client="visible" opts="{&quot;name&quot;:&quot;ThemeToggleButton&quot;,&quot;value&quot;:true}" await-children=""><div class="theme-toggle "><label title="使用浅色主题" class=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path></svg><input type="radio" name="theme-toggle" aria-label="使用浅色主题" value="light"/></label><label title="使用深色主题" class=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg><input type="radio" name="theme-toggle" aria-label="使用深色主题" value="dark"/></label></div></astro-island>
+		</li>
+	</ul>
+</nav>
+
+
+
+
+				
+			</aside>
+			<aside id="right-sidebar" class="sidebar astro-KR5WJSBZ">
+				<script>(self.Astro=self.Astro||{}).media=(s,a)=>{const t=async()=>{await(await s())()};if(a.value){const e=matchMedia(a.value);e.matches?t():e.addEventListener("change",t,{once:!0})}},window.dispatchEvent(new Event("astro:media"));</script><nav aria-label="目录" class="astro-TFI5F24A">
+	<astro-island uid="Z2lIz3" component-url="/TableOfContents.dc58575b.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{&quot;headings&quot;:[1,&quot;[[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;install\&quot;],\&quot;text\&quot;:[0,\&quot;Install\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;options\&quot;],\&quot;text\&quot;:[0,\&quot;Options\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;mode\&quot;],\&quot;text\&quot;:[0,\&quot;Mode\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;enabling-preview\&quot;],\&quot;text\&quot;:[0,\&quot;Enabling Preview\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;access-to-the-cloudflare-runtime\&quot;],\&quot;text\&quot;:[0,\&quot;Access to the Cloudflare runtime\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;streams\&quot;],\&quot;text\&quot;:[0,\&quot;Streams\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;environment-variables\&quot;],\&quot;text\&quot;:[0,\&quot;Environment Variables\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;headers-redirects-and-function-invocation-routes\&quot;],\&quot;text\&quot;:[0,\&quot;Headers, Redirects and function invocation routes\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;custom-_routesjson\&quot;],\&quot;text\&quot;:[0,\&quot;Custom _routes.json\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;troubleshooting\&quot;],\&quot;text\&quot;:[0,\&quot;Troubleshooting\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;contributing\&quot;],\&quot;text\&quot;:[0,\&quot;Contributing\&quot;]}]]&quot;],&quot;labels&quot;:[0,{&quot;onThisPage&quot;:[0,&quot;在本页内&quot;],&quot;overview&quot;:[0,&quot;概述&quot;]}],&quot;isMobile&quot;:[0,false]}" ssr="" client="media" opts="{&quot;name&quot;:&quot;TableOfContents&quot;,&quot;value&quot;:&quot;(min-width: 50em)&quot;}" await-children=""><h2 class="heading" id="on-this-page-heading">在本页内</h2><ul><li class="header-link depth-2 current-header-link"><a href="#overview">概述</a></li><li class="header-link depth-2"><a href="#install">Install</a></li><li class="header-link depth-2"><a href="#options">Options</a></li><li class="header-link depth-3"><a href="#mode">Mode</a></li><li class="header-link depth-2"><a href="#enabling-preview">Enabling Preview</a></li><li class="header-link depth-2"><a href="#access-to-the-cloudflare-runtime">Access to the Cloudflare runtime</a></li><li class="header-link depth-2"><a href="#streams">Streams</a></li><li class="header-link depth-2"><a href="#environment-variables">Environment Variables</a></li><li class="header-link depth-2"><a href="#headers-redirects-and-function-invocation-routes">Headers, Redirects and function invocation routes</a></li><li class="header-link depth-3"><a href="#custom-_routesjson">Custom _routes.json</a></li><li class="header-link depth-2"><a href="#troubleshooting">Troubleshooting</a></li><li class="header-link depth-2"><a href="#contributing">Contributing</a></li></ul></astro-island>
+</nav>
+
+
+			</aside>
+			<div id="main-content" class="main-column astro-KR5WJSBZ">
+				<div dir="ltr" lang="en" class="astro-2XBDZOYQ">
+	<div class="fixed-mobile-bar astro-2XBDZOYQ" dir="ltr">
+					<nav>
+						<astro-island uid="Z1L7h8M" component-url="/TableOfContents.dc58575b.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{&quot;headings&quot;:[1,&quot;[[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;install\&quot;],\&quot;text\&quot;:[0,\&quot;Install\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;options\&quot;],\&quot;text\&quot;:[0,\&quot;Options\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;mode\&quot;],\&quot;text\&quot;:[0,\&quot;Mode\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;enabling-preview\&quot;],\&quot;text\&quot;:[0,\&quot;Enabling Preview\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;access-to-the-cloudflare-runtime\&quot;],\&quot;text\&quot;:[0,\&quot;Access to the Cloudflare runtime\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;streams\&quot;],\&quot;text\&quot;:[0,\&quot;Streams\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;environment-variables\&quot;],\&quot;text\&quot;:[0,\&quot;Environment Variables\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;headers-redirects-and-function-invocation-routes\&quot;],\&quot;text\&quot;:[0,\&quot;Headers, Redirects and function invocation routes\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;custom-_routesjson\&quot;],\&quot;text\&quot;:[0,\&quot;Custom _routes.json\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;troubleshooting\&quot;],\&quot;text\&quot;:[0,\&quot;Troubleshooting\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;contributing\&quot;],\&quot;text\&quot;:[0,\&quot;Contributing\&quot;]}]]&quot;],&quot;labels&quot;:[0,{&quot;onThisPage&quot;:[0,&quot;在本页内&quot;],&quot;overview&quot;:[0,&quot;概述&quot;]}],&quot;isMobile&quot;:[0,true]}" ssr="" client="media" opts="{&quot;name&quot;:&quot;TableOfContents&quot;,&quot;value&quot;:&quot;(max-width: 72em)&quot;}" await-children=""><details class="toc-mobile-container"><summary class="toc-mobile-header"><div class="toc-mobile-header-content"><div class="toc-toggle"><h2 class="heading" id="on-this-page-heading">在本页内</h2><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 1 16 16" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M6.22 3.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 010-1.06z"></path></svg></div></div></summary><ul><li class="header-link depth-2 current-header-link"><a href="#overview">概述</a></li><li class="header-link depth-2"><a href="#install">Install</a></li><li class="header-link depth-2"><a href="#options">Options</a></li><li class="header-link depth-3"><a href="#mode">Mode</a></li><li class="header-link depth-2"><a href="#enabling-preview">Enabling Preview</a></li><li class="header-link depth-2"><a href="#access-to-the-cloudflare-runtime">Access to the Cloudflare runtime</a></li><li class="header-link depth-2"><a href="#streams">Streams</a></li><li class="header-link depth-2"><a href="#environment-variables">Environment Variables</a></li><li class="header-link depth-2"><a href="#headers-redirects-and-function-invocation-routes">Headers, Redirects and function invocation routes</a></li><li class="header-link depth-3"><a href="#custom-_routesjson">Custom _routes.json</a></li><li class="header-link depth-2"><a href="#troubleshooting">Troubleshooting</a></li><li class="header-link depth-2"><a href="#contributing">Contributing</a></li></ul></details></astro-island>
+					</nav>
+				</div><div class="spacer astro-2XBDZOYQ"></div>
+	<article id="article" class="content astro-2XBDZOYQ">
+		<section class="main-section astro-2XBDZOYQ">
+			<header class="astro-2XBDZOYQ">
+				
+				<h1 class="content-title astro-2XBDZOYQ" id="overview"><span class="scope">@astrojs/</span><wbr>cloudflare</h1>
+				<aside class="pkg-info astro-H4EWV3I5">
+		<span>v4.1.0</span>
+		<a href="https://github.com/withastro/astro/tree/main/packages/integrations/cloudflare/" class="astro-H4EWV3I5">
+			<svg aria-hidden="true" viewBox="0 0 496 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" class="astro-H4EWV3I5">
+				<path fill="currentColor" d="M166 397c0 2-2 4-5 4-4 0-6-1-6-4 0-2 2-3 5-3 3-1 6 1 6 3zm-31-4c-1 2 1 4 4 5s6 0 6-2-1-5-4-5c-3-1-5 0-6 2zm44-2c-3 1-5 3-5 5 1 2 3 3 6 3 3-1 5-3 5-5s-3-3-6-3zM245 8A240 240 0 0 0 0 252c0 111 70 206 170 239 12 2 17-5 17-12v-61s-70 15-85-30c0 0-12-29-28-37 0 0-23-15 2-15 0 0 24 2 38 26 22 38 59 27 73 21 2-16 9-28 16-34-56-6-112-14-112-111 0-27 7-41 23-59-2-6-11-33 3-67 21-7 69 27 69 27a237 237 0 0 1 126 0s48-34 69-27c13 34 5 61 2 67 16 18 26 32 26 59 0 97-59 105-115 111 9 8 17 23 17 46v84c0 6 5 14 17 12a248 248 0 0 0 168-239C496 113 384 8 245 8zM97 353c-1 1-1 3 1 5 1 2 4 2 5 1s1-3-1-5c-1-2-4-2-5-1zm-11-8 3 4c1 1 3 0 4-1s0-3-2-4-4 0-5 1zm33 35c-2 2-1 5 1 7s5 2 7 1c1-2 0-5-2-7s-5-2-6-1zm-12-14v6c2 2 5 3 6 2 2-1 2-4 0-6-1-3-4-4-6-2z" class="astro-H4EWV3I5"></path>
+			</svg>GitHub
+		</a>
+		<a href="https://www.npmjs.com/package/@astrojs/cloudflare" class="astro-H4EWV3I5">
+			<svg aria-hidden="true" viewBox="0 -20 576 512" height="2em" width="2em" xmlns="http://www.w3.org/2000/svg" class="astro-H4EWV3I5">
+				<path fill="currentColor" d="M288 288h-32v-64h32v64zm288-128v192H288v32H160v-32H0V160h576zm-416 32H32v128h64v-96h32v96h32V192zm160 0H192v160h64v-32h64V192zm224 0H352v128h64v-96h32v96h32v-96h32v96h32V192z" class="astro-H4EWV3I5"></path>
+			</svg>npm
+		</a>
+		<a href="https://github.com/withastro/astro/tree/main/packages/integrations/cloudflare/CHANGELOG.md" class="astro-H4EWV3I5">
+			<svg aria-hidden="true" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" class="astro-H4EWV3I5">
+				<path fill="currentColor" fill-rule="evenodd" d="M2.75 1.5a.25.25 0 0 0-.25.25v12.5c0 .14.11.25.25.25h10.5a.25.25 0 0 0 .25-.25V4.66a.25.25 0 0 0-.07-.17L10.5 1.57a.25.25 0 0 0-.17-.07H2.75zM1 1.75C1 .78 1.78 0 2.75 0h7.59c.46 0 .9.18 1.23.51l2.92 2.92c.33.32.51.77.51 1.23v9.59A1.75 1.75 0 0 1 13.25 16H2.75A1.75 1.75 0 0 1 1 14.25V1.75zm7 1.5a.75.75 0 0 1 .75.75v1.5h1.5a.75.75 0 0 1 0 1.5h-1.5v1.5a.75.75 0 0 1-1.5 0V7h-1.5a.75.75 0 0 1 0-1.5h1.5V4A.75.75 0 0 1 8 3.25zm-3 8a.75.75 0 0 1 .75-.75h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1-.75-.75z" class="astro-H4EWV3I5"></path>
+			</svg>Changelog
+
+		</a>
+	</aside>
+			</header>
+			<div lang="zh-CN" dir="ltr" class="astro-2XBDZOYQ">
+						<aside class="content note astro-J4JMU3BW" aria-label="注意">
+	<p class="title astro-J4JMU3BW" aria-hidden="true">
+		<span class="icon astro-J4JMU3BW">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" width="16" height="16" class="astro-J4JMU3BW">
+				<path fill-rule="evenodd" d="M0 3.75C0 2.784.784 2 1.75 2h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0114.25 14H1.75A1.75 1.75 0 010 12.25v-8.5zm1.75-.25a.25.25 0 00-.25.25v8.5c0 .138.112.25.25.25h12.5a.25.25 0 00.25-.25v-8.5a.25.25 0 00-.25-.25H1.75zM3.5 6.25a.75.75 0 01.75-.75h7a.75.75 0 010 1.5h-7a.75.75 0 01-.75-.75zm.75 2.25a.75.75 0 000 1.5h4a.75.75 0 000-1.5h-4z" class="astro-J4JMU3BW"></path>
+			</svg>
+		</span>
+		注意
+	</p>
+	<section class="astro-J4JMU3BW">
+		此页暂不支持你的语言，我们将为你展示英文页面。你可以帮忙翻译它！
+<a href="https://github.com/withastro/docs/blob/main/TRANSLATING.md">了解更多关于贡献的内容
+
+	</a>
+	</section>
+</aside>
+
+
+					</div>
+			<p>An SSR adapter for use with Cloudflare Pages Functions targets. Write your code in Astro/Javascript and deploy to Cloudflare Pages.</p><div class="heading-wrapper level-h2" tabindex="-1"><h2 id="install">Install</h2><a class="anchor-link" href="#install"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Install</span></a></div><p>Add the Cloudflare adapter to enable SSR in your Astro project with the following <code>astro add</code> command. This will install the adapter and make the appropriate changes to your <code>astro.config.mjs</code> file in one step.</p>
+<figure class="code-snippet is-terminal lang-sh">
+	<figcaption class="header"></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD"># Using NPM</span></span>
+<span class="line"><span style="color:#D8DEE9">npx astro add cloudflare</span></span>
+<span class="line"><span style="color:#ABA8BD"># Using Yarn</span></span>
+<span class="line"><span style="color:#D8DEE9">yarn astro add cloudflare</span></span>
+<span class="line"><span style="color:#ABA8BD"># Using PNPM</span></span>
+<span class="line"><span style="color:#D8DEE9">pnpm astro add cloudflare</span></span></code></pre>
+</figure><p>If you prefer to install the adapter manually instead, complete the following two steps:</p><ol>
+<li>Add the Cloudflare adapter to your project’s dependencies using your preferred package manager. If you’re using npm or aren’t sure, run this in the terminal:</li>
+</ol>
+<figure class="code-snippet is-terminal lang-bash">
+	<figcaption class="header"></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#D8DEE9">npm install @astrojs/cloudflare</span></span></code></pre>
+</figure><ol start="2">
+<li>Add the following to your <code>astro.config.mjs</code> file:</li>
+</ol>
+<figure class="code-snippet has-title lang-js">
+	<figcaption class="header"><span class="title">astro.config.mjs</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">defineConfig</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;astro/config&#39;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line ins"><span style="color:#ff9fad">import</span><span style="color:#d8dee9"> </span><span style="color:#ffbd2e">cloudflare</span><span style="color:#d8dee9"> </span><span style="color:#ff9fad">from</span><span style="color:#d8dee9"> </span><span style="color:#4fcfa1">&#39;@astrojs/cloudflare&#39;</span><span style="color:#c7c5d3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF657C">export</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">default</span><span style="color:#D8DEE9"> </span><span style="color:#66ADFF">defineConfig</span><span style="color:#D8DEE9">(</span><span style="color:#C7C5D3">{</span></span>
+<span class="line ins"><span style="color:#d8dee9">  </span><span style="color:#86beff">output</span><span style="color:#c7c5d3">:</span><span style="color:#d8dee9"> </span><span style="color:#4fcfa1">&#39;server&#39;</span><span style="color:#c7c5d3">,</span></span>
+<span class="line ins"><span style="color:#d8dee9">  </span><span style="color:#86beff">adapter</span><span style="color:#c7c5d3">:</span><span style="color:#d8dee9"> </span><span style="color:#86beff">cloudflare</span><span style="color:#d8dee9">()</span></span>
+<span class="line"><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9">)</span><span style="color:#C7C5D3">;</span></span></code></pre>
+</figure><div class="heading-wrapper level-h2" tabindex="-1"><h2 id="options">Options</h2><a class="anchor-link" href="#options"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Options</span></a></div><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="mode">Mode</h3><a class="anchor-link" href="#mode"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Mode</span></a></div><p><code>mode: "advanced" | "directory"</code></p><p>default <code>"advanced"</code></p><p>Cloudflare Pages has 2 different modes for deploying functions, <code>advanced</code> mode which picks up the <code>_worker.js</code> in <code>dist</code>, or a directory mode where pages will compile the worker out of a functions folder in the project root.</p><p>For most projects the adaptor default of <code>advanced</code> will be sufficient; the <code>dist</code> folder will contain your compiled project. Switching to directory mode allows you to use <a href="https://developers.cloudflare.com/pages/platform/functions/plugins/">pages plugins</a> such as <a href="https://developers.cloudflare.com/pages/platform/functions/plugins/sentry/">Sentry</a> or write custom code to enable logging.</p><p>In directory mode the adaptor will compile the client side part of you app the same way, but moves the worker script into a <code>functions</code> folder in the project root. The adaptor will only ever place a <code>[[path]].js</code> in that folder, allowing you to add additional plugins and pages middleware which can be checked into version control. Cloudflare documentation contains more information about <a href="https://developers.cloudflare.com/pages/platform/functions/">writing custom functions</a>.</p>
+<figure class="code-snippet lang-ts">
+	<figcaption class="header"></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">// directory mode</span></span>
+<span class="line"><span style="color:#FF657C">export</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">default</span><span style="color:#D8DEE9"> </span><span style="color:#66ADFF">defineConfig</span><span style="color:#D8DEE9">(</span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">  adapter</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#66ADFF">cloudflare</span><span style="color:#D8DEE9">(</span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> mode</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;directory&quot;</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9">)</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9">)</span><span style="color:#C7C5D3">;</span></span></code></pre>
+</figure><div class="heading-wrapper level-h2" tabindex="-1"><h2 id="enabling-preview">Enabling Preview</h2><a class="anchor-link" href="#enabling-preview"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Enabling Preview</span></a></div><p>In order for preview to work you must install <code>wrangler</code></p>
+<figure class="code-snippet is-terminal lang-sh">
+	<figcaption class="header"></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#D8DEE9">$ pnpm install wrangler --save-dev</span></span></code></pre>
+</figure><p>It’s then possible to update the preview script in your <code>package.json</code> to <code>"preview": "wrangler pages dev ./dist"</code>. This will allow you run your entire application locally with <a href="https://github.com/cloudflare/wrangler2">Wrangler</a>, which supports secrets, environment variables, KV namespaces, Durable Objects and <a href="https://developers.cloudflare.com/pages/platform/functions/#adding-bindings">all other supported Cloudflare bindings</a>.</p><div class="heading-wrapper level-h2" tabindex="-1"><h2 id="access-to-the-cloudflare-runtime">Access to the Cloudflare runtime</h2><a class="anchor-link" href="#access-to-the-cloudflare-runtime"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Access to the Cloudflare runtime</span></a></div><p>You can access all the Cloudflare bindings and environment variables from Astro components and API routes through the adapter API.</p>
+<figure class="code-snippet lang-js">
+	<figcaption class="header"></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">getRuntime</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;@astrojs/cloudflare/runtime&quot;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#66ADFF">getRuntime</span><span style="color:#D8DEE9">(Astro</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">request)</span><span style="color:#C7C5D3">;</span></span></code></pre>
+</figure><p>Depending on your adapter mode (advanced = worker, directory = pages), the runtime object will look a little different due to differences in the Cloudflare API.</p><div class="heading-wrapper level-h2" tabindex="-1"><h2 id="streams">Streams</h2><a class="anchor-link" href="#streams"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Streams</span></a></div><p>Some integrations such as <a href="https://github.com/withastro/astro/tree/main/packages/integrations/react">React</a> rely on web streams. Currently Cloudflare Pages Functions require enabling a flag to support Streams.</p><p>To do this:</p><ul>
+<li>go to the Cloudflare Pages project</li>
+<li>click on Settings in the top bar, then Functions in the sidebar</li>
+<li>scroll down to Compatibility Flags, click Configure Production Compatibility Flags, and add <code>streams_enable_constructors</code></li>
+<li>do this for both the Production Compatibility Flags and Preview Compatibility Flags</li>
+</ul><div class="heading-wrapper level-h2" tabindex="-1"><h2 id="environment-variables">Environment Variables</h2><a class="anchor-link" href="#environment-variables"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Environment Variables</span></a></div><p>As Cloudflare Pages Functions <a href="https://developers.cloudflare.com/pages/platform/functions/#adding-environment-variables-locally">provides environment variables per request</a>, you can only access private environment variables when a request has happened. Usually, this means moving environment variable access inside a function.</p>
+<figure class="code-snippet has-title lang-js">
+	<figcaption class="header"><span class="title">pages/<wbr/>[id].json.js</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#FF657C">export</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">function</span><span style="color:#D8DEE9"> </span><span style="color:#66ADFF">get</span><span style="color:#D8DEE9">(</span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> params </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9">) </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#C7C5D3">  </span><span style="color:#ABA8BD">// Access environment variables per request inside a function</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> serverUrl </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">import</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">meta</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">env</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">SERVER_URL</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> result </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">await</span><span style="color:#D8DEE9"> </span><span style="color:#66ADFF">fetch</span><span style="color:#D8DEE9">(serverUrl </span><span style="color:#FF657C">+</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;/user/&quot;</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">+</span><span style="color:#D8DEE9"> params</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">id)</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#FF657C">return</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#66ADFF">body</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">await</span><span style="color:#D8DEE9"> result</span><span style="color:#C7C5D3">.</span><span style="color:#66ADFF">text</span><span style="color:#D8DEE9">()</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">};</span></span>
+<span class="line"><span style="color:#C7C5D3">}</span></span></code></pre>
+</figure><div class="heading-wrapper level-h2" tabindex="-1"><h2 id="headers-redirects-and-function-invocation-routes">Headers, Redirects and function invocation routes</h2><a class="anchor-link" href="#headers-redirects-and-function-invocation-routes"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Headers, Redirects and function invocation routes</span></a></div><p>Cloudflare has support for adding custom <a href="https://developers.cloudflare.com/pages/platform/headers/">headers</a>, configuring static <a href="https://developers.cloudflare.com/pages/platform/redirects/">redirects</a> and defining which routes should <a href="https://developers.cloudflare.com/pages/platform/functions/routing/#function-invocation-routes">invoke functions</a>. Cloudflare looks for <code>_headers</code>, <code>_redirects</code>, and <code>_routes.json</code> files in your build output directory to configure these features. This means they should be placed in your Astro project’s <code>public/</code> directory.</p><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="custom-_routesjson">Custom <code>_routes.json</code></h3><a class="anchor-link" href="#custom-_routesjson"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Custom _routes.json</span></a></div><p>By default, <code>@astrojs/cloudflare</code> will generate a <code>_routes.json</code> file that lists all files from your <code>dist/</code> folder and redirects from the <code>_redirects</code> file in the <code>exclude</code> array. This will enable Cloudflare to serve files and process static redirects without a function invocation. Creating a custom <code>_routes.json</code> will override this automatic optimization and, if not configured manually, cause function invocations that will count against the request limits of your Cloudflare plan.</p><div class="heading-wrapper level-h2" tabindex="-1"><h2 id="troubleshooting">Troubleshooting</h2><a class="anchor-link" href="#troubleshooting"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Troubleshooting</span></a></div><p>For help, check out the <code>#support</code> channel on <a href="https://astro.build/chat">Discord</a>. Our friendly Support Squad members are here to help!</p><p>You can also check our <a href="/en/guides/integrations-guide/">Astro Integration Documentation</a> for more on integrations.</p><div class="heading-wrapper level-h2" tabindex="-1"><h2 id="contributing">Contributing</h2><a class="anchor-link" href="#contributing"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Contributing</span></a></div><p>This package is maintained by Astro’s Core team. You’re welcome to submit an issue or PR!</p><h2 class="astro-H4EWV3I5">
+		更多集成
+
+	</h2><section class="integrations-nav astro-27EST7XR">
+	<section class="cards-nav astro-27EST7XR astro-GMBXUO6P">
+	<h3 class="astro-27EST7XR">UI 框架</h3>
+	<ul class="fluid-grid fluid-grid--minimal astro-7LFSRJY5">
+	<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .1875em;">
+			<img src="/logos/alpine-js.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/zh-cn/guides/integrations-guide/alpinejs/" aria-current="false" class="astro-7CCKPCAY">
+				<span class="scope">@astrojs/</span><wbr>alpinejs
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .1875em;">
+			<img src="/logos/lit.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/zh-cn/guides/integrations-guide/lit/" aria-current="false" class="astro-7CCKPCAY">
+				<span class="scope">@astrojs/</span><wbr>lit
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .1875em;">
+			<img src="/logos/preact.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/zh-cn/guides/integrations-guide/preact/" aria-current="false" class="astro-7CCKPCAY">
+				<span class="scope">@astrojs/</span><wbr>preact
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .2em;">
+			<img src="/logos/react.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/zh-cn/guides/integrations-guide/react/" aria-current="false" class="astro-7CCKPCAY">
+				<span class="scope">@astrojs/</span><wbr>react
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .1875em;">
+			<img src="/logos/solid.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/zh-cn/guides/integrations-guide/solid-js/" aria-current="false" class="astro-7CCKPCAY">
+				<span class="scope">@astrojs/</span><wbr>solid&#8288;-&#8288;js
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .1875em;">
+			<img src="/logos/svelte.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/zh-cn/guides/integrations-guide/svelte/" aria-current="false" class="astro-7CCKPCAY">
+				<span class="scope">@astrojs/</span><wbr>svelte
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .3em .2em .2em;">
+			<img src="/logos/vue.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/zh-cn/guides/integrations-guide/vue/" aria-current="false" class="astro-7CCKPCAY">
+				<span class="scope">@astrojs/</span><wbr>vue
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+
+</ul>
+
+
+</section>
+
+<section class="cards-nav astro-27EST7XR astro-GMBXUO6P">
+	<h3 class="astro-27EST7XR">SSR 适配器</h3>
+	<ul class="fluid-grid fluid-grid--minimal astro-7LFSRJY5">
+	<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .1875em;">
+			<img src="/logos/cloudflare-pages.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/zh-cn/guides/integrations-guide/cloudflare/" aria-current="page" class="astro-7CCKPCAY">
+				<span class="scope">@astrojs/</span><wbr>cloudflare
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: 0;">
+			<img src="/logos/deno.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/zh-cn/guides/integrations-guide/deno/" aria-current="false" class="astro-7CCKPCAY">
+				<span class="scope">@astrojs/</span><wbr>deno
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .1625em;">
+			<img src="/logos/netlify.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/zh-cn/guides/integrations-guide/netlify/" aria-current="false" class="astro-7CCKPCAY">
+				<span class="scope">@astrojs/</span><wbr>netlify
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .1875em;">
+			<img src="/logos/node.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/zh-cn/guides/integrations-guide/node/" aria-current="false" class="astro-7CCKPCAY">
+				<span class="scope">@astrojs/</span><wbr>node
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .3em .3em .35em;">
+			<img src="/logos/vercel.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/zh-cn/guides/integrations-guide/vercel/" aria-current="false" class="astro-7CCKPCAY">
+				<span class="scope">@astrojs/</span><wbr>vercel
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+
+</ul>
+
+
+</section>
+
+<section class="cards-nav astro-27EST7XR astro-GMBXUO6P">
+	<h3 class="astro-27EST7XR">其他</h3>
+	<ul class="fluid-grid fluid-grid--minimal astro-7LFSRJY5">
+	<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .1875em;">
+			<img src="/logos/astro-image.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/zh-cn/guides/integrations-guide/image/" aria-current="false" class="astro-7CCKPCAY">
+				<span class="scope">@astrojs/</span><wbr>image
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .1em;">
+			<img src="/logos/mdx.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/zh-cn/guides/integrations-guide/mdx/" aria-current="false" class="astro-7CCKPCAY">
+				<span class="scope">@astrojs/</span><wbr>mdx
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .2em .2em .25em .25em;">
+			<img src="/logos/partytown.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/zh-cn/guides/integrations-guide/partytown/" aria-current="false" class="astro-7CCKPCAY">
+				<span class="scope">@astrojs/</span><wbr>partytown
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .25em;">
+			<img src="/logos/prefetch.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/zh-cn/guides/integrations-guide/prefetch/" aria-current="false" class="astro-7CCKPCAY">
+				<span class="scope">@astrojs/</span><wbr>prefetch
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .1875em .25em .25em;">
+			<img src="/logos/sitemap.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/zh-cn/guides/integrations-guide/sitemap/" aria-current="false" class="astro-7CCKPCAY">
+				<span class="scope">@astrojs/</span><wbr>sitemap
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .1875em;">
+			<img src="/logos/tailwind.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/zh-cn/guides/integrations-guide/tailwind/" aria-current="false" class="astro-7CCKPCAY">
+				<span class="scope">@astrojs/</span><wbr>tailwind
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+
+</ul>
+
+
+</section>
+
+
+</section>
+
+
+		</section>
+		
+	</article>
+</div>
+
+
+				<span id="docsearch-lvl0" hidden class="astro-KR5WJSBZ">Integration Guides</span>
+			</div>
+		</main>
+		<div class="main-column astro-KR5WJSBZ">
+		</div>
+	</body></html>
+

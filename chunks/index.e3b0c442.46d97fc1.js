@@ -1,0 +1,1 @@
+const t="_container_8folw_1",o="_tab_8folw_6",n="_tabpanel_8folw_27",e="_tablist_8folw_31",a="_selectedIndicator_8folw_35",l={container:t,"tab-scroll-overflow":"_tab-scroll-overflow_8folw_6",tab:o,tabpanel:n,tablist:e,selectedIndicator:a};export{l as s};

@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en" class="initial astro-KR5WJSBZ">
+	<head>
+		<!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="hsl(256, 44%, 15%)" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="hsl(273, 37%, 93%)" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="alternate icon" type="image/x-icon" href="/favicon.ico">
+<link rel="sitemap" href="/sitemap-index.xml">
+
+<!-- Global CSS -->
+<link rel="stylesheet" href="/theme.css">
+<link rel="stylesheet" href="/index.css">
+
+<!-- Scrollable a11y code helper -->
+<script type="module" src="/make-scrollable-code-focusable.js"></script>
+
+<!-- This is intentionally inlined to avoid FOUC -->
+
+
+<!-- Double-click to highlight code blocks (inline only). -->
+
+<!-- Fathom - beautiful, simple website analytics -->
+<script src="https://certain-quality.astro.build/script.js" data-site="EZBHTSIG" defer></script>
+
+		<!-- Page Metadata --><link rel="canonical" href="https://tanggd.github.io/en/core-concepts/layouts/">
+
+
+<link rel="alternate" href="https://tanggd.github.io/en/core-concepts/layouts/" hreflang="en"><link rel="alternate" href="https://tanggd.github.io/zh-cn/core-concepts/layouts/" hreflang="zh-CN">
+
+<!-- Algolia docsearch language facet -->
+<meta name="docsearch:language" content="en">
+
+<!-- OpenGraph Tags -->
+<meta property="og:title" content="Layouts">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tanggd.github.io/en/core-concepts/layouts/">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://tanggd.github.io/open-graph/en/core-concepts/layouts.png">
+<meta property="og:image:alt" content="">
+<meta name="description" property="og:description" content="An intro to layouts, a type of Astro component that is shared between pages for common layouts.">
+<meta property="og:site_name" content="Astro Documentation">
+
+<!-- Twitter Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="astrodotbuild">
+<meta name="twitter:title" content="Layouts">
+<meta name="twitter:description" content="An intro to layouts, a type of Astro component that is shared between pages for common layouts.">
+<meta name="twitter:image" content="https://tanggd.github.io/open-graph/en/core-concepts/layouts.png">
+<meta name="twitter:image:alt" content="">
+
+<!--
+  TODO: Add json+ld data, maybe https://schema.org/APIReference makes sense?
+  Docs: https://developers.google.com/search/docs/advanced/structured-data/intro-structured-data
+  https://www.npmjs.com/package/schema-dts seems like a great resource for implementing this.
+  Even better, there’s a React component that integrates with `schema-dts`: https://github.com/google/react-schemaorg
+-->
+
+		<title>Layouts 🚀 Astro Documentation</title>
+		
+		<script>
+			// This code was migrated/copied from ThemToggleBotton to make the
+			// dark mode toggle instant, vs. hidden inside of a Preact useEffect() call.
+			const theme = (() => {
+				if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+					return localStorage.getItem('theme');
+				}
+				if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+					return 'dark';
+				}
+				return 'light';
+			})();
+			if (theme === 'light') {
+				document.documentElement.classList.remove('theme-dark');
+			} else {
+				document.documentElement.classList.add('theme-dark');
+			}
+		</script>
+	<link rel="stylesheet" href="/assets/404.6d6787e2.css" />
+<link rel="stylesheet" href="/assets/auto.444a50d9.css" />
+<link rel="stylesheet" href="/assets/alpinejs.6dd7e965.css" />
+<link rel="stylesheet" href="/assets/builderio.d1870a6c.css" />
+<link rel="stylesheet" href="/assets/builderio.fb4fe658.css" />
+<link rel="stylesheet" href="/assets/builderio.1507b30a.css" /><script type="module" src="/hoisted.66b9b87c.js"></script></head>
+
+	<body class="astro-KR5WJSBZ">
+		<header class="astro-I6GUSDXI">
+	<a href="#article" class="sr-only focus:not-sr-only skiplink astro-VODYIZTE">
+	<span class="astro-VODYIZTE">Skip to Content
+</span>
+</a>
+
+
+	<nav class="nav-wrapper astro-I6GUSDXI" aria-label="Top">
+		<div dir="ltr" lang="en" class="logo flex astro-I6GUSDXI">
+			<ul class="astro-I6GUSDXI">
+				<li class="astro-I6GUSDXI">
+					<a class="docs astro-I6GUSDXI" href="/en/getting-started/">
+						<span class="sr-only astro-I6GUSDXI">Docs</span>
+						<svg xmlns="http://www.w3.org/2000/svg" width="226" height="102" viewBox="0 0 226 102" fill="none" class="astro-I6GUSDXI">
+							<path class="docs-path astro-I6GUSDXI" fill="currentColor" d="M25.805 68c14.688 0 24.883-8.41 24.883-21.14 0-12.786-9.62-19.756-24.653-19.756H0V68h25.805zm-14.17-33.005H24.25c8.352 0 14.17 4.09 14.17 12.039 0 8.236-5.3 13.075-14.113 13.075H11.635V34.995zM82.673 69.382c16.704 0 27.418-8.582 27.418-21.83 0-13.248-10.771-21.83-27.418-21.83-16.589 0-27.418 8.582-27.418 21.83 0 13.19 10.83 21.83 27.418 21.83zm0-8.64c-9.1 0-15.149-5.299-15.149-13.19 0-7.891 6.048-13.19 15.15-13.19 9.1 0 15.205 5.299 15.205 13.19 0 7.891-6.105 13.19-15.206 13.19zM141.497 69.382c13.306 0 22.637-5.299 25.978-14.572l-11.866-2.535c-1.67 5.415-6.393 8.295-13.709 8.295-9.216 0-15.033-5.127-15.033-13.018 0-8.006 5.702-13.018 14.918-13.018 7.43 0 12.154 3.053 13.709 8.64l12.038-2.13c-2.707-9.562-12.268-15.322-25.574-15.322-16.128 0-27.302 9.043-27.302 22.003 0 13.133 10.425 21.657 26.841 21.657zM194.94 69.382c14.745 0 23.212-5.01 23.212-14.054 0-7.603-4.665-10.944-15.955-12.096l-11.289-1.094c-5.242-.576-6.97-1.556-6.97-4.09 0-2.765 3.456-4.262 9.792-4.262 7.834 0 13.709 2.476 16.762 6.508l7.315-6.163c-5.069-5.702-13.133-8.41-23.501-8.41-13.997 0-21.888 4.781-21.888 12.903 0 7.546 4.781 11.232 14.803 12.326l12.557 1.383c4.896.518 6.624 1.555 6.624 4.09 0 3.225-3.456 4.723-10.886 4.723-8.352 0-14.688-3.226-18.087-8.007l-8.294 5.818c4.205 6.451 13.709 10.425 25.805 10.425z"></path>
+						</svg>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<style>astro-island,astro-slot{display:contents}</style><script>(self.Astro=self.Astro||{}).visible=(s,c,n)=>{const r=async()=>{await(await s())()};let i=new IntersectionObserver(e=>{for(const t of e)if(!!t.isIntersecting){i.disconnect(),r();break}});for(let e=0;e<n.children.length;e++){const t=n.children[e];i.observe(t)}},window.dispatchEvent(new Event("astro:visible"));var l;{const c={0:t=>t,1:t=>JSON.parse(t,o),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(JSON.parse(t,o)),5:t=>new Set(JSON.parse(t,o)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(JSON.parse(t)),9:t=>new Uint16Array(JSON.parse(t)),10:t=>new Uint32Array(JSON.parse(t))},o=(t,s)=>{if(t===""||!Array.isArray(s))return s;const[e,n]=s;return e in c?c[e](n):void 0};customElements.get("astro-island")||customElements.define("astro-island",(l=class extends HTMLElement{constructor(){super(...arguments);this.hydrate=()=>{if(!this.hydrator||this.parentElement&&this.parentElement.closest("astro-island[ssr]"))return;const s=this.querySelectorAll("astro-slot"),e={},n=this.querySelectorAll("template[data-astro-template]");for(const r of n){const i=r.closest(this.tagName);!i||!i.isSameNode(this)||(e[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(const r of s){const i=r.closest(this.tagName);!i||!i.isSameNode(this)||(e[r.getAttribute("name")||"default"]=r.innerHTML)}const a=this.hasAttribute("props")?JSON.parse(this.getAttribute("props"),o):{};this.hydrator(this)(this.Component,a,e,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),window.removeEventListener("astro:hydrate",this.hydrate),window.dispatchEvent(new CustomEvent("astro:hydrate"))}}connectedCallback(){!this.hasAttribute("await-children")||this.firstChild?this.childrenConnectedCallback():new MutationObserver((s,e)=>{e.disconnect(),this.childrenConnectedCallback()}).observe(this,{childList:!0})}async childrenConnectedCallback(){window.addEventListener("astro:hydrate",this.hydrate);let s=this.getAttribute("before-hydration-url");s&&await import(s),this.start()}start(){const s=JSON.parse(this.getAttribute("opts")),e=this.getAttribute("client");if(Astro[e]===void 0){window.addEventListener(`astro:${e}`,()=>this.start(),{once:!0});return}Astro[e](async()=>{const n=this.getAttribute("renderer-url"),[a,{default:r}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),i=this.getAttribute("component-export")||"default";if(!i.includes("."))this.Component=a[i];else{this.Component=a;for(const d of i.split("."))this.Component=this.Component[d]}return this.hydrator=r,this.hydrate},s,this)}attributeChangedCallback(){this.hydrator&&this.hydrate()}},l.observedAttributes=["props"],l))}</script><astro-island uid="2tcXi2" component-url="/ThemeToggleButton.6de6281e.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{&quot;labels&quot;:[0,{&quot;useLight&quot;:[0,&quot;Use light theme&quot;],&quot;useDark&quot;:[0,&quot;Use dark theme&quot;]}],&quot;isInsideHeader&quot;:[0,true]}" ssr="" client="visible" opts="{&quot;name&quot;:&quot;ThemeToggleButton&quot;,&quot;value&quot;:true}" await-children=""><div class="theme-toggle hide-toggle-on-smaller-screens"><label title="Use light theme" class=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path></svg><input type="radio" name="theme-toggle" aria-label="Use light theme" value="light"/></label><label title="Use dark theme" class=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg><input type="radio" name="theme-toggle" aria-label="Use dark theme" value="dark"/></label></div></astro-island>
+		<!-- {lang && <LanguageSelect lang={lang} client:idle />} -->
+		<!-- 
+			TODO：搜索功能
+			后期再做，暂时隐藏
+			参考文档 https://blog.csdn.net/weixin_40026797/article/details/126063524 -->
+		<!-- <Search {lang} labels={docsearchStrings} /> -->
+		<a class="astro astro-I6GUSDXI" href="https://github.com/tanggd" target="_blank" rel="noopener noreferrer">
+			<img src="/assets/github.4e28406c.svg" alt="github" class="astro-I6GUSDXI">
+		</a>
+		<script>(self.Astro=self.Astro||{}).idle=t=>{const e=async()=>{await(await t())()};"requestIdleCallback"in window?window.requestIdleCallback(e):setTimeout(e,200)},window.dispatchEvent(new Event("astro:idle"));</script><astro-island uid="Z1Iw7D6" component-url="/SidebarToggle.2303dca7.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{}" ssr="" client="idle" opts="{&quot;name&quot;:&quot;SidebarToggle&quot;,&quot;value&quot;:true}" await-children=""><button id="menu-toggle" class="header-button" type="button" aria-pressed="false"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg><span class="sr-only">Toggle sidebar</span></button></astro-island>
+	</nav>
+</header>
+
+
+		<main class="layout astro-KR5WJSBZ">
+			<aside id="left-sidebar" class="sidebar astro-KR5WJSBZ">
+				
+					<nav aria-label="Primary" class="astro-VHM34O3D">
+	<script>(self.Astro=self.Astro||{}).load=a=>{(async()=>await(await a())())()},window.dispatchEvent(new Event("astro:load"));</script><astro-island uid="Z1KQCLa" component-url="/SidebarToggleTabGroup.2446d59c.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{&quot;defaultActiveTab&quot;:[0,&quot;learn&quot;],&quot;labels&quot;:[0,{&quot;learn&quot;:[0,&quot;Learn&quot;],&quot;api&quot;:[0,&quot;Tools&quot;]}]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;SidebarToggleTabGroup&quot;,&quot;value&quot;:true}" await-children=""><div class="TabGroup"><button class="active">Learn</button><button class="">Tools</button></div></astro-island>
+	<ul class="nav-groups astro-VHM34O3D">
+		<li class="nav-group learn active astro-Q2W3FM2V">
+			<details open class="astro-Q2W3FM2V">
+				<summary class="nav-group-title astro-Q2W3FM2V">
+					<h2 class="astro-Q2W3FM2V">
+						CSS
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 1 16 16" width="16" height="16" aria-hidden="true" class="astro-Q2W3FM2V">
+							<path fill-rule="evenodd" d="M6.22 3.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 010-1.06z" class="astro-Q2W3FM2V"></path>
+						</svg>
+					</h2>
+				</summary>
+				<ul class="astro-Q2W3FM2V">
+					<li class="nav-link astro-Q2W3FM2V">
+							<a href="/en/css/xxx/" aria-current="false" data-current-parent="false" class="astro-Q2W3FM2V">
+								CSS世界 <sup class="fallback astro-Q2W3FM2V">EN</sup>
+							</a>
+						</li>
+				</ul>
+			</details>
+		</li>
+
+
+		<li class="nav-group api astro-Q2W3FM2V">
+			<details open class="astro-Q2W3FM2V">
+				<summary class="nav-group-title astro-Q2W3FM2V">
+					<h2 class="astro-Q2W3FM2V">
+						小工具
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 1 16 16" width="16" height="16" aria-hidden="true" class="astro-Q2W3FM2V">
+							<path fill-rule="evenodd" d="M6.22 3.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 010-1.06z" class="astro-Q2W3FM2V"></path>
+						</svg>
+					</h2>
+				</summary>
+				<ul class="astro-Q2W3FM2V">
+					<li class="nav-link astro-Q2W3FM2V">
+							<a href="/en/tools/make-certificate-photos/" aria-current="false" data-current-parent="false" class="astro-Q2W3FM2V">
+								制作证件照 <sup class="fallback astro-Q2W3FM2V">EN</sup>
+							</a>
+						</li>
+				</ul>
+			</details>
+		</li>
+
+
+		<li style="text-align: center;" class="astro-VHM34O3D">
+			<astro-island uid="1IhUvw" component-url="/ThemeToggleButton.6de6281e.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{&quot;labels&quot;:[0,{&quot;useLight&quot;:[0,&quot;Use light theme&quot;],&quot;useDark&quot;:[0,&quot;Use dark theme&quot;]}]}" ssr="" client="visible" opts="{&quot;name&quot;:&quot;ThemeToggleButton&quot;,&quot;value&quot;:true}" await-children=""><div class="theme-toggle "><label title="Use light theme" class=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path></svg><input type="radio" name="theme-toggle" aria-label="Use light theme" value="light"/></label><label title="Use dark theme" class=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg><input type="radio" name="theme-toggle" aria-label="Use dark theme" value="dark"/></label></div></astro-island>
+		</li>
+	</ul>
+</nav>
+
+
+
+
+				
+			</aside>
+			<aside id="right-sidebar" class="sidebar astro-KR5WJSBZ">
+				<script>(self.Astro=self.Astro||{}).media=(s,a)=>{const t=async()=>{await(await s())()};if(a.value){const e=matchMedia(a.value);e.matches?t():e.addEventListener("change",t,{once:!0})}},window.dispatchEvent(new Event("astro:media"));</script><nav aria-label="Secondary" class="astro-TFI5F24A">
+	<astro-island uid="1lbrtj" component-url="/TableOfContents.dc58575b.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{&quot;headings&quot;:[1,&quot;[[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;sample-layout\&quot;],\&quot;text\&quot;:[0,\&quot;Sample Layout\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;markdownmdx-layouts\&quot;],\&quot;text\&quot;:[0,\&quot;Markdown/MDX Layouts\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;markdown-layout-props\&quot;],\&quot;text\&quot;:[0,\&quot;Markdown Layout Props\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;importing-layouts-manually-mdx\&quot;],\&quot;text\&quot;:[0,\&quot;Importing Layouts Manually (MDX)\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;using-one-layout-for-md-mdx-and-astro\&quot;],\&quot;text\&quot;:[0,\&quot;Using one Layout for .md, .mdx, and .astro\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;nesting-layouts\&quot;],\&quot;text\&quot;:[0,\&quot;Nesting Layouts\&quot;]}]]&quot;],&quot;labels&quot;:[0,{&quot;onThisPage&quot;:[0,&quot;On this page&quot;],&quot;overview&quot;:[0,&quot;Overview&quot;]}],&quot;isMobile&quot;:[0,false]}" ssr="" client="media" opts="{&quot;name&quot;:&quot;TableOfContents&quot;,&quot;value&quot;:&quot;(min-width: 50em)&quot;}" await-children=""><h2 class="heading" id="on-this-page-heading">On this page</h2><ul><li class="header-link depth-2 current-header-link"><a href="#overview">Overview</a></li><li class="header-link depth-2"><a href="#sample-layout">Sample Layout</a></li><li class="header-link depth-2"><a href="#markdownmdx-layouts">Markdown/MDX Layouts</a></li><li class="header-link depth-3"><a href="#markdown-layout-props">Markdown Layout Props</a></li><li class="header-link depth-3"><a href="#importing-layouts-manually-mdx">Importing Layouts Manually (MDX)</a></li><li class="header-link depth-2"><a href="#using-one-layout-for-md-mdx-and-astro">Using one Layout for .md, .mdx, and .astro</a></li><li class="header-link depth-2"><a href="#nesting-layouts">Nesting Layouts</a></li></ul></astro-island>
+</nav>
+
+
+			</aside>
+			<div id="main-content" class="main-column astro-KR5WJSBZ">
+				<div dir="ltr" class="astro-2XBDZOYQ">
+	<div class="fixed-mobile-bar astro-2XBDZOYQ" dir="ltr">
+					<nav>
+						<astro-island uid="Z12SvBG" component-url="/TableOfContents.dc58575b.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{&quot;headings&quot;:[1,&quot;[[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;sample-layout\&quot;],\&quot;text\&quot;:[0,\&quot;Sample Layout\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;markdownmdx-layouts\&quot;],\&quot;text\&quot;:[0,\&quot;Markdown/MDX Layouts\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;markdown-layout-props\&quot;],\&quot;text\&quot;:[0,\&quot;Markdown Layout Props\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;importing-layouts-manually-mdx\&quot;],\&quot;text\&quot;:[0,\&quot;Importing Layouts Manually (MDX)\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;using-one-layout-for-md-mdx-and-astro\&quot;],\&quot;text\&quot;:[0,\&quot;Using one Layout for .md, .mdx, and .astro\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;nesting-layouts\&quot;],\&quot;text\&quot;:[0,\&quot;Nesting Layouts\&quot;]}]]&quot;],&quot;labels&quot;:[0,{&quot;onThisPage&quot;:[0,&quot;On this page&quot;],&quot;overview&quot;:[0,&quot;Overview&quot;]}],&quot;isMobile&quot;:[0,true]}" ssr="" client="media" opts="{&quot;name&quot;:&quot;TableOfContents&quot;,&quot;value&quot;:&quot;(max-width: 72em)&quot;}" await-children=""><details class="toc-mobile-container"><summary class="toc-mobile-header"><div class="toc-mobile-header-content"><div class="toc-toggle"><h2 class="heading" id="on-this-page-heading">On this page</h2><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 1 16 16" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M6.22 3.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 010-1.06z"></path></svg></div></div></summary><ul><li class="header-link depth-2 current-header-link"><a href="#overview">Overview</a></li><li class="header-link depth-2"><a href="#sample-layout">Sample Layout</a></li><li class="header-link depth-2"><a href="#markdownmdx-layouts">Markdown/MDX Layouts</a></li><li class="header-link depth-3"><a href="#markdown-layout-props">Markdown Layout Props</a></li><li class="header-link depth-3"><a href="#importing-layouts-manually-mdx">Importing Layouts Manually (MDX)</a></li><li class="header-link depth-2"><a href="#using-one-layout-for-md-mdx-and-astro">Using one Layout for .md, .mdx, and .astro</a></li><li class="header-link depth-2"><a href="#nesting-layouts">Nesting Layouts</a></li></ul></details></astro-island>
+					</nav>
+				</div><div class="spacer astro-2XBDZOYQ"></div>
+	<article id="article" class="content astro-2XBDZOYQ">
+		<section class="main-section astro-2XBDZOYQ">
+			<header class="astro-2XBDZOYQ">
+				
+				<h1 class="content-title astro-2XBDZOYQ" id="overview">Layouts</h1>
+				
+			</header>
+			
+			<p><strong>Layouts</strong> are <a href="/en/core-concepts/astro-components/">Astro components</a> used to provide a reusable UI structure, such as a page template.</p><p>We conventionally use the term “layout” for Astro components that provide common UI elements shared across pages such as headers, navigation bars, and footers. A typical Astro layout component provides <a href="/en/core-concepts/astro-pages/">Astro, Markdown or MDX pages</a> with:</p><ul>
+<li>a <strong>page shell</strong> (<code>&lt;html&gt;</code>, <code>&lt;head&gt;</code> and <code>&lt;body&gt;</code> tags)</li>
+<li>a <a href="/en/core-concepts/astro-components/#slots"><strong><code>&lt;slot /&gt;</code></strong></a> to specify where individual page content should be injected.</li>
+</ul><p>But, there is nothing special about a layout component! They can <a href="/en/core-concepts/astro-components/#component-props">accept props</a> and <a href="/en/core-concepts/astro-components/#component-structure">import and use other components</a> like any other Astro component. They can include <a href="/en/core-concepts/framework-components/">UI frameworks components</a> and <a href="/en/core-concepts/astro-components/#client-side-scripts">client-side scripts</a>. They do not even have to provide a full page shell, and can instead be used as partial UI templates.</p><p>Layout components are commonly placed in a <code>src/layouts</code> directory in your project for organization, but this is not a requirement.</p><div class="heading-wrapper level-h2" tabindex="-1"><h2 id="sample-layout">Sample Layout</h2><a class="anchor-link" href="#sample-layout"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Sample Layout</span></a></div>
+<figure class="code-snippet has-title lang-astro">
+	<figcaption class="header"><span class="title">src/<wbr/>layouts/<wbr/>MySiteLayout.astro</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> BaseHead </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;../components/BaseHead.astro&#39;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> Footer </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;../components/Footer.astro&#39;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> title </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> Astro</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">props</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">html</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">lang</span><span style="color:#C7C5D3">=</span><span style="color:#16C082">&quot;en&quot;</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">head</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">meta</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">charset</span><span style="color:#C7C5D3">=</span><span style="color:#16C082">&quot;utf-8&quot;</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">meta</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">name</span><span style="color:#C7C5D3">=</span><span style="color:#16C082">&quot;viewport&quot;</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">content</span><span style="color:#C7C5D3">=</span><span style="color:#16C082">&quot;width=device-width, initial-scale=1&quot;</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FFBD2E">BaseHead</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">title</span><span style="color:#C7C5D3">=</span><span style="color:#FF657C">{</span><span style="color:#D8DEE9">title</span><span style="color:#FF657C">}</span><span style="color:#C7C5D3">/&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">head</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">body</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">nav</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">      </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">a</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">href</span><span style="color:#C7C5D3">=</span><span style="color:#16C082">&quot;#&quot;</span><span style="color:#C7C5D3">&gt;</span><span style="color:#D8DEE9">Home</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">a</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">      </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">a</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">href</span><span style="color:#C7C5D3">=</span><span style="color:#16C082">&quot;#&quot;</span><span style="color:#C7C5D3">&gt;</span><span style="color:#D8DEE9">Posts</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">a</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">      </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">a</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">href</span><span style="color:#C7C5D3">=</span><span style="color:#16C082">&quot;#&quot;</span><span style="color:#C7C5D3">&gt;</span><span style="color:#D8DEE9">Contact</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">a</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">nav</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">h1</span><span style="color:#C7C5D3">&gt;</span><span style="color:#FF657C">{</span><span style="color:#D8DEE9">title</span><span style="color:#FF657C">}</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">h1</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">article</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">      </span><mark><span style="color:#c7c5d3">&lt;</span><span style="color:#ff9fad">slot</span><span style="color:#d8dee9"> </span><span style="color:#c7c5d3">/&gt;</span></mark><span style="color:#D8DEE9"> </span><span style="color:#ABA8BD">&lt;!-- your content is injected here --&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">article</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FFBD2E">Footer</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">/&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">body</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">html</span><span style="color:#C7C5D3">&gt;</span></span></code></pre>
+</figure>
+<figure class="code-snippet has-title lang-astro">
+	<figcaption class="header"><span class="title">src/<wbr/>pages/<wbr/>index.astro</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> MySiteLayout </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;../layouts/MySiteLayout.astro&#39;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FFBD2E">MySiteLayout</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">title</span><span style="color:#C7C5D3">=</span><span style="color:#16C082">&quot;Home Page&quot;</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">p</span><span style="color:#C7C5D3">&gt;</span><span style="color:#D8DEE9">My page content, wrapped in a layout!</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">p</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;/</span><span style="color:#FFBD2E">MySiteLayout</span><span style="color:#C7C5D3">&gt;</span></span></code></pre>
+</figure><p>📚 Learn more about <a href="/en/core-concepts/astro-components/#slots">slots</a>.</p><div class="heading-wrapper level-h2" tabindex="-1"><h2 id="markdownmdx-layouts">Markdown/MDX Layouts</h2><a class="anchor-link" href="#markdownmdx-layouts"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Markdown/MDX Layouts</span></a></div><p>Page layouts are especially useful for <a href="/en/guides/markdown-content/#markdown-and-mdx-pages">Markdown and MDX pages</a> which otherwise would not have any page formatting.</p><p>Astro provides a special <code>layout</code> frontmatter property to specify which <code>.astro</code> component to use as the page layout.</p>
+<figure class="code-snippet has-title lang-markdown">
+	<figcaption class="header"><span class="title">src/<wbr/>pages/<wbr/>page.md</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#D8DEE9">---</span></span>
+<span class="line mark"><span style="color:#ff9fad">layout</span><span style="color:#c7c5d3">:</span><span style="color:#d8dee9"> </span><span style="color:#4fcfa1">../layouts/BaseLayout.astro</span></span>
+<span class="line"><span style="color:#FF657C">title</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;Hello, World!&quot;</span></span>
+<span class="line"><span style="color:#FF657C">author</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;Matthew Phillips&quot;</span></span>
+<span class="line"><span style="color:#FF657C">date</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;09 Aug 2022&quot;</span></span>
+<span class="line"><span style="color:#D8DEE9">---</span></span>
+<span class="line"><span style="color:#D8DEE9">All frontmatter properties are available as props to an Astro layout component.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D8DEE9">The </span><span style="color:#FFBD2E">`layout`</span><span style="color:#D8DEE9"> property is the only special one provided by Astro.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D8DEE9">You can use it in both Markdown and MDX files located within </span><span style="color:#FFBD2E">`src/pages/`</span><span style="color:#D8DEE9">.</span></span></code></pre>
+</figure><p>A typical layout for Markdown or MDX pages includes:</p><ol>
+<li>The <code>frontmatter</code> prop to access the Markdown or MDX page’s frontmatter and other data.</li>
+<li>A default <a href="/en/core-concepts/astro-components/#slots"><code>&lt;slot /&gt;</code></a> to indicate where the page’s Markdown/MDX content should be rendered.</li>
+</ol>
+<figure class="code-snippet has-title lang-astro">
+	<figcaption class="header"><span class="title">src/<wbr/>layouts/<wbr/>BaseLayout.astro</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#ABA8BD">// 1. The frontmatter prop gives access to frontmatter and other data</span></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> </span><mark><span style="color:#d8dee9">frontmatter</span></mark><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> Astro</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">props</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">html</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">head</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#ABA8BD">&lt;!-- Add other Head elements here, like styles and meta tags. --&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">title</span><span style="color:#C7C5D3">&gt;</span><mark><span style="color:#ff9fad">{</span><span style="color:#d8dee9">frontmatter</span><span style="color:#c7c5d3">.</span><span style="color:#d8dee9">title</span><span style="color:#ff9fad">}</span></mark><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">title</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">head</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">body</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#ABA8BD">&lt;!-- Add other UI components here, like common headers and footers. --&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">h1</span><span style="color:#C7C5D3">&gt;</span><mark><span style="color:#ff9fad">{</span><span style="color:#d8dee9">frontmatter</span><span style="color:#c7c5d3">.</span><span style="color:#d8dee9">title</span><span style="color:#ff9fad">}</span></mark><span style="color:#D8DEE9"> by </span><mark><span style="color:#ff9fad">{</span><span style="color:#d8dee9">frontmatter</span><span style="color:#c7c5d3">.</span><span style="color:#d8dee9">author</span><span style="color:#ff9fad">}</span></mark><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">h1</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#ABA8BD">&lt;!-- 2. Rendered HTML will be passed into the default slot. --&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><mark><span style="color:#c7c5d3">&lt;</span><span style="color:#ff9fad">slot</span><span style="color:#d8dee9"> </span><span style="color:#c7c5d3">/&gt;</span></mark></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">p</span><span style="color:#C7C5D3">&gt;</span><span style="color:#D8DEE9">Written on: </span><mark><span style="color:#ff9fad">{</span><span style="color:#d8dee9">frontmatter</span><span style="color:#c7c5d3">.</span><span style="color:#d8dee9">date</span><span style="color:#ff9fad">}</span></mark><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">p</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">body</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">html</span><span style="color:#C7C5D3">&gt;</span></span></code></pre>
+</figure><p>You can set a layout’s <a href="/en/guides/typescript/#component-props"><code>Props</code> type</a> with the <code>MarkdownLayoutProps</code> or <code>MDXLayoutProps</code> helper:</p>
+<figure class="code-snippet has-title lang-astro">
+	<figcaption class="header"><span class="title">src/<wbr/>layouts/<wbr/>BaseLayout.astro</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line ins"><span style="color:#ff9fad">import</span><span style="color:#d8dee9"> </span><span style="color:#ff9fad">type</span><span style="color:#d8dee9"> </span><span style="color:#c7c5d3">{</span><span style="color:#d8dee9"> MarkdownLayoutProps </span><span style="color:#c7c5d3">}</span><span style="color:#d8dee9"> </span><span style="color:#ff9fad">from</span><span style="color:#d8dee9"> </span><span style="color:#4fcfa1">&#39;astro&#39;</span><span style="color:#c7c5d3">;</span></span>
+<span class="line"></span>
+<span class="line ins"><span style="color:#ff9fad">type</span><span style="color:#d8dee9"> </span><span style="color:#ffbd2e">Props</span><span style="color:#d8dee9"> </span><span style="color:#ff9fad">=</span><span style="color:#d8dee9"> </span><span style="color:#ffbd2e">MarkdownLayoutProps</span><span style="color:#c7c5d3">&lt;{</span></span>
+<span class="line ins"><span style="color:#c7c5d3">  </span><span style="color:#bbb8c9">// Define frontmatter props here</span></span>
+<span class="line ins"><span style="color:#d8dee9">  title</span><span style="color:#ff9fad">:</span><span style="color:#d8dee9"> </span><span style="color:#ffbd2e">string</span><span style="color:#c7c5d3">;</span></span>
+<span class="line ins"><span style="color:#d8dee9">  author</span><span style="color:#ff9fad">:</span><span style="color:#d8dee9"> </span><span style="color:#ffbd2e">string</span><span style="color:#c7c5d3">;</span></span>
+<span class="line ins"><span style="color:#d8dee9">  date</span><span style="color:#ff9fad">:</span><span style="color:#d8dee9"> </span><span style="color:#ffbd2e">string</span><span style="color:#c7c5d3">;</span></span>
+<span class="line ins"><span style="color:#c7c5d3">}&gt;;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#ABA8BD">// Now, `frontmatter`, `url`, and other Markdown layout properties</span></span>
+<span class="line"><span style="color:#ABA8BD">// are accessible with type safety</span></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> frontmatter</span><span style="color:#C7C5D3">,</span><span style="color:#D8DEE9"> url </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> Astro</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">props</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">html</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">head</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">meta</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">rel</span><span style="color:#C7C5D3">=</span><span style="color:#16C082">&quot;canonical&quot;</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">href</span><span style="color:#C7C5D3">=</span><span style="color:#FF657C">{new</span><span style="color:#D8DEE9"> </span><span style="color:#66ADFF">URL</span><span style="color:#ABA8BD">(</span><span style="color:#D8DEE9">url</span><span style="color:#C7C5D3">,</span><span style="color:#D8DEE9"> Astro</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">site</span><span style="color:#ABA8BD">)</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">pathname</span><span style="color:#FF657C">}</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">title</span><span style="color:#C7C5D3">&gt;</span><span style="color:#FF657C">{</span><span style="color:#D8DEE9">frontmatter</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">title</span><span style="color:#FF657C">}</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">title</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">head</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">body</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">h1</span><span style="color:#C7C5D3">&gt;</span><span style="color:#FF657C">{</span><span style="color:#D8DEE9">frontmatter</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">title</span><span style="color:#FF657C">}</span><span style="color:#D8DEE9"> by </span><span style="color:#FF657C">{</span><span style="color:#D8DEE9">frontmatter</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">author</span><span style="color:#FF657C">}</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">h1</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">slot</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">/&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">p</span><span style="color:#C7C5D3">&gt;</span><span style="color:#D8DEE9">Written on: </span><span style="color:#FF657C">{</span><span style="color:#D8DEE9">frontmatter</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">date</span><span style="color:#FF657C">}</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">p</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">body</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">html</span><span style="color:#C7C5D3">&gt;</span></span></code></pre>
+</figure><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="markdown-layout-props">Markdown Layout Props</h3><a class="anchor-link" href="#markdown-layout-props"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Markdown Layout Props</span></a></div><p>A Markdown/MDX layout will have access to the following information via <code>Astro.props</code>:</p><ul>
+<li><strong><code>file</code></strong> - The absolute path of this file (e.g. <code>/home/user/projects/.../file.md</code>).</li>
+<li><strong><code>url</code></strong> - If it’s a page, the URL of the page (e.g. <code>/en/guides/markdown-content</code>).</li>
+<li><strong><code>frontmatter</code></strong> - all frontmatter from the Markdown or MDX document.
+<ul>
+<li><strong><code>frontmatter.file</code></strong> - The same as the top-level <code>file</code> property.</li>
+<li><strong><code>frontmatter.url</code></strong> - The same as the top-level <code>url</code> property.</li>
+</ul>
+</li>
+<li><strong><code>headings</code></strong> - A list of headings (<code>h1 -&gt; h6</code>) in the Markdown or MDX document with associated metadata. This list follows the type: <code>{ depth: number; slug: string; text: string }[]</code>.</li>
+<li><strong>(Markdown only) <code>rawContent()</code></strong> - A function that returns the raw Markdown document as a string.</li>
+<li><strong>(Markdown only) <code>compiledContent()</code></strong> - A function that returns the Markdown document compiled to an HTML string.</li>
+</ul><p>An example Markdown blog post may pass the following <code>Astro.props</code> object to its layout:</p>
+<figure class="code-snippet lang-js">
+	<figcaption class="header"></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#D8DEE9">Astro</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">props </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#66ADFF">file</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;/home/user/projects/.../file.md&quot;</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#66ADFF">url</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;/en/guides/markdown-content/&quot;</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#66ADFF">frontmatter</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#ABA8BD">/** Frontmatter from a blog post */</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#66ADFF">title</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;Astro 0.18 Release&quot;</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#66ADFF">date</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;Tuesday, July 27 2021&quot;</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#66ADFF">author</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;Matthew Phillips&quot;</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#66ADFF">description</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;Astro 0.18 is our biggest release since Astro launch.&quot;</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#ABA8BD">/** Generated values */</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#66ADFF">file</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;/home/user/projects/.../file.md&quot;</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#66ADFF">url</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;/en/guides/markdown-content/&quot;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">},</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#66ADFF">headings</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> [</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">      </span><span style="color:#16C082">&quot;depth&quot;</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#EBCB8B">1</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">      </span><span style="color:#16C082">&quot;text&quot;</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;Astro 0.18 Release&quot;</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">      </span><span style="color:#16C082">&quot;slug&quot;</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;astro-018-release&quot;</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">},</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">      </span><span style="color:#16C082">&quot;depth&quot;</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#EBCB8B">2</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">      </span><span style="color:#16C082">&quot;text&quot;</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;Responsive partial hydration&quot;</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">      </span><span style="color:#16C082">&quot;slug&quot;</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;responsive-partial-hydration&quot;</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">}</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#ABA8BD">/* ... */</span></span>
+<span class="line"><span style="color:#D8DEE9">  ]</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#ABA8BD">/** Available in Markdown only */</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#66ADFF">rawContent</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> () </span><span style="color:#FF657C">=&gt;</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;# Astro 0.18 Release</span><span style="color:#EBCB8B">\n</span><span style="color:#16C082">A little over a month ago, the first public beta [...]&quot;</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#66ADFF">compiledContent</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> () </span><span style="color:#FF657C">=&gt;</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;&lt;h1&gt;Astro 0.18 Release&lt;/h1&gt;</span><span style="color:#EBCB8B">\n</span><span style="color:#16C082">&lt;p&gt;A little over a month ago, the first public beta [...]&lt;/p&gt;&quot;</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#C7C5D3">}</span></span></code></pre>
+</figure><aside class="content note astro-J4JMU3BW" aria-label="Note">
+	<p class="title astro-J4JMU3BW" aria-hidden="true">
+		<span class="icon astro-J4JMU3BW">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" width="16" height="16" class="astro-J4JMU3BW">
+				<path fill-rule="evenodd" d="M0 3.75C0 2.784.784 2 1.75 2h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0114.25 14H1.75A1.75 1.75 0 010 12.25v-8.5zm1.75-.25a.25.25 0 00-.25.25v8.5c0 .138.112.25.25.25h12.5a.25.25 0 00.25-.25v-8.5a.25.25 0 00-.25-.25H1.75zM3.5 6.25a.75.75 0 01.75-.75h7a.75.75 0 010 1.5h-7a.75.75 0 01-.75-.75zm.75 2.25a.75.75 0 000 1.5h4a.75.75 0 000-1.5h-4z" class="astro-J4JMU3BW"></path>
+			</svg>
+		</span>
+		Note
+	</p>
+	<section class="astro-J4JMU3BW">
+		<p>A Markdown/MDX layout will have access to all its file’s <a href="/en/guides/markdown-content/#exported-properties">exported properties</a> from <code>Astro.props</code> <strong>with some key differences:</strong></p><ul>
+<li>
+<p>Heading information (i.e. <code>h1 -&gt; h6</code> elements) is available via the <code>headings</code> array, rather than a <code>getHeadings()</code> function.</p>
+</li>
+<li>
+<p><code>file</code> and <code>url</code> are <em>also</em> available as nested <code>frontmatter</code> properties (i.e. <code>frontmatter.url</code> and <code>frontmatter.file</code>).</p>
+</li>
+<li>
+<p>Values defined outside of frontmatter (e.g. <code>export</code> statements in MDX) are not available. Consider <a href="#importing-layouts-manually-mdx">importing a layout</a> instead.</p>
+</li>
+</ul>
+	</section>
+</aside>
+
+<div class="heading-wrapper level-h3" tabindex="-1"><h3 id="importing-layouts-manually-mdx">Importing Layouts Manually (MDX)</h3><a class="anchor-link" href="#importing-layouts-manually-mdx"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Importing Layouts Manually (MDX)</span></a></div><p>You may need to pass information to your MDX layout that does not (or cannot) exist in your frontmatter. In this case, you can instead import and use a <a href="/en/core-concepts/layouts/"><code>&lt;Layout /&gt;</code> component</a> and pass it props like any other component:</p>
+<figure class="code-snippet has-title lang-mdx">
+	<figcaption class="header"><span class="title">src/<wbr/>pages/<wbr/>posts/<wbr/>first-post.mdx</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#D8DEE9">---</span></span>
+<span class="line del"><span style="color:#ff9fad">layout</span><span style="color:#c7c5d3">:</span><span style="color:#d8dee9"> </span><span style="color:#4fcfa1">../../layouts/BaseLayout.astro</span></span>
+<span class="line"><span style="color:#FF657C">title</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;My first MDX post&#39;</span></span>
+<span class="line"><span style="color:#FF657C">publishDate</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;21 September 2022&#39;</span></span>
+<span class="line"><span style="color:#D8DEE9">---</span></span>
+<span class="line ins"><span style="color:#ff9fad">import</span><span style="color:#d8dee9"> </span><span style="color:#ffbd2e">BaseLayout</span><span style="color:#d8dee9"> </span><span style="color:#ff9fad">from</span><span style="color:#d8dee9"> </span><span style="color:#4fcfa1">&#39;../../layouts/BaseLayout.astro&#39;</span><span style="color:#c7c5d3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF657C">function</span><span style="color:#D8DEE9"> </span><span style="color:#66ADFF">fancyJsHelper</span><span style="color:#D8DEE9">() </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#FF657C">return</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;Try doing that with YAML!&quot;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#C7C5D3">}</span></span>
+<span class="line"></span>
+<span class="line"><mark><span style="color:#c7c5d3">&lt;</span><span style="color:#ffbd2e">BaseLayout</span><span style="color:#d8dee9"> </span><span style="color:#ffbd2e">title</span><span style="color:#ff9fad">={</span><span style="color:#d8dee9">frontmatter</span><span style="color:#c7c5d3">.</span><span style="color:#d8dee9">title</span><span style="color:#ff9fad">}</span><span style="color:#d8dee9"> </span><span style="color:#ffbd2e">fancyJsHelper</span><span style="color:#ff9fad">={</span><span style="color:#d8dee9">fancyJsHelper</span><span style="color:#ff9fad">}</span><span style="color:#c7c5d3">&gt;</span></mark></span>
+<span class="line"><span style="color:#D8DEE9">  Welcome to my new Astro blog, using MDX!</span></span>
+<span class="line"><mark><span style="color:#c7c5d3">&lt;/</span><span style="color:#ffbd2e">BaseLayout</span><span style="color:#c7c5d3">&gt;</span></mark></span></code></pre>
+</figure><p>Then, your values are available to you through <code>Astro.props</code> in your layout, and your MDX content will be injected into the page where your <code>&lt;slot /&gt;</code> component is written:</p>
+<figure class="code-snippet has-title lang-astro">
+	<figcaption class="header"><span class="title">src/<wbr/>layouts/<wbr/>BaseLayout.astro</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> </span><mark><span style="color:#d8dee9">title</span></mark><span style="color:#C7C5D3">,</span><span style="color:#D8DEE9"> </span><mark><span style="color:#d8dee9">fancyJsHelper</span></mark><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> Astro</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">props</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#ABA8BD">&lt;!-- --&gt;</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">h1</span><span style="color:#C7C5D3">&gt;</span><span style="color:#FF657C">{</span><mark><span style="color:#d8dee9">title</span></mark><span style="color:#FF657C">}</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">h1</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">slot</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">/&gt;</span><span style="color:#D8DEE9"> </span><span style="color:#ABA8BD">&lt;!-- your content is injected here --&gt;</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">p</span><span style="color:#C7C5D3">&gt;</span><span style="color:#FF657C">{</span><mark><span style="color:#86beff">fancyJsHelper</span></mark><span style="color:#ABA8BD">()</span><span style="color:#FF657C">}</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">p</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#ABA8BD">&lt;!-- --&gt;</span></span></code></pre>
+</figure><p>📚 Learn more about Astro’s Markdown and MDX support in our <a href="/en/guides/markdown-content/">Markdown/MDX guide</a>.</p><div class="heading-wrapper level-h2" tabindex="-1"><h2 id="using-one-layout-for-md-mdx-and-astro">Using one Layout for <code>.md</code>, <code>.mdx</code>, and <code>.astro</code></h2><a class="anchor-link" href="#using-one-layout-for-md-mdx-and-astro"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Using one Layout for .md, .mdx, and .astro</span></a></div><p>A single Astro layout can be written to receive the <code>frontmatter</code> object from <code>.md</code> and <code>.mdx</code> files, as well as any named props passed from <code>.astro</code> files.</p><p>In the example below, the layout will display the page title either from an Astro component passing a <code>title</code> attribute or from a frontmatter YAML <code>title</code> property:</p>
+<figure class="code-snippet has-title lang-astro">
+	<figcaption class="header"><span class="title">src/<wbr/>components/<wbr/>MyLayout.astro</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> </span><mark><span style="color:#d8dee9">title</span></mark><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> </span><mark><span style="color:#d8dee9">Astro</span><span style="color:#c7c5d3">.</span><span style="color:#d8dee9">props</span><span style="color:#c7c5d3">.</span><span style="color:#d8dee9">frontmatter</span></mark><span style="color:#D8DEE9"> </span><span style="color:#FF657C">||</span><span style="color:#D8DEE9"> </span><mark><span style="color:#d8dee9">Astro</span><span style="color:#c7c5d3">.</span><span style="color:#d8dee9">props</span></mark><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">html</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">head</span><span style="color:#C7C5D3">&gt;&lt;/</span><span style="color:#FF657C">head</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">body</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">h1</span><span style="color:#C7C5D3">&gt;</span><mark><span style="color:#ff9fad">{</span><span style="color:#d8dee9">title</span><span style="color:#ff9fad">}</span></mark><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">h1</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">slot</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">/&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">body</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">html</span><span style="color:#C7C5D3">&gt;</span></span></code></pre>
+</figure><div class="heading-wrapper level-h2" tabindex="-1"><h2 id="nesting-layouts">Nesting Layouts</h2><a class="anchor-link" href="#nesting-layouts"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Nesting Layouts</span></a></div><p>Layout components do not need to contain an entire page worth of HTML. You can break your layouts into smaller components, and combine layout components to create even more flexible, page templates.</p><p>For example, a <code>BlogPostLayout.astro</code> layout component could style a post’s title, date and author. Then, a site-wide <code>BaseLayout.astro</code> could handle the rest of your page template, like navigation and footers. You can also pass props received from your post to another layout, just like any other nested component.</p>
+<figure class="code-snippet has-title lang-astro">
+	<figcaption class="header"><span class="title">src/<wbr/>layouts/<wbr/>BlogPostLayout.astro</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line mark"><span style="color:#ff9fad">import</span><span style="color:#d8dee9"> BaseLayout </span><span style="color:#ff9fad">from</span><span style="color:#d8dee9"> </span><span style="color:#4fcfa1">&#39;./BaseLayout.astro&#39;</span></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9">frontmatter</span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> Astro</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">props</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><mark><span style="color:#c7c5d3">&lt;</span><span style="color:#ffbd2e">BaseLayout</span><span style="color:#d8dee9"> </span><span style="color:#ffbd2e">url</span><span style="color:#c7c5d3">=</span><span style="color:#ff9fad">{</span><span style="color:#d8dee9">frontmatter</span><span style="color:#c7c5d3">.</span><span style="color:#d8dee9">url</span><span style="color:#ff9fad">}</span><span style="color:#c7c5d3">&gt;</span></mark></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">h1</span><span style="color:#C7C5D3">&gt;</span><span style="color:#FF657C">{</span><span style="color:#D8DEE9">frontmatter</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">title</span><span style="color:#FF657C">}</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">h1</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">h2</span><span style="color:#C7C5D3">&gt;</span><span style="color:#D8DEE9">Post author: </span><span style="color:#FF657C">{</span><span style="color:#D8DEE9">frontmatter</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">author</span><span style="color:#FF657C">}</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">h2</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">slot</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">/&gt;</span></span>
+<span class="line"><mark><span style="color:#c7c5d3">&lt;/</span><span style="color:#ffbd2e">BaseLayout</span><span style="color:#c7c5d3">&gt;</span></mark></span></code></pre>
+</figure>
+		</section>
+		
+	</article>
+</div>
+
+
+				<span id="docsearch-lvl0" hidden class="astro-KR5WJSBZ">Learn</span>
+			</div>
+		</main>
+		<div class="main-column astro-KR5WJSBZ">
+		</div>
+	</body></html>

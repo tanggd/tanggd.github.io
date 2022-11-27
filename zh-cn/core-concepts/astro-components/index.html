@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="zh-CN" class="initial astro-KR5WJSBZ">
+	<head>
+		<!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="hsl(256, 44%, 15%)" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="hsl(273, 37%, 93%)" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="alternate icon" type="image/x-icon" href="/favicon.ico">
+<link rel="sitemap" href="/sitemap-index.xml">
+
+<!-- Global CSS -->
+<link rel="stylesheet" href="/theme.css">
+<link rel="stylesheet" href="/index.css">
+
+<!-- Scrollable a11y code helper -->
+<script type="module" src="/make-scrollable-code-focusable.js"></script>
+
+<!-- This is intentionally inlined to avoid FOUC -->
+
+
+<!-- Double-click to highlight code blocks (inline only). -->
+
+<!-- Fathom - beautiful, simple website analytics -->
+<script src="https://certain-quality.astro.build/script.js" data-site="EZBHTSIG" defer></script>
+
+		<!-- Page Metadata --><link rel="canonical" href="https://tanggd.github.io/zh-cn/core-concepts/astro-components/">
+
+
+<link rel="alternate" href="https://tanggd.github.io/en/core-concepts/astro-components/" hreflang="en"><link rel="alternate" href="https://tanggd.github.io/zh-cn/core-concepts/astro-components/" hreflang="zh-CN">
+
+<!-- Algolia docsearch language facet -->
+<meta name="docsearch:language" content="zh-CN">
+
+<!-- OpenGraph Tags -->
+<meta property="og:title" content="组件">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tanggd.github.io/zh-cn/core-concepts/astro-components/">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tanggd.github.io/open-graph/zh-cn/core-concepts/astro-components.png">
+<meta property="og:image:alt" content="">
+<meta name="description" property="og:description" content="关于 .astro 组件语法的介绍。">
+<meta property="og:site_name" content="Astro 文档">
+
+<!-- Twitter Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="astrodotbuild">
+<meta name="twitter:title" content="组件">
+<meta name="twitter:description" content="关于 .astro 组件语法的介绍。">
+<meta name="twitter:image" content="https://tanggd.github.io/open-graph/zh-cn/core-concepts/astro-components.png">
+<meta name="twitter:image:alt" content="">
+
+<!--
+  TODO: Add json+ld data, maybe https://schema.org/APIReference makes sense?
+  Docs: https://developers.google.com/search/docs/advanced/structured-data/intro-structured-data
+  https://www.npmjs.com/package/schema-dts seems like a great resource for implementing this.
+  Even better, there’s a React component that integrates with `schema-dts`: https://github.com/google/react-schemaorg
+-->
+
+		<title>组件 🚀 Astro 文档</title>
+		
+		<script>
+			// This code was migrated/copied from ThemToggleBotton to make the
+			// dark mode toggle instant, vs. hidden inside of a Preact useEffect() call.
+			const theme = (() => {
+				if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+					return localStorage.getItem('theme');
+				}
+				if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+					return 'dark';
+				}
+				return 'light';
+			})();
+			if (theme === 'light') {
+				document.documentElement.classList.remove('theme-dark');
+			} else {
+				document.documentElement.classList.add('theme-dark');
+			}
+		</script>
+	<link rel="stylesheet" href="/assets/404.6d6787e2.css" />
+<link rel="stylesheet" href="/assets/auto.444a50d9.css" />
+<link rel="stylesheet" href="/assets/builderio.d1870a6c.css" />
+<link rel="stylesheet" href="/assets/alpinejs.6dd7e965.css" />
+<link rel="stylesheet" href="/assets/builderio.fb4fe658.css" />
+<link rel="stylesheet" href="/assets/builderio.1507b30a.css" /><script type="module" src="/hoisted.66b9b87c.js"></script></head>
+
+	<body class="astro-KR5WJSBZ">
+		<header class="astro-I6GUSDXI">
+	<a href="#article" class="sr-only focus:not-sr-only skiplink astro-VODYIZTE">
+	<span class="astro-VODYIZTE">跳转到内容
+</span>
+</a>
+
+
+	<nav class="nav-wrapper astro-I6GUSDXI" aria-label="导航顶部">
+		<div dir="ltr" lang="en" class="logo flex astro-I6GUSDXI">
+			<ul class="astro-I6GUSDXI">
+				<li class="astro-I6GUSDXI">
+					<a class="docs astro-I6GUSDXI" href="/zh-cn/getting-started/">
+						<span class="sr-only astro-I6GUSDXI">Docs</span>
+						<svg xmlns="http://www.w3.org/2000/svg" width="226" height="102" viewBox="0 0 226 102" fill="none" class="astro-I6GUSDXI">
+							<path class="docs-path astro-I6GUSDXI" fill="currentColor" d="M25.805 68c14.688 0 24.883-8.41 24.883-21.14 0-12.786-9.62-19.756-24.653-19.756H0V68h25.805zm-14.17-33.005H24.25c8.352 0 14.17 4.09 14.17 12.039 0 8.236-5.3 13.075-14.113 13.075H11.635V34.995zM82.673 69.382c16.704 0 27.418-8.582 27.418-21.83 0-13.248-10.771-21.83-27.418-21.83-16.589 0-27.418 8.582-27.418 21.83 0 13.19 10.83 21.83 27.418 21.83zm0-8.64c-9.1 0-15.149-5.299-15.149-13.19 0-7.891 6.048-13.19 15.15-13.19 9.1 0 15.205 5.299 15.205 13.19 0 7.891-6.105 13.19-15.206 13.19zM141.497 69.382c13.306 0 22.637-5.299 25.978-14.572l-11.866-2.535c-1.67 5.415-6.393 8.295-13.709 8.295-9.216 0-15.033-5.127-15.033-13.018 0-8.006 5.702-13.018 14.918-13.018 7.43 0 12.154 3.053 13.709 8.64l12.038-2.13c-2.707-9.562-12.268-15.322-25.574-15.322-16.128 0-27.302 9.043-27.302 22.003 0 13.133 10.425 21.657 26.841 21.657zM194.94 69.382c14.745 0 23.212-5.01 23.212-14.054 0-7.603-4.665-10.944-15.955-12.096l-11.289-1.094c-5.242-.576-6.97-1.556-6.97-4.09 0-2.765 3.456-4.262 9.792-4.262 7.834 0 13.709 2.476 16.762 6.508l7.315-6.163c-5.069-5.702-13.133-8.41-23.501-8.41-13.997 0-21.888 4.781-21.888 12.903 0 7.546 4.781 11.232 14.803 12.326l12.557 1.383c4.896.518 6.624 1.555 6.624 4.09 0 3.225-3.456 4.723-10.886 4.723-8.352 0-14.688-3.226-18.087-8.007l-8.294 5.818c4.205 6.451 13.709 10.425 25.805 10.425z"></path>
+						</svg>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<style>astro-island,astro-slot{display:contents}</style><script>(self.Astro=self.Astro||{}).visible=(s,c,n)=>{const r=async()=>{await(await s())()};let i=new IntersectionObserver(e=>{for(const t of e)if(!!t.isIntersecting){i.disconnect(),r();break}});for(let e=0;e<n.children.length;e++){const t=n.children[e];i.observe(t)}},window.dispatchEvent(new Event("astro:visible"));var l;{const c={0:t=>t,1:t=>JSON.parse(t,o),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(JSON.parse(t,o)),5:t=>new Set(JSON.parse(t,o)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(JSON.parse(t)),9:t=>new Uint16Array(JSON.parse(t)),10:t=>new Uint32Array(JSON.parse(t))},o=(t,s)=>{if(t===""||!Array.isArray(s))return s;const[e,n]=s;return e in c?c[e](n):void 0};customElements.get("astro-island")||customElements.define("astro-island",(l=class extends HTMLElement{constructor(){super(...arguments);this.hydrate=()=>{if(!this.hydrator||this.parentElement&&this.parentElement.closest("astro-island[ssr]"))return;const s=this.querySelectorAll("astro-slot"),e={},n=this.querySelectorAll("template[data-astro-template]");for(const r of n){const i=r.closest(this.tagName);!i||!i.isSameNode(this)||(e[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(const r of s){const i=r.closest(this.tagName);!i||!i.isSameNode(this)||(e[r.getAttribute("name")||"default"]=r.innerHTML)}const a=this.hasAttribute("props")?JSON.parse(this.getAttribute("props"),o):{};this.hydrator(this)(this.Component,a,e,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),window.removeEventListener("astro:hydrate",this.hydrate),window.dispatchEvent(new CustomEvent("astro:hydrate"))}}connectedCallback(){!this.hasAttribute("await-children")||this.firstChild?this.childrenConnectedCallback():new MutationObserver((s,e)=>{e.disconnect(),this.childrenConnectedCallback()}).observe(this,{childList:!0})}async childrenConnectedCallback(){window.addEventListener("astro:hydrate",this.hydrate);let s=this.getAttribute("before-hydration-url");s&&await import(s),this.start()}start(){const s=JSON.parse(this.getAttribute("opts")),e=this.getAttribute("client");if(Astro[e]===void 0){window.addEventListener(`astro:${e}`,()=>this.start(),{once:!0});return}Astro[e](async()=>{const n=this.getAttribute("renderer-url"),[a,{default:r}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),i=this.getAttribute("component-export")||"default";if(!i.includes("."))this.Component=a[i];else{this.Component=a;for(const d of i.split("."))this.Component=this.Component[d]}return this.hydrator=r,this.hydrate},s,this)}attributeChangedCallback(){this.hydrator&&this.hydrate()}},l.observedAttributes=["props"],l))}</script><astro-island uid="Zp9foH" component-url="/ThemeToggleButton.6de6281e.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{&quot;labels&quot;:[0,{&quot;useLight&quot;:[0,&quot;使用浅色主题&quot;],&quot;useDark&quot;:[0,&quot;使用深色主题&quot;]}],&quot;isInsideHeader&quot;:[0,true]}" ssr="" client="visible" opts="{&quot;name&quot;:&quot;ThemeToggleButton&quot;,&quot;value&quot;:true}" await-children=""><div class="theme-toggle hide-toggle-on-smaller-screens"><label title="使用浅色主题" class=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path></svg><input type="radio" name="theme-toggle" aria-label="使用浅色主题" value="light"/></label><label title="使用深色主题" class=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg><input type="radio" name="theme-toggle" aria-label="使用深色主题" value="dark"/></label></div></astro-island>
+		<!-- {lang && <LanguageSelect lang={lang} client:idle />} -->
+		<!-- 
+			TODO：搜索功能
+			后期再做，暂时隐藏
+			参考文档 https://blog.csdn.net/weixin_40026797/article/details/126063524 -->
+		<!-- <Search {lang} labels={docsearchStrings} /> -->
+		<a class="astro astro-I6GUSDXI" href="https://github.com/tanggd" target="_blank" rel="noopener noreferrer">
+			<img src="/assets/github.4e28406c.svg" alt="github" class="astro-I6GUSDXI">
+		</a>
+		<script>(self.Astro=self.Astro||{}).idle=t=>{const e=async()=>{await(await t())()};"requestIdleCallback"in window?window.requestIdleCallback(e):setTimeout(e,200)},window.dispatchEvent(new Event("astro:idle"));</script><astro-island uid="Z1Iw7D6" component-url="/SidebarToggle.2303dca7.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{}" ssr="" client="idle" opts="{&quot;name&quot;:&quot;SidebarToggle&quot;,&quot;value&quot;:true}" await-children=""><button id="menu-toggle" class="header-button" type="button" aria-pressed="false"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg><span class="sr-only">Toggle sidebar</span></button></astro-island>
+	</nav>
+</header>
+
+
+		<main class="layout astro-KR5WJSBZ">
+			<aside id="left-sidebar" class="sidebar astro-KR5WJSBZ">
+				
+					<nav aria-label="站点导航" class="astro-VHM34O3D">
+	<script>(self.Astro=self.Astro||{}).load=a=>{(async()=>await(await a())())()},window.dispatchEvent(new Event("astro:load"));</script><astro-island uid="14sDdn" component-url="/SidebarToggleTabGroup.2446d59c.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{&quot;defaultActiveTab&quot;:[0,&quot;learn&quot;],&quot;labels&quot;:[0,{&quot;learn&quot;:[0,&quot;学习&quot;],&quot;api&quot;:[0,&quot;工具&quot;]}]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;SidebarToggleTabGroup&quot;,&quot;value&quot;:true}" await-children=""><div class="TabGroup"><button class="active">学习</button><button class="">工具</button></div></astro-island>
+	<ul class="nav-groups astro-VHM34O3D">
+		<li class="nav-group learn active astro-Q2W3FM2V">
+			<details open class="astro-Q2W3FM2V">
+				<summary class="nav-group-title astro-Q2W3FM2V">
+					<h2 class="astro-Q2W3FM2V">
+						CSS
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 1 16 16" width="16" height="16" aria-hidden="true" class="astro-Q2W3FM2V">
+							<path fill-rule="evenodd" d="M6.22 3.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 010-1.06z" class="astro-Q2W3FM2V"></path>
+						</svg>
+					</h2>
+				</summary>
+				<ul class="astro-Q2W3FM2V">
+					<li class="nav-link astro-Q2W3FM2V">
+							<a href="/zh-cn/css/xxx/" aria-current="false" data-current-parent="false" class="astro-Q2W3FM2V">
+								CSS世界 
+							</a>
+						</li>
+				</ul>
+			</details>
+		</li>
+
+
+		<li class="nav-group api astro-Q2W3FM2V">
+			<details open class="astro-Q2W3FM2V">
+				<summary class="nav-group-title astro-Q2W3FM2V">
+					<h2 class="astro-Q2W3FM2V">
+						小工具
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 1 16 16" width="16" height="16" aria-hidden="true" class="astro-Q2W3FM2V">
+							<path fill-rule="evenodd" d="M6.22 3.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 010-1.06z" class="astro-Q2W3FM2V"></path>
+						</svg>
+					</h2>
+				</summary>
+				<ul class="astro-Q2W3FM2V">
+					<li class="nav-link astro-Q2W3FM2V">
+							<a href="/zh-cn/tools/make-certificate-photos/" aria-current="false" data-current-parent="false" class="astro-Q2W3FM2V">
+								制作证件照 
+							</a>
+						</li>
+				</ul>
+			</details>
+		</li>
+
+
+		<li style="text-align: center;" class="astro-VHM34O3D">
+			<astro-island uid="1MlLjn" component-url="/ThemeToggleButton.6de6281e.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{&quot;labels&quot;:[0,{&quot;useLight&quot;:[0,&quot;使用浅色主题&quot;],&quot;useDark&quot;:[0,&quot;使用深色主题&quot;]}]}" ssr="" client="visible" opts="{&quot;name&quot;:&quot;ThemeToggleButton&quot;,&quot;value&quot;:true}" await-children=""><div class="theme-toggle "><label title="使用浅色主题" class=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path></svg><input type="radio" name="theme-toggle" aria-label="使用浅色主题" value="light"/></label><label title="使用深色主题" class=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg><input type="radio" name="theme-toggle" aria-label="使用深色主题" value="dark"/></label></div></astro-island>
+		</li>
+	</ul>
+</nav>
+
+
+
+
+				
+			</aside>
+			<aside id="right-sidebar" class="sidebar astro-KR5WJSBZ">
+				<script>(self.Astro=self.Astro||{}).media=(s,a)=>{const t=async()=>{await(await s())()};if(a.value){const e=matchMedia(a.value);e.matches?t():e.addEventListener("change",t,{once:!0})}},window.dispatchEvent(new Event("astro:media"));</script><nav aria-label="目录" class="astro-TFI5F24A">
+	<astro-island uid="22B2Er" component-url="/TableOfContents.dc58575b.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{&quot;headings&quot;:[1,&quot;[[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;组件概述\&quot;],\&quot;text\&quot;:[0,\&quot;组件概述\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;组件脚本\&quot;],\&quot;text\&quot;:[0,\&quot;组件脚本\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;组件模板\&quot;],\&quot;text\&quot;:[0,\&quot;组件模板\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;jsx-表达式\&quot;],\&quot;text\&quot;:[0,\&quot;JSX 表达式\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;变量\&quot;],\&quot;text\&quot;:[0,\&quot;变量\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;动态属性\&quot;],\&quot;text\&quot;:[0,\&quot;动态属性\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;动态-html\&quot;],\&quot;text\&quot;:[0,\&quot;动态 HTML\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;动态标签\&quot;],\&quot;text\&quot;:[0,\&quot;动态标签\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;片段和多元素\&quot;],\&quot;text\&quot;:[0,\&quot;片段和多元素\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;astro-和-jsx-间的差异\&quot;],\&quot;text\&quot;:[0,\&quot;Astro 和 JSX 间的差异\&quot;]}],[0,{\&quot;depth\&quot;:[0,4],\&quot;slug\&quot;:[0,\&quot;属性\&quot;],\&quot;text\&quot;:[0,\&quot;属性\&quot;]}],[0,{\&quot;depth\&quot;:[0,4],\&quot;slug\&quot;:[0,\&quot;注释\&quot;],\&quot;text\&quot;:[0,\&quot;注释\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;组件参数\&quot;],\&quot;text\&quot;:[0,\&quot;组件参数\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;插槽\&quot;],\&quot;text\&quot;:[0,\&quot;插槽\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;命名插槽\&quot;],\&quot;text\&quot;:[0,\&quot;命名插槽\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;插槽回退内容\&quot;],\&quot;text\&quot;:[0,\&quot;插槽回退内容\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;css-样式\&quot;],\&quot;text\&quot;:[0,\&quot;CSS 样式\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;客户端脚本\&quot;],\&quot;text\&quot;:[0,\&quot;客户端脚本\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;加载外部脚本\&quot;],\&quot;text\&quot;:[0,\&quot;加载外部脚本\&quot;]}],[0,{\&quot;depth\&quot;:[0,4],\&quot;slug\&quot;:[0,\&quot;使用-hoist-脚本\&quot;],\&quot;text\&quot;:[0,\&quot;使用 hoist 脚本\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;html-组件\&quot;],\&quot;text\&quot;:[0,\&quot;HTML 组件\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;下一步\&quot;],\&quot;text\&quot;:[0,\&quot;下一步\&quot;]}]]&quot;],&quot;labels&quot;:[0,{&quot;onThisPage&quot;:[0,&quot;在本页内&quot;],&quot;overview&quot;:[0,&quot;概述&quot;]}],&quot;isMobile&quot;:[0,false]}" ssr="" client="media" opts="{&quot;name&quot;:&quot;TableOfContents&quot;,&quot;value&quot;:&quot;(min-width: 50em)&quot;}" await-children=""><h2 class="heading" id="on-this-page-heading">在本页内</h2><ul><li class="header-link depth-2 current-header-link"><a href="#overview">概述</a></li><li class="header-link depth-2"><a href="#组件概述">组件概述</a></li><li class="header-link depth-3"><a href="#组件脚本">组件脚本</a></li><li class="header-link depth-3"><a href="#组件模板">组件模板</a></li><li class="header-link depth-2"><a href="#jsx-表达式">JSX 表达式</a></li><li class="header-link depth-3"><a href="#变量">变量</a></li><li class="header-link depth-3"><a href="#动态属性">动态属性</a></li><li class="header-link depth-3"><a href="#动态-html">动态 HTML</a></li><li class="header-link depth-3"><a href="#动态标签">动态标签</a></li><li class="header-link depth-3"><a href="#片段和多元素">片段和多元素</a></li><li class="header-link depth-3"><a href="#astro-和-jsx-间的差异">Astro 和 JSX 间的差异</a></li><li class="header-link depth-2"><a href="#组件参数">组件参数</a></li><li class="header-link depth-2"><a href="#插槽">插槽</a></li><li class="header-link depth-3"><a href="#命名插槽">命名插槽</a></li><li class="header-link depth-3"><a href="#插槽回退内容">插槽回退内容</a></li><li class="header-link depth-2"><a href="#css-样式">CSS 样式</a></li><li class="header-link depth-2"><a href="#客户端脚本">客户端脚本</a></li><li class="header-link depth-3"><a href="#加载外部脚本">加载外部脚本</a></li><li class="header-link depth-2"><a href="#html-组件">HTML 组件</a></li><li class="header-link depth-2"><a href="#下一步">下一步</a></li></ul></astro-island>
+</nav>
+
+
+			</aside>
+			<div id="main-content" class="main-column astro-KR5WJSBZ">
+				<div dir="ltr" class="astro-2XBDZOYQ">
+	<div class="fixed-mobile-bar astro-2XBDZOYQ" dir="ltr">
+					<nav>
+						<astro-island uid="Z1cn9KE" component-url="/TableOfContents.dc58575b.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{&quot;headings&quot;:[1,&quot;[[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;组件概述\&quot;],\&quot;text\&quot;:[0,\&quot;组件概述\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;组件脚本\&quot;],\&quot;text\&quot;:[0,\&quot;组件脚本\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;组件模板\&quot;],\&quot;text\&quot;:[0,\&quot;组件模板\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;jsx-表达式\&quot;],\&quot;text\&quot;:[0,\&quot;JSX 表达式\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;变量\&quot;],\&quot;text\&quot;:[0,\&quot;变量\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;动态属性\&quot;],\&quot;text\&quot;:[0,\&quot;动态属性\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;动态-html\&quot;],\&quot;text\&quot;:[0,\&quot;动态 HTML\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;动态标签\&quot;],\&quot;text\&quot;:[0,\&quot;动态标签\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;片段和多元素\&quot;],\&quot;text\&quot;:[0,\&quot;片段和多元素\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;astro-和-jsx-间的差异\&quot;],\&quot;text\&quot;:[0,\&quot;Astro 和 JSX 间的差异\&quot;]}],[0,{\&quot;depth\&quot;:[0,4],\&quot;slug\&quot;:[0,\&quot;属性\&quot;],\&quot;text\&quot;:[0,\&quot;属性\&quot;]}],[0,{\&quot;depth\&quot;:[0,4],\&quot;slug\&quot;:[0,\&quot;注释\&quot;],\&quot;text\&quot;:[0,\&quot;注释\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;组件参数\&quot;],\&quot;text\&quot;:[0,\&quot;组件参数\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;插槽\&quot;],\&quot;text\&quot;:[0,\&quot;插槽\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;命名插槽\&quot;],\&quot;text\&quot;:[0,\&quot;命名插槽\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;插槽回退内容\&quot;],\&quot;text\&quot;:[0,\&quot;插槽回退内容\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;css-样式\&quot;],\&quot;text\&quot;:[0,\&quot;CSS 样式\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;客户端脚本\&quot;],\&quot;text\&quot;:[0,\&quot;客户端脚本\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;加载外部脚本\&quot;],\&quot;text\&quot;:[0,\&quot;加载外部脚本\&quot;]}],[0,{\&quot;depth\&quot;:[0,4],\&quot;slug\&quot;:[0,\&quot;使用-hoist-脚本\&quot;],\&quot;text\&quot;:[0,\&quot;使用 hoist 脚本\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;html-组件\&quot;],\&quot;text\&quot;:[0,\&quot;HTML 组件\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;下一步\&quot;],\&quot;text\&quot;:[0,\&quot;下一步\&quot;]}]]&quot;],&quot;labels&quot;:[0,{&quot;onThisPage&quot;:[0,&quot;在本页内&quot;],&quot;overview&quot;:[0,&quot;概述&quot;]}],&quot;isMobile&quot;:[0,true]}" ssr="" client="media" opts="{&quot;name&quot;:&quot;TableOfContents&quot;,&quot;value&quot;:&quot;(max-width: 72em)&quot;}" await-children=""><details class="toc-mobile-container"><summary class="toc-mobile-header"><div class="toc-mobile-header-content"><div class="toc-toggle"><h2 class="heading" id="on-this-page-heading">在本页内</h2><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 1 16 16" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M6.22 3.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 010-1.06z"></path></svg></div></div></summary><ul><li class="header-link depth-2 current-header-link"><a href="#overview">概述</a></li><li class="header-link depth-2"><a href="#组件概述">组件概述</a></li><li class="header-link depth-3"><a href="#组件脚本">组件脚本</a></li><li class="header-link depth-3"><a href="#组件模板">组件模板</a></li><li class="header-link depth-2"><a href="#jsx-表达式">JSX 表达式</a></li><li class="header-link depth-3"><a href="#变量">变量</a></li><li class="header-link depth-3"><a href="#动态属性">动态属性</a></li><li class="header-link depth-3"><a href="#动态-html">动态 HTML</a></li><li class="header-link depth-3"><a href="#动态标签">动态标签</a></li><li class="header-link depth-3"><a href="#片段和多元素">片段和多元素</a></li><li class="header-link depth-3"><a href="#astro-和-jsx-间的差异">Astro 和 JSX 间的差异</a></li><li class="header-link depth-2"><a href="#组件参数">组件参数</a></li><li class="header-link depth-2"><a href="#插槽">插槽</a></li><li class="header-link depth-3"><a href="#命名插槽">命名插槽</a></li><li class="header-link depth-3"><a href="#插槽回退内容">插槽回退内容</a></li><li class="header-link depth-2"><a href="#css-样式">CSS 样式</a></li><li class="header-link depth-2"><a href="#客户端脚本">客户端脚本</a></li><li class="header-link depth-3"><a href="#加载外部脚本">加载外部脚本</a></li><li class="header-link depth-2"><a href="#html-组件">HTML 组件</a></li><li class="header-link depth-2"><a href="#下一步">下一步</a></li></ul></details></astro-island>
+					</nav>
+				</div><div class="spacer astro-2XBDZOYQ"></div>
+	<article id="article" class="content astro-2XBDZOYQ">
+		<section class="main-section astro-2XBDZOYQ">
+			<header class="astro-2XBDZOYQ">
+				
+				<h1 class="content-title astro-2XBDZOYQ" id="overview">组件</h1>
+				
+			</header>
+			
+			<p><strong>Astro 组件</strong>是 Astro 项目的基础构建块。它们是纯 HTML、无需客户端运行时的模板组件。</p><p><strong>如果懂 HTML，你就已经有足够的知识来编写你的第一个 Astro 组件了</strong>。</p><p>Astro 组件的语法是 HTML 的超集。该语法<a href="/zh-cn/comparing-astro-vs-other-tools/#astro-vs-jsx">设计地让所有拥有编写 HTML 或 JSX 经验的人都感到熟悉</a>，并增加包括对组件和 JavaScript 表达式的支持。你可以通过文件扩展名 <code>.astro</code> 来创建新的 Astro 组件。</p><p>Astro 组件非常灵活的。通常情况下，Astro 组件会包含一些<strong>可在页面中复用的 UI</strong>，如 header 或简介卡。在其他时候，Astro 组件可能包含一个较小的 HTML 片段，像是常见的使 SEO 更好的 <code>&lt;meta&gt;</code> 标签集合。Astro 组件甚至可以包含整个页面布局。</p><p>Astro 组件中最重要的一点是，它们在构建过程中会被<strong>渲染成 HTML</strong>。即使你在组件内运行 JavaScript 代码，它也会抢先一步运行从呈现给用户的最终页面中剥离出来。其最终使得网站变得更快，且默认不用任何 JavaScript。</p><div class="heading-wrapper level-h2" tabindex="-1"><h2 id="组件概述">组件概述</h2><a class="anchor-link" href="#组件概述"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled 组件概述</span></a></div><p>Astro 组件是由两个主要部分所组成的——<strong>组件 script</strong> 和<strong>组件模板</strong>。每个部分分工处理最终呈现出一个既容易使用，又有足够的表现力来实现你的想象的框架。</p>
+<figure class="code-snippet has-title lang-astro">
+	<figcaption class="header"><span class="title">src/<wbr/>components/<wbr/>EmptyComponent.astro</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#ABA8BD">// 组件脚本（JavaScript）</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#ABA8BD">&lt;!-- 组件模板（HTML + JS 表达式）--&gt;</span></span></code></pre>
+</figure><p>你也可以在其他组件中使用组件以建立更多更先进的 UI。例如 <code>Button</code> 组件可以被用来创建 <code>ButtonGroup</code> 组件，像是这样。</p>
+<figure class="code-snippet has-title lang-astro">
+	<figcaption class="header"><span class="title">src/<wbr/>components/<wbr/>ButtonGroup.astro</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> Button </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;./Button.astro&#39;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">div</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FFBD2E">Button</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">title</span><span style="color:#C7C5D3">=</span><span style="color:#16C082">&quot;按钮 1&quot;</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">/&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FFBD2E">Button</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">title</span><span style="color:#C7C5D3">=</span><span style="color:#16C082">&quot;按钮 2&quot;</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">/&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FFBD2E">Button</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">title</span><span style="color:#C7C5D3">=</span><span style="color:#16C082">&quot;按钮 3&quot;</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">/&gt;</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">div</span><span style="color:#C7C5D3">&gt;</span></span></code></pre>
+</figure><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="组件脚本">组件脚本</h3><a class="anchor-link" href="#组件脚本"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled 组件脚本</span></a></div><p>Astro 使用代码栅栏（<code>---</code>）来识别 Astro 组件中的组件脚本。如果你以前写过 Markdown，你可能已经熟悉了叫做 <em>frontmatter</em> 类似概念。Astro 的组件脚本的想法直接受到了这个概念的启发。</p><p>你可以使用组件脚本来编写渲染模板所需 JavaScript 代码。这可以包括：</p><ul>
+<li>导入其他 Astro 组件</li>
+<li>导入其他框架组件，如 React</li>
+<li>导入数据，如 JSON 文件</li>
+<li>从 API 或数据库中获取内容</li>
+<li>创建你要在模板中引用的变量</li>
+</ul>
+<figure class="code-snippet has-title lang-astro">
+	<figcaption class="header"><span class="title">src/<wbr/>components/<wbr/>MyComponent.astro</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> SomeAstroComponent </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;../components/SomeAstroComponent.astro&#39;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> SomeReactComponent </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;../components/SomeReactComponent.jsx&#39;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> someData </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;../data/pokemon.json&#39;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#ABA8BD">// 访问传入的组件参数，如 `&lt;X title=&quot;Hello, World&quot;/&gt;`</span></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9">title</span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> Astro</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">props</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#ABA8BD">// 获取外部数据，甚至可以从私有 API 和数据库中获取</span></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> data </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">await</span><span style="color:#D8DEE9"> </span><span style="color:#66ADFF">fetch</span><span style="color:#D8DEE9"> </span><span style="color:#ABA8BD">(</span><span style="color:#16C082">&#39;SOME_SECRET_API_URL/users&#39;</span><span style="color:#ABA8BD">)</span><span style="color:#C7C5D3">.</span><span style="color:#66ADFF">then</span><span style="color:#D8DEE9"> </span><span style="color:#ABA8BD">(</span><span style="color:#D8DEE9">r </span><span style="color:#FF657C">=&gt;</span><span style="color:#D8DEE9"> r</span><span style="color:#C7C5D3">.</span><span style="color:#66ADFF">json</span><span style="color:#D8DEE9"> </span><span style="color:#ABA8BD">())</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#ABA8BD">&lt;!-- 你的模板在这！ --&gt;</span></span></code></pre>
+</figure><p>代码围栏的设计是为了保证你在其中编写的 JavaScript 被“围起来”。它不会逃到你的前端应用程序中，或落入你的用户手中。你可以安全地在这里写一些昂贵或敏感的代码（比如调用你的私人数据库），而不用担心它会出现在你的用户的浏览器中。</p><aside class="content tip astro-J4JMU3BW" aria-label="提示">
+	<p class="title astro-J4JMU3BW" aria-hidden="true">
+		<span class="icon astro-J4JMU3BW">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" width="16" height="16" class="astro-J4JMU3BW">
+				<path fill-rule="evenodd" d="M14 0a8.8 8.8 0 0 0-6 2.6l-.5.4-.9 1H3.3a1.8 1.8 0 0 0-1.5.8L.1 7.6a.8.8 0 0 0 .4 1.1l3.1 1 .2.1 2.4 2.4.1.2 1 3a.8.8 0 0 0 1 .5l2.9-1.7a1.8 1.8 0 0 0 .8-1.5V9.5l1-1 .4-.4A8.8 8.8 0 0 0 16 2v-.1A1.8 1.8 0 0 0 14.2 0h-.1zm-3.5 10.6-.3.2L8 12.3l.5 1.8 2-1.2a.3.3 0 0 0 .1-.2v-2zM3.7 8.1l1.5-2.3.2-.3h-2a.3.3 0 0 0-.3.1l-1.2 2 1.8.5zm5.2-4.5a7.3 7.3 0 0 1 5.2-2.1h.1a.3.3 0 0 1 .3.3v.1a7.3 7.3 0 0 1-2.1 5.2l-.5.4a15.2 15.2 0 0 1-2.5 2L7.1 11 5 9l1.5-2.3a15.3 15.3 0 0 1 2-2.5l.4-.5zM12 5a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm-8.4 9.6a1.5 1.5 0 1 0-2.2-2.2 7 7 0 0 0-1.1 3 .2.2 0 0 0 .3.3c.6 0 2.2-.4 3-1.1z" class="astro-J4JMU3BW"></path>
+			</svg>
+		</span>
+		提示
+	</p>
+	<section class="astro-J4JMU3BW">
+		<p>你甚至可以在你的组件脚本中编写 TypeScript！</p>
+	</section>
+</aside>
+
+<div class="heading-wrapper level-h3" tabindex="-1"><h3 id="组件模板">组件模板</h3><a class="anchor-link" href="#组件模板"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled 组件模板</span></a></div><p>在组件脚本下面的是组件模板。组件模板决定了你的组件的 HTML 输出。</p><p>如果你在这里写普通的 HTML，你的组件将在任何 Astro 页面上呈现它被导入和使用的 HTML。</p><p>然而，Astro 的组件模板语法也支持 <strong>JavaScript 表达式</strong>、<strong>导入的组件</strong>和<strong><a href="/zh-cn/reference/directives-reference/">特殊的 Astro 指令</a></strong>。在组件脚本中定义的数据和值（在页面构建时）可以在组件模板中使用，以产生动态创建的 HTML。</p>
+<figure class="code-snippet has-title lang-astro">
+	<figcaption class="header"><span class="title">src/<wbr/>components/<wbr/>MyFavoritePokemon.astro</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#ABA8BD">// 你的组件脚本在这！</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> ReactPokemonComponent </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;../components/ReactPokemonComponent.jsx&#39;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> myFavoritePokemon </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> </span><span style="color:#ABA8BD">[</span><span style="color:#ABA8BD">/* ... */</span><span style="color:#ABA8BD">]</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#ABA8BD">&lt;!-- 支持 HTML 注释！ --&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">h1</span><span style="color:#C7C5D3">&gt;</span><span style="color:#D8DEE9">你好，世界！</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">h1</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#ABA8BD">&lt;!-- 在组件脚本中使用参数或其他变量： --&gt;</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">p</span><span style="color:#C7C5D3">&gt;</span><span style="color:#D8DEE9">我最喜欢的宝可梦是：</span><span style="color:#FF657C">{</span><span style="color:#D8DEE9">Astro</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">props</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">title</span><span style="color:#FF657C">}</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">p</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#ABA8BD">&lt;!-- 包括其他带有 `client:` 指令的激活组件： --&gt;</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FFBD2E">ReactPokemonComponent</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">client:visible</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">/&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#ABA8BD">&lt;!-- 混合 HTML 和 JavaScript 表达式，类似于 JSX： --&gt;</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">ul</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#FF657C">{</span><span style="color:#D8DEE9">myFavoritePokemon</span><span style="color:#C7C5D3">.</span><span style="color:#66ADFF">map</span><span style="color:#D8DEE9"> </span><span style="color:#ABA8BD">(</span><span style="color:#D8DEE9">(data) </span><span style="color:#FF657C">=&gt;</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">li</span><span style="color:#C7C5D3">&gt;</span><span style="color:#FF657C">{</span><span style="color:#D8DEE9">data</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">name</span><span style="color:#FF657C">}</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">li</span><span style="color:#C7C5D3">&gt;</span><span style="color:#ABA8BD">)</span><span style="color:#FF657C">}</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">ul</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#ABA8BD">&lt;!-- 使用模板指令并根据字符串或对象来生成 class 名： --&gt;</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">p</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">class:list</span><span style="color:#C7C5D3">=</span><span style="color:#FF657C">{</span><span style="color:#ABA8BD">[</span><span style="color:#16C082">&quot;add&quot;</span><span style="color:#C7C5D3">,</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;dynamic&quot;</span><span style="color:#C7C5D3">,</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9">classNames</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">true</span><span style="color:#C7C5D3">}</span><span style="color:#ABA8BD">]</span><span style="color:#FF657C">}</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">/&gt;</span></span></code></pre>
+</figure><div class="heading-wrapper level-h2" tabindex="-1"><h2 id="jsx-表达式">JSX 表达式</h2><a class="anchor-link" href="#jsx-表达式"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled JSX 表达式</span></a></div><p>你可以在 Astro 组件的 frontmatter 组件脚本内定义局部 JavaScript 变量。然后你就可以在组件的 HTML 模板中使用 JSX 表达式插入这些变量！</p><aside class="content note astro-J4JMU3BW" aria-label="动态与响应">
+	<p class="title astro-J4JMU3BW" aria-hidden="true">
+		<span class="icon astro-J4JMU3BW">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" width="16" height="16" class="astro-J4JMU3BW">
+				<path fill-rule="evenodd" d="M0 3.75C0 2.784.784 2 1.75 2h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0114.25 14H1.75A1.75 1.75 0 010 12.25v-8.5zm1.75-.25a.25.25 0 00-.25.25v8.5c0 .138.112.25.25.25h12.5a.25.25 0 00.25-.25v-8.5a.25.25 0 00-.25-.25H1.75zM3.5 6.25a.75.75 0 01.75-.75h7a.75.75 0 010 1.5h-7a.75.75 0 01-.75-.75zm.75 2.25a.75.75 0 000 1.5h4a.75.75 0 000-1.5h-4z" class="astro-J4JMU3BW"></path>
+			</svg>
+		</span>
+		动态与响应
+	</p>
+	<section class="astro-J4JMU3BW">
+		<p>使用这种方法，你可以包括<strong>动态值</strong>，它们在 frontmatter 中计算的。 但一旦包括在内，这些值就不是<strong>反应式</strong>的，它们永远不会改变。Astro 组件是模板，只在构建时运行一次。</p><p>更多关于 <a href="#astro-%E5%92%8C-jsx-%E9%97%B4%E7%9A%84%E5%B7%AE%E5%BC%82">Astro 和 JSX之间的差异</a>的例子见下文。</p>
+	</section>
+</aside>
+
+<div class="heading-wrapper level-h3" tabindex="-1"><h3 id="变量">变量</h3><a class="anchor-link" href="#变量"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled 变量</span></a></div><p>在 HTML 中可以通过大括号使用局部变量：</p>
+<figure class="code-snippet has-title lang-astro">
+	<figcaption class="header"><span class="title">src/<wbr/>components/<wbr/>Variables.astro</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> name </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;Astro&quot;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">div</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">h1</span><span style="color:#C7C5D3">&gt;</span><span style="color:#D8DEE9">你好 </span><mark><span style="color:#ff9fad">{</span><span style="color:#d8dee9">name</span><span style="color:#ff9fad">}</span></mark><span style="color:#D8DEE9">！</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">h1</span><span style="color:#C7C5D3">&gt;</span><span style="color:#D8DEE9">  </span><span style="color:#ABA8BD">&lt;!-- 输出`&lt;h1&gt;你好 Astro！&lt;/h1&gt;` --&gt;</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">div</span><span style="color:#C7C5D3">&gt;</span></span></code></pre>
+</figure><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="动态属性">动态属性</h3><a class="anchor-link" href="#动态属性"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled 动态属性</span></a></div><p>这些局部变量可以用大括号来传递属性值给 HTML 元素和组件。</p>
+<figure class="code-snippet has-title lang-astro">
+	<figcaption class="header"><span class="title">src/<wbr/>components/<wbr/>DynamicAttributes.astro</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> name </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;Astro&quot;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">h1</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">class</span><span style="color:#C7C5D3">=</span><mark><span style="color:#ff9fad">{</span><span style="color:#d8dee9">name</span><span style="color:#ff9fad">}</span></mark><span style="color:#C7C5D3">&gt;</span><span style="color:#D8DEE9">支持属性表达式</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">h1</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FFBD2E">MyComponent</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">templateLiteralNameAttribute</span><span style="color:#C7C5D3">=</span><span style="color:#FF657C">{</span><span style="color:#C7C5D3">`</span><span style="color:#16C082">MyNameIs</span><mark><span style="color:#c7c5d3">${</span><span style="color:#d8dee9">name</span><span style="color:#c7c5d3">}</span></mark><span style="color:#C7C5D3">`</span><span style="color:#FF657C">}</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">/&gt;</span></span></code></pre>
+</figure><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="动态-html">动态 HTML</h3><a class="anchor-link" href="#动态-html"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled 动态 HTML</span></a></div><p>局部变量可以在类似 JSX 的函数中使用，产生动态生成的 HTML 元素。</p>
+<figure class="code-snippet has-title lang-astro">
+	<figcaption class="header"><span class="title">src/<wbr/>components/<wbr/>DynamicHtml.astro</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> items </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> </span><span style="color:#ABA8BD">[</span><span style="color:#16C082">&quot;Dog&quot;</span><span style="color:#C7C5D3">,</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;Cat&quot;</span><span style="color:#C7C5D3">,</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;Platypus&quot;</span><span style="color:#ABA8BD">]</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">ul</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#FF657C">{</span><span style="color:#D8DEE9">items</span><span style="color:#C7C5D3">.</span><span style="color:#66ADFF">map</span><span style="color:#D8DEE9"> </span><span style="color:#ABA8BD">(</span><span style="color:#D8DEE9">(item) </span><span style="color:#FF657C">=&gt;</span><span style="color:#D8DEE9"> </span><span style="color:#ABA8BD">(</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">li</span><span style="color:#C7C5D3">&gt;</span><mark><span style="color:#ff9fad">{</span><span style="color:#d8dee9">item</span><span style="color:#ff9fad">}</span></mark><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">li</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#ABA8BD">))</span><span style="color:#FF657C">}</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">ul</span><span style="color:#C7C5D3">&gt;</span></span></code></pre>
+</figure><p>Astro 可以使用 JSX 逻辑运算符和三元表达式有条件地显示 HTML。</p>
+<figure class="code-snippet has-title lang-astro">
+	<figcaption class="header"><span class="title">src/<wbr/>components/<wbr/>ConditionalHtml.astro</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> </span><mark><span style="color:#d8dee9">visible</span></mark><span style="color:#D8DEE9"> </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">true</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#FF657C">{</span><mark><span style="color:#d8dee9">visible</span></mark><span style="color:#D8DEE9"> </span><span style="color:#FF657C">&amp;&amp;</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">p</span><span style="color:#C7C5D3">&gt;</span><span style="color:#D8DEE9">Show me!</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">p</span><span style="color:#C7C5D3">&gt;</span><span style="color:#FF657C">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF657C">{</span><mark><span style="color:#d8dee9">visible</span></mark><span style="color:#D8DEE9"> </span><span style="color:#FF657C">?</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">p</span><span style="color:#C7C5D3">&gt;</span><span style="color:#D8DEE9">Show me!</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">p</span><span style="color:#C7C5D3">&gt;</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">:</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">p</span><span style="color:#C7C5D3">&gt;</span><span style="color:#D8DEE9">Else show me!</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">p</span><span style="color:#C7C5D3">&gt;</span><span style="color:#FF657C">}</span></span></code></pre>
+</figure><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="动态标签">动态标签</h3><a class="anchor-link" href="#动态标签"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled 动态标签</span></a></div><p>你也可以通过将一个变量设置为HTML标签名称或组件导入来使用动态标签。</p>
+<figure class="code-snippet has-title lang-astro">
+	<figcaption class="header"><span class="title">src/<wbr/>components/<wbr/>DynamicTags.astro</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> MyComponent </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;./MyComponent.astro&quot;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> </span><mark><span style="color:#d8dee9">Element</span></mark><span style="color:#D8DEE9"> </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;div&#39;</span></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> </span><mark><span style="color:#d8dee9">Component</span></mark><span style="color:#D8DEE9"> </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> MyComponent</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><mark><span style="color:#ffbd2e">Element</span></mark><span style="color:#C7C5D3">&gt;</span><span style="color:#D8DEE9">Hello!</span><span style="color:#C7C5D3">&lt;/</span><mark><span style="color:#ffbd2e">Element</span></mark><span style="color:#C7C5D3">&gt;</span><span style="color:#D8DEE9"> </span><span style="color:#ABA8BD">&lt;!-- 渲染为 &lt;div&gt;Hello!&lt;/div&gt; --&gt;</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><mark><span style="color:#ffbd2e">Component</span></mark><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">/&gt;</span><span style="color:#D8DEE9"> </span><span style="color:#ABA8BD">&lt;!-- 渲染为 &lt;MyComponent /&gt; --&gt;</span></span></code></pre>
+</figure><aside class="content note astro-J4JMU3BW" aria-label="注意">
+	<p class="title astro-J4JMU3BW" aria-hidden="true">
+		<span class="icon astro-J4JMU3BW">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" width="16" height="16" class="astro-J4JMU3BW">
+				<path fill-rule="evenodd" d="M0 3.75C0 2.784.784 2 1.75 2h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0114.25 14H1.75A1.75 1.75 0 010 12.25v-8.5zm1.75-.25a.25.25 0 00-.25.25v8.5c0 .138.112.25.25.25h12.5a.25.25 0 00.25-.25v-8.5a.25.25 0 00-.25-.25H1.75zM3.5 6.25a.75.75 0 01.75-.75h7a.75.75 0 010 1.5h-7a.75.75 0 01-.75-.75zm.75 2.25a.75.75 0 000 1.5h4a.75.75 0 000-1.5h-4z" class="astro-J4JMU3BW"></path>
+			</svg>
+		</span>
+		注意
+	</p>
+	<section class="astro-J4JMU3BW">
+		<p>变量名称必须大写（<code>Element</code>，而不是<code>element</code>），这样才能发挥作用。否则，Astro会尝试将你的变量名渲染成一个字面的HTML标签。</p>
+	</section>
+</aside>
+
+<div class="heading-wrapper level-h3" tabindex="-1"><h3 id="片段和多元素">片段和多元素</h3><a class="anchor-link" href="#片段和多元素"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled 片段和多元素</span></a></div><p>Astro 组件模板可以渲染多个元素，而无需像 JavaScript 或 JSX 将所有内容包装在单个 <code>&lt;div&gt;</code> 或 <code>&lt;&gt;</code> 中。</p>
+<figure class="code-snippet has-title lang-astro">
+	<figcaption class="header"><span class="title">src/<wbr/>components/<wbr/>RootElements.astro</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#ABA8BD">// 多元素模板</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">p</span><span style="color:#C7C5D3">&gt;</span><span style="color:#D8DEE9">无需将元素包裹在一个元素中。</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">p</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">p</span><span style="color:#C7C5D3">&gt;</span><span style="color:#D8DEE9">Astro 支持在模板中使用多根元素。</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">p</span><span style="color:#C7C5D3">&gt;</span></span></code></pre>
+</figure><p>但是，当使用类似表达式动态创建多元素时，你应该像在 JavaScript 或 JSX 中那样将这些多个元素包装在一个<strong>片段</strong> 中。Astro 支持使用 <code>&lt;Fragment&gt; &lt;/Fragment&gt;</code> 或 <code>&lt;&gt; &lt;/&gt;</code> 速记。</p>
+<figure class="code-snippet lang-astro">
+	<figcaption class="header"></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> items </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> </span><span style="color:#ABA8BD">[</span><span style="color:#16C082">&quot;狗&quot;</span><span style="color:#C7C5D3">,</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;猫&quot;</span><span style="color:#C7C5D3">,</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;鸭嘴兽&quot;</span><span style="color:#ABA8BD">]</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">ul</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#FF657C">{</span><span style="color:#D8DEE9">items</span><span style="color:#C7C5D3">.</span><span style="color:#66ADFF">map</span><span style="color:#D8DEE9"> </span><span style="color:#ABA8BD">(</span><span style="color:#D8DEE9">(item) </span><span style="color:#FF657C">=&gt;</span><span style="color:#D8DEE9"> </span><span style="color:#ABA8BD">(</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">&lt;&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">      </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">li</span><span style="color:#C7C5D3">&gt;</span><span style="color:#D8DEE9">红色的</span><span style="color:#FF657C">{</span><span style="color:#D8DEE9">item</span><span style="color:#FF657C">}</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">li</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">      </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">li</span><span style="color:#C7C5D3">&gt;</span><span style="color:#D8DEE9">蓝色的</span><span style="color:#FF657C">{</span><span style="color:#D8DEE9">item</span><span style="color:#FF657C">}</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">li</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">      </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">li</span><span style="color:#C7C5D3">&gt;</span><span style="color:#D8DEE9">绿色的</span><span style="color:#FF657C">{</span><span style="color:#D8DEE9">item</span><span style="color:#FF657C">}</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">li</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">&lt;/&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#ABA8BD">))</span><span style="color:#FF657C">}</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">ul</span><span style="color:#C7C5D3">&gt;</span></span></code></pre>
+</figure><p>在使用 <a href="/zh-cn/reference/directives-reference/#sethtml"><code>set:*</code> 指令</a>时，片段也用于避免使用包装元素，如下所示：</p>
+<figure class="code-snippet lang-astro">
+	<figcaption class="header"></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> htmlString </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;&lt;p&gt;原始 HTML 内容&lt;/p&gt;&#39;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FFBD2E">Fragment</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">set:html</span><span style="color:#C7C5D3">=</span><span style="color:#FF657C">{</span><span style="color:#D8DEE9">htmlString</span><span style="color:#FF657C">}</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">/&gt;</span></span></code></pre>
+</figure><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="astro-和-jsx-间的差异">Astro 和 JSX 间的差异</h3><a class="anchor-link" href="#astro-和-jsx-间的差异"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Astro 和 JSX 间的差异</span></a></div><p>Astro 组件的语法是 HTML 的超集。它的设计使得任何有 HTML 或 JSX 经验的人都感到熟悉，但 <code>.astro</code> 文件和 JSX 之间有几个关键的区别。</p><div class="heading-wrapper level-h4" tabindex="-1"><h4 id="属性">属性</h4><a class="anchor-link" href="#属性"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled 属性</span></a></div><p>在 Astro 中，所有 HTML 属性都使用标准的 <code>kebab-case</code> 格式，而不是 JSX 中使用的 <code>camelCase</code>。这甚至适用于 <code>class</code>，而 React 不支持。</p>
+<figure class="code-snippet has-title lang-jsx">
+	<figcaption class="header"><span class="title">example.astro</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line del"><span style="color:#c7c5d3">&lt;</span><span style="color:#ff9fad">div</span><span style="color:#d8dee9"> </span><span style="color:#ffbd2e">className</span><span style="color:#ff9fad">=</span><span style="color:#4fcfa1">&quot;box&quot;</span><span style="color:#d8dee9"> </span><span style="color:#ffbd2e">dataValue</span><span style="color:#ff9fad">=</span><span style="color:#4fcfa1">&quot;3&quot;</span><span style="color:#d8dee9"> </span><span style="color:#c7c5d3">/&gt;</span></span>
+<span class="line ins"><span style="color:#c7c5d3">&lt;</span><span style="color:#ff9fad">div</span><span style="color:#d8dee9"> </span><span style="color:#ffbd2e">class</span><span style="color:#ff9fad">=</span><span style="color:#4fcfa1">&quot;box&quot;</span><span style="color:#d8dee9"> </span><span style="color:#ffbd2e">data-value</span><span style="color:#ff9fad">=</span><span style="color:#4fcfa1">&quot;3&quot;</span><span style="color:#d8dee9"> </span><span style="color:#c7c5d3">/&gt;</span></span></code></pre>
+</figure><div class="heading-wrapper level-h4" tabindex="-1"><h4 id="注释">注释</h4><a class="anchor-link" href="#注释"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled 注释</span></a></div><p>在 Astro 中，你可以使用标准的 HTML 注释，而 JSX 会使用 JavaScript 风格的注释。</p>
+<figure class="code-snippet has-title lang-html">
+	<figcaption class="header"><span class="title">example.astro</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">&lt;!-- .astro 文件中可以使用 HTML 注释 --&gt;</span></span></code></pre>
+</figure><div class="heading-wrapper level-h2" tabindex="-1"><h2 id="组件参数">组件参数</h2><a class="anchor-link" href="#组件参数"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled 组件参数</span></a></div><p>Astro 组件可以定义和接受参数。 然后，这些参数可用于组件模板以呈现 HTML。 可以在 frontmatter scsipt 中的 <code>Astro.props</code> 中使用。</p><p>这是一个接收 <code>greeting</code> 参数和 <code>name</code> 参数的组件示例。请注意，要接收的参数是从全局 <code>Astro.props</code> 对象中解构的。</p>
+<figure class="code-snippet has-title lang-astro">
+	<figcaption class="header"><span class="title">GreetingHeadline.astro</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#ABA8BD">// 使用：&lt;GreetingHeadline greeting=&quot;你好&quot; name=&quot;朋友&quot; /&gt;</span></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> greeting</span><span style="color:#C7C5D3">,</span><span style="color:#D8DEE9"> name </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> </span><mark><span style="color:#d8dee9">Astro</span><span style="color:#c7c5d3">.</span><span style="color:#d8dee9">props</span></mark></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">h2</span><span style="color:#C7C5D3">&gt;</span><span style="color:#FF657C">{</span><span style="color:#D8DEE9">greeting</span><span style="color:#FF657C">}</span><span style="color:#D8DEE9">，</span><span style="color:#FF657C">{</span><span style="color:#D8DEE9">name</span><span style="color:#FF657C">}</span><span style="color:#D8DEE9">!</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">h2</span><span style="color:#C7C5D3">&gt;</span></span></code></pre>
+</figure><p>你还可以使用 TypeScript 导出 <code>Props</code> 类型接口来定义参数。Astro 将自动选择任何导出的 <code>props</code> 接口，并为你的项目提供类型警告/错误提示。当从 <code>Astro.props</code> 解构时，这些参数也可以被赋予默认值。</p>
+<figure class="code-snippet has-title lang-astro">
+	<figcaption class="header"><span class="title">src/<wbr/>components/<wbr/>GreetingCard.astro</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> GreetingHeadline </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;./GreetingHeadline.astro&#39;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> name </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;Astro&quot;</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">h1</span><span style="color:#C7C5D3">&gt;</span><span style="color:#D8DEE9">Greeting Card</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">h1</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FFBD2E">GreetingHeadline</span><span style="color:#D8DEE9"> </span><mark><span style="color:#ffbd2e">greeting</span></mark><span style="color:#C7C5D3">=</span><span style="color:#16C082">&quot;嗨&quot;</span><span style="color:#D8DEE9"> </span><mark><span style="color:#ffbd2e">name</span></mark><span style="color:#C7C5D3">=</span><span style="color:#FF657C">{</span><span style="color:#D8DEE9">name</span><span style="color:#FF657C">}</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">/&gt;</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">p</span><span style="color:#C7C5D3">&gt;</span><span style="color:#D8DEE9">希望你有美好的一天！</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">p</span><span style="color:#C7C5D3">&gt;</span></span></code></pre>
+</figure><p>你也可以通过导出 <code>Props</code> 类型接口，用 TypeScript 定义来参数。Astro 会自动接收任何导出的 <code>Props</code> 接口，并为你的项目提供类型警告/错误。这些道具也可以在从 <code>Astro.props</code> 解构时给出默认值。</p>
+<figure class="code-snippet has-title lang-astro">
+	<figcaption class="header"><span class="title">src/<wbr/>components/<wbr/>GreetingHeadline.astro</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line ins"><span style="color:#ff9fad">export</span><span style="color:#d8dee9"> </span><span style="color:#ff9fad">interface</span><span style="color:#d8dee9"> </span><span style="color:#ffbd2e">Props</span><span style="color:#d8dee9"> </span><span style="color:#c7c5d3">{</span></span>
+<span class="line ins"><span style="color:#d8dee9">  name</span><span style="color:#ff9fad">:</span><span style="color:#d8dee9"> </span><span style="color:#ffbd2e">string</span><span style="color:#c7c5d3">;</span></span>
+<span class="line ins"><span style="color:#d8dee9">  greeting</span><span style="color:#ff9fad">?:</span><span style="color:#d8dee9"> </span><span style="color:#ffbd2e">string</span><span style="color:#c7c5d3">;</span></span>
+<span class="line ins"><span style="color:#c7c5d3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> greeting </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;你好&quot;</span><span style="color:#C7C5D3">,</span><span style="color:#D8DEE9"> name </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> Astro</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">props</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">h2</span><span style="color:#C7C5D3">&gt;</span><span style="color:#FF657C">{</span><span style="color:#D8DEE9">greeting</span><span style="color:#FF657C">}</span><span style="color:#D8DEE9">，</span><span style="color:#FF657C">{</span><span style="color:#D8DEE9">name</span><span style="color:#FF657C">}</span><span style="color:#D8DEE9">!</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">h2</span><span style="color:#C7C5D3">&gt;</span></span></code></pre>
+</figure><p>当没有提供组件参数时，可以给它默认值来使用。</p>
+<figure class="code-snippet has-title lang-astro">
+	<figcaption class="header"><span class="title">src/<wbr/>components/<wbr/>GreetingHeadline.astro</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> greeting </span><ins><span style="color:#ff9fad">=</span><span style="color:#d8dee9"> </span><span style="color:#4fcfa1">&quot;你好&quot;</span></ins><span style="color:#C7C5D3">,</span><span style="color:#D8DEE9"> name </span><ins><span style="color:#ff9fad">=</span><span style="color:#d8dee9"> </span><span style="color:#4fcfa1">&quot;宇航员&quot;</span></ins><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> Astro</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">props</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">h2</span><span style="color:#C7C5D3">&gt;</span><span style="color:#FF657C">{</span><span style="color:#D8DEE9">greeting</span><span style="color:#FF657C">}</span><span style="color:#D8DEE9">，</span><span style="color:#FF657C">{</span><span style="color:#D8DEE9">name</span><span style="color:#FF657C">}</span><span style="color:#D8DEE9">!</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">h2</span><span style="color:#C7C5D3">&gt;</span></span></code></pre>
+</figure><div class="heading-wrapper level-h2" tabindex="-1"><h2 id="插槽">插槽</h2><a class="anchor-link" href="#插槽"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled 插槽</span></a></div><p><code>&lt;slot /&gt;</code> 元素是嵌入外部 HTML 内容的占位符，你可以将其他文件中的子元素注入（或“嵌入”）到组件模板中。</p><p>默认情况下，传递给组件的所有子元素都将呈现在 <code>&lt;slot /&gt;</code> 中。</p><aside class="content note astro-J4JMU3BW" aria-label="注意">
+	<p class="title astro-J4JMU3BW" aria-hidden="true">
+		<span class="icon astro-J4JMU3BW">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" width="16" height="16" class="astro-J4JMU3BW">
+				<path fill-rule="evenodd" d="M0 3.75C0 2.784.784 2 1.75 2h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0114.25 14H1.75A1.75 1.75 0 010 12.25v-8.5zm1.75-.25a.25.25 0 00-.25.25v8.5c0 .138.112.25.25.25h12.5a.25.25 0 00.25-.25v-8.5a.25.25 0 00-.25-.25H1.75zM3.5 6.25a.75.75 0 01.75-.75h7a.75.75 0 010 1.5h-7a.75.75 0 01-.75-.75zm.75 2.25a.75.75 0 000 1.5h4a.75.75 0 000-1.5h-4z" class="astro-J4JMU3BW"></path>
+			</svg>
+		</span>
+		注意
+	</p>
+	<section class="astro-J4JMU3BW">
+		<p>与传递给 Astro 组件的属性，可通过 <code>Astro.props ()</code> 在所有组件中使用的参数不同，<em>slots</em> 是在编写它们的地方渲染子 HTML 元素。</p>
+	</section>
+</aside>
+
+
+<figure class="code-snippet has-title lang-astro">
+	<figcaption class="header"><span class="title">src/<wbr/>components/<wbr/>Wrapper.astro</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> Header </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;./Header.astro&#39;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> Logo </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;./Logo.astro&#39;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> Footer </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;./Footer.astro&#39;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> title </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> Astro</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">props</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">div</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">id</span><span style="color:#C7C5D3">=</span><span style="color:#16C082">&quot;content-wrapper&quot;</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FFBD2E">Header</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">/&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FFBD2E">Logo</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">/&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">h1</span><span style="color:#C7C5D3">&gt;</span><span style="color:#FF657C">{</span><span style="color:#D8DEE9">title</span><span style="color:#FF657C">}</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">h1</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><mark><span style="color:#c7c5d3">&lt;</span><span style="color:#ff9fad">slot</span><span style="color:#d8dee9"> </span><span style="color:#c7c5d3">/&gt;</span></mark><span style="color:#D8DEE9">  </span><span style="color:#ABA8BD">&lt;!-- 子项会在这 --&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FFBD2E">Footer</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">/&gt;</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">div</span><span style="color:#C7C5D3">&gt;</span></span></code></pre>
+</figure>
+<figure class="code-snippet has-title lang-astro">
+	<figcaption class="header"><span class="title">src/<wbr/>pages/<wbr/>fred.astro</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> Wrapper </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;../components/Wrapper.astro&#39;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FFBD2E">Wrapper</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">title</span><span style="color:#C7C5D3">=</span><span style="color:#16C082">&quot;Fred&#39;s Page&quot;</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line mark"><span style="color:#d8dee9">  </span><span style="color:#c7c5d3">&lt;</span><span style="color:#ff9fad">h2</span><span style="color:#c7c5d3">&gt;</span><span style="color:#d8dee9">All about Fred</span><span style="color:#c7c5d3">&lt;/</span><span style="color:#ff9fad">h2</span><span style="color:#c7c5d3">&gt;</span></span>
+<span class="line mark"><span style="color:#d8dee9">  </span><span style="color:#c7c5d3">&lt;</span><span style="color:#ff9fad">p</span><span style="color:#c7c5d3">&gt;</span><span style="color:#d8dee9">Here is some stuff about Fred.</span><span style="color:#c7c5d3">&lt;/</span><span style="color:#ff9fad">p</span><span style="color:#c7c5d3">&gt;</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;/</span><span style="color:#FFBD2E">Wrapper</span><span style="color:#C7C5D3">&gt;</span></span></code></pre>
+</figure><p>这种模式是 Astro 布局组件的基础：整个页面的 HTML 内容可以用 <code>&lt;Layout&gt;&lt;/Layout&gt;</code> 标签包裹并传递到 Layout 组件以在常见页面元素中呈现。</p><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="命名插槽">命名插槽</h3><a class="anchor-link" href="#命名插槽"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled 命名插槽</span></a></div><p>Astro 组件也可以有命名插槽。这允许你仅将具有相应插槽名称的 HTML 元素传递到插槽的位置。</p>
+<figure class="code-snippet has-title lang-astro">
+	<figcaption class="header"><span class="title">src/<wbr/>components/<wbr/>Wrapper.astro</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> Header </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;./Header.astro&#39;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> Logo </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;./Logo.astro&#39;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> Footer </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;./Footer.astro&#39;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> title </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> Astro</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">props</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">div</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">id</span><span style="color:#C7C5D3">=</span><span style="color:#16C082">&quot;content-wrapper&quot;</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FFBD2E">Header</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">/&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><mark><span style="color:#c7c5d3">&lt;</span><span style="color:#ff9fad">slot</span><span style="color:#d8dee9"> </span><span style="color:#ffbd2e">name</span><span style="color:#c7c5d3">=</span><span style="color:#4fcfa1">&quot;after-header&quot;</span><span style="color:#c7c5d3">/&gt;</span></mark><span style="color:#D8DEE9">  </span><span style="color:#ABA8BD">&lt;!--  带有 `slot=&quot;after-header&quot;` 属性的子项在这 --&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FFBD2E">Logo</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">/&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">h1</span><span style="color:#C7C5D3">&gt;</span><span style="color:#FF657C">{</span><span style="color:#D8DEE9">title</span><span style="color:#FF657C">}</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">h1</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><mark><span style="color:#c7c5d3">&lt;</span><span style="color:#ff9fad">slot</span><span style="color:#d8dee9"> </span><span style="color:#c7c5d3">/&gt;</span></mark><span style="color:#D8DEE9">  </span><span style="color:#ABA8BD">&lt;!--  没有 `slot` 或有 `slot=&quot;default&quot;` 属性的子项在这 --&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FFBD2E">Footer</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">/&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><mark><span style="color:#c7c5d3">&lt;</span><span style="color:#ff9fad">slot</span><span style="color:#d8dee9"> </span><span style="color:#ffbd2e">name</span><span style="color:#c7c5d3">=</span><span style="color:#4fcfa1">&quot;after-footer&quot;</span><span style="color:#c7c5d3">/&gt;</span></mark><span style="color:#D8DEE9">  </span><span style="color:#ABA8BD">&lt;!--  带有 `slot=&quot;after-footer&quot;` 属性的子项在这 --&gt;</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">div</span><span style="color:#C7C5D3">&gt;</span></span></code></pre>
+</figure>
+<figure class="code-snippet has-title lang-astro">
+	<figcaption class="header"><span class="title">src/<wbr/>pages/<wbr/>fred.astro</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> Wrapper </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;../components/Wrapper.astro&#39;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FFBD2E">Wrapper</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">title</span><span style="color:#C7C5D3">=</span><span style="color:#16C082">&quot;弗雷德的页面&quot;</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">img</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">src</span><span style="color:#C7C5D3">=</span><span style="color:#16C082">&quot;https://my.photo/fred.jpg&quot;</span><span style="color:#D8DEE9"> </span><mark><span style="color:#ffbd2e">slot</span><span style="color:#c7c5d3">=</span><span style="color:#4fcfa1">&quot;after-header&quot;</span></mark><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">h2</span><span style="color:#C7C5D3">&gt;</span><span style="color:#D8DEE9">关于弗雷德的一切</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">h2</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">p</span><span style="color:#C7C5D3">&gt;</span><span style="color:#D8DEE9">这里有一些关于弗雷德的资料。</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">p</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">p</span><span style="color:#D8DEE9"> </span><mark><span style="color:#ffbd2e">slot</span><span style="color:#c7c5d3">=</span><span style="color:#4fcfa1">&quot;after-footer&quot;</span></mark><span style="color:#C7C5D3">&gt;</span><span style="color:#D8DEE9">版权所有 2022</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">p</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;/</span><span style="color:#FFBD2E">Wrapper</span><span style="color:#C7C5D3">&gt;</span></span></code></pre>
+</figure><p>在要传递给组件相应的 <code>&lt;slot name="my-slot"/&gt;</code> 占位符的子元素上使用 <code>slot="my-slot"</code> 属性。</p><aside class="content tip astro-J4JMU3BW" aria-label="提示">
+	<p class="title astro-J4JMU3BW" aria-hidden="true">
+		<span class="icon astro-J4JMU3BW">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" width="16" height="16" class="astro-J4JMU3BW">
+				<path fill-rule="evenodd" d="M14 0a8.8 8.8 0 0 0-6 2.6l-.5.4-.9 1H3.3a1.8 1.8 0 0 0-1.5.8L.1 7.6a.8.8 0 0 0 .4 1.1l3.1 1 .2.1 2.4 2.4.1.2 1 3a.8.8 0 0 0 1 .5l2.9-1.7a1.8 1.8 0 0 0 .8-1.5V9.5l1-1 .4-.4A8.8 8.8 0 0 0 16 2v-.1A1.8 1.8 0 0 0 14.2 0h-.1zm-3.5 10.6-.3.2L8 12.3l.5 1.8 2-1.2a.3.3 0 0 0 .1-.2v-2zM3.7 8.1l1.5-2.3.2-.3h-2a.3.3 0 0 0-.3.1l-1.2 2 1.8.5zm5.2-4.5a7.3 7.3 0 0 1 5.2-2.1h.1a.3.3 0 0 1 .3.3v.1a7.3 7.3 0 0 1-2.1 5.2l-.5.4a15.2 15.2 0 0 1-2.5 2L7.1 11 5 9l1.5-2.3a15.3 15.3 0 0 1 2-2.5l.4-.5zM12 5a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm-8.4 9.6a1.5 1.5 0 1 0-2.2-2.2 7 7 0 0 0-1.1 3 .2.2 0 0 0 .3.3c.6 0 2.2-.4 3-1.1z" class="astro-J4JMU3BW"></path>
+			</svg>
+		</span>
+		提示
+	</p>
+	<section class="astro-J4JMU3BW">
+		<p>命名插槽页可以传递给 <a href="/zh-cn/core-concepts/framework-components/">UI 框架组件</a>的信息。</p>
+	</section>
+</aside>
+
+<div class="heading-wrapper level-h3" tabindex="-1"><h3 id="插槽回退内容">插槽回退内容</h3><a class="anchor-link" href="#插槽回退内容"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled 插槽回退内容</span></a></div><p>插槽还可以渲染<strong>回退内容</strong>。当没有匹配的子元素传递给插槽时，<code>&lt;slot /&gt;</code> 元素将呈现其自己的占位符子元素。</p>
+<figure class="code-snippet has-title lang-astro">
+	<figcaption class="header"><span class="title">src/<wbr/>components/<wbr/>Wrapper.astro</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> Header </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;./Header.astro&#39;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> Logo </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;./Logo.astro&#39;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> Footer </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;./Footer.astro&#39;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> title </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> Astro</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">props</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">div</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">id</span><span style="color:#C7C5D3">=</span><span style="color:#16C082">&quot;content-wrapper&quot;</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FFBD2E">Header</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">/&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FFBD2E">Logo</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">/&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">h1</span><span style="color:#C7C5D3">&gt;</span><span style="color:#FF657C">{</span><span style="color:#D8DEE9">title</span><span style="color:#FF657C">}</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">h1</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">slot</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line mark"><span style="color:#d8dee9">    </span><span style="color:#c7c5d3">&lt;</span><span style="color:#ff9fad">p</span><span style="color:#c7c5d3">&gt;</span><span style="color:#d8dee9">当没有子项传入插槽时使用此回退</span><span style="color:#c7c5d3">&lt;/</span><span style="color:#ff9fad">p</span><span style="color:#c7c5d3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">slot</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FFBD2E">Footer</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">/&gt;</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">div</span><span style="color:#C7C5D3">&gt;</span></span></code></pre>
+</figure><div class="heading-wrapper level-h2" tabindex="-1"><h2 id="css-样式">CSS 样式</h2><a class="anchor-link" href="#css-样式"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled CSS 样式</span></a></div><p>组件模板内部也支持 CSS <code>&lt;style&gt;</code> 标签。</p><p>它们可用于设置组件样式，并且所有样式规则都自动仅限用于组件范围内，以防止大型应用程序中的 CSS 冲突。</p>
+<figure class="code-snippet has-title lang-astro">
+	<figcaption class="header"><span class="title">src/<wbr/>components/<wbr/>StyledHeading.astro</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#ABA8BD">// 你的组件脚本在这！</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">style</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#ABA8BD">/* 仅限该组件范围内，页面上的其他 H1 保持不变 */</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#FF657C">h1</span><span style="color:#D8DEE9"> {</span><span style="color:#EBCB8B"> </span><span style="color:#23B1AF">color</span><span style="color:#C7C5D3">:</span><span style="color:#EBCB8B"> </span><span style="color:#FF657C">red</span><span style="color:#EBCB8B"> </span><span style="color:#D8DEE9">}</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">style</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">h1</span><span style="color:#C7C5D3">&gt;</span><span style="color:#D8DEE9">你好，世界！</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">h1</span><span style="color:#C7C5D3">&gt;</span></span></code></pre>
+</figure><aside class="content caution astro-J4JMU3BW" aria-label="警告">
+	<p class="title astro-J4JMU3BW" aria-hidden="true">
+		<span class="icon astro-J4JMU3BW">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 1 18 18" width="16" height="16" class="astro-J4JMU3BW">
+				<path fill-rule="evenodd" d="M8.9 1.5C8.7 1.2 8.4 1 8 1s-.7.2-.9.5l-7 12a1 1 0 0 0 0 1c.2.3.6.5 1 .5H15c.4 0 .7-.2.9-.5a1 1 0 0 0 0-1l-7-12zM9 13H7v-2h2v2zm0-3H7V6h2v4z" class="astro-J4JMU3BW"></path>
+			</svg>
+		</span>
+		警告
+	</p>
+	<section class="astro-J4JMU3BW">
+		<p>这里定义的样式只适用于组件模板中的内容。默认情况下，子组件和任何导入的组件的样式将<strong>不会被修改</strong>。</p>
+	</section>
+</aside>
+
+<p>📚 有关应用样式的更多信息，请参阅我们的<a href="/zh-cn/guides/styling/">样式指南</a>。</p><div class="heading-wrapper level-h2" tabindex="-1"><h2 id="客户端脚本">客户端脚本</h2><a class="anchor-link" href="#客户端脚本"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled 客户端脚本</span></a></div><p>在不使用<a href="/zh-cn/core-concepts/framework-components/">使用框架组件</a>（React、Svelte、Vue、Preact、SolidJS、AlpineJS、Lit）或 <a href="https://astro.build/integrations/">Astro 集成</a>（例如 astro-XElement）时，你可以在 Astro 组件模板中使用 <code>&lt;script&gt;</code> 标签使得该 JavaScript 可以在浏览器中使用。</p><p>默认情况下，<code>&lt;script&gt;</code> 标签由 Astro 处理：</p><ul>
+<li>任何导入都将被捆绑，允许你导入本地文件或 node 模块。</li>
+<li>处理后的脚本将通过 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules"><code>type="module"</code></a> 注入你页面的<code>&lt;head&gt;</code>。</li>
+<li>全面支持 TypeScript 包括导入 TypeScript 文件</li>
+<li>如果你的组件在页面上多次使用，则脚本标签将只包含一次。</li>
+</ul>
+<figure class="code-snippet lang-astro">
+	<figcaption class="header"></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">script</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#C7C5D3">  </span><span style="color:#ABA8BD">// 处理！捆绑！TypeScript 支持！可以使用 ESM 导入，甚至也适用于 npm 包。</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">script</span><span style="color:#C7C5D3">&gt;</span></span></code></pre>
+</figure><p>要避免捆绑脚本，你可以使用 <code>is:inline</code> 属性：</p>
+<figure class="code-snippet lang-astro">
+	<figcaption class="header"></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">script</span><span style="color:#D8DEE9"> </span><mark><span style="color:#ffbd2e">is:inline</span></mark><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#C7C5D3">  </span><span style="color:#ABA8BD">// 将会完全按照写好的内容呈现在 HTML 中！</span></span>
+<span class="line"><span style="color:#C7C5D3">  </span><span style="color:#ABA8BD">// ESM 导入将不会相对于文件进行解析。</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">script</span><span style="color:#C7C5D3">&gt;</span></span></code></pre>
+</figure><p>上述方法可以自由搭配组合，也可以在同一个 <code>.astro</code> 文件多次使用 <code>&lt;script&gt;</code> 标签。</p><aside class="content note astro-J4JMU3BW" aria-label="注意">
+	<p class="title astro-J4JMU3BW" aria-hidden="true">
+		<span class="icon astro-J4JMU3BW">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" width="16" height="16" class="astro-J4JMU3BW">
+				<path fill-rule="evenodd" d="M0 3.75C0 2.784.784 2 1.75 2h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0114.25 14H1.75A1.75 1.75 0 010 12.25v-8.5zm1.75-.25a.25.25 0 00-.25.25v8.5c0 .138.112.25.25.25h12.5a.25.25 0 00.25-.25v-8.5a.25.25 0 00-.25-.25H1.75zM3.5 6.25a.75.75 0 01.75-.75h7a.75.75 0 010 1.5h-7a.75.75 0 01-.75-.75zm.75 2.25a.75.75 0 000 1.5h4a.75.75 0 000-1.5h-4z" class="astro-J4JMU3BW"></path>
+			</svg>
+		</span>
+		注意
+	</p>
+	<section class="astro-J4JMU3BW">
+		<p>将 <code>type="module"</code> 或任何其他属性添加到 <code>&lt;script&gt;</code> 标签将禁用 Astro 的默认捆绑行为，并将标签视为具有 <code>is:inline</code> 指令。</p>
+	</section>
+</aside>
+
+<p>📚 请参阅我们的<a href="/zh-cn/reference/directives-reference/#%E8%84%9A%E6%9C%AC%E5%92%8C%E6%A0%B7%E5%BC%8F%E6%8C%87%E4%BB%A4">指令参考</a>页面以获取有关 <code>&lt;script&gt;</code> 标签上可用指令的更多信息。</p><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="加载外部脚本">加载外部脚本</h3><a class="anchor-link" href="#加载外部脚本"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled 加载外部脚本</span></a></div><p><strong>什么时候用？</strong> 如果你的 JavaScript 文件处于 <code>public/</code> 中时。</p><p>请注意，当你使用下面提到的 <code>import</code> 方法时，该方法会跳过由 Astro 提供的 JavaScript 处理、捆绑和压缩。</p>
+<figure class="code-snippet lang-astro">
+	<figcaption class="header"></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#D8DEE9">// 绝对路径</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">script</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">is:inline</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">src</span><span style="color:#C7C5D3">=</span><span style="color:#16C082">&quot;/some-external-script.js&quot;</span><span style="color:#C7C5D3">&gt;&lt;/</span><span style="color:#FF657C">script</span><span style="color:#C7C5D3">&gt;</span></span></code></pre>
+</figure><div class="heading-wrapper level-h4" tabindex="-1"><h4 id="使用-hoist-脚本">使用 hoist 脚本</h4><a class="anchor-link" href="#使用-hoist-脚本"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled 使用 hoist 脚本</span></a></div><p><strong>什么时候用？</strong> 如果你的外部脚本位于 <code>src/</code> 中，<strong>并且</strong>它支持 ESM 模块类型时。</p><p>Astro 检测到这些 JavaScript 将在客户端导入，然后自动构建、压缩并将 JS 添加到页面中。</p>
+<figure class="code-snippet lang-astro">
+	<figcaption class="header"></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#D8DEE9">// ESM 导入</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">script</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;./some-external-script.js&#39;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">script</span><span style="color:#C7C5D3">&gt;</span></span></code></pre>
+</figure><div class="heading-wrapper level-h2" tabindex="-1"><h2 id="html-组件">HTML 组件</h2><a class="anchor-link" href="#html-组件"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled HTML 组件</span></a></div><p>Astro 支持导入和使用 <code>.html</code> 文件作为组件，或者将这些文件放在 <code>src/pages</code> 子目录下作为页面。如果你正在复用一个没有使用框架的现有网站代码，或者你想确保你的组件没有动态功能，你可能会需要使用 HTML 组件。</p><p>HTML 组件必须只包含有效的 HTML，因此缺乏关键的 Astro 组件功能：</p><ul>
+<li>他们不支持 frontmatter、服务器端导入或动态表达。</li>
+<li>无法捆绑任何 <code>&lt;script&gt;</code> 标签，就像他们有 <code>is:inline</code> 一样。</li>
+<li>它们只能<a href="/zh-cn/guides/images/#public">引用 <code>public/</code> 文件夹中的资产</a>。</li>
+</ul><aside class="content note astro-J4JMU3BW" aria-label="注意">
+	<p class="title astro-J4JMU3BW" aria-hidden="true">
+		<span class="icon astro-J4JMU3BW">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" width="16" height="16" class="astro-J4JMU3BW">
+				<path fill-rule="evenodd" d="M0 3.75C0 2.784.784 2 1.75 2h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0114.25 14H1.75A1.75 1.75 0 010 12.25v-8.5zm1.75-.25a.25.25 0 00-.25.25v8.5c0 .138.112.25.25.25h12.5a.25.25 0 00.25-.25v-8.5a.25.25 0 00-.25-.25H1.75zM3.5 6.25a.75.75 0 01.75-.75h7a.75.75 0 010 1.5h-7a.75.75 0 01-.75-.75zm.75 2.25a.75.75 0 000 1.5h4a.75.75 0 000-1.5h-4z" class="astro-J4JMU3BW"></path>
+			</svg>
+		</span>
+		注意
+	</p>
+	<section class="astro-J4JMU3BW">
+		<p>HTML 组件内的 <a href="#%E6%8F%92%E6%A7%BD"><code>&lt;slot /&gt;</code> 元素</a>会像在 Astro 组件中那样工作。要使用 <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot">HTML 网络组件插槽</a>元素，请在 <code>&lt;slot&gt;</code> 元素中添加 <code>is:inline</code>。</p>
+	</section>
+</aside>
+
+<div class="heading-wrapper level-h2" tabindex="-1"><h2 id="下一步">下一步</h2><a class="anchor-link" href="#下一步"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled 下一步</span></a></div><p>📚 阅读<a href="/zh-cn/reference/api-reference/#%E5%86%85%E7%BD%AE%E7%BB%84%E4%BB%B6">Astro 的内置组件</a>。</p><p>📚 了解如何在你的 Astro 项目中使用 <a href="/zh-cn/core-concepts/framework-components/">JavaScript 框架组件</a>。</p>
+		</section>
+		
+	</article>
+</div>
+
+
+				<span id="docsearch-lvl0" hidden class="astro-KR5WJSBZ">Learn</span>
+			</div>
+		</main>
+		<div class="main-column astro-KR5WJSBZ">
+		</div>
+	</body></html>

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en" class="initial astro-KR5WJSBZ">
+	<head>
+		<!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="hsl(256, 44%, 15%)" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="hsl(273, 37%, 93%)" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="alternate icon" type="image/x-icon" href="/favicon.ico">
+<link rel="sitemap" href="/sitemap-index.xml">
+
+<!-- Global CSS -->
+<link rel="stylesheet" href="/theme.css">
+<link rel="stylesheet" href="/index.css">
+
+<!-- Scrollable a11y code helper -->
+<script type="module" src="/make-scrollable-code-focusable.js"></script>
+
+<!-- This is intentionally inlined to avoid FOUC -->
+
+
+<!-- Double-click to highlight code blocks (inline only). -->
+
+<!-- Fathom - beautiful, simple website analytics -->
+<script src="https://certain-quality.astro.build/script.js" data-site="EZBHTSIG" defer></script>
+
+		<!-- Page Metadata --><link rel="canonical" href="https://tanggd.github.io/en/guides/typescript/">
+
+
+<link rel="alternate" href="https://tanggd.github.io/en/guides/typescript/" hreflang="en"><link rel="alternate" href="https://tanggd.github.io/zh-cn/guides/typescript/" hreflang="zh-CN">
+
+<!-- Algolia docsearch language facet -->
+<meta name="docsearch:language" content="en">
+
+<!-- OpenGraph Tags -->
+<meta property="og:title" content="TypeScript">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tanggd.github.io/en/guides/typescript/">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://tanggd.github.io/open-graph/en/guides/typescript.png">
+<meta property="og:image:alt" content="">
+<meta name="description" property="og:description" content="Learn how to use Astro's built-in TypeScript support.">
+<meta property="og:site_name" content="Astro Documentation">
+
+<!-- Twitter Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="astrodotbuild">
+<meta name="twitter:title" content="TypeScript">
+<meta name="twitter:description" content="Learn how to use Astro's built-in TypeScript support.">
+<meta name="twitter:image" content="https://tanggd.github.io/open-graph/en/guides/typescript.png">
+<meta name="twitter:image:alt" content="">
+
+<!--
+  TODO: Add json+ld data, maybe https://schema.org/APIReference makes sense?
+  Docs: https://developers.google.com/search/docs/advanced/structured-data/intro-structured-data
+  https://www.npmjs.com/package/schema-dts seems like a great resource for implementing this.
+  Even better, there’s a React component that integrates with `schema-dts`: https://github.com/google/react-schemaorg
+-->
+
+		<title>TypeScript 🚀 Astro Documentation</title>
+		
+		<script>
+			// This code was migrated/copied from ThemToggleBotton to make the
+			// dark mode toggle instant, vs. hidden inside of a Preact useEffect() call.
+			const theme = (() => {
+				if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+					return localStorage.getItem('theme');
+				}
+				if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+					return 'dark';
+				}
+				return 'light';
+			})();
+			if (theme === 'light') {
+				document.documentElement.classList.remove('theme-dark');
+			} else {
+				document.documentElement.classList.add('theme-dark');
+			}
+		</script>
+	<link rel="stylesheet" href="/assets/404.6d6787e2.css" />
+<link rel="stylesheet" href="/assets/auto.444a50d9.css" />
+<link rel="stylesheet" href="/assets/alpinejs.6dd7e965.css" />
+<link rel="stylesheet" href="/assets/builderio.d1870a6c.css" />
+<link rel="stylesheet" href="/assets/builderio.fb4fe658.css" />
+<link rel="stylesheet" href="/assets/builderio.1507b30a.css" />
+<link rel="stylesheet" href="/assets/builderio.b64bc458.css" /><script type="module" src="/hoisted.66b9b87c.js"></script></head>
+
+	<body class="astro-KR5WJSBZ">
+		<header class="astro-I6GUSDXI">
+	<a href="#article" class="sr-only focus:not-sr-only skiplink astro-VODYIZTE">
+	<span class="astro-VODYIZTE">Skip to Content
+</span>
+</a>
+
+
+	<nav class="nav-wrapper astro-I6GUSDXI" aria-label="Top">
+		<div dir="ltr" lang="en" class="logo flex astro-I6GUSDXI">
+			<ul class="astro-I6GUSDXI">
+				<li class="astro-I6GUSDXI">
+					<a class="docs astro-I6GUSDXI" href="/en/getting-started/">
+						<span class="sr-only astro-I6GUSDXI">Docs</span>
+						<svg xmlns="http://www.w3.org/2000/svg" width="226" height="102" viewBox="0 0 226 102" fill="none" class="astro-I6GUSDXI">
+							<path class="docs-path astro-I6GUSDXI" fill="currentColor" d="M25.805 68c14.688 0 24.883-8.41 24.883-21.14 0-12.786-9.62-19.756-24.653-19.756H0V68h25.805zm-14.17-33.005H24.25c8.352 0 14.17 4.09 14.17 12.039 0 8.236-5.3 13.075-14.113 13.075H11.635V34.995zM82.673 69.382c16.704 0 27.418-8.582 27.418-21.83 0-13.248-10.771-21.83-27.418-21.83-16.589 0-27.418 8.582-27.418 21.83 0 13.19 10.83 21.83 27.418 21.83zm0-8.64c-9.1 0-15.149-5.299-15.149-13.19 0-7.891 6.048-13.19 15.15-13.19 9.1 0 15.205 5.299 15.205 13.19 0 7.891-6.105 13.19-15.206 13.19zM141.497 69.382c13.306 0 22.637-5.299 25.978-14.572l-11.866-2.535c-1.67 5.415-6.393 8.295-13.709 8.295-9.216 0-15.033-5.127-15.033-13.018 0-8.006 5.702-13.018 14.918-13.018 7.43 0 12.154 3.053 13.709 8.64l12.038-2.13c-2.707-9.562-12.268-15.322-25.574-15.322-16.128 0-27.302 9.043-27.302 22.003 0 13.133 10.425 21.657 26.841 21.657zM194.94 69.382c14.745 0 23.212-5.01 23.212-14.054 0-7.603-4.665-10.944-15.955-12.096l-11.289-1.094c-5.242-.576-6.97-1.556-6.97-4.09 0-2.765 3.456-4.262 9.792-4.262 7.834 0 13.709 2.476 16.762 6.508l7.315-6.163c-5.069-5.702-13.133-8.41-23.501-8.41-13.997 0-21.888 4.781-21.888 12.903 0 7.546 4.781 11.232 14.803 12.326l12.557 1.383c4.896.518 6.624 1.555 6.624 4.09 0 3.225-3.456 4.723-10.886 4.723-8.352 0-14.688-3.226-18.087-8.007l-8.294 5.818c4.205 6.451 13.709 10.425 25.805 10.425z"></path>
+						</svg>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<style>astro-island,astro-slot{display:contents}</style><script>(self.Astro=self.Astro||{}).visible=(s,c,n)=>{const r=async()=>{await(await s())()};let i=new IntersectionObserver(e=>{for(const t of e)if(!!t.isIntersecting){i.disconnect(),r();break}});for(let e=0;e<n.children.length;e++){const t=n.children[e];i.observe(t)}},window.dispatchEvent(new Event("astro:visible"));var l;{const c={0:t=>t,1:t=>JSON.parse(t,o),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(JSON.parse(t,o)),5:t=>new Set(JSON.parse(t,o)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(JSON.parse(t)),9:t=>new Uint16Array(JSON.parse(t)),10:t=>new Uint32Array(JSON.parse(t))},o=(t,s)=>{if(t===""||!Array.isArray(s))return s;const[e,n]=s;return e in c?c[e](n):void 0};customElements.get("astro-island")||customElements.define("astro-island",(l=class extends HTMLElement{constructor(){super(...arguments);this.hydrate=()=>{if(!this.hydrator||this.parentElement&&this.parentElement.closest("astro-island[ssr]"))return;const s=this.querySelectorAll("astro-slot"),e={},n=this.querySelectorAll("template[data-astro-template]");for(const r of n){const i=r.closest(this.tagName);!i||!i.isSameNode(this)||(e[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(const r of s){const i=r.closest(this.tagName);!i||!i.isSameNode(this)||(e[r.getAttribute("name")||"default"]=r.innerHTML)}const a=this.hasAttribute("props")?JSON.parse(this.getAttribute("props"),o):{};this.hydrator(this)(this.Component,a,e,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),window.removeEventListener("astro:hydrate",this.hydrate),window.dispatchEvent(new CustomEvent("astro:hydrate"))}}connectedCallback(){!this.hasAttribute("await-children")||this.firstChild?this.childrenConnectedCallback():new MutationObserver((s,e)=>{e.disconnect(),this.childrenConnectedCallback()}).observe(this,{childList:!0})}async childrenConnectedCallback(){window.addEventListener("astro:hydrate",this.hydrate);let s=this.getAttribute("before-hydration-url");s&&await import(s),this.start()}start(){const s=JSON.parse(this.getAttribute("opts")),e=this.getAttribute("client");if(Astro[e]===void 0){window.addEventListener(`astro:${e}`,()=>this.start(),{once:!0});return}Astro[e](async()=>{const n=this.getAttribute("renderer-url"),[a,{default:r}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),i=this.getAttribute("component-export")||"default";if(!i.includes("."))this.Component=a[i];else{this.Component=a;for(const d of i.split("."))this.Component=this.Component[d]}return this.hydrator=r,this.hydrate},s,this)}attributeChangedCallback(){this.hydrator&&this.hydrate()}},l.observedAttributes=["props"],l))}</script><astro-island uid="2tcXi2" component-url="/ThemeToggleButton.6de6281e.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{&quot;labels&quot;:[0,{&quot;useLight&quot;:[0,&quot;Use light theme&quot;],&quot;useDark&quot;:[0,&quot;Use dark theme&quot;]}],&quot;isInsideHeader&quot;:[0,true]}" ssr="" client="visible" opts="{&quot;name&quot;:&quot;ThemeToggleButton&quot;,&quot;value&quot;:true}" await-children=""><div class="theme-toggle hide-toggle-on-smaller-screens"><label title="Use light theme" class=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path></svg><input type="radio" name="theme-toggle" aria-label="Use light theme" value="light"/></label><label title="Use dark theme" class=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg><input type="radio" name="theme-toggle" aria-label="Use dark theme" value="dark"/></label></div></astro-island>
+		<!-- {lang && <LanguageSelect lang={lang} client:idle />} -->
+		<!-- 
+			TODO：搜索功能
+			后期再做，暂时隐藏
+			参考文档 https://blog.csdn.net/weixin_40026797/article/details/126063524 -->
+		<!-- <Search {lang} labels={docsearchStrings} /> -->
+		<a class="astro astro-I6GUSDXI" href="https://github.com/tanggd" target="_blank" rel="noopener noreferrer">
+			<img src="/assets/github.4e28406c.svg" alt="github" class="astro-I6GUSDXI">
+		</a>
+		<script>(self.Astro=self.Astro||{}).idle=t=>{const e=async()=>{await(await t())()};"requestIdleCallback"in window?window.requestIdleCallback(e):setTimeout(e,200)},window.dispatchEvent(new Event("astro:idle"));</script><astro-island uid="Z1Iw7D6" component-url="/SidebarToggle.2303dca7.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{}" ssr="" client="idle" opts="{&quot;name&quot;:&quot;SidebarToggle&quot;,&quot;value&quot;:true}" await-children=""><button id="menu-toggle" class="header-button" type="button" aria-pressed="false"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg><span class="sr-only">Toggle sidebar</span></button></astro-island>
+	</nav>
+</header>
+
+
+		<main class="layout astro-KR5WJSBZ">
+			<aside id="left-sidebar" class="sidebar astro-KR5WJSBZ">
+				
+					<nav aria-label="Primary" class="astro-VHM34O3D">
+	<script>(self.Astro=self.Astro||{}).load=a=>{(async()=>await(await a())())()},window.dispatchEvent(new Event("astro:load"));</script><astro-island uid="Z1KQCLa" component-url="/SidebarToggleTabGroup.2446d59c.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{&quot;defaultActiveTab&quot;:[0,&quot;learn&quot;],&quot;labels&quot;:[0,{&quot;learn&quot;:[0,&quot;Learn&quot;],&quot;api&quot;:[0,&quot;Tools&quot;]}]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;SidebarToggleTabGroup&quot;,&quot;value&quot;:true}" await-children=""><div class="TabGroup"><button class="active">Learn</button><button class="">Tools</button></div></astro-island>
+	<ul class="nav-groups astro-VHM34O3D">
+		<li class="nav-group learn active astro-Q2W3FM2V">
+			<details open class="astro-Q2W3FM2V">
+				<summary class="nav-group-title astro-Q2W3FM2V">
+					<h2 class="astro-Q2W3FM2V">
+						CSS
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 1 16 16" width="16" height="16" aria-hidden="true" class="astro-Q2W3FM2V">
+							<path fill-rule="evenodd" d="M6.22 3.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 010-1.06z" class="astro-Q2W3FM2V"></path>
+						</svg>
+					</h2>
+				</summary>
+				<ul class="astro-Q2W3FM2V">
+					<li class="nav-link astro-Q2W3FM2V">
+							<a href="/en/css/xxx/" aria-current="false" data-current-parent="false" class="astro-Q2W3FM2V">
+								CSS世界 <sup class="fallback astro-Q2W3FM2V">EN</sup>
+							</a>
+						</li>
+				</ul>
+			</details>
+		</li>
+
+
+		<li class="nav-group api astro-Q2W3FM2V">
+			<details open class="astro-Q2W3FM2V">
+				<summary class="nav-group-title astro-Q2W3FM2V">
+					<h2 class="astro-Q2W3FM2V">
+						小工具
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 1 16 16" width="16" height="16" aria-hidden="true" class="astro-Q2W3FM2V">
+							<path fill-rule="evenodd" d="M6.22 3.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 010-1.06z" class="astro-Q2W3FM2V"></path>
+						</svg>
+					</h2>
+				</summary>
+				<ul class="astro-Q2W3FM2V">
+					<li class="nav-link astro-Q2W3FM2V">
+							<a href="/en/tools/make-certificate-photos/" aria-current="false" data-current-parent="false" class="astro-Q2W3FM2V">
+								制作证件照 <sup class="fallback astro-Q2W3FM2V">EN</sup>
+							</a>
+						</li>
+				</ul>
+			</details>
+		</li>
+
+
+		<li style="text-align: center;" class="astro-VHM34O3D">
+			<astro-island uid="1IhUvw" component-url="/ThemeToggleButton.6de6281e.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{&quot;labels&quot;:[0,{&quot;useLight&quot;:[0,&quot;Use light theme&quot;],&quot;useDark&quot;:[0,&quot;Use dark theme&quot;]}]}" ssr="" client="visible" opts="{&quot;name&quot;:&quot;ThemeToggleButton&quot;,&quot;value&quot;:true}" await-children=""><div class="theme-toggle "><label title="Use light theme" class=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path></svg><input type="radio" name="theme-toggle" aria-label="Use light theme" value="light"/></label><label title="Use dark theme" class=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg><input type="radio" name="theme-toggle" aria-label="Use dark theme" value="dark"/></label></div></astro-island>
+		</li>
+	</ul>
+</nav>
+
+
+
+
+				
+			</aside>
+			<aside id="right-sidebar" class="sidebar astro-KR5WJSBZ">
+				<script>(self.Astro=self.Astro||{}).media=(s,a)=>{const t=async()=>{await(await s())()};if(a.value){const e=matchMedia(a.value);e.matches?t():e.addEventListener("change",t,{once:!0})}},window.dispatchEvent(new Event("astro:media"));</script><nav aria-label="Secondary" class="astro-TFI5F24A">
+	<astro-island uid="3Ejmi" component-url="/TableOfContents.dc58575b.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{&quot;headings&quot;:[1,&quot;[[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;setup\&quot;],\&quot;text\&quot;:[0,\&quot;Setup\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;ui-frameworks\&quot;],\&quot;text\&quot;:[0,\&quot;UI Frameworks\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;type-imports\&quot;],\&quot;text\&quot;:[0,\&quot;Type Imports\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;import-aliases\&quot;],\&quot;text\&quot;:[0,\&quot;Import Aliases\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;component-props\&quot;],\&quot;text\&quot;:[0,\&quot;Component Props\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;common-prop-type-patterns\&quot;],\&quot;text\&quot;:[0,\&quot;Common prop type patterns\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;type-utilities\&quot;],\&quot;text\&quot;:[0,\&quot;Type Utilities\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;built-in-html-attributes\&quot;],\&quot;text\&quot;:[0,\&quot;Built-in HTML attributes\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;type-checking\&quot;],\&quot;text\&quot;:[0,\&quot;Type checking\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;troubleshooting\&quot;],\&quot;text\&quot;:[0,\&quot;Troubleshooting\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;errors-typing-multiple-jsx-frameworks-at-the-same-time\&quot;],\&quot;text\&quot;:[0,\&quot;Errors Typing multiple JSX frameworks at the same time\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;vue-components-are-mistakenly-typed-by-the-typesreact-package-when-installed\&quot;],\&quot;text\&quot;:[0,\&quot;Vue components are mistakenly typed by the @types/react package when installed\&quot;]}]]&quot;],&quot;labels&quot;:[0,{&quot;onThisPage&quot;:[0,&quot;On this page&quot;],&quot;overview&quot;:[0,&quot;Overview&quot;]}],&quot;isMobile&quot;:[0,false]}" ssr="" client="media" opts="{&quot;name&quot;:&quot;TableOfContents&quot;,&quot;value&quot;:&quot;(min-width: 50em)&quot;}" await-children=""><h2 class="heading" id="on-this-page-heading">On this page</h2><ul><li class="header-link depth-2 current-header-link"><a href="#overview">Overview</a></li><li class="header-link depth-2"><a href="#setup">Setup</a></li><li class="header-link depth-3"><a href="#ui-frameworks">UI Frameworks</a></li><li class="header-link depth-2"><a href="#type-imports">Type Imports</a></li><li class="header-link depth-2"><a href="#import-aliases">Import Aliases</a></li><li class="header-link depth-2"><a href="#component-props">Component Props</a></li><li class="header-link depth-3"><a href="#common-prop-type-patterns">Common prop type patterns</a></li><li class="header-link depth-2"><a href="#type-utilities">Type Utilities</a></li><li class="header-link depth-3"><a href="#built-in-html-attributes">Built-in HTML attributes</a></li><li class="header-link depth-2"><a href="#type-checking">Type checking</a></li><li class="header-link depth-2"><a href="#troubleshooting">Troubleshooting</a></li><li class="header-link depth-3"><a href="#errors-typing-multiple-jsx-frameworks-at-the-same-time">Errors Typing multiple JSX frameworks at the same time</a></li><li class="header-link depth-3"><a href="#vue-components-are-mistakenly-typed-by-the-typesreact-package-when-installed">Vue components are mistakenly typed by the @types/react package when installed</a></li></ul></astro-island>
+</nav>
+
+
+			</aside>
+			<div id="main-content" class="main-column astro-KR5WJSBZ">
+				<div dir="ltr" class="astro-2XBDZOYQ">
+	<div class="fixed-mobile-bar astro-2XBDZOYQ" dir="ltr">
+					<nav>
+						<astro-island uid="Z2f0jpk" component-url="/TableOfContents.dc58575b.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{&quot;headings&quot;:[1,&quot;[[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;setup\&quot;],\&quot;text\&quot;:[0,\&quot;Setup\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;ui-frameworks\&quot;],\&quot;text\&quot;:[0,\&quot;UI Frameworks\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;type-imports\&quot;],\&quot;text\&quot;:[0,\&quot;Type Imports\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;import-aliases\&quot;],\&quot;text\&quot;:[0,\&quot;Import Aliases\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;component-props\&quot;],\&quot;text\&quot;:[0,\&quot;Component Props\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;common-prop-type-patterns\&quot;],\&quot;text\&quot;:[0,\&quot;Common prop type patterns\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;type-utilities\&quot;],\&quot;text\&quot;:[0,\&quot;Type Utilities\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;built-in-html-attributes\&quot;],\&quot;text\&quot;:[0,\&quot;Built-in HTML attributes\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;type-checking\&quot;],\&quot;text\&quot;:[0,\&quot;Type checking\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;troubleshooting\&quot;],\&quot;text\&quot;:[0,\&quot;Troubleshooting\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;errors-typing-multiple-jsx-frameworks-at-the-same-time\&quot;],\&quot;text\&quot;:[0,\&quot;Errors Typing multiple JSX frameworks at the same time\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;vue-components-are-mistakenly-typed-by-the-typesreact-package-when-installed\&quot;],\&quot;text\&quot;:[0,\&quot;Vue components are mistakenly typed by the @types/react package when installed\&quot;]}]]&quot;],&quot;labels&quot;:[0,{&quot;onThisPage&quot;:[0,&quot;On this page&quot;],&quot;overview&quot;:[0,&quot;Overview&quot;]}],&quot;isMobile&quot;:[0,true]}" ssr="" client="media" opts="{&quot;name&quot;:&quot;TableOfContents&quot;,&quot;value&quot;:&quot;(max-width: 72em)&quot;}" await-children=""><details class="toc-mobile-container"><summary class="toc-mobile-header"><div class="toc-mobile-header-content"><div class="toc-toggle"><h2 class="heading" id="on-this-page-heading">On this page</h2><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 1 16 16" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M6.22 3.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 010-1.06z"></path></svg></div></div></summary><ul><li class="header-link depth-2 current-header-link"><a href="#overview">Overview</a></li><li class="header-link depth-2"><a href="#setup">Setup</a></li><li class="header-link depth-3"><a href="#ui-frameworks">UI Frameworks</a></li><li class="header-link depth-2"><a href="#type-imports">Type Imports</a></li><li class="header-link depth-2"><a href="#import-aliases">Import Aliases</a></li><li class="header-link depth-2"><a href="#component-props">Component Props</a></li><li class="header-link depth-3"><a href="#common-prop-type-patterns">Common prop type patterns</a></li><li class="header-link depth-2"><a href="#type-utilities">Type Utilities</a></li><li class="header-link depth-3"><a href="#built-in-html-attributes">Built-in HTML attributes</a></li><li class="header-link depth-2"><a href="#type-checking">Type checking</a></li><li class="header-link depth-2"><a href="#troubleshooting">Troubleshooting</a></li><li class="header-link depth-3"><a href="#errors-typing-multiple-jsx-frameworks-at-the-same-time">Errors Typing multiple JSX frameworks at the same time</a></li><li class="header-link depth-3"><a href="#vue-components-are-mistakenly-typed-by-the-typesreact-package-when-installed">Vue components are mistakenly typed by the @types/react package when installed</a></li></ul></details></astro-island>
+					</nav>
+				</div><div class="spacer astro-2XBDZOYQ"></div>
+	<article id="article" class="content astro-2XBDZOYQ">
+		<section class="main-section astro-2XBDZOYQ">
+			<header class="astro-2XBDZOYQ">
+				
+				<h1 class="content-title astro-2XBDZOYQ" id="overview">TypeScript</h1>
+				
+			</header>
+			
+			<p>Astro ships with built-in support for <a href="https://www.typescriptlang.org/">TypeScript</a>. You can import <code>.ts</code> and <code>.tsx</code> files in your Astro project, write TypeScript code directly inside your <a href="/en/core-concepts/astro-components/#the-component-script">Astro component</a>, and even use an <a href="/en/guides/configuring-astro/#the-astro-config-file"><code>astro.config.ts</code></a> file if you like.</p><p>Using TypeScript, you can prevent errors at runtime by defining the shapes of objects and components in your code. For example, if you use TypeScript to <a href="#component-props">type your component’s props</a>, you’ll get an error in your editor if you set a prop that your component doesn’t accept.</p><p>You don’t need to write TypeScript code in your Astro projects to benefit from it. Astro always treats your component code as TypeScript, and the <a href="/en/editor-setup/">Astro VSCode Extension</a> will infer as much as it can to provide autocompletion, hints, and errors in your editor.</p><p>The Astro dev server won’t perform any type checking, but you can use a <a href="#type-checking">separate script</a> to check for type errors from the command line.</p><div class="heading-wrapper level-h2" tabindex="-1"><h2 id="setup">Setup</h2><a class="anchor-link" href="#setup"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Setup</span></a></div><p>Astro starter projects include a <code>tsconfig.json</code> file in your project. Even if you don’t write TypeScript code, this file is important so that tools like Astro and VS Code know how to understand your project. Some features (like npm package imports) aren’t fully supported in the editor without a <code>tsconfig.json</code> file. If you install Astro manually, be sure to create this file yourself.</p><p>Three extensible <code>tsconfig.json</code> templates are included in Astro: <code>base</code>, <code>strict</code>, and <code>strictest</code>. The <code>base</code> template enables support for modern JavaScript features and is also used as a basis for the other templates. We recommend using <code>strict</code> or <code>strictest</code> if you plan to write TypeScript in your project. You can view and compare the three template configurations at <a href="https://github.com/withastro/astro/blob/main/packages/astro/tsconfigs/">astro/tsconfigs/</a>.</p><p>To inherit from one of the templates, use <a href="https://www.typescriptlang.org/tsconfig#extends">the <code>extends</code> setting</a>:</p>
+<figure class="code-snippet has-title lang-json">
+	<figcaption class="header"><span class="title">tsconfig.json</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&quot;</span><span style="color:#FFBD2E">extends</span><span style="color:#C7C5D3">&quot;</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;astro/tsconfigs/base&quot;</span></span>
+<span class="line"><span style="color:#C7C5D3">}</span></span></code></pre>
+</figure><p>Additionally, our templates include an <code>env.d.ts</code> file inside the <code>src</code> folder to provide <a href="https://vitejs.dev/guide/features.html#client-types">Vite’s client types</a> to your project:</p>
+<figure class="code-snippet has-title lang-typescript">
+	<figcaption class="header"><span class="title">env.d.ts</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">/// </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">reference</span><span style="color:#ABA8BD"> </span><span style="color:#FFBD2E">types</span><span style="color:#FF657C">=</span><span style="color:#16C082">&quot;astro/client&quot;</span><span style="color:#ABA8BD"> </span><span style="color:#C7C5D3">/&gt;</span></span></code></pre>
+</figure><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="ui-frameworks">UI Frameworks</h3><a class="anchor-link" href="#ui-frameworks"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled UI Frameworks</span></a></div><p>If your project uses a <a href="/en/core-concepts/framework-components/">UI framework</a>, additional settings depending on the framework might be needed. Please see your framework’s TypeScript documentation for more information. (<a href="https://vuejs.org/guide/typescript/overview.html#using-vue-with-typescript">Vue</a>, <a href="https://reactjs.org/docs/static-type-checking.html">React</a>, <a href="https://preactjs.com/guide/v10/typescript">Preact</a>, <a href="https://www.solidjs.com/guides/typescript">Solid</a>)</p><div class="heading-wrapper level-h2" tabindex="-1"><h2 id="type-imports">Type Imports</h2><a class="anchor-link" href="#type-imports"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Type Imports</span></a></div><p>Use explicit type imports and exports whenever possible.</p>
+<figure class="code-snippet lang-js">
+	<figcaption class="header"></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line del"><span style="color:#ff9fad">import</span><span style="color:#d8dee9"> </span><span style="color:#c7c5d3">{</span><span style="color:#d8dee9"> </span><span style="color:#ffbd2e">SomeType</span><span style="color:#d8dee9"> </span><span style="color:#c7c5d3">}</span><span style="color:#d8dee9"> </span><span style="color:#ff9fad">from</span><span style="color:#d8dee9"> </span><span style="color:#4fcfa1">&#39;./script&#39;</span><span style="color:#c7c5d3">;</span></span>
+<span class="line ins"><span style="color:#ff9fad">import</span><span style="color:#d8dee9"> </span><ins><span style="color:#ff9fad">type</span></ins><span style="color:#d8dee9"> </span><span style="color:#c7c5d3">{</span><span style="color:#d8dee9"> </span><span style="color:#ffbd2e">SomeType</span><span style="color:#d8dee9"> </span><span style="color:#c7c5d3">}</span><span style="color:#d8dee9"> </span><span style="color:#ff9fad">from</span><span style="color:#d8dee9"> </span><span style="color:#4fcfa1">&#39;./script&#39;</span><span style="color:#c7c5d3">;</span></span></code></pre>
+</figure><p>This way, you avoid edge cases where Astro’s bundler may try to incorrectly bundle your imported types as if they were JavaScript.</p><p>In your <code>.tsconfig</code> file, you can instruct TypeScript to help with this. The <a href="https://www.typescriptlang.org/tsconfig#importsNotUsedAsValues"><code>importsNotUsedAsValues</code> setting</a> can be set to <code>error</code>. Then, TypeScript will check your imports and tell you when  <code>import type</code> should be used. This setting is included by default in our <code>strict</code> and <code>strictest</code> templates.</p>
+<figure class="code-snippet has-title lang-json">
+	<figcaption class="header"><span class="title">tsconfig.json</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&quot;</span><span style="color:#FFBD2E">compilerOptions</span><span style="color:#C7C5D3">&quot;</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span></span>
+<span class="line ins"><span style="color:#d8dee9">    </span><span style="color:#c7c5d3">&quot;</span><span style="color:#ffbd2e">importsNotUsedAsValues</span><span style="color:#c7c5d3">&quot;</span><span style="color:#c7c5d3">:</span><span style="color:#d8dee9"> </span><span style="color:#4fcfa1">&quot;error&quot;</span><span style="color:#c7c5d3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">}</span></span>
+<span class="line"><span style="color:#C7C5D3">}</span></span></code></pre>
+</figure><div class="heading-wrapper level-h2" tabindex="-1"><h2 id="import-aliases">Import Aliases</h2><a class="anchor-link" href="#import-aliases"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Import Aliases</span></a></div><p>Astro supports <a href="/en/guides/aliases/">import aliases</a> that you define in your <code>tsconfig.json</code> & <code>jsconfig.json</code> <code>paths</code> configuration. <a href="/en/guides/aliases/">Read our guide</a> to learn more.</p>
+<figure class="code-snippet has-title lang-astro">
+	<figcaption class="header"><span class="title">src/<wbr/>pages/<wbr/>about/<wbr/>nate.astro</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> HelloWorld </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;</span><mark><span style="color:#4fcfa1">@components</span></mark><span style="color:#16C082">/HelloWorld.astro&#39;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> Layout </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;</span><mark><span style="color:#4fcfa1">@layouts</span></mark><span style="color:#16C082">/Layout.astro&#39;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span></code></pre>
+</figure>
+<figure class="code-snippet has-title lang-json">
+	<figcaption class="header"><span class="title">tsconfig.json</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&quot;</span><span style="color:#FFBD2E">compilerOptions</span><span style="color:#C7C5D3">&quot;</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">&quot;</span><span style="color:#FFBD2E">baseUrl</span><span style="color:#C7C5D3">&quot;</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;.&quot;</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">&quot;</span><span style="color:#FFBD2E">paths</span><span style="color:#C7C5D3">&quot;</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span></span>
+<span class="line mark"><span style="color:#d8dee9">      </span><span style="color:#c7c5d3">&quot;</span><span style="color:#ffbd2e">@components/*</span><span style="color:#c7c5d3">&quot;</span><span style="color:#c7c5d3">:</span><span style="color:#d8dee9"> </span><span style="color:#c7c5d3">[</span><span style="color:#4fcfa1">&quot;src/components/*&quot;</span><span style="color:#c7c5d3">],</span></span>
+<span class="line mark"><span style="color:#d8dee9">      </span><span style="color:#c7c5d3">&quot;</span><span style="color:#ffbd2e">@layouts/*</span><span style="color:#c7c5d3">&quot;</span><span style="color:#c7c5d3">:</span><span style="color:#d8dee9"> </span><span style="color:#c7c5d3">[</span><span style="color:#4fcfa1">&quot;src/layouts/*&quot;</span><span style="color:#c7c5d3">]</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">}</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">}</span></span>
+<span class="line"><span style="color:#C7C5D3">}</span></span></code></pre>
+</figure><div class="heading-wrapper level-h2" tabindex="-1"><h2 id="component-props">Component Props</h2><a class="anchor-link" href="#component-props"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Component Props</span></a></div><p>Astro supports typing your component props via TypeScript. To enable, add a TypeScript <code>Props</code> interface to your component frontmatter. An <code>export</code> statement maybe be used, but is not necessary. The <a href="/en/editor-setup/">Astro VSCode Extension</a> will automatically look for the <code>Props</code> interface and give you proper TS support when you use that component inside another template.</p>
+<figure class="code-snippet has-title lang-astro">
+	<figcaption class="header"><span class="title">src/<wbr/>components/<wbr/>HelloProps.astro</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line ins"><span style="color:#ff9fad">interface</span><span style="color:#d8dee9"> </span><span style="color:#ffbd2e">Props</span><span style="color:#d8dee9"> </span><span style="color:#c7c5d3">{</span></span>
+<span class="line ins"><span style="color:#d8dee9">  name</span><span style="color:#ff9fad">:</span><span style="color:#d8dee9"> </span><span style="color:#ffbd2e">string</span><span style="color:#c7c5d3">;</span></span>
+<span class="line ins"><span style="color:#d8dee9">  greeting</span><span style="color:#ff9fad">?:</span><span style="color:#d8dee9"> </span><span style="color:#ffbd2e">string</span><span style="color:#c7c5d3">;</span></span>
+<span class="line ins"><span style="color:#c7c5d3">}</span></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> greeting </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;Hello&#39;</span><span style="color:#C7C5D3">,</span><span style="color:#D8DEE9"> name </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> Astro</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">props</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">h2</span><span style="color:#C7C5D3">&gt;</span><span style="color:#FF657C">{</span><span style="color:#D8DEE9">greeting</span><span style="color:#FF657C">}</span><span style="color:#D8DEE9">, </span><span style="color:#FF657C">{</span><span style="color:#D8DEE9">name</span><span style="color:#FF657C">}</span><span style="color:#D8DEE9">!</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">h2</span><span style="color:#C7C5D3">&gt;</span></span></code></pre>
+</figure><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="common-prop-type-patterns">Common prop type patterns</h3><a class="anchor-link" href="#common-prop-type-patterns"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Common prop type patterns</span></a></div><ul>
+<li>
+<p>If your component takes no props or slotted content, you can use <code>type Props = Record&lt;string, never&gt;</code>.</p>
+</li>
+<li>
+<p>If your component must be passed children to its default slot, you can enforce this by using <code>type Props = { children: any; };</code>.</p>
+</li>
+</ul><div class="heading-wrapper level-h2" tabindex="-1"><h2 id="type-utilities">Type Utilities</h2><a class="anchor-link" href="#type-utilities"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Type Utilities</span></a></div><span>
+	<strong>Added in:
+</strong> v1.6.0
+	<span class="badge accent astro-7UPTKOT4">New
+</span>
+
+
+</span><p>Astro comes with some built-in utility types for common prop type patterns. These are available under the <code>astro/types</code> entrypoint.</p><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="built-in-html-attributes">Built-in HTML attributes</h3><a class="anchor-link" href="#built-in-html-attributes"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Built-in HTML attributes</span></a></div><p>Astro provides the <code>HTMLAttributes</code> type to check that your markup is using valid HTML attributes. You can use these types to help build component props.</p><p>For example, if you were building a <code>&lt;Link&gt;</code> component, you could do the following to mirror the default HTML attributes for <code>&lt;a&gt;</code> tags in your component’s prop types.</p>
+<figure class="code-snippet has-title lang-astro">
+	<figcaption class="header"><span class="title">src/<wbr/>components/<wbr/>Link.astro</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> </span><ins><span style="color:#d8dee9">HTMLAttributes</span></ins><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;astro/types&#39;</span></span>
+<span class="line"><span style="color:#ABA8BD">// use a `type`</span></span>
+<span class="line"><span style="color:#FF657C">type</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">Props</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> </span><ins><span style="color:#ffbd2e">HTMLAttributes</span><span style="color:#c7c5d3">&lt;</span><span style="color:#4fcfa1">&#39;a&#39;</span><span style="color:#c7c5d3">&gt;</span></ins><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#ABA8BD">// or extend with an `interface`</span></span>
+<span class="line"><span style="color:#FF657C">interface</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">Props</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">extends</span><span style="color:#D8DEE9"> </span><ins><span style="color:#ffbd2e; font-style: italic">HTMLAttributes</span><span style="color:#c7c5d3">&lt;</span><span style="color:#4fcfa1">&#39;a&#39;</span><span style="color:#c7c5d3">&gt;</span></ins><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">  myProp</span><span style="color:#FF657C">?:</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">boolean</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#C7C5D3">}</span></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> href</span><span style="color:#C7C5D3">,</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">...</span><span style="color:#D8DEE9">attrs </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> Astro</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">props</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">a</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">{</span><span style="color:#D8DEE9">href</span><span style="color:#FF657C">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">{...</span><span style="color:#D8DEE9">attrs</span><span style="color:#FF657C">}</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">slot</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">/&gt;</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">a</span><span style="color:#C7C5D3">&gt;</span></span></code></pre>
+</figure><p>It is also possible to extend the default JSX definitions to add non-standard attributes by redeclaring the <code>astroHTML.JSX</code> namespace in a <code>.d.ts</code> file.</p>
+<figure class="code-snippet has-title lang-ts">
+	<figcaption class="header"><span class="title">src/<wbr/>custom-attributes.d.ts</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#FF657C">declare</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">namespace</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">astroHTML</span><span style="color:#C7C5D3">.</span><span style="color:#FFBD2E">JSX</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#FF657C">interface</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">HTMLAttributes</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#16C082">&#39;data-count&#39;</span><span style="color:#FF657C">?:</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">number</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#16C082">&#39;data-label&#39;</span><span style="color:#FF657C">?:</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">string</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">}</span></span>
+<span class="line"><span style="color:#C7C5D3">}</span></span></code></pre>
+</figure><aside class="content note astro-J4JMU3BW" aria-label="Note">
+	<p class="title astro-J4JMU3BW" aria-hidden="true">
+		<span class="icon astro-J4JMU3BW">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" width="16" height="16" class="astro-J4JMU3BW">
+				<path fill-rule="evenodd" d="M0 3.75C0 2.784.784 2 1.75 2h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0114.25 14H1.75A1.75 1.75 0 010 12.25v-8.5zm1.75-.25a.25.25 0 00-.25.25v8.5c0 .138.112.25.25.25h12.5a.25.25 0 00.25-.25v-8.5a.25.25 0 00-.25-.25H1.75zM3.5 6.25a.75.75 0 01.75-.75h7a.75.75 0 010 1.5h-7a.75.75 0 01-.75-.75zm.75 2.25a.75.75 0 000 1.5h4a.75.75 0 000-1.5h-4z" class="astro-J4JMU3BW"></path>
+			</svg>
+		</span>
+		Note
+	</p>
+	<section class="astro-J4JMU3BW">
+		<p><code>astroHTML</code> is injected globally inside <code>.astro</code> components. To use it in TypeScript files, use a <a href="https://www.typescriptlang.org/docs/handbook/triple-slash-directives.html">triple-slash directive</a>:</p>
+<figure class="code-snippet lang-ts">
+	<figcaption class="header"></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">/// </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">reference</span><span style="color:#ABA8BD"> </span><span style="color:#FFBD2E">types</span><span style="color:#FF657C">=</span><span style="color:#16C082">&quot;astro/astro-jsx&quot;</span><span style="color:#ABA8BD"> </span><span style="color:#C7C5D3">/&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF657C">type</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">MyAttributes</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">astroHTML</span><span style="color:#C7C5D3">.</span><span style="color:#FFBD2E">JSX</span><span style="color:#C7C5D3">.</span><span style="color:#FFBD2E">ImgHTMLAttributes</span><span style="color:#C7C5D3">;</span></span></code></pre>
+</figure>
+	</section>
+</aside>
+
+<div class="heading-wrapper level-h2" tabindex="-1"><h2 id="type-checking">Type checking</h2><a class="anchor-link" href="#type-checking"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Type checking</span></a></div><p>To see type errors in your editor, please make sure that you have the <a href="/en/editor-setup/">Astro VS Code extension</a> installed. Please note that the <code>astro start</code> and <code>astro build</code> commands will transpile the code with esbuild, but will not run any type checking. To prevent your code from building if it contains TypeScript errors, change your “build” script in <code>package.json</code> to the following:</p>
+<figure class="code-snippet has-title lang-json">
+	<figcaption class="header"><span class="title">package.json</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#D8DEE9">  </span><span style="color:#16C082">&quot;scripts&quot;</span><span style="color:#D8DEE9">: </span><span style="color:#C7C5D3">{</span></span>
+<span class="line del"><span style="color:#d8dee9">    </span><span style="color:#c7c5d3">&quot;</span><span style="color:#ffbd2e">build</span><span style="color:#c7c5d3">&quot;</span><span style="color:#c7c5d3">:</span><span style="color:#d8dee9"> </span><span style="color:#4fcfa1">&quot;astro build&quot;</span><span style="color:#c7c5d3">,</span></span>
+<span class="line ins"><span style="color:#d8dee9">    </span><span style="color:#c7c5d3">&quot;</span><span style="color:#ffbd2e">build</span><span style="color:#c7c5d3">&quot;</span><span style="color:#c7c5d3">:</span><span style="color:#d8dee9"> </span><span style="color:#4fcfa1">&quot;</span><ins><span style="color:#4fcfa1">astro check &amp;&amp; tsc --noEmit &amp;&amp; </span></ins><span style="color:#4fcfa1">astro build&quot;</span><span style="color:#c7c5d3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9">,</span></span></code></pre>
+</figure><aside class="content note astro-J4JMU3BW" aria-label="Note">
+	<p class="title astro-J4JMU3BW" aria-hidden="true">
+		<span class="icon astro-J4JMU3BW">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" width="16" height="16" class="astro-J4JMU3BW">
+				<path fill-rule="evenodd" d="M0 3.75C0 2.784.784 2 1.75 2h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0114.25 14H1.75A1.75 1.75 0 010 12.25v-8.5zm1.75-.25a.25.25 0 00-.25.25v8.5c0 .138.112.25.25.25h12.5a.25.25 0 00.25-.25v-8.5a.25.25 0 00-.25-.25H1.75zM3.5 6.25a.75.75 0 01.75-.75h7a.75.75 0 010 1.5h-7a.75.75 0 01-.75-.75zm.75 2.25a.75.75 0 000 1.5h4a.75.75 0 000-1.5h-4z" class="astro-J4JMU3BW"></path>
+			</svg>
+		</span>
+		Note
+	</p>
+	<section class="astro-J4JMU3BW">
+		<p><code>astro check</code> only checks types within <code>.astro</code> files, and <code>tsc --noEmit</code> only checks types within <code>.ts</code> and <code>.tsx</code> files. To check types within Svelte and Vue files, you can use the <a href="https://www.npmjs.com/package/svelte-check"><code>svelte-check</code></a> and the <a href="https://www.npmjs.com/package/vue-tsc"><code>vue-tsc</code></a> packages respectively.</p>
+	</section>
+</aside>
+
+<p>📚 Read more about <a href="/en/guides/imports/#typescript"><code>.ts</code> file imports</a> in Astro.
+📚 Read more about <a href="https://www.typescriptlang.org/tsconfig/">TypeScript Configuration</a>.</p><div class="heading-wrapper level-h2" tabindex="-1"><h2 id="troubleshooting">Troubleshooting</h2><a class="anchor-link" href="#troubleshooting"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Troubleshooting</span></a></div><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="errors-typing-multiple-jsx-frameworks-at-the-same-time">Errors Typing multiple JSX frameworks at the same time</h3><a class="anchor-link" href="#errors-typing-multiple-jsx-frameworks-at-the-same-time"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Errors Typing multiple JSX frameworks at the same time</span></a></div><p>An issue may arise when using multiple JSX frameworks in the same project, as each framework requires different, sometimes conflicting, settings inside <code>tsconfig.json</code>.</p><p><strong>Solution</strong>: Set the <a href="https://www.typescriptlang.org/tsconfig#jsxImportSource"><code>jsxImportSource</code> setting</a> to <code>react</code> (default), <code>preact</code> or <code>solid-js</code> depending on your most-used framework. Then, use a <a href="https://www.typescriptlang.org/docs/handbook/jsx.html#configuring-jsx">pragma comment</a> inside any conflicting file from a different framework.</p><p>For the default setting of <code>jsxImportSource: react</code>, you would use:</p>
+<figure class="code-snippet lang-jsx">
+	<figcaption class="header"></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">// For Preact</span></span>
+<span class="line"><span style="color:#ABA8BD">/** </span><span style="color:#C7C5D3">@</span><span style="color:#FFBD2E">jsxImportSource</span><span style="color:#ABA8BD"> preact */</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#ABA8BD">// For Solid</span></span>
+<span class="line"><span style="color:#ABA8BD">/** </span><span style="color:#C7C5D3">@</span><span style="color:#FFBD2E">jsxImportSource</span><span style="color:#ABA8BD"> solid-js */</span></span></code></pre>
+</figure><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="vue-components-are-mistakenly-typed-by-the-typesreact-package-when-installed">Vue components are mistakenly typed by the <code>@types/react</code> package when installed</h3><a class="anchor-link" href="#vue-components-are-mistakenly-typed-by-the-typesreact-package-when-installed"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Vue components are mistakenly typed by the @types/react package when installed</span></a></div><p>The types definitions from the <code>@types/react</code> package are declared globally and therefore will be mistakenly used to typecheck <code>.vue</code> files when using <a href="https://github.com/johnsoncodehk/volar">Volar</a>.</p><p><strong>Status</strong>: Expected behavior.</p><p><strong>Solution</strong>: There’s currently no reliable way to fix this, however a few solutions and more discussion can be found in <a href="https://github.com/johnsoncodehk/volar/discussions/592">this GitHub discussion</a>.</p>
+		</section>
+		
+	</article>
+</div>
+
+
+				<span id="docsearch-lvl0" hidden class="astro-KR5WJSBZ">Learn</span>
+			</div>
+		</main>
+		<div class="main-column astro-KR5WJSBZ">
+		</div>
+	</body></html>

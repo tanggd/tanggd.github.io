@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en" class="initial astro-KR5WJSBZ">
+	<head>
+		<!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="hsl(256, 44%, 15%)" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="hsl(273, 37%, 93%)" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="alternate icon" type="image/x-icon" href="/favicon.ico">
+<link rel="sitemap" href="/sitemap-index.xml">
+
+<!-- Global CSS -->
+<link rel="stylesheet" href="/theme.css">
+<link rel="stylesheet" href="/index.css">
+
+<!-- Scrollable a11y code helper -->
+<script type="module" src="/make-scrollable-code-focusable.js"></script>
+
+<!-- This is intentionally inlined to avoid FOUC -->
+
+
+<!-- Double-click to highlight code blocks (inline only). -->
+
+<!-- Fathom - beautiful, simple website analytics -->
+<script src="https://certain-quality.astro.build/script.js" data-site="EZBHTSIG" defer></script>
+
+		<!-- Page Metadata --><link rel="canonical" href="https://tanggd.github.io/en/core-concepts/routing/">
+
+
+<link rel="alternate" href="https://tanggd.github.io/en/core-concepts/routing/" hreflang="en"><link rel="alternate" href="https://tanggd.github.io/zh-cn/core-concepts/routing/" hreflang="zh-CN">
+
+<!-- Algolia docsearch language facet -->
+<meta name="docsearch:language" content="en">
+
+<!-- OpenGraph Tags -->
+<meta property="og:title" content="Routing">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tanggd.github.io/en/core-concepts/routing/">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://tanggd.github.io/open-graph/en/core-concepts/routing.png">
+<meta property="og:image:alt" content="">
+<meta name="description" property="og:description" content="An intro to routing with Astro.">
+<meta property="og:site_name" content="Astro Documentation">
+
+<!-- Twitter Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="astrodotbuild">
+<meta name="twitter:title" content="Routing">
+<meta name="twitter:description" content="An intro to routing with Astro.">
+<meta name="twitter:image" content="https://tanggd.github.io/open-graph/en/core-concepts/routing.png">
+<meta name="twitter:image:alt" content="">
+
+<!--
+  TODO: Add json+ld data, maybe https://schema.org/APIReference makes sense?
+  Docs: https://developers.google.com/search/docs/advanced/structured-data/intro-structured-data
+  https://www.npmjs.com/package/schema-dts seems like a great resource for implementing this.
+  Even better, there’s a React component that integrates with `schema-dts`: https://github.com/google/react-schemaorg
+-->
+
+		<title>Routing 🚀 Astro Documentation</title>
+		
+		<script>
+			// This code was migrated/copied from ThemToggleBotton to make the
+			// dark mode toggle instant, vs. hidden inside of a Preact useEffect() call.
+			const theme = (() => {
+				if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+					return localStorage.getItem('theme');
+				}
+				if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+					return 'dark';
+				}
+				return 'light';
+			})();
+			if (theme === 'light') {
+				document.documentElement.classList.remove('theme-dark');
+			} else {
+				document.documentElement.classList.add('theme-dark');
+			}
+		</script>
+	<link rel="stylesheet" href="/assets/404.6d6787e2.css" />
+<link rel="stylesheet" href="/assets/auto.444a50d9.css" />
+<link rel="stylesheet" href="/assets/alpinejs.6dd7e965.css" />
+<link rel="stylesheet" href="/assets/builderio.d1870a6c.css" />
+<link rel="stylesheet" href="/assets/builderio.fb4fe658.css" />
+<link rel="stylesheet" href="/assets/builderio.1507b30a.css" /><script type="module" src="/hoisted.66b9b87c.js"></script></head>
+
+	<body class="astro-KR5WJSBZ">
+		<header class="astro-I6GUSDXI">
+	<a href="#article" class="sr-only focus:not-sr-only skiplink astro-VODYIZTE">
+	<span class="astro-VODYIZTE">Skip to Content
+</span>
+</a>
+
+
+	<nav class="nav-wrapper astro-I6GUSDXI" aria-label="Top">
+		<div dir="ltr" lang="en" class="logo flex astro-I6GUSDXI">
+			<ul class="astro-I6GUSDXI">
+				<li class="astro-I6GUSDXI">
+					<a class="docs astro-I6GUSDXI" href="/en/getting-started/">
+						<span class="sr-only astro-I6GUSDXI">Docs</span>
+						<svg xmlns="http://www.w3.org/2000/svg" width="226" height="102" viewBox="0 0 226 102" fill="none" class="astro-I6GUSDXI">
+							<path class="docs-path astro-I6GUSDXI" fill="currentColor" d="M25.805 68c14.688 0 24.883-8.41 24.883-21.14 0-12.786-9.62-19.756-24.653-19.756H0V68h25.805zm-14.17-33.005H24.25c8.352 0 14.17 4.09 14.17 12.039 0 8.236-5.3 13.075-14.113 13.075H11.635V34.995zM82.673 69.382c16.704 0 27.418-8.582 27.418-21.83 0-13.248-10.771-21.83-27.418-21.83-16.589 0-27.418 8.582-27.418 21.83 0 13.19 10.83 21.83 27.418 21.83zm0-8.64c-9.1 0-15.149-5.299-15.149-13.19 0-7.891 6.048-13.19 15.15-13.19 9.1 0 15.205 5.299 15.205 13.19 0 7.891-6.105 13.19-15.206 13.19zM141.497 69.382c13.306 0 22.637-5.299 25.978-14.572l-11.866-2.535c-1.67 5.415-6.393 8.295-13.709 8.295-9.216 0-15.033-5.127-15.033-13.018 0-8.006 5.702-13.018 14.918-13.018 7.43 0 12.154 3.053 13.709 8.64l12.038-2.13c-2.707-9.562-12.268-15.322-25.574-15.322-16.128 0-27.302 9.043-27.302 22.003 0 13.133 10.425 21.657 26.841 21.657zM194.94 69.382c14.745 0 23.212-5.01 23.212-14.054 0-7.603-4.665-10.944-15.955-12.096l-11.289-1.094c-5.242-.576-6.97-1.556-6.97-4.09 0-2.765 3.456-4.262 9.792-4.262 7.834 0 13.709 2.476 16.762 6.508l7.315-6.163c-5.069-5.702-13.133-8.41-23.501-8.41-13.997 0-21.888 4.781-21.888 12.903 0 7.546 4.781 11.232 14.803 12.326l12.557 1.383c4.896.518 6.624 1.555 6.624 4.09 0 3.225-3.456 4.723-10.886 4.723-8.352 0-14.688-3.226-18.087-8.007l-8.294 5.818c4.205 6.451 13.709 10.425 25.805 10.425z"></path>
+						</svg>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<style>astro-island,astro-slot{display:contents}</style><script>(self.Astro=self.Astro||{}).visible=(s,c,n)=>{const r=async()=>{await(await s())()};let i=new IntersectionObserver(e=>{for(const t of e)if(!!t.isIntersecting){i.disconnect(),r();break}});for(let e=0;e<n.children.length;e++){const t=n.children[e];i.observe(t)}},window.dispatchEvent(new Event("astro:visible"));var l;{const c={0:t=>t,1:t=>JSON.parse(t,o),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(JSON.parse(t,o)),5:t=>new Set(JSON.parse(t,o)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(JSON.parse(t)),9:t=>new Uint16Array(JSON.parse(t)),10:t=>new Uint32Array(JSON.parse(t))},o=(t,s)=>{if(t===""||!Array.isArray(s))return s;const[e,n]=s;return e in c?c[e](n):void 0};customElements.get("astro-island")||customElements.define("astro-island",(l=class extends HTMLElement{constructor(){super(...arguments);this.hydrate=()=>{if(!this.hydrator||this.parentElement&&this.parentElement.closest("astro-island[ssr]"))return;const s=this.querySelectorAll("astro-slot"),e={},n=this.querySelectorAll("template[data-astro-template]");for(const r of n){const i=r.closest(this.tagName);!i||!i.isSameNode(this)||(e[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(const r of s){const i=r.closest(this.tagName);!i||!i.isSameNode(this)||(e[r.getAttribute("name")||"default"]=r.innerHTML)}const a=this.hasAttribute("props")?JSON.parse(this.getAttribute("props"),o):{};this.hydrator(this)(this.Component,a,e,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),window.removeEventListener("astro:hydrate",this.hydrate),window.dispatchEvent(new CustomEvent("astro:hydrate"))}}connectedCallback(){!this.hasAttribute("await-children")||this.firstChild?this.childrenConnectedCallback():new MutationObserver((s,e)=>{e.disconnect(),this.childrenConnectedCallback()}).observe(this,{childList:!0})}async childrenConnectedCallback(){window.addEventListener("astro:hydrate",this.hydrate);let s=this.getAttribute("before-hydration-url");s&&await import(s),this.start()}start(){const s=JSON.parse(this.getAttribute("opts")),e=this.getAttribute("client");if(Astro[e]===void 0){window.addEventListener(`astro:${e}`,()=>this.start(),{once:!0});return}Astro[e](async()=>{const n=this.getAttribute("renderer-url"),[a,{default:r}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),i=this.getAttribute("component-export")||"default";if(!i.includes("."))this.Component=a[i];else{this.Component=a;for(const d of i.split("."))this.Component=this.Component[d]}return this.hydrator=r,this.hydrate},s,this)}attributeChangedCallback(){this.hydrator&&this.hydrate()}},l.observedAttributes=["props"],l))}</script><astro-island uid="2tcXi2" component-url="/ThemeToggleButton.6de6281e.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{&quot;labels&quot;:[0,{&quot;useLight&quot;:[0,&quot;Use light theme&quot;],&quot;useDark&quot;:[0,&quot;Use dark theme&quot;]}],&quot;isInsideHeader&quot;:[0,true]}" ssr="" client="visible" opts="{&quot;name&quot;:&quot;ThemeToggleButton&quot;,&quot;value&quot;:true}" await-children=""><div class="theme-toggle hide-toggle-on-smaller-screens"><label title="Use light theme" class=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path></svg><input type="radio" name="theme-toggle" aria-label="Use light theme" value="light"/></label><label title="Use dark theme" class=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg><input type="radio" name="theme-toggle" aria-label="Use dark theme" value="dark"/></label></div></astro-island>
+		<!-- {lang && <LanguageSelect lang={lang} client:idle />} -->
+		<!-- 
+			TODO：搜索功能
+			后期再做，暂时隐藏
+			参考文档 https://blog.csdn.net/weixin_40026797/article/details/126063524 -->
+		<!-- <Search {lang} labels={docsearchStrings} /> -->
+		<a class="astro astro-I6GUSDXI" href="https://github.com/tanggd" target="_blank" rel="noopener noreferrer">
+			<img src="/assets/github.4e28406c.svg" alt="github" class="astro-I6GUSDXI">
+		</a>
+		<script>(self.Astro=self.Astro||{}).idle=t=>{const e=async()=>{await(await t())()};"requestIdleCallback"in window?window.requestIdleCallback(e):setTimeout(e,200)},window.dispatchEvent(new Event("astro:idle"));</script><astro-island uid="Z1Iw7D6" component-url="/SidebarToggle.2303dca7.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{}" ssr="" client="idle" opts="{&quot;name&quot;:&quot;SidebarToggle&quot;,&quot;value&quot;:true}" await-children=""><button id="menu-toggle" class="header-button" type="button" aria-pressed="false"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg><span class="sr-only">Toggle sidebar</span></button></astro-island>
+	</nav>
+</header>
+
+
+		<main class="layout astro-KR5WJSBZ">
+			<aside id="left-sidebar" class="sidebar astro-KR5WJSBZ">
+				
+					<nav aria-label="Primary" class="astro-VHM34O3D">
+	<script>(self.Astro=self.Astro||{}).load=a=>{(async()=>await(await a())())()},window.dispatchEvent(new Event("astro:load"));</script><astro-island uid="Z1KQCLa" component-url="/SidebarToggleTabGroup.2446d59c.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{&quot;defaultActiveTab&quot;:[0,&quot;learn&quot;],&quot;labels&quot;:[0,{&quot;learn&quot;:[0,&quot;Learn&quot;],&quot;api&quot;:[0,&quot;Tools&quot;]}]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;SidebarToggleTabGroup&quot;,&quot;value&quot;:true}" await-children=""><div class="TabGroup"><button class="active">Learn</button><button class="">Tools</button></div></astro-island>
+	<ul class="nav-groups astro-VHM34O3D">
+		<li class="nav-group learn active astro-Q2W3FM2V">
+			<details open class="astro-Q2W3FM2V">
+				<summary class="nav-group-title astro-Q2W3FM2V">
+					<h2 class="astro-Q2W3FM2V">
+						CSS
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 1 16 16" width="16" height="16" aria-hidden="true" class="astro-Q2W3FM2V">
+							<path fill-rule="evenodd" d="M6.22 3.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 010-1.06z" class="astro-Q2W3FM2V"></path>
+						</svg>
+					</h2>
+				</summary>
+				<ul class="astro-Q2W3FM2V">
+					<li class="nav-link astro-Q2W3FM2V">
+							<a href="/en/css/xxx/" aria-current="false" data-current-parent="false" class="astro-Q2W3FM2V">
+								CSS世界 <sup class="fallback astro-Q2W3FM2V">EN</sup>
+							</a>
+						</li>
+				</ul>
+			</details>
+		</li>
+
+
+		<li class="nav-group api astro-Q2W3FM2V">
+			<details open class="astro-Q2W3FM2V">
+				<summary class="nav-group-title astro-Q2W3FM2V">
+					<h2 class="astro-Q2W3FM2V">
+						小工具
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 1 16 16" width="16" height="16" aria-hidden="true" class="astro-Q2W3FM2V">
+							<path fill-rule="evenodd" d="M6.22 3.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 010-1.06z" class="astro-Q2W3FM2V"></path>
+						</svg>
+					</h2>
+				</summary>
+				<ul class="astro-Q2W3FM2V">
+					<li class="nav-link astro-Q2W3FM2V">
+							<a href="/en/tools/make-certificate-photos/" aria-current="false" data-current-parent="false" class="astro-Q2W3FM2V">
+								制作证件照 <sup class="fallback astro-Q2W3FM2V">EN</sup>
+							</a>
+						</li>
+				</ul>
+			</details>
+		</li>
+
+
+		<li style="text-align: center;" class="astro-VHM34O3D">
+			<astro-island uid="1IhUvw" component-url="/ThemeToggleButton.6de6281e.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{&quot;labels&quot;:[0,{&quot;useLight&quot;:[0,&quot;Use light theme&quot;],&quot;useDark&quot;:[0,&quot;Use dark theme&quot;]}]}" ssr="" client="visible" opts="{&quot;name&quot;:&quot;ThemeToggleButton&quot;,&quot;value&quot;:true}" await-children=""><div class="theme-toggle "><label title="Use light theme" class=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path></svg><input type="radio" name="theme-toggle" aria-label="Use light theme" value="light"/></label><label title="Use dark theme" class=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg><input type="radio" name="theme-toggle" aria-label="Use dark theme" value="dark"/></label></div></astro-island>
+		</li>
+	</ul>
+</nav>
+
+
+
+
+				
+			</aside>
+			<aside id="right-sidebar" class="sidebar astro-KR5WJSBZ">
+				<script>(self.Astro=self.Astro||{}).media=(s,a)=>{const t=async()=>{await(await s())()};if(a.value){const e=matchMedia(a.value);e.matches?t():e.addEventListener("change",t,{once:!0})}},window.dispatchEvent(new Event("astro:media"));</script><nav aria-label="Secondary" class="astro-TFI5F24A">
+	<astro-island uid="ZPxCvK" component-url="/TableOfContents.dc58575b.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{&quot;headings&quot;:[1,&quot;[[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;static-routes\&quot;],\&quot;text\&quot;:[0,\&quot;Static routes\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;navigating-between-pages\&quot;],\&quot;text\&quot;:[0,\&quot;Navigating between pages\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;dynamic-routes\&quot;],\&quot;text\&quot;:[0,\&quot;Dynamic routes\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;static-ssg-mode\&quot;],\&quot;text\&quot;:[0,\&quot;Static (SSG) Mode\&quot;]}],[0,{\&quot;depth\&quot;:[0,4],\&quot;slug\&quot;:[0,\&quot;rest-parameters\&quot;],\&quot;text\&quot;:[0,\&quot;Rest parameters\&quot;]}],[0,{\&quot;depth\&quot;:[0,4],\&quot;slug\&quot;:[0,\&quot;example-dynamic-pages-at-multiple-levels\&quot;],\&quot;text\&quot;:[0,\&quot;Example: Dynamic pages at multiple levels\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;server-ssr-mode\&quot;],\&quot;text\&quot;:[0,\&quot;Server (SSR) Mode\&quot;]}],[0,{\&quot;depth\&quot;:[0,4],\&quot;slug\&quot;:[0,\&quot;modifying-the-slug-example-for-ssr\&quot;],\&quot;text\&quot;:[0,\&quot;Modifying the [...slug] example for SSR\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;route-priority-order\&quot;],\&quot;text\&quot;:[0,\&quot;Route Priority Order\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;pagination\&quot;],\&quot;text\&quot;:[0,\&quot;Pagination\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;the-page-prop\&quot;],\&quot;text\&quot;:[0,\&quot;The page prop\&quot;]}],[0,{\&quot;depth\&quot;:[0,4],\&quot;slug\&quot;:[0,\&quot;complete-api-reference\&quot;],\&quot;text\&quot;:[0,\&quot;Complete API reference\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;nested-pagination\&quot;],\&quot;text\&quot;:[0,\&quot;Nested Pagination\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;excluding-pages\&quot;],\&quot;text\&quot;:[0,\&quot;Excluding pages\&quot;]}]]&quot;],&quot;labels&quot;:[0,{&quot;onThisPage&quot;:[0,&quot;On this page&quot;],&quot;overview&quot;:[0,&quot;Overview&quot;]}],&quot;isMobile&quot;:[0,false]}" ssr="" client="media" opts="{&quot;name&quot;:&quot;TableOfContents&quot;,&quot;value&quot;:&quot;(min-width: 50em)&quot;}" await-children=""><h2 class="heading" id="on-this-page-heading">On this page</h2><ul><li class="header-link depth-2 current-header-link"><a href="#overview">Overview</a></li><li class="header-link depth-2"><a href="#static-routes">Static routes</a></li><li class="header-link depth-2"><a href="#navigating-between-pages">Navigating between pages</a></li><li class="header-link depth-2"><a href="#dynamic-routes">Dynamic routes</a></li><li class="header-link depth-3"><a href="#static-ssg-mode">Static (SSG) Mode</a></li><li class="header-link depth-3"><a href="#server-ssr-mode">Server (SSR) Mode</a></li><li class="header-link depth-2"><a href="#route-priority-order">Route Priority Order</a></li><li class="header-link depth-2"><a href="#pagination">Pagination</a></li><li class="header-link depth-3"><a href="#the-page-prop">The page prop</a></li><li class="header-link depth-3"><a href="#nested-pagination">Nested Pagination</a></li><li class="header-link depth-2"><a href="#excluding-pages">Excluding pages</a></li></ul></astro-island>
+</nav>
+
+
+			</aside>
+			<div id="main-content" class="main-column astro-KR5WJSBZ">
+				<div dir="ltr" class="astro-2XBDZOYQ">
+	<div class="fixed-mobile-bar astro-2XBDZOYQ" dir="ltr">
+					<nav>
+						<astro-island uid="JEpDD" component-url="/TableOfContents.dc58575b.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{&quot;headings&quot;:[1,&quot;[[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;static-routes\&quot;],\&quot;text\&quot;:[0,\&quot;Static routes\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;navigating-between-pages\&quot;],\&quot;text\&quot;:[0,\&quot;Navigating between pages\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;dynamic-routes\&quot;],\&quot;text\&quot;:[0,\&quot;Dynamic routes\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;static-ssg-mode\&quot;],\&quot;text\&quot;:[0,\&quot;Static (SSG) Mode\&quot;]}],[0,{\&quot;depth\&quot;:[0,4],\&quot;slug\&quot;:[0,\&quot;rest-parameters\&quot;],\&quot;text\&quot;:[0,\&quot;Rest parameters\&quot;]}],[0,{\&quot;depth\&quot;:[0,4],\&quot;slug\&quot;:[0,\&quot;example-dynamic-pages-at-multiple-levels\&quot;],\&quot;text\&quot;:[0,\&quot;Example: Dynamic pages at multiple levels\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;server-ssr-mode\&quot;],\&quot;text\&quot;:[0,\&quot;Server (SSR) Mode\&quot;]}],[0,{\&quot;depth\&quot;:[0,4],\&quot;slug\&quot;:[0,\&quot;modifying-the-slug-example-for-ssr\&quot;],\&quot;text\&quot;:[0,\&quot;Modifying the [...slug] example for SSR\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;route-priority-order\&quot;],\&quot;text\&quot;:[0,\&quot;Route Priority Order\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;pagination\&quot;],\&quot;text\&quot;:[0,\&quot;Pagination\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;the-page-prop\&quot;],\&quot;text\&quot;:[0,\&quot;The page prop\&quot;]}],[0,{\&quot;depth\&quot;:[0,4],\&quot;slug\&quot;:[0,\&quot;complete-api-reference\&quot;],\&quot;text\&quot;:[0,\&quot;Complete API reference\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;nested-pagination\&quot;],\&quot;text\&quot;:[0,\&quot;Nested Pagination\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;excluding-pages\&quot;],\&quot;text\&quot;:[0,\&quot;Excluding pages\&quot;]}]]&quot;],&quot;labels&quot;:[0,{&quot;onThisPage&quot;:[0,&quot;On this page&quot;],&quot;overview&quot;:[0,&quot;Overview&quot;]}],&quot;isMobile&quot;:[0,true]}" ssr="" client="media" opts="{&quot;name&quot;:&quot;TableOfContents&quot;,&quot;value&quot;:&quot;(max-width: 72em)&quot;}" await-children=""><details class="toc-mobile-container"><summary class="toc-mobile-header"><div class="toc-mobile-header-content"><div class="toc-toggle"><h2 class="heading" id="on-this-page-heading">On this page</h2><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 1 16 16" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M6.22 3.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 010-1.06z"></path></svg></div></div></summary><ul><li class="header-link depth-2 current-header-link"><a href="#overview">Overview</a></li><li class="header-link depth-2"><a href="#static-routes">Static routes</a></li><li class="header-link depth-2"><a href="#navigating-between-pages">Navigating between pages</a></li><li class="header-link depth-2"><a href="#dynamic-routes">Dynamic routes</a></li><li class="header-link depth-3"><a href="#static-ssg-mode">Static (SSG) Mode</a></li><li class="header-link depth-3"><a href="#server-ssr-mode">Server (SSR) Mode</a></li><li class="header-link depth-2"><a href="#route-priority-order">Route Priority Order</a></li><li class="header-link depth-2"><a href="#pagination">Pagination</a></li><li class="header-link depth-3"><a href="#the-page-prop">The page prop</a></li><li class="header-link depth-3"><a href="#nested-pagination">Nested Pagination</a></li><li class="header-link depth-2"><a href="#excluding-pages">Excluding pages</a></li></ul></details></astro-island>
+					</nav>
+				</div><div class="spacer astro-2XBDZOYQ"></div>
+	<article id="article" class="content astro-2XBDZOYQ">
+		<section class="main-section astro-2XBDZOYQ">
+			<header class="astro-2XBDZOYQ">
+				
+				<h1 class="content-title astro-2XBDZOYQ" id="overview">Routing</h1>
+				
+			</header>
+			
+			<p>Astro uses <strong>file-based routing</strong> to generate your build URLs based on the file layout of your project <code>src/pages/</code> directory. When a file is added to the <code>src/pages</code> directory of your project, it is automatically available as a route based on its filename.</p><div class="heading-wrapper level-h2" tabindex="-1"><h2 id="static-routes">Static routes</h2><a class="anchor-link" href="#static-routes"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Static routes</span></a></div><p>Astro Components (<code>.astro</code>) and Markdown Files (<code>.md</code>) in the <code>src/pages</code> directory <strong>automatically become pages on your website</strong>. Each page’s route corresponds to its path and filename within the <code>src/pages</code> directory.</p>
+<figure class="code-snippet lang-diff">
+	<figcaption class="header"></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD"># Example: Static routes</span></span>
+<span class="line"><span style="color:#D8DEE9">src/pages/index.astro        -&gt; mysite.com/</span></span>
+<span class="line"><span style="color:#D8DEE9">src/pages/about.astro        -&gt; mysite.com/about</span></span>
+<span class="line"><span style="color:#D8DEE9">src/pages/about/index.astro  -&gt; mysite.com/about</span></span>
+<span class="line"><span style="color:#D8DEE9">src/pages/about/me.astro     -&gt; mysite.com/about/me</span></span>
+<span class="line"><span style="color:#D8DEE9">src/pages/posts/1.md         -&gt; mysite.com/posts/1</span></span></code></pre>
+</figure><aside class="content tip astro-J4JMU3BW" aria-label="Tip">
+	<p class="title astro-J4JMU3BW" aria-hidden="true">
+		<span class="icon astro-J4JMU3BW">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" width="16" height="16" class="astro-J4JMU3BW">
+				<path fill-rule="evenodd" d="M14 0a8.8 8.8 0 0 0-6 2.6l-.5.4-.9 1H3.3a1.8 1.8 0 0 0-1.5.8L.1 7.6a.8.8 0 0 0 .4 1.1l3.1 1 .2.1 2.4 2.4.1.2 1 3a.8.8 0 0 0 1 .5l2.9-1.7a1.8 1.8 0 0 0 .8-1.5V9.5l1-1 .4-.4A8.8 8.8 0 0 0 16 2v-.1A1.8 1.8 0 0 0 14.2 0h-.1zm-3.5 10.6-.3.2L8 12.3l.5 1.8 2-1.2a.3.3 0 0 0 .1-.2v-2zM3.7 8.1l1.5-2.3.2-.3h-2a.3.3 0 0 0-.3.1l-1.2 2 1.8.5zm5.2-4.5a7.3 7.3 0 0 1 5.2-2.1h.1a.3.3 0 0 1 .3.3v.1a7.3 7.3 0 0 1-2.1 5.2l-.5.4a15.2 15.2 0 0 1-2.5 2L7.1 11 5 9l1.5-2.3a15.3 15.3 0 0 1 2-2.5l.4-.5zM12 5a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm-8.4 9.6a1.5 1.5 0 1 0-2.2-2.2 7 7 0 0 0-1.1 3 .2.2 0 0 0 .3.3c.6 0 2.2-.4 3-1.1z" class="astro-J4JMU3BW"></path>
+			</svg>
+		</span>
+		Tip
+	</p>
+	<section class="astro-J4JMU3BW">
+		<p>There is no separate “routing config” to maintain in an Astro project! When you add a file to the <code>/src/pages</code> directory, a new route is automatically created for you. In static builds, you can customize the file output format using the <a href="/en/reference/configuration-reference/#buildformat"><code>build.format</code></a> configuration option.</p>
+	</section>
+</aside>
+
+<div class="heading-wrapper level-h2" tabindex="-1"><h2 id="navigating-between-pages">Navigating between pages</h2><a class="anchor-link" href="#navigating-between-pages"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Navigating between pages</span></a></div><p>Astro uses standard HTML <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a"><code>&lt;a&gt;</code> elements</a> to navigate between routes. There is no framework-specific <code>&lt;Link&gt;</code> component provided.</p>
+<figure class="code-snippet has-title lang-astro">
+	<figcaption class="header"><span class="title">src/<wbr/>pages/<wbr/>index.astro</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">p</span><span style="color:#C7C5D3">&gt;</span><span style="color:#D8DEE9">Read more </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">a</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">href</span><span style="color:#C7C5D3">=</span><span style="color:#16C082">&quot;/about/&quot;</span><span style="color:#C7C5D3">&gt;</span><span style="color:#D8DEE9">about</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">a</span><span style="color:#C7C5D3">&gt;</span><span style="color:#D8DEE9"> Astro!</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">p</span><span style="color:#C7C5D3">&gt;</span></span></code></pre>
+</figure><div class="heading-wrapper level-h2" tabindex="-1"><h2 id="dynamic-routes">Dynamic routes</h2><a class="anchor-link" href="#dynamic-routes"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Dynamic routes</span></a></div><p>An Astro page file can specify dynamic route parameters in its filename to generate matching pages. For example, you might create an <code>authors/[author].astro</code> file that generates a bio page for every author on your blog. <code>author</code> becomes a <em>parameter</em> that you can access from inside the page.</p><p>In Astro’s default static output mode, these pages are generated at build time, and so you must predetermine the list of <code>author</code>s that get a corresponding file. In SSR mode, a page will be generated on request for any route that matches.</p><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="static-ssg-mode">Static (SSG) Mode</h3><a class="anchor-link" href="#static-ssg-mode"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Static (SSG) Mode</span></a></div><p>Because all routes must be determined at build time, a dynamic route must export a <code>getStaticPaths()</code> that returns an array of objects with a <code>params</code> property. Each of these objects will generate a corresponding route.</p><p><code>[dog].astro</code> defines the dynamic <code>dog</code> parameter in its filename, so the objects returned by <code>getStaticPaths()</code> must include <code>dog</code> in their <code>params</code>. The page can then access this parameter using <code>Astro.params</code>.</p>
+<figure class="code-snippet has-title lang-astro">
+	<figcaption class="header"><span class="title">src/<wbr/>pages/<wbr/>dogs/<wbr/>[dog].astro</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#FF657C">export</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">function</span><span style="color:#D8DEE9"> </span><span style="color:#66ADFF">getStaticPaths</span><span style="color:#D8DEE9">() </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#FF657C">return</span><span style="color:#D8DEE9"> </span><span style="color:#ABA8BD">[</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9">params</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9">dog</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;clifford&#39;</span><span style="color:#C7C5D3">}},</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9">params</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9">dog</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;rover&#39;</span><span style="color:#C7C5D3">}},</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9">params</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9">dog</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;spot&#39;</span><span style="color:#C7C5D3">}},</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#ABA8BD">]</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#C7C5D3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> dog </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> Astro</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">params</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">div</span><span style="color:#C7C5D3">&gt;</span><span style="color:#D8DEE9">Good dog, </span><span style="color:#FF657C">{</span><span style="color:#D8DEE9">dog</span><span style="color:#FF657C">}</span><span style="color:#D8DEE9">!</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">div</span><span style="color:#C7C5D3">&gt;</span></span></code></pre>
+</figure><p>This will generate three pages: <code>/dogs/clifford</code>, <code>/dogs/rover</code>, and <code>/dogs/spot</code>, each displaying the corresponding dog name.</p><p>The filename can include multiple parameters, which must all be included in the <code>params</code> objects in <code>getStaticPaths()</code>:</p>
+<figure class="code-snippet has-title lang-astro">
+	<figcaption class="header"><span class="title">src/<wbr/>pages/<wbr/>[lang]-[version]/<wbr/>info.astro</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#FF657C">export</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">function</span><span style="color:#D8DEE9"> </span><span style="color:#66ADFF">getStaticPaths</span><span style="color:#D8DEE9"> () </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9"> </span><span style="color:#FF657C">return</span><span style="color:#D8DEE9"> </span><span style="color:#ABA8BD">[</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9">params</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9">lang</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;en&#39;</span><span style="color:#C7C5D3">,</span><span style="color:#D8DEE9"> version</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;v1&#39;</span><span style="color:#C7C5D3">}},</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9">params</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9">lang</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;fr&#39;</span><span style="color:#C7C5D3">,</span><span style="color:#D8DEE9"> version</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;v2&#39;</span><span style="color:#C7C5D3">}},</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#ABA8BD">]</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#C7C5D3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> lang</span><span style="color:#C7C5D3">,</span><span style="color:#D8DEE9"> version </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> Astro</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">params</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#D8DEE9">...</span></span></code></pre>
+</figure><p>This will generate <code>/en-v1/info</code> and <code>/fr-v2/info</code>.</p><p>Parameters can be included in separate parts of the path, so we could use <code>src/pages/[lang]/[version]/info.astro</code> with the same <code>getStaticPaths</code> to generate <code>/en/v1/info</code> and <code>/fr/v2/info</code>.</p><p>📚 Learn more about <a href="/en/reference/api-reference/#getstaticpaths"><code>getStaticPaths()</code></a>.</p><div class="heading-wrapper level-h4" tabindex="-1"><h4 id="rest-parameters">Rest parameters</h4><a class="anchor-link" href="#rest-parameters"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Rest parameters</span></a></div><p>If you need more flexibility in your URL routing, you can use a rest parameter (<code>[...param]</code>) in your <code>.astro</code> filename to match file paths of any depth:</p>
+<figure class="code-snippet has-title lang-astro">
+	<figcaption class="header"><span class="title">src/<wbr/>pages/<wbr/>sequences/<wbr/>[...path].astro</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#FF657C">export</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">function</span><span style="color:#D8DEE9"> </span><span style="color:#66ADFF">getStaticPaths</span><span style="color:#D8DEE9">() </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#FF657C">return</span><span style="color:#D8DEE9"> </span><span style="color:#ABA8BD">[</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9">params</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9">path</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;one/two/three&#39;</span><span style="color:#C7C5D3">}},</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9">params</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9">path</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;four&#39;</span><span style="color:#C7C5D3">}},</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9">params</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9">path</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">undefined</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">}}</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#ABA8BD">]</span></span>
+<span class="line"><span style="color:#C7C5D3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> path </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> Astro</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">params</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#D8DEE9">...</span></span></code></pre>
+</figure><p>This will generate <code>/sequences/one/two/three</code>, <code>/sequences/four</code>, and <code>/sequences</code>. (Setting the rest parameter to <code>undefined</code> allows it to match the top level page.)</p><p>Rest parameters can be used with other named parameters. For example, we could represent GitHub’s file viewer with a dynamic route like this:</p>
+<figure class="code-snippet lang-">
+	<figcaption class="header"></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#d8dee9">/[org]/[repo]/tree/[branch]/[...file]</span></span></code></pre>
+</figure><p>In this example, a request for <code>/withastro/astro/tree/main/docs/public/favicon.svg</code> would be split into the following named parameters:</p>
+<figure class="code-snippet lang-js">
+	<figcaption class="header"></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">  org</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;withastro&#39;</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">  repo</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;astro&#39;</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">  branch</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;main&#39;</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">  file</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;docs/public/favicon.svg&#39;</span></span>
+<span class="line"><span style="color:#C7C5D3">}</span></span></code></pre>
+</figure><div class="heading-wrapper level-h4" tabindex="-1"><h4 id="example-dynamic-pages-at-multiple-levels">Example: Dynamic pages at multiple levels</h4><a class="anchor-link" href="#example-dynamic-pages-at-multiple-levels"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Example: Dynamic pages at multiple levels</span></a></div><p>Here, we use a rest parameter (<code>[...slug]</code>) and the <a href="/en/reference/api-reference/#data-passing-with-props"><code>props</code></a> feature of <code>getStaticPaths()</code> to generate pages for slugs of different depths.</p>
+<figure class="code-snippet has-title lang-astro">
+	<figcaption class="header"><span class="title">src/<wbr/>pages/<wbr/>[...slug].astro</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#FF657C">export</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">async</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">function</span><span style="color:#D8DEE9"> </span><span style="color:#66ADFF">getStaticPaths</span><span style="color:#D8DEE9">() </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> pages </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> </span><span style="color:#ABA8BD">[</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">      slug</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">undefined</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">      title</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;Astro Store&quot;</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">      text</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;Welcome to the Astro store!&quot;</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">},</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">      slug</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;products&quot;</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">      title</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;Astro products&quot;</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">      text</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;We have lots of products for you&quot;</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">},</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">      slug</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;products/astro-handbook&quot;</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">      title</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;The ultimate Astro handbook&quot;</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">      text</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;If you want to learn Astro, you must read this book.&quot;</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">},</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#ABA8BD">]</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#FF657C">return</span><span style="color:#D8DEE9"> pages</span><span style="color:#C7C5D3">.</span><span style="color:#66ADFF">map</span><span style="color:#ABA8BD">(</span><span style="color:#D8DEE9">(</span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> slug</span><span style="color:#C7C5D3">,</span><span style="color:#D8DEE9"> title</span><span style="color:#C7C5D3">,</span><span style="color:#D8DEE9"> text </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9">) </span><span style="color:#FF657C">=&gt;</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#FF657C">return</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">      params</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> slug </span><span style="color:#C7C5D3">},</span></span>
+<span class="line"><span style="color:#D8DEE9">      props</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> title</span><span style="color:#C7C5D3">,</span><span style="color:#D8DEE9"> text </span><span style="color:#C7C5D3">},</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">};</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">}</span><span style="color:#ABA8BD">)</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#C7C5D3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> title</span><span style="color:#C7C5D3">,</span><span style="color:#D8DEE9"> text </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> Astro</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">props</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">html</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">head</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">title</span><span style="color:#C7C5D3">&gt;</span><span style="color:#FF657C">{</span><span style="color:#D8DEE9">title</span><span style="color:#FF657C">}</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">title</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">head</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">body</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">h1</span><span style="color:#C7C5D3">&gt;</span><span style="color:#FF657C">{</span><span style="color:#D8DEE9">title</span><span style="color:#FF657C">}</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">h1</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">p</span><span style="color:#C7C5D3">&gt;</span><span style="color:#FF657C">{</span><span style="color:#D8DEE9">text</span><span style="color:#FF657C">}</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">p</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">body</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">html</span><span style="color:#C7C5D3">&gt;</span></span></code></pre>
+</figure><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="server-ssr-mode">Server (SSR) Mode</h3><a class="anchor-link" href="#server-ssr-mode"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Server (SSR) Mode</span></a></div><p>In <a href="/en/guides/server-side-rendering/">SSR mode</a>, dynamic routes are defined the same way: include <code>[param]</code> or <code>[...path]</code> brackets in your file names to match arbitrary strings or paths. But because the routes are no longer built ahead of time, the page will be served to any matching route. Since these are not “static” routes, <code>getStaticPaths</code> should not be used.</p>
+<figure class="code-snippet has-title lang-astro">
+	<figcaption class="header"><span class="title">src/<wbr/>pages/<wbr/>resources/<wbr/>[resource]/<wbr/>[id].astro</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> resource</span><span style="color:#C7C5D3">,</span><span style="color:#D8DEE9"> id </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> Astro</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">params</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">h1</span><span style="color:#C7C5D3">&gt;</span><span style="color:#FF657C">{</span><span style="color:#D8DEE9">resource</span><span style="color:#FF657C">}</span><span style="color:#D8DEE9">: </span><span style="color:#FF657C">{</span><span style="color:#D8DEE9">id</span><span style="color:#FF657C">}</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">h1</span><span style="color:#C7C5D3">&gt;</span></span></code></pre>
+</figure><p>This page will be served for any value of <code>resource</code> and <code>id</code>: <code>resources/users/1</code>, <code>resources/colors/blue</code>, etc.</p><div class="heading-wrapper level-h4" tabindex="-1"><h4 id="modifying-the-slug-example-for-ssr">Modifying the <code>[...slug]</code> example for SSR</h4><a class="anchor-link" href="#modifying-the-slug-example-for-ssr"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Modifying the [...slug] example for SSR</span></a></div><p>Because SSR pages can’t use <code>getStaticPaths</code>, they can’t receive props. Here, we modify our <a href="#example-dynamic-pages-at-multiple-levels">earlier example</a> to work in SSR by looking up the value of the <code>slug</code> param in an object. If the route is at the root (”/”), the slug param will be <code>undefined</code>. If the value doesn’t exist in the object, we redirect to a 404 page.</p>
+<figure class="code-snippet has-title lang-astro">
+	<figcaption class="header"><span class="title">src/<wbr/>pages/<wbr/>[...slug].astro</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> pages </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> </span><span style="color:#ABA8BD">[</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">    slug</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">undefined</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">    title</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;Astro Store&#39;</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">    text</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;Welcome to the Astro store!&#39;</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">},</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">    slug</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;products&#39;</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">    title</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;Astro products&#39;</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">    text</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;We have lots of products for you&#39;</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">},</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">    slug</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;products/astro-handbook&#39;</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">    title</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;The ultimate Astro handbook&#39;</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">    text</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;If you want to learn Astro, you must read this book.&#39;</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">}</span></span>
+<span class="line"><span style="color:#ABA8BD">]</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> slug </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> Astro</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">params</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> page </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> pages</span><span style="color:#C7C5D3">.</span><span style="color:#66ADFF">find</span><span style="color:#ABA8BD">(</span><span style="color:#D8DEE9">(page) </span><span style="color:#FF657C">=&gt;</span><span style="color:#D8DEE9"> page</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">slug </span><span style="color:#FF657C">===</span><span style="color:#D8DEE9"> slug</span><span style="color:#ABA8BD">)</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#FF657C">if</span><span style="color:#D8DEE9"> </span><span style="color:#ABA8BD">(</span><span style="color:#FF657C">!</span><span style="color:#D8DEE9">page</span><span style="color:#ABA8BD">)</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">return</span><span style="color:#D8DEE9"> Astro</span><span style="color:#C7C5D3">.</span><span style="color:#66ADFF">redirect</span><span style="color:#ABA8BD">(</span><span style="color:#16C082">&quot;/404&quot;</span><span style="color:#ABA8BD">)</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> title</span><span style="color:#C7C5D3">,</span><span style="color:#D8DEE9"> text </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> page</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">html</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">head</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">title</span><span style="color:#C7C5D3">&gt;</span><span style="color:#FF657C">{</span><span style="color:#D8DEE9">title</span><span style="color:#FF657C">}</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">title</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">head</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">body</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">h1</span><span style="color:#C7C5D3">&gt;</span><span style="color:#FF657C">{</span><span style="color:#D8DEE9">title</span><span style="color:#FF657C">}</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">h1</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">p</span><span style="color:#C7C5D3">&gt;</span><span style="color:#FF657C">{</span><span style="color:#D8DEE9">text</span><span style="color:#FF657C">}</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">p</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">body</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">html</span><span style="color:#C7C5D3">&gt;</span></span></code></pre>
+</figure><div class="heading-wrapper level-h2" tabindex="-1"><h2 id="route-priority-order">Route Priority Order</h2><a class="anchor-link" href="#route-priority-order"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Route Priority Order</span></a></div><p>It’s possible for multiple routes to match the same URL path. For example each of these routes would match <code>/posts/create</code>:</p>
+<figure class="code-snippet lang-">
+	<figcaption class="header"></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#d8dee9">└── pages/</span></span>
+<span class="line"><span style="color:#d8dee9">│       ├── posts/</span></span>
+<span class="line"><span style="color:#d8dee9">│       │   ├── create.astro</span></span>
+<span class="line"><span style="color:#d8dee9">│       │   ├── [pid].astro</span></span>
+<span class="line"><span style="color:#d8dee9">│       │   └── [...slug].astro</span></span></code></pre>
+</figure><p>Astro needs to know which route should be used to build the page. To do so, it sorts them according to the following rules:</p><ul>
+<li>Static routes without path parameters will take precedence over all other routes</li>
+<li>Dynamic routes using named parameters take precedence over rest parameters</li>
+<li>Rest parameters have the lowest priority</li>
+<li>Ties are resolved alphabetically</li>
+</ul><p>Given the example above, here are a few examples of how the rules will match a requested URL to the route used to build the HTML:</p><ul>
+<li><code>pages/posts/create.astro</code> - Will build <code>/posts/create</code></li>
+<li><code>pages/posts/[pid].astro</code> - Will build <code>/posts/1</code>, <code>/posts/abc</code>, etc. But not <code>/posts/create</code></li>
+<li><code>pages/posts/[...slug].astro</code> - Will build <code>/posts/1/2</code>, <code>/posts/a/b/c</code>, etc. But not <code>/posts/create</code>, <code>/posts/1</code>, <code>/posts/abc</code></li>
+</ul><div class="heading-wrapper level-h2" tabindex="-1"><h2 id="pagination">Pagination</h2><a class="anchor-link" href="#pagination"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Pagination</span></a></div><p>Astro supports built-in pagination for large collections of data that need to be split into multiple pages. Astro will generate common pagination properties, including previous/next page URLs, total number of pages, and more.</p><p>Paginated route names should use the same <code>[bracket]</code> syntax as a standard dynamic route. For instance, the file name <code>/astronauts/[page].astro</code> will generate routes for <code>/astronauts/1</code>, <code>/astronauts/2</code>, etc, where <code>[page]</code> is the generated page number.</p><p>You can use the <code>paginate()</code> function to generate these pages for an array of values like so:</p>
+<figure class="code-snippet has-title lang-astro">
+	<figcaption class="header"><span class="title">src/<wbr/>pages/<wbr/>astronauts/<wbr/>[page].astro</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#FF657C">export</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">async</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">function</span><span style="color:#D8DEE9"> </span><span style="color:#66ADFF">getStaticPaths</span><span style="color:#D8DEE9">(</span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> </span><mark><span style="color:#d8dee9">paginate</span></mark><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9">) </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> astronautPages </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> </span><span style="color:#ABA8BD">[</span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">    astronaut</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;Neil Armstrong&#39;</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">},</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">    astronaut</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;Buzz Aldrin&#39;</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">},</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">    astronaut</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;Sally Ride&#39;</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">},</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">    astronaut</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;John Glenn&#39;</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">}</span><span style="color:#ABA8BD">]</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#C7C5D3">  </span><span style="color:#ABA8BD">// Generate pages from our array of astronauts, with 2 to a page</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#FF657C">return</span><span style="color:#D8DEE9"> </span><mark><span style="color:#86beff">paginate</span><span style="color:#bbb8c9">(</span><span style="color:#d8dee9">astronautPages</span><span style="color:#c7c5d3">,</span><span style="color:#d8dee9"> </span><span style="color:#c7c5d3">{</span><span style="color:#d8dee9"> pageSize</span><span style="color:#c7c5d3">:</span><span style="color:#d8dee9"> </span><span style="color:#ebcb8b">2</span><span style="color:#d8dee9"> </span><span style="color:#c7c5d3">}</span><span style="color:#bbb8c9">)</span></mark><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#C7C5D3">}</span></span>
+<span class="line"><span style="color:#ABA8BD">// All paginated data is passed on the &quot;page&quot; prop</span></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> </span><mark><span style="color:#d8dee9">page</span></mark><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> Astro</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">props</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#ABA8BD">&lt;!--Display the current page number. Astro.params.page can also be used!--&gt;</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">h1</span><span style="color:#C7C5D3">&gt;</span><span style="color:#D8DEE9">Page </span><span style="color:#FF657C">{</span><mark><span style="color:#d8dee9">page</span><span style="color:#c7c5d3">.</span><span style="color:#d8dee9">currentPage</span></mark><span style="color:#FF657C">}</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">h1</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">ul</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#ABA8BD">&lt;!--List the array of astronaut info--&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#FF657C">{</span><mark><span style="color:#d8dee9">page</span><span style="color:#c7c5d3">.</span><span style="color:#d8dee9">data</span></mark><span style="color:#C7C5D3">.</span><span style="color:#66ADFF">map</span><span style="color:#ABA8BD">(</span><span style="color:#D8DEE9">(</span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> astronaut </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9">) </span><span style="color:#FF657C">=&gt;</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">li</span><span style="color:#C7C5D3">&gt;</span><span style="color:#FF657C">{</span><span style="color:#D8DEE9">astronaut</span><span style="color:#FF657C">}</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">li</span><span style="color:#C7C5D3">&gt;</span><span style="color:#ABA8BD">)</span><span style="color:#FF657C">}</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">ul</span><span style="color:#C7C5D3">&gt;</span></span></code></pre>
+</figure><p>This generates the following pages, with 2 items to a page:</p><ul>
+<li><code>/astronauts/1</code> - Page 1: Displays “Neil Armstrong” and “Buzz Aldrin”</li>
+<li><code>/astronauts/2</code> - Page 2: Displays “Sally Ride” and “John Glenn”</li>
+</ul><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="the-page-prop">The <code>page</code> prop</h3><a class="anchor-link" href="#the-page-prop"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled The page prop</span></a></div><p>When you use the <code>paginate()</code> function, each page will be passed its data via a <code>page</code> prop. The <code>page</code> prop has many useful properties, but here are the highlights:</p><ul>
+<li><strong>page.data</strong> - array containing the page’s slice of data that you passed to the <code>paginate()</code> function</li>
+<li><strong>page.url.next</strong> - link to the next page in the set</li>
+<li><strong>page.url.prev</strong> - link to the previous page in the set</li>
+</ul>
+<figure class="code-snippet has-title lang-astro">
+	<figcaption class="header"><span class="title">src/<wbr/>pages/<wbr/>astronauts/<wbr/>[page].astro</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#ABA8BD">// Paginate same list of { astronaut } objects as the previous example</span></span>
+<span class="line"><span style="color:#FF657C">export</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">async</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">function</span><span style="color:#D8DEE9"> </span><span style="color:#66ADFF">getStaticPaths</span><span style="color:#D8DEE9">(</span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> paginate </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9">) </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> </span><span style="color:#ABA8BD">/* ... */</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">}</span></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> </span><mark><span style="color:#d8dee9">page</span></mark><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> Astro</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">props</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">h1</span><span style="color:#C7C5D3">&gt;</span><span style="color:#D8DEE9">Page </span><span style="color:#FF657C">{</span><mark><span style="color:#d8dee9">page</span><span style="color:#c7c5d3">.</span><span style="color:#d8dee9">currentPage</span></mark><span style="color:#FF657C">}</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">h1</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">ul</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#FF657C">{</span><mark><span style="color:#d8dee9">page</span><span style="color:#c7c5d3">.</span><span style="color:#d8dee9">data</span></mark><span style="color:#C7C5D3">.</span><span style="color:#66ADFF">map</span><span style="color:#ABA8BD">(</span><span style="color:#D8DEE9">(</span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> astronaut </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9">) </span><span style="color:#FF657C">=&gt;</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">li</span><span style="color:#C7C5D3">&gt;</span><span style="color:#FF657C">{</span><span style="color:#D8DEE9">astronaut</span><span style="color:#FF657C">}</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">li</span><span style="color:#C7C5D3">&gt;</span><span style="color:#ABA8BD">)</span><span style="color:#FF657C">}</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">ul</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#FF657C">{</span><mark><span style="color:#d8dee9">page</span><span style="color:#c7c5d3">.</span><span style="color:#d8dee9">url</span><span style="color:#c7c5d3">.</span><span style="color:#d8dee9">prev</span></mark><span style="color:#D8DEE9"> </span><span style="color:#FF657C">?</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">a</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">href</span><span style="color:#FF657C">={</span><mark><span style="color:#d8dee9">page</span><span style="color:#c7c5d3">.</span><span style="color:#d8dee9">url</span><span style="color:#c7c5d3">.</span><span style="color:#d8dee9">prev</span></mark><span style="color:#FF657C">}</span><span style="color:#C7C5D3">&gt;</span><span style="color:#D8DEE9">Previous</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">a</span><span style="color:#C7C5D3">&gt;</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">:</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">null}</span></span>
+<span class="line"><span style="color:#FF657C">{</span><mark><span style="color:#d8dee9">page</span><span style="color:#c7c5d3">.</span><span style="color:#d8dee9">url</span><span style="color:#c7c5d3">.</span><span style="color:#d8dee9">next</span></mark><span style="color:#D8DEE9"> </span><span style="color:#FF657C">?</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">a</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">href</span><span style="color:#FF657C">={</span><mark><span style="color:#d8dee9">page</span><span style="color:#c7c5d3">.</span><span style="color:#d8dee9">url</span><span style="color:#c7c5d3">.</span><span style="color:#d8dee9">next</span></mark><span style="color:#FF657C">}</span><span style="color:#C7C5D3">&gt;</span><span style="color:#D8DEE9">Next</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">a</span><span style="color:#C7C5D3">&gt;</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">:</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">null}</span></span></code></pre>
+</figure><div class="heading-wrapper level-h4" tabindex="-1"><h4 id="complete-api-reference">Complete API reference</h4><a class="anchor-link" href="#complete-api-reference"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Complete API reference</span></a></div>
+<figure class="code-snippet lang-ts">
+	<figcaption class="header"></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#FF657C">interface</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">Page</span><span style="color:#C7C5D3">&lt;</span><span style="color:#FFBD2E">T</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">any</span><span style="color:#C7C5D3">&gt;</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#ABA8BD">/** result */</span></span>
+<span class="line"><span style="color:#D8DEE9">  data</span><span style="color:#FF657C">:</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">T</span><span style="color:#D8DEE9">[]</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#ABA8BD">/** metadata */</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#ABA8BD">/** the count of the first item on the page, starting from 0 */</span></span>
+<span class="line"><span style="color:#D8DEE9">  start</span><span style="color:#FF657C">:</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">number</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#ABA8BD">/** the count of the last item on the page, starting from 0 */</span></span>
+<span class="line"><span style="color:#D8DEE9">  end</span><span style="color:#FF657C">:</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">number</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#ABA8BD">/** total number of results */</span></span>
+<span class="line"><span style="color:#D8DEE9">  total</span><span style="color:#FF657C">:</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">number</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#ABA8BD">/** the current page number, starting from 1 */</span></span>
+<span class="line"><span style="color:#D8DEE9">  currentPage</span><span style="color:#FF657C">:</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">number</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#ABA8BD">/** number of items per page (default: 25) */</span></span>
+<span class="line"><span style="color:#D8DEE9">  size</span><span style="color:#FF657C">:</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">number</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#ABA8BD">/** number of last page */</span></span>
+<span class="line"><span style="color:#D8DEE9">  lastPage</span><span style="color:#FF657C">:</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">number</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#D8DEE9">  url</span><span style="color:#FF657C">:</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#ABA8BD">/** url of the current page */</span></span>
+<span class="line"><span style="color:#D8DEE9">    current</span><span style="color:#FF657C">:</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">string</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#ABA8BD">/** url of the previous page (if there is one) */</span></span>
+<span class="line"><span style="color:#D8DEE9">    prev</span><span style="color:#FF657C">:</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">string</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">|</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">undefined</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#ABA8BD">/** url of the next page (if there is one) */</span></span>
+<span class="line"><span style="color:#D8DEE9">    next</span><span style="color:#FF657C">:</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">string</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">|</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">undefined</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">};</span></span>
+<span class="line"><span style="color:#C7C5D3">}</span></span></code></pre>
+</figure><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="nested-pagination">Nested Pagination</h3><a class="anchor-link" href="#nested-pagination"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Nested Pagination</span></a></div><p>A more advanced use-case for pagination is <strong>nested pagination.</strong> This is when pagination is combined with other dynamic route params. You can use nested pagination to group your paginated collection by some property or tag.</p><p>For example, if you want to group your paginated Markdown posts by some tag, you would use nested pagination by creating a <code>/src/pages/[tag]/[page].astro</code> page that would match the following URLS:</p><ul>
+<li><code>/red/1</code> (tag=red)</li>
+<li><code>/red/2</code> (tag=red)</li>
+<li><code>/blue/1</code> (tag=blue)</li>
+<li><code>/green/1</code> (tag=green)</li>
+</ul><p>Nested pagination works by returning an array of <code>paginate()</code> results from <code>getStaticPaths()</code>, one for each grouping.</p><p>In the following example, we will implement nested pagination to build the URLs listed above:</p>
+<figure class="code-snippet has-title lang-astro">
+	<figcaption class="header"><span class="title">src/<wbr/>pages/<wbr/>[tag]/<wbr/>[page].astro</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#FF657C">export</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">async</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">function</span><span style="color:#D8DEE9"> </span><span style="color:#66ADFF">getStaticPaths</span><span style="color:#D8DEE9">(</span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> paginate </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9">) </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> allTags </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> </span><span style="color:#ABA8BD">[</span><span style="color:#16C082">&#39;red&#39;</span><span style="color:#C7C5D3">,</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;blue&#39;</span><span style="color:#C7C5D3">,</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;green&#39;</span><span style="color:#ABA8BD">]</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> allPosts </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">await</span><span style="color:#D8DEE9"> Astro</span><span style="color:#C7C5D3">.</span><span style="color:#66ADFF">glob</span><span style="color:#ABA8BD">(</span><span style="color:#16C082">&#39;../../posts/*.md&#39;</span><span style="color:#ABA8BD">)</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#C7C5D3">  </span><span style="color:#ABA8BD">// For every tag, return a paginate() result.</span></span>
+<span class="line"><span style="color:#C7C5D3">  </span><span style="color:#ABA8BD">// Make sure that you pass `{params: {tag}}` to `paginate()`</span></span>
+<span class="line"><span style="color:#C7C5D3">  </span><span style="color:#ABA8BD">// so that Astro knows which tag grouping the result is for.</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#FF657C">return</span><span style="color:#D8DEE9"> allTags</span><span style="color:#C7C5D3">.</span><span style="color:#66ADFF">map</span><span style="color:#ABA8BD">(</span><span style="color:#D8DEE9">(</span><mark><span style="color:#d8dee9">tag</span></mark><span style="color:#D8DEE9">) </span><span style="color:#FF657C">=&gt;</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> filteredPosts </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> allPosts</span><span style="color:#C7C5D3">.</span><span style="color:#66ADFF">filter</span><span style="color:#ABA8BD">(</span><span style="color:#D8DEE9">(post) </span><span style="color:#FF657C">=&gt;</span><span style="color:#D8DEE9"> post</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">frontmatter</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">tag </span><span style="color:#FF657C">===</span><span style="color:#D8DEE9"> </span><mark><span style="color:#d8dee9">tag</span></mark><span style="color:#ABA8BD">)</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#FF657C">return</span><span style="color:#D8DEE9"> </span><span style="color:#66ADFF">paginate</span><span style="color:#ABA8BD">(</span><span style="color:#D8DEE9">filteredPosts</span><span style="color:#C7C5D3">,</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">      </span><mark><span style="color:#d8dee9">params</span><span style="color:#c7c5d3">:</span><span style="color:#d8dee9"> </span><span style="color:#c7c5d3">{</span><span style="color:#d8dee9"> tag </span><span style="color:#c7c5d3">}</span></mark><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">      pageSize</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#EBCB8B">10</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">}</span><span style="color:#ABA8BD">)</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">}</span><span style="color:#ABA8BD">)</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#C7C5D3">}</span></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> </span><mark><span style="color:#d8dee9">page</span></mark><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> Astro</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">props</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> </span><mark><span style="color:#d8dee9">params</span></mark><span style="color:#D8DEE9"> </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> Astro</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">params</span><span style="color:#C7C5D3">;</span></span></code></pre>
+</figure><div class="heading-wrapper level-h2" tabindex="-1"><h2 id="excluding-pages">Excluding pages</h2><a class="anchor-link" href="#excluding-pages"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Excluding pages</span></a></div><p>You can exclude pages, or even whole directories from being built by prefixing their names with an underscore (<code>_</code>).</p><p>This allows you to create private pages, and also to co-locate tests, utilities, and components with their related pages, preventing them from being built into <code>.html</code> files and placed into the <code>dist/</code> directory.</p><p>In this example, only <code>src/pages/index.astro</code> and <code>src/pages/posts/post1.md</code> will be built as page routes and HTML files.</p>
+<figure class="code-snippet lang-md">
+	<figcaption class="header"></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#D8DEE9">src/</span></span>
+<span class="line"><span style="color:#D8DEE9">└── pages/</span></span>
+<span class="line"><span style="color:#D8DEE9">   ├── _hidden-directory/</span></span>
+<span class="line"><span style="color:#D8DEE9">   │   ├── page1.md</span></span>
+<span class="line"><span style="color:#D8DEE9">   │   └── page2.md</span></span>
+<span class="line"><span style="color:#D8DEE9">   ├── _hidden-page.astro</span></span>
+<span class="line"><span style="color:#D8DEE9">   ├── </span><mark><span style="color:#d8dee9">index.astro</span></mark></span>
+<span class="line"><span style="color:#D8DEE9">   └── posts/</span></span>
+<span class="line"><span style="color:#D8DEE9">       ├── _SomeComponent.astro</span></span>
+<span class="line"><span style="color:#D8DEE9">       ├── _utils.js</span></span>
+<span class="line"><span style="color:#D8DEE9">       └── </span><mark><span style="color:#d8dee9">post1.md</span></mark></span></code></pre>
+</figure>
+		</section>
+		
+	</article>
+</div>
+
+
+				<span id="docsearch-lvl0" hidden class="astro-KR5WJSBZ">Learn</span>
+			</div>
+		</main>
+		<div class="main-column astro-KR5WJSBZ">
+		</div>
+	</body></html>

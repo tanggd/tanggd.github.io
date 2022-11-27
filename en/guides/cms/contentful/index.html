@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en" class="initial astro-KR5WJSBZ">
+	<head>
+		<!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="hsl(256, 44%, 15%)" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="hsl(273, 37%, 93%)" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="alternate icon" type="image/x-icon" href="/favicon.ico">
+<link rel="sitemap" href="/sitemap-index.xml">
+
+<!-- Global CSS -->
+<link rel="stylesheet" href="/theme.css">
+<link rel="stylesheet" href="/index.css">
+
+<!-- Scrollable a11y code helper -->
+<script type="module" src="/make-scrollable-code-focusable.js"></script>
+
+<!-- This is intentionally inlined to avoid FOUC -->
+
+
+<!-- Double-click to highlight code blocks (inline only). -->
+
+<!-- Fathom - beautiful, simple website analytics -->
+<script src="https://certain-quality.astro.build/script.js" data-site="EZBHTSIG" defer></script>
+
+		<!-- Page Metadata --><link rel="canonical" href="https://tanggd.github.io/en/guides/cms/contentful/">
+
+
+<link rel="alternate" href="https://tanggd.github.io/en/guides/cms/contentful/" hreflang="en"><link rel="alternate" href="https://tanggd.github.io/zh-cn/guides/cms/contentful/" hreflang="zh-CN">
+
+<!-- Algolia docsearch language facet -->
+<meta name="docsearch:language" content="en">
+
+<!-- OpenGraph Tags -->
+<meta property="og:title" content="Contentful &#38; Astro">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tanggd.github.io/en/guides/cms/contentful/">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://tanggd.github.io/open-graph/en/guides/cms/contentful.png">
+<meta property="og:image:alt" content="">
+<meta name="description" property="og:description" content="Add content to your Astro project using Contentful as a CMS">
+<meta property="og:site_name" content="Astro Documentation">
+
+<!-- Twitter Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="astrodotbuild">
+<meta name="twitter:title" content="Contentful &#38; Astro">
+<meta name="twitter:description" content="Add content to your Astro project using Contentful as a CMS">
+<meta name="twitter:image" content="https://tanggd.github.io/open-graph/en/guides/cms/contentful.png">
+<meta name="twitter:image:alt" content="">
+
+<!--
+  TODO: Add json+ld data, maybe https://schema.org/APIReference makes sense?
+  Docs: https://developers.google.com/search/docs/advanced/structured-data/intro-structured-data
+  https://www.npmjs.com/package/schema-dts seems like a great resource for implementing this.
+  Even better, there’s a React component that integrates with `schema-dts`: https://github.com/google/react-schemaorg
+-->
+
+		<title>Contentful & Astro 🚀 Astro Documentation</title>
+		
+		<script>
+			// This code was migrated/copied from ThemToggleBotton to make the
+			// dark mode toggle instant, vs. hidden inside of a Preact useEffect() call.
+			const theme = (() => {
+				if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+					return localStorage.getItem('theme');
+				}
+				if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+					return 'dark';
+				}
+				return 'light';
+			})();
+			if (theme === 'light') {
+				document.documentElement.classList.remove('theme-dark');
+			} else {
+				document.documentElement.classList.add('theme-dark');
+			}
+		</script>
+	<link rel="stylesheet" href="/assets/404.6d6787e2.css" />
+<link rel="stylesheet" href="/assets/sharing-state.21559701.css" />
+<link rel="stylesheet" href="/assets/alpinejs.6dd7e965.css" />
+<link rel="stylesheet" href="/assets/auto.444a50d9.css" />
+<link rel="stylesheet" href="/assets/builderio.b64bc458.css" />
+<link rel="stylesheet" href="/assets/builderio.d1870a6c.css" />
+<link rel="stylesheet" href="/assets/builderio.273de9b9.css" />
+<link rel="stylesheet" href="/assets/builderio.fb4fe658.css" />
+<link rel="stylesheet" href="/assets/builderio.1507b30a.css" />
+<link rel="stylesheet" href="/assets/builderio.66e01f42.css" />
+<link rel="stylesheet" href="/assets/builderio.1ae522cb.css" /><script type="module" src="/hoisted.66b9b87c.js"></script></head>
+
+	<body class="astro-KR5WJSBZ">
+		<header class="astro-I6GUSDXI">
+	<a href="#article" class="sr-only focus:not-sr-only skiplink astro-VODYIZTE">
+	<span class="astro-VODYIZTE">Skip to Content
+</span>
+</a>
+
+
+	<nav class="nav-wrapper astro-I6GUSDXI" aria-label="Top">
+		<div dir="ltr" lang="en" class="logo flex astro-I6GUSDXI">
+			<ul class="astro-I6GUSDXI">
+				<li class="astro-I6GUSDXI">
+					<a class="docs astro-I6GUSDXI" href="/en/getting-started/">
+						<span class="sr-only astro-I6GUSDXI">Docs</span>
+						<svg xmlns="http://www.w3.org/2000/svg" width="226" height="102" viewBox="0 0 226 102" fill="none" class="astro-I6GUSDXI">
+							<path class="docs-path astro-I6GUSDXI" fill="currentColor" d="M25.805 68c14.688 0 24.883-8.41 24.883-21.14 0-12.786-9.62-19.756-24.653-19.756H0V68h25.805zm-14.17-33.005H24.25c8.352 0 14.17 4.09 14.17 12.039 0 8.236-5.3 13.075-14.113 13.075H11.635V34.995zM82.673 69.382c16.704 0 27.418-8.582 27.418-21.83 0-13.248-10.771-21.83-27.418-21.83-16.589 0-27.418 8.582-27.418 21.83 0 13.19 10.83 21.83 27.418 21.83zm0-8.64c-9.1 0-15.149-5.299-15.149-13.19 0-7.891 6.048-13.19 15.15-13.19 9.1 0 15.205 5.299 15.205 13.19 0 7.891-6.105 13.19-15.206 13.19zM141.497 69.382c13.306 0 22.637-5.299 25.978-14.572l-11.866-2.535c-1.67 5.415-6.393 8.295-13.709 8.295-9.216 0-15.033-5.127-15.033-13.018 0-8.006 5.702-13.018 14.918-13.018 7.43 0 12.154 3.053 13.709 8.64l12.038-2.13c-2.707-9.562-12.268-15.322-25.574-15.322-16.128 0-27.302 9.043-27.302 22.003 0 13.133 10.425 21.657 26.841 21.657zM194.94 69.382c14.745 0 23.212-5.01 23.212-14.054 0-7.603-4.665-10.944-15.955-12.096l-11.289-1.094c-5.242-.576-6.97-1.556-6.97-4.09 0-2.765 3.456-4.262 9.792-4.262 7.834 0 13.709 2.476 16.762 6.508l7.315-6.163c-5.069-5.702-13.133-8.41-23.501-8.41-13.997 0-21.888 4.781-21.888 12.903 0 7.546 4.781 11.232 14.803 12.326l12.557 1.383c4.896.518 6.624 1.555 6.624 4.09 0 3.225-3.456 4.723-10.886 4.723-8.352 0-14.688-3.226-18.087-8.007l-8.294 5.818c4.205 6.451 13.709 10.425 25.805 10.425z"></path>
+						</svg>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<style>astro-island,astro-slot{display:contents}</style><script>(self.Astro=self.Astro||{}).visible=(s,c,n)=>{const r=async()=>{await(await s())()};let i=new IntersectionObserver(e=>{for(const t of e)if(!!t.isIntersecting){i.disconnect(),r();break}});for(let e=0;e<n.children.length;e++){const t=n.children[e];i.observe(t)}},window.dispatchEvent(new Event("astro:visible"));var l;{const c={0:t=>t,1:t=>JSON.parse(t,o),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(JSON.parse(t,o)),5:t=>new Set(JSON.parse(t,o)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(JSON.parse(t)),9:t=>new Uint16Array(JSON.parse(t)),10:t=>new Uint32Array(JSON.parse(t))},o=(t,s)=>{if(t===""||!Array.isArray(s))return s;const[e,n]=s;return e in c?c[e](n):void 0};customElements.get("astro-island")||customElements.define("astro-island",(l=class extends HTMLElement{constructor(){super(...arguments);this.hydrate=()=>{if(!this.hydrator||this.parentElement&&this.parentElement.closest("astro-island[ssr]"))return;const s=this.querySelectorAll("astro-slot"),e={},n=this.querySelectorAll("template[data-astro-template]");for(const r of n){const i=r.closest(this.tagName);!i||!i.isSameNode(this)||(e[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(const r of s){const i=r.closest(this.tagName);!i||!i.isSameNode(this)||(e[r.getAttribute("name")||"default"]=r.innerHTML)}const a=this.hasAttribute("props")?JSON.parse(this.getAttribute("props"),o):{};this.hydrator(this)(this.Component,a,e,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),window.removeEventListener("astro:hydrate",this.hydrate),window.dispatchEvent(new CustomEvent("astro:hydrate"))}}connectedCallback(){!this.hasAttribute("await-children")||this.firstChild?this.childrenConnectedCallback():new MutationObserver((s,e)=>{e.disconnect(),this.childrenConnectedCallback()}).observe(this,{childList:!0})}async childrenConnectedCallback(){window.addEventListener("astro:hydrate",this.hydrate);let s=this.getAttribute("before-hydration-url");s&&await import(s),this.start()}start(){const s=JSON.parse(this.getAttribute("opts")),e=this.getAttribute("client");if(Astro[e]===void 0){window.addEventListener(`astro:${e}`,()=>this.start(),{once:!0});return}Astro[e](async()=>{const n=this.getAttribute("renderer-url"),[a,{default:r}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),i=this.getAttribute("component-export")||"default";if(!i.includes("."))this.Component=a[i];else{this.Component=a;for(const d of i.split("."))this.Component=this.Component[d]}return this.hydrator=r,this.hydrate},s,this)}attributeChangedCallback(){this.hydrator&&this.hydrate()}},l.observedAttributes=["props"],l))}</script><astro-island uid="2tcXi2" component-url="/ThemeToggleButton.6de6281e.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{&quot;labels&quot;:[0,{&quot;useLight&quot;:[0,&quot;Use light theme&quot;],&quot;useDark&quot;:[0,&quot;Use dark theme&quot;]}],&quot;isInsideHeader&quot;:[0,true]}" ssr="" client="visible" opts="{&quot;name&quot;:&quot;ThemeToggleButton&quot;,&quot;value&quot;:true}" await-children=""><div class="theme-toggle hide-toggle-on-smaller-screens"><label title="Use light theme" class=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path></svg><input type="radio" name="theme-toggle" aria-label="Use light theme" value="light"/></label><label title="Use dark theme" class=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg><input type="radio" name="theme-toggle" aria-label="Use dark theme" value="dark"/></label></div></astro-island>
+		<!-- {lang && <LanguageSelect lang={lang} client:idle />} -->
+		<!-- 
+			TODO：搜索功能
+			后期再做，暂时隐藏
+			参考文档 https://blog.csdn.net/weixin_40026797/article/details/126063524 -->
+		<!-- <Search {lang} labels={docsearchStrings} /> -->
+		<a class="astro astro-I6GUSDXI" href="https://github.com/tanggd" target="_blank" rel="noopener noreferrer">
+			<img src="/assets/github.4e28406c.svg" alt="github" class="astro-I6GUSDXI">
+		</a>
+		<script>(self.Astro=self.Astro||{}).idle=t=>{const e=async()=>{await(await t())()};"requestIdleCallback"in window?window.requestIdleCallback(e):setTimeout(e,200)},window.dispatchEvent(new Event("astro:idle"));</script><astro-island uid="Z1Iw7D6" component-url="/SidebarToggle.2303dca7.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{}" ssr="" client="idle" opts="{&quot;name&quot;:&quot;SidebarToggle&quot;,&quot;value&quot;:true}" await-children=""><button id="menu-toggle" class="header-button" type="button" aria-pressed="false"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg><span class="sr-only">Toggle sidebar</span></button></astro-island>
+	</nav>
+</header>
+
+
+		<main class="layout astro-KR5WJSBZ">
+			<aside id="left-sidebar" class="sidebar astro-KR5WJSBZ">
+				
+					<nav aria-label="Primary" class="astro-VHM34O3D">
+	<script>(self.Astro=self.Astro||{}).load=a=>{(async()=>await(await a())())()},window.dispatchEvent(new Event("astro:load"));</script><astro-island uid="Z1KQCLa" component-url="/SidebarToggleTabGroup.2446d59c.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{&quot;defaultActiveTab&quot;:[0,&quot;learn&quot;],&quot;labels&quot;:[0,{&quot;learn&quot;:[0,&quot;Learn&quot;],&quot;api&quot;:[0,&quot;Tools&quot;]}]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;SidebarToggleTabGroup&quot;,&quot;value&quot;:true}" await-children=""><div class="TabGroup"><button class="active">Learn</button><button class="">Tools</button></div></astro-island>
+	<ul class="nav-groups astro-VHM34O3D">
+		<li class="nav-group learn active astro-Q2W3FM2V">
+			<details open class="astro-Q2W3FM2V">
+				<summary class="nav-group-title astro-Q2W3FM2V">
+					<h2 class="astro-Q2W3FM2V">
+						CSS
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 1 16 16" width="16" height="16" aria-hidden="true" class="astro-Q2W3FM2V">
+							<path fill-rule="evenodd" d="M6.22 3.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 010-1.06z" class="astro-Q2W3FM2V"></path>
+						</svg>
+					</h2>
+				</summary>
+				<ul class="astro-Q2W3FM2V">
+					<li class="nav-link astro-Q2W3FM2V">
+							<a href="/en/css/xxx/" aria-current="false" data-current-parent="false" class="astro-Q2W3FM2V">
+								CSS世界 <sup class="fallback astro-Q2W3FM2V">EN</sup>
+							</a>
+						</li>
+				</ul>
+			</details>
+		</li>
+
+
+		<li class="nav-group api astro-Q2W3FM2V">
+			<details open class="astro-Q2W3FM2V">
+				<summary class="nav-group-title astro-Q2W3FM2V">
+					<h2 class="astro-Q2W3FM2V">
+						小工具
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 1 16 16" width="16" height="16" aria-hidden="true" class="astro-Q2W3FM2V">
+							<path fill-rule="evenodd" d="M6.22 3.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 010-1.06z" class="astro-Q2W3FM2V"></path>
+						</svg>
+					</h2>
+				</summary>
+				<ul class="astro-Q2W3FM2V">
+					<li class="nav-link astro-Q2W3FM2V">
+							<a href="/en/tools/make-certificate-photos/" aria-current="false" data-current-parent="false" class="astro-Q2W3FM2V">
+								制作证件照 <sup class="fallback astro-Q2W3FM2V">EN</sup>
+							</a>
+						</li>
+				</ul>
+			</details>
+		</li>
+
+
+		<li style="text-align: center;" class="astro-VHM34O3D">
+			<astro-island uid="1IhUvw" component-url="/ThemeToggleButton.6de6281e.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{&quot;labels&quot;:[0,{&quot;useLight&quot;:[0,&quot;Use light theme&quot;],&quot;useDark&quot;:[0,&quot;Use dark theme&quot;]}]}" ssr="" client="visible" opts="{&quot;name&quot;:&quot;ThemeToggleButton&quot;,&quot;value&quot;:true}" await-children=""><div class="theme-toggle "><label title="Use light theme" class=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path></svg><input type="radio" name="theme-toggle" aria-label="Use light theme" value="light"/></label><label title="Use dark theme" class=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg><input type="radio" name="theme-toggle" aria-label="Use dark theme" value="dark"/></label></div></astro-island>
+		</li>
+	</ul>
+</nav>
+
+
+
+
+				
+			</aside>
+			<aside id="right-sidebar" class="sidebar astro-KR5WJSBZ">
+				<script>(self.Astro=self.Astro||{}).media=(s,a)=>{const t=async()=>{await(await s())()};if(a.value){const e=matchMedia(a.value);e.matches?t():e.addEventListener("change",t,{once:!0})}},window.dispatchEvent(new Event("astro:media"));</script><nav aria-label="Secondary" class="astro-TFI5F24A">
+	<astro-island uid="19ejMo" component-url="/TableOfContents.dc58575b.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{&quot;headings&quot;:[1,&quot;[[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;integrating-with-astro\&quot;],\&quot;text\&quot;:[0,\&quot;Integrating with Astro\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;prerequisites\&quot;],\&quot;text\&quot;:[0,\&quot;Prerequisites\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;setting-up-credentials\&quot;],\&quot;text\&quot;:[0,\&quot;Setting up credentials\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;installing-dependencies\&quot;],\&quot;text\&quot;:[0,\&quot;Installing dependencies\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;fetching-data\&quot;],\&quot;text\&quot;:[0,\&quot;Fetching data\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;making-a-blog-with-astro-and-contentful\&quot;],\&quot;text\&quot;:[0,\&quot;Making a blog with Astro and Contentful\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;prerequisites-1\&quot;],\&quot;text\&quot;:[0,\&quot;Prerequisites\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;setting-up-a-contentful-model\&quot;],\&quot;text\&quot;:[0,\&quot;Setting up a Contentful model\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;displaying-a-list-of-blog-posts\&quot;],\&quot;text\&quot;:[0,\&quot;Displaying a list of blog posts\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;generating-individual-blog-posts\&quot;],\&quot;text\&quot;:[0,\&quot;Generating individual blog posts\&quot;]}],[0,{\&quot;depth\&quot;:[0,4],\&quot;slug\&quot;:[0,\&quot;static-site-generation\&quot;],\&quot;text\&quot;:[0,\&quot;Static site generation\&quot;]}],[0,{\&quot;depth\&quot;:[0,4],\&quot;slug\&quot;:[0,\&quot;server-side-rendering\&quot;],\&quot;text\&quot;:[0,\&quot;Server side rendering\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;publishing-your-site\&quot;],\&quot;text\&quot;:[0,\&quot;Publishing your site\&quot;]}],[0,{\&quot;depth\&quot;:[0,4],\&quot;slug\&quot;:[0,\&quot;rebuild-on-contentful-changes\&quot;],\&quot;text\&quot;:[0,\&quot;Rebuild on Contentful changes\&quot;]}],[0,{\&quot;depth\&quot;:[0,5],\&quot;slug\&quot;:[0,\&quot;netlify\&quot;],\&quot;text\&quot;:[0,\&quot;Netlify\&quot;]}],[0,{\&quot;depth\&quot;:[0,5],\&quot;slug\&quot;:[0,\&quot;vercel\&quot;],\&quot;text\&quot;:[0,\&quot;Vercel\&quot;]}],[0,{\&quot;depth\&quot;:[0,5],\&quot;slug\&quot;:[0,\&quot;adding-a-webhook-to-contentful\&quot;],\&quot;text\&quot;:[0,\&quot;Adding a webhook to Contentful\&quot;]}]]&quot;],&quot;labels&quot;:[0,{&quot;onThisPage&quot;:[0,&quot;On this page&quot;],&quot;overview&quot;:[0,&quot;Overview&quot;]}],&quot;isMobile&quot;:[0,false]}" ssr="" client="media" opts="{&quot;name&quot;:&quot;TableOfContents&quot;,&quot;value&quot;:&quot;(min-width: 50em)&quot;}" await-children=""><h2 class="heading" id="on-this-page-heading">On this page</h2><ul><li class="header-link depth-2 current-header-link"><a href="#overview">Overview</a></li><li class="header-link depth-2"><a href="#integrating-with-astro">Integrating with Astro</a></li><li class="header-link depth-3"><a href="#prerequisites">Prerequisites</a></li><li class="header-link depth-3"><a href="#setting-up-credentials">Setting up credentials</a></li><li class="header-link depth-3"><a href="#installing-dependencies">Installing dependencies</a></li><li class="header-link depth-3"><a href="#fetching-data">Fetching data</a></li><li class="header-link depth-2"><a href="#making-a-blog-with-astro-and-contentful">Making a blog with Astro and Contentful</a></li><li class="header-link depth-3"><a href="#prerequisites-1">Prerequisites</a></li><li class="header-link depth-3"><a href="#setting-up-a-contentful-model">Setting up a Contentful model</a></li><li class="header-link depth-3"><a href="#displaying-a-list-of-blog-posts">Displaying a list of blog posts</a></li><li class="header-link depth-3"><a href="#generating-individual-blog-posts">Generating individual blog posts</a></li><li class="header-link depth-3"><a href="#publishing-your-site">Publishing your site</a></li></ul></astro-island>
+</nav>
+
+
+			</aside>
+			<div id="main-content" class="main-column astro-KR5WJSBZ">
+				<div dir="ltr" class="astro-2XBDZOYQ">
+	<div class="fixed-mobile-bar astro-2XBDZOYQ" dir="ltr">
+					<nav>
+						<astro-island uid="Z18YYzk" component-url="/TableOfContents.dc58575b.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{&quot;headings&quot;:[1,&quot;[[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;integrating-with-astro\&quot;],\&quot;text\&quot;:[0,\&quot;Integrating with Astro\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;prerequisites\&quot;],\&quot;text\&quot;:[0,\&quot;Prerequisites\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;setting-up-credentials\&quot;],\&quot;text\&quot;:[0,\&quot;Setting up credentials\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;installing-dependencies\&quot;],\&quot;text\&quot;:[0,\&quot;Installing dependencies\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;fetching-data\&quot;],\&quot;text\&quot;:[0,\&quot;Fetching data\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;making-a-blog-with-astro-and-contentful\&quot;],\&quot;text\&quot;:[0,\&quot;Making a blog with Astro and Contentful\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;prerequisites-1\&quot;],\&quot;text\&quot;:[0,\&quot;Prerequisites\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;setting-up-a-contentful-model\&quot;],\&quot;text\&quot;:[0,\&quot;Setting up a Contentful model\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;displaying-a-list-of-blog-posts\&quot;],\&quot;text\&quot;:[0,\&quot;Displaying a list of blog posts\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;generating-individual-blog-posts\&quot;],\&quot;text\&quot;:[0,\&quot;Generating individual blog posts\&quot;]}],[0,{\&quot;depth\&quot;:[0,4],\&quot;slug\&quot;:[0,\&quot;static-site-generation\&quot;],\&quot;text\&quot;:[0,\&quot;Static site generation\&quot;]}],[0,{\&quot;depth\&quot;:[0,4],\&quot;slug\&quot;:[0,\&quot;server-side-rendering\&quot;],\&quot;text\&quot;:[0,\&quot;Server side rendering\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;publishing-your-site\&quot;],\&quot;text\&quot;:[0,\&quot;Publishing your site\&quot;]}],[0,{\&quot;depth\&quot;:[0,4],\&quot;slug\&quot;:[0,\&quot;rebuild-on-contentful-changes\&quot;],\&quot;text\&quot;:[0,\&quot;Rebuild on Contentful changes\&quot;]}],[0,{\&quot;depth\&quot;:[0,5],\&quot;slug\&quot;:[0,\&quot;netlify\&quot;],\&quot;text\&quot;:[0,\&quot;Netlify\&quot;]}],[0,{\&quot;depth\&quot;:[0,5],\&quot;slug\&quot;:[0,\&quot;vercel\&quot;],\&quot;text\&quot;:[0,\&quot;Vercel\&quot;]}],[0,{\&quot;depth\&quot;:[0,5],\&quot;slug\&quot;:[0,\&quot;adding-a-webhook-to-contentful\&quot;],\&quot;text\&quot;:[0,\&quot;Adding a webhook to Contentful\&quot;]}]]&quot;],&quot;labels&quot;:[0,{&quot;onThisPage&quot;:[0,&quot;On this page&quot;],&quot;overview&quot;:[0,&quot;Overview&quot;]}],&quot;isMobile&quot;:[0,true]}" ssr="" client="media" opts="{&quot;name&quot;:&quot;TableOfContents&quot;,&quot;value&quot;:&quot;(max-width: 72em)&quot;}" await-children=""><details class="toc-mobile-container"><summary class="toc-mobile-header"><div class="toc-mobile-header-content"><div class="toc-toggle"><h2 class="heading" id="on-this-page-heading">On this page</h2><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 1 16 16" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M6.22 3.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 010-1.06z"></path></svg></div></div></summary><ul><li class="header-link depth-2 current-header-link"><a href="#overview">Overview</a></li><li class="header-link depth-2"><a href="#integrating-with-astro">Integrating with Astro</a></li><li class="header-link depth-3"><a href="#prerequisites">Prerequisites</a></li><li class="header-link depth-3"><a href="#setting-up-credentials">Setting up credentials</a></li><li class="header-link depth-3"><a href="#installing-dependencies">Installing dependencies</a></li><li class="header-link depth-3"><a href="#fetching-data">Fetching data</a></li><li class="header-link depth-2"><a href="#making-a-blog-with-astro-and-contentful">Making a blog with Astro and Contentful</a></li><li class="header-link depth-3"><a href="#prerequisites-1">Prerequisites</a></li><li class="header-link depth-3"><a href="#setting-up-a-contentful-model">Setting up a Contentful model</a></li><li class="header-link depth-3"><a href="#displaying-a-list-of-blog-posts">Displaying a list of blog posts</a></li><li class="header-link depth-3"><a href="#generating-individual-blog-posts">Generating individual blog posts</a></li><li class="header-link depth-3"><a href="#publishing-your-site">Publishing your site</a></li></ul></details></astro-island>
+					</nav>
+				</div><div class="spacer astro-2XBDZOYQ"></div>
+	<article id="article" class="content astro-2XBDZOYQ">
+		<section class="main-section astro-2XBDZOYQ">
+			<header class="astro-2XBDZOYQ">
+				
+				<h1 class="content-title astro-2XBDZOYQ" id="overview">Contentful & Astro</h1>
+				
+			</header>
+			
+			<p><a href="https://www.contentful.com/">Contentful</a> is a headless CMS that allows you to manage content, integrate with other services, and publish to multiple platforms.</p><div class="heading-wrapper level-h2" tabindex="-1"><h2 id="integrating-with-astro">Integrating with Astro</h2><a class="anchor-link" href="#integrating-with-astro"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Integrating with Astro</span></a></div><p>In this section, we’ll use the <a href="https://github.com/contentful/contentful.js">Contentful SDK</a> to connect your Contentful space to Astro with zero client-side JavaScript.</p><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="prerequisites">Prerequisites</h3><a class="anchor-link" href="#prerequisites"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Prerequisites</span></a></div><p>To get started, you will need to have the following:</p><ol>
+<li>
+<p><strong>An Astro project</strong> - If you don’t have an Astro project yet, our <a href="/en/install/auto/">Installation guide</a> will get you up and running in no time.</p>
+</li>
+<li>
+<p><strong>A Contentful account and a Contentful space</strong>. If you don’t have an account, you can <a href="https://www.contentful.com/sign-up/">sign up</a> for a free account and create a new Contentful space. You can also use an existing space if you have one.</p>
+</li>
+<li>
+<p><strong>Contentful credentials</strong> - You can find the following credentials in your contentful dashboard <strong>Settings > API keys</strong>. If you don’t have any API keys, create one by selecting <strong>Add API key</strong>.</p>
+<ul>
+<li><strong>Contentful space ID</strong> - The ID of your Contentful space.</li>
+<li><strong>Contentful delivery access token</strong> - The access token to consume <em>published</em> content from your Contentful space.</li>
+<li><strong>Contentful preview access token</strong> - The access token to consume <em>unpublished</em> content from your Contentful space.</li>
+</ul>
+</li>
+</ol><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="setting-up-credentials">Setting up credentials</h3><a class="anchor-link" href="#setting-up-credentials"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Setting up credentials</span></a></div><p>To add your Contentful space’s credentials to Astro, create an <code>.env</code> file in the root of your project with the following variables:</p>
+<figure class="code-snippet has-title lang-ini">
+	<figcaption class="header"><span class="title">.env</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#FF657C">CONTENTFUL_SPACE_ID</span><span style="color:#C7C5D3">=</span><span style="color:#D8DEE9">YOUR_SPACE_ID</span></span>
+<span class="line"><span style="color:#FF657C">CONTENTFUL_DELIVERY_TOKEN</span><span style="color:#C7C5D3">=</span><span style="color:#D8DEE9">YOUR_DELIVERY_TOKEN</span></span>
+<span class="line"><span style="color:#FF657C">CONTENTFUL_PREVIEW_TOKEN</span><span style="color:#C7C5D3">=</span><span style="color:#D8DEE9">YOUR_PREVIEW_TOKEN</span></span></code></pre>
+</figure><p>Now, you should be able to use these environment variables in your project.</p><p>If you would like to have IntelliSense for your Contentful environment variables, you can create a <code>env.d.ts</code> file in the <code>src/</code> directory and configure <code>ImportMetaEnv</code> like this:</p>
+<figure class="code-snippet has-title lang-ts">
+	<figcaption class="header"><span class="title">src/<wbr/>env.d.ts</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#FF657C">interface</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">ImportMetaEnv</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#FF657C">readonly</span><span style="color:#D8DEE9"> CONTENTFUL_SPACE_ID</span><span style="color:#FF657C">:</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">string</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#FF657C">readonly</span><span style="color:#D8DEE9"> CONTENTFUL_DELIVERY_TOKEN</span><span style="color:#FF657C">:</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">string</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#FF657C">readonly</span><span style="color:#D8DEE9"> CONTENTFUL_PREVIEW_TOKEN</span><span style="color:#FF657C">:</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">string</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#C7C5D3">}</span></span></code></pre>
+</figure><aside class="content tip astro-J4JMU3BW" aria-label="Tip">
+	<p class="title astro-J4JMU3BW" aria-hidden="true">
+		<span class="icon astro-J4JMU3BW">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" width="16" height="16" class="astro-J4JMU3BW">
+				<path fill-rule="evenodd" d="M14 0a8.8 8.8 0 0 0-6 2.6l-.5.4-.9 1H3.3a1.8 1.8 0 0 0-1.5.8L.1 7.6a.8.8 0 0 0 .4 1.1l3.1 1 .2.1 2.4 2.4.1.2 1 3a.8.8 0 0 0 1 .5l2.9-1.7a1.8 1.8 0 0 0 .8-1.5V9.5l1-1 .4-.4A8.8 8.8 0 0 0 16 2v-.1A1.8 1.8 0 0 0 14.2 0h-.1zm-3.5 10.6-.3.2L8 12.3l.5 1.8 2-1.2a.3.3 0 0 0 .1-.2v-2zM3.7 8.1l1.5-2.3.2-.3h-2a.3.3 0 0 0-.3.1l-1.2 2 1.8.5zm5.2-4.5a7.3 7.3 0 0 1 5.2-2.1h.1a.3.3 0 0 1 .3.3v.1a7.3 7.3 0 0 1-2.1 5.2l-.5.4a15.2 15.2 0 0 1-2.5 2L7.1 11 5 9l1.5-2.3a15.3 15.3 0 0 1 2-2.5l.4-.5zM12 5a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm-8.4 9.6a1.5 1.5 0 1 0-2.2-2.2 7 7 0 0 0-1.1 3 .2.2 0 0 0 .3.3c.6 0 2.2-.4 3-1.1z" class="astro-J4JMU3BW"></path>
+			</svg>
+		</span>
+		Tip
+	</p>
+	<section class="astro-J4JMU3BW">
+		<p>Read more about <a href="/en/guides/environment-variables/">using environment variables</a> and <code>.env</code> files in Astro.</p>
+	</section>
+</aside>
+
+<p>Your root directory should now include these new files:</p>
+<figure class="code-snippet has-title lang-ini">
+	<figcaption class="header"><span class="title">Project Structure</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#D8DEE9">├── src/</span></span>
+<span class="line ins"><span style="color:#d8dee9">│   └── env.d.ts</span></span>
+<span class="line ins"><span style="color:#d8dee9">├── .env</span></span>
+<span class="line"><span style="color:#D8DEE9">├── astro.config.mjs</span></span>
+<span class="line"><span style="color:#D8DEE9">└── package.json</span></span></code></pre>
+</figure><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="installing-dependencies">Installing dependencies</h3><a class="anchor-link" href="#installing-dependencies"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Installing dependencies</span></a></div><p>To connect with your Contentful space, install both of the following using the single command below for your preferred package manager:</p><ul>
+<li><a href="https://github.com/contentful/contentful.js"><code>contentful.js</code></a>, the official Contentful SDK for JavaScript</li>
+<li><a href="https://github.com/contentful/rich-text/tree/master/packages/rich-text-html-renderer"><code>rich-text-html-renderer</code></a>, a package to render Contentful’s rich text fields to HTML.</li>
+</ul><astro-island uid="1wfAIg" component-url="/Tabs.2df3b852.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{&quot;sharedStore&quot;:[0,&quot;package-managers&quot;]}" ssr="" client="visible" opts="{&quot;name&quot;:&quot;Tabs&quot;,&quot;value&quot;:true}" await-children=""><div class="_container_8folw_1"><div class="_tab-scroll-overflow_8folw_6"><div class="_tablist_8folw_31 TabGroup no-flex" role="tablist"><button aria-selected="true" tabindex="0" role="tab" type="button" class="_tab_8folw_6" id="38-tab.npm"><astro-slot name="tab.npm">npm</astro-slot></button><button aria-selected="false" tabindex="-1" role="tab" type="button" class="_tab_8folw_6" id="38-tab.pnpm"><astro-slot name="tab.pnpm">pnpm</astro-slot></button><button aria-selected="false" tabindex="-1" role="tab" type="button" class="_tab_8folw_6" id="38-tab.yarn"><astro-slot name="tab.yarn">Yarn</astro-slot></button><span class="_selectedIndicator_8folw_35" aria-hidden="true"></span></div></div><div role="tabpanel" aria-labelledby="38-tab.npm" class="_tabpanel_8folw_27"><astro-slot name="panel.npm">
+<figure class="code-snippet is-terminal lang-shell">
+	<figcaption class="header"></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#D8DEE9">npm install contentful @contentful/rich-text-html-renderer</span></span></code></pre>
+</figure></astro-slot></div><div hidden="" role="tabpanel" aria-labelledby="38-tab.pnpm" class="_tabpanel_8folw_27"><astro-slot name="panel.pnpm">
+<figure class="code-snippet is-terminal lang-shell">
+	<figcaption class="header"></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#D8DEE9">pnpm install contentful @contentful/rich-text-html-renderer</span></span></code></pre>
+</figure></astro-slot></div><div hidden="" role="tabpanel" aria-labelledby="38-tab.yarn" class="_tabpanel_8folw_27"><astro-slot name="panel.yarn">
+<figure class="code-snippet is-terminal lang-shell">
+	<figcaption class="header"></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#D8DEE9">yarn add contentful @contentful/rich-text-html-renderer</span></span></code></pre>
+</figure></astro-slot></div></div></astro-island><p>Next, create a new file called <code>contentful.ts</code> in <code>src/lib/</code> directory in your project.</p>
+<figure class="code-snippet has-title lang-ts">
+	<figcaption class="header"><span class="title">src/<wbr/>lib/<wbr/>contentful.ts</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> contentful </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;contentful&quot;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF657C">export</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> contentfulClient </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> contentful</span><span style="color:#C7C5D3">.</span><span style="color:#66ADFF">createClient</span><span style="color:#D8DEE9">(</span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">  space</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">import</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">meta</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">env</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">CONTENTFUL_SPACE_ID</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">  accessToken</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">import</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">meta</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">env</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">DEV</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#FF657C">?</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">import</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">meta</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">env</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">CONTENTFUL_PREVIEW_TOKEN</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#FF657C">:</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">import</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">meta</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">env</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">CONTENTFUL_DELIVERY_TOKEN</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">  host</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">import</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">meta</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">env</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">DEV </span><span style="color:#FF657C">?</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;preview.contentful.com&quot;</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;cdn.contentful.com&quot;</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9">)</span><span style="color:#C7C5D3">;</span></span></code></pre>
+</figure><p>The above code snippet creates a new Contentful client, passing in credentials from the <code>.env</code> file.</p><aside class="content caution astro-J4JMU3BW" aria-label="Caution">
+	<p class="title astro-J4JMU3BW" aria-hidden="true">
+		<span class="icon astro-J4JMU3BW">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 1 18 18" width="16" height="16" class="astro-J4JMU3BW">
+				<path fill-rule="evenodd" d="M8.9 1.5C8.7 1.2 8.4 1 8 1s-.7.2-.9.5l-7 12a1 1 0 0 0 0 1c.2.3.6.5 1 .5H15c.4 0 .7-.2.9-.5a1 1 0 0 0 0-1l-7-12zM9 13H7v-2h2v2zm0-3H7V6h2v4z" class="astro-J4JMU3BW"></path>
+			</svg>
+		</span>
+		Caution
+	</p>
+	<section class="astro-J4JMU3BW">
+		<p>While in development mode, your content will be fetched from the <strong>Contentful preview API</strong>. This means that you will be able to see unpublished content from the Contentful web app.</p><p>At build time, your content will be fetched from the <strong>Contentful delivery API</strong>. This means that only published content will be available at build time.</p>
+	</section>
+</aside>
+
+<p>Finally, your root directory should now include these new files:</p>
+<figure class="code-snippet lang-ini">
+	<figcaption class="header"></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#D8DEE9">├── src/</span></span>
+<span class="line"><span style="color:#D8DEE9">│   └── env.d.ts</span></span>
+<span class="line ins"><span style="color:#d8dee9">│   └── lib/</span></span>
+<span class="line ins"><span style="color:#d8dee9">│       └── contentful.ts</span></span>
+<span class="line"><span style="color:#D8DEE9">├── .env</span></span>
+<span class="line"><span style="color:#D8DEE9">├── astro.config.mjs</span></span>
+<span class="line"><span style="color:#D8DEE9">└── package.json</span></span></code></pre>
+</figure><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="fetching-data">Fetching data</h3><a class="anchor-link" href="#fetching-data"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Fetching data</span></a></div><p>Now, Astro components can fetch your data using the <code>contentfulClient</code> and specifying the <code>content_type</code> to receive from your Contentful account.</p><p>For example, if you have a “blogPost” content type that has a text field for a title and a rich text field for content, your component might look like this:</p>
+<figure class="code-snippet lang-astro">
+	<figcaption class="header"></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> contentfulClient </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;../lib/contentful&quot;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> documentToHtmlString </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;@contentful/rich-text-html-renderer&quot;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">type</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> Document </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;@contentful/rich-text-types&quot;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF657C">interface</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">BlogPost</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">    title</span><span style="color:#FF657C">:</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">string</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">    content</span><span style="color:#FF657C">:</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">Document</span></span>
+<span class="line"><span style="color:#C7C5D3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> entries </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">await</span><span style="color:#D8DEE9"> contentfulClient</span><span style="color:#C7C5D3">.</span><span style="color:#66ADFF">getEntries</span><span style="color:#C7C5D3">&lt;</span><span style="color:#FFBD2E">BlogPost</span><span style="color:#C7C5D3">&gt;</span><span style="color:#ABA8BD">(</span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">  content_type</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;blogPost&quot;</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#C7C5D3">}</span><span style="color:#ABA8BD">)</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">body</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#FF657C">{</span><span style="color:#D8DEE9">entries</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">items</span><span style="color:#C7C5D3">.</span><span style="color:#66ADFF">map</span><span style="color:#ABA8BD">(</span><span style="color:#D8DEE9">(item) </span><span style="color:#FF657C">=&gt;</span><span style="color:#D8DEE9"> </span><span style="color:#ABA8BD">(</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">section</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">      </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">h2</span><span style="color:#C7C5D3">&gt;</span><span style="color:#FF657C">{</span><span style="color:#D8DEE9">item</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">fields</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">name</span><span style="color:#FF657C">}</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">h2</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">      </span><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">article</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">set</span><span style="color:#C7C5D3">:</span><span style="color:#FFBD2E">html</span><span style="color:#FF657C">={</span><span style="color:#66ADFF">documentToHtmlString</span><span style="color:#ABA8BD">(</span><span style="color:#D8DEE9">items</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">fields</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">content</span><span style="color:#ABA8BD">)</span><span style="color:#FF657C">}</span><span style="color:#C7C5D3">&gt;&lt;/</span><span style="color:#FF657C">article</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">section</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#ABA8BD">))</span><span style="color:#FF657C">}</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">body</span><span style="color:#C7C5D3">&gt;</span></span></code></pre>
+</figure><aside class="content tip astro-J4JMU3BW" aria-label="Tip">
+	<p class="title astro-J4JMU3BW" aria-hidden="true">
+		<span class="icon astro-J4JMU3BW">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" width="16" height="16" class="astro-J4JMU3BW">
+				<path fill-rule="evenodd" d="M14 0a8.8 8.8 0 0 0-6 2.6l-.5.4-.9 1H3.3a1.8 1.8 0 0 0-1.5.8L.1 7.6a.8.8 0 0 0 .4 1.1l3.1 1 .2.1 2.4 2.4.1.2 1 3a.8.8 0 0 0 1 .5l2.9-1.7a1.8 1.8 0 0 0 .8-1.5V9.5l1-1 .4-.4A8.8 8.8 0 0 0 16 2v-.1A1.8 1.8 0 0 0 14.2 0h-.1zm-3.5 10.6-.3.2L8 12.3l.5 1.8 2-1.2a.3.3 0 0 0 .1-.2v-2zM3.7 8.1l1.5-2.3.2-.3h-2a.3.3 0 0 0-.3.1l-1.2 2 1.8.5zm5.2-4.5a7.3 7.3 0 0 1 5.2-2.1h.1a.3.3 0 0 1 .3.3v.1a7.3 7.3 0 0 1-2.1 5.2l-.5.4a15.2 15.2 0 0 1-2.5 2L7.1 11 5 9l1.5-2.3a15.3 15.3 0 0 1 2-2.5l.4-.5zM12 5a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm-8.4 9.6a1.5 1.5 0 1 0-2.2-2.2 7 7 0 0 0-1.1 3 .2.2 0 0 0 .3.3c.6 0 2.2-.4 3-1.1z" class="astro-J4JMU3BW"></path>
+			</svg>
+		</span>
+		Tip
+	</p>
+	<section class="astro-J4JMU3BW">
+		<p>If you have an empty Contentful space, check out <a href="#setting-up-a-contentful-model">setting up a Contentful model</a> to learn how to create a basic blog model for your content.</p>
+	</section>
+</aside>
+
+<p>You can find more querying options in the <a href="https://contentful.github.io/contentful.js/contentful/9.1.34/ContentfulClientAPI.html">Contentful documentation</a>.</p><div class="heading-wrapper level-h2" tabindex="-1"><h2 id="making-a-blog-with-astro-and-contentful">Making a blog with Astro and Contentful</h2><a class="anchor-link" href="#making-a-blog-with-astro-and-contentful"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Making a blog with Astro and Contentful</span></a></div><p>With the setup above, you are now able to create a blog that uses Contentful as the CMS.</p><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="prerequisites-1">Prerequisites</h3><a class="anchor-link" href="#prerequisites-1"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Prerequisites</span></a></div><ol>
+<li><strong>A Contentful space</strong> - For this tutorial we recommend starting with an empty space. If you already have a content model, feel free to use it, but you will need to modify our code snippets to match your content model.</li>
+<li><strong>An Astro project integrated with the <a href="https://github.com/contentful/contentful.js">Contentful SDK</a></strong> - See <a href="#integrating-with-astro">integrating with Astro</a> for more details on how to set up an Astro project with Contentful.</li>
+</ol><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="setting-up-a-contentful-model">Setting up a Contentful model</h3><a class="anchor-link" href="#setting-up-a-contentful-model"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Setting up a Contentful model</span></a></div><p>Inside your Contentful space, in the <strong>Content model</strong> section, create a new content model with the following fields and values:</p><ul>
+<li><strong>Name:</strong> Blog Post</li>
+<li><strong>API identifier:</strong> <code>blogPost</code></li>
+<li><strong>Description:</strong> This content type is for a blog post</li>
+</ul><p>In your newly created content type, use the <strong>Add Field</strong> button to add 5 new fields with the following parameters:</p><ol>
+<li>Text field
+<ul>
+<li><strong>Name:</strong> title</li>
+<li><strong>API identifier:</strong> <code>title</code>
+(leave the other parameters as their defaults)</li>
+</ul>
+</li>
+<li>Date and time field
+<ul>
+<li><strong>Name:</strong> date</li>
+<li><strong>API identifier:</strong> <code>date</code></li>
+</ul>
+</li>
+<li>Text field
+<ul>
+<li><strong>Name:</strong> slug</li>
+<li><strong>API identifier:</strong> <code>slug</code>
+(leave the other parameters as their defaults)</li>
+</ul>
+</li>
+<li>Text field
+<ul>
+<li><strong>Name:</strong> description</li>
+<li><strong>API identifier:</strong> <code>description</code></li>
+</ul>
+</li>
+<li>Rich text field
+<ul>
+<li><strong>Name:</strong> content</li>
+<li><strong>API identifier:</strong> <code>content</code></li>
+</ul>
+</li>
+</ol><p>Click <strong>Save</strong> to save your changes.</p><p>In the <strong>Content</strong> section of your Contentful space, create a new entry by clicking the <strong>Add Entry</strong> button. Then, fill in the fields:</p><ul>
+<li><strong>Title:</strong> <code>Astro is amazing!</code></li>
+<li><strong>Slug:</strong> <code>astro-is-amazing</code></li>
+<li><strong>Description:</strong> <code>Astro is a new static site generator that is blazing fast and easy to use.</code></li>
+<li><strong>Date:</strong> <code>2022-10-05</code></li>
+<li><strong>Content:</strong> <code>This is my first blog post!</code></li>
+</ul><p>Click <strong>Publish</strong> to save your entry. You have just created your first blog post.</p><p>Feel free to add as many blog posts as you want, then switch to your favorite code editor to start hacking with Astro!</p><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="displaying-a-list-of-blog-posts">Displaying a list of blog posts</h3><a class="anchor-link" href="#displaying-a-list-of-blog-posts"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Displaying a list of blog posts</span></a></div><p>Create a new interface called <code>BlogPost</code> and add it to your <code>contentful.ts</code> file in <code>src/lib/</code>. This interface will match the fields of your blog post content type in Contentful. You will use it to type your blog post entries response.</p>
+<figure class="code-snippet has-title lang-ts">
+	<figcaption class="header"><span class="title">src/<wbr/>lib/<wbr/>contentful.ts</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> contentful </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;contentful&quot;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line ins"><span style="color:#ff9fad">import</span><span style="color:#d8dee9"> </span><span style="color:#ff9fad">type</span><span style="color:#d8dee9"> </span><span style="color:#c7c5d3">{</span><span style="color:#d8dee9"> Document </span><span style="color:#c7c5d3">}</span><span style="color:#d8dee9"> </span><span style="color:#ff9fad">from</span><span style="color:#d8dee9"> </span><span style="color:#4fcfa1">&quot;@contentful/rich-text-types&quot;</span><span style="color:#c7c5d3">;</span></span>
+<span class="line"></span>
+<span class="line ins"><span style="color:#ff9fad">export</span><span style="color:#d8dee9"> </span><span style="color:#ff9fad">interface</span><span style="color:#d8dee9"> </span><span style="color:#ffbd2e">BlogPost</span><span style="color:#d8dee9"> </span><span style="color:#c7c5d3">{</span></span>
+<span class="line ins"><span style="color:#d8dee9">  title</span><span style="color:#ff9fad">:</span><span style="color:#d8dee9"> </span><span style="color:#ffbd2e">string</span><span style="color:#c7c5d3">;</span></span>
+<span class="line ins"><span style="color:#d8dee9">  date</span><span style="color:#ff9fad">:</span><span style="color:#d8dee9"> </span><span style="color:#ffbd2e">string</span><span style="color:#c7c5d3">;</span></span>
+<span class="line ins"><span style="color:#d8dee9">  description</span><span style="color:#ff9fad">:</span><span style="color:#d8dee9"> </span><span style="color:#ffbd2e">string</span><span style="color:#c7c5d3">;</span></span>
+<span class="line ins"><span style="color:#d8dee9">  content</span><span style="color:#ff9fad">:</span><span style="color:#d8dee9"> </span><span style="color:#ffbd2e">Document</span><span style="color:#c7c5d3">;</span></span>
+<span class="line ins"><span style="color:#d8dee9">  slug</span><span style="color:#ff9fad">:</span><span style="color:#d8dee9"> </span><span style="color:#ffbd2e">string</span><span style="color:#c7c5d3">;</span></span>
+<span class="line ins"><span style="color:#c7c5d3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF657C">export</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> contentfulClient </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> contentful</span><span style="color:#C7C5D3">.</span><span style="color:#66ADFF">createClient</span><span style="color:#D8DEE9">(</span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">  space</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">import</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">meta</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">env</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">CONTENTFUL_SPACE_ID</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">  accessToken</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">import</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">meta</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">env</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">DEV</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#FF657C">?</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">import</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">meta</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">env</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">CONTENTFUL_PREVIEW_TOKEN</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#FF657C">:</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">import</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">meta</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">env</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">CONTENTFUL_DELIVERY_TOKEN</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">  host</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">import</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">meta</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">env</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">DEV </span><span style="color:#FF657C">?</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;preview.contentful.com&quot;</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;cdn.contentful.com&quot;</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9">)</span><span style="color:#C7C5D3">;</span></span></code></pre>
+</figure><p>Next, go to the Astro page where you will fetch data from Contentful. We wil use the home page <code>index.astro</code> in <code>src/pages/</code> in this example.</p><p>Import <code>BlogPost</code> interface and <code>contentfulClient</code> from <code>src/lib/contentful.ts</code>.</p><p>Fetch all the entries from Contentful with a content type of <code>blogPost</code> while passing the <code>BlogPost</code> interface to type your response.</p>
+<figure class="code-snippet has-title lang-astro">
+	<figcaption class="header"><span class="title">src/<wbr/>pages/<wbr/>index.astro</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> contentfulClient </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;../lib/contentful&quot;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">type</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> BlogPost </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;../lib/contentful&quot;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> entries </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">await</span><span style="color:#D8DEE9"> contentfulClient</span><span style="color:#C7C5D3">.</span><span style="color:#66ADFF">getEntries</span><span style="color:#C7C5D3">&lt;</span><span style="color:#FFBD2E">BlogPost</span><span style="color:#C7C5D3">&gt;</span><span style="color:#ABA8BD">(</span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">  content_type</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;blogPost&quot;</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#C7C5D3">}</span><span style="color:#ABA8BD">)</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span></code></pre>
+</figure><p>This fetch call will return an array of your blog posts at <code>entries.items</code>. You can use <code>map()</code> to create a new array (<code>posts</code>)  that formats your returned data.</p><p>The example below returns the <code>items.fields</code> properites from our Content model to create a blog post preview, and at the same time, reformats the date to a more readable format.</p>
+<figure class="code-snippet has-title lang-astro">
+	<figcaption class="header"><span class="title">src/<wbr/>pages/<wbr/>index.astro</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> contentfulClient </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;../lib/contentful&quot;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">type</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> BlogPost </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;../lib/contentful&quot;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> entries </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">await</span><span style="color:#D8DEE9"> contentfulClient</span><span style="color:#C7C5D3">.</span><span style="color:#66ADFF">getEntries</span><span style="color:#C7C5D3">&lt;</span><span style="color:#FFBD2E">BlogPost</span><span style="color:#C7C5D3">&gt;</span><span style="color:#ABA8BD">(</span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">  content_type</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;blogPost&quot;</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#C7C5D3">}</span><span style="color:#ABA8BD">)</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"></span>
+<span class="line ins"><span style="color:#ff9fad">const</span><span style="color:#d8dee9"> posts </span><span style="color:#ff9fad">=</span><span style="color:#d8dee9"> entries</span><span style="color:#c7c5d3">.</span><span style="color:#d8dee9">items</span><span style="color:#c7c5d3">.</span><span style="color:#86beff">map</span><span style="color:#bbb8c9">(</span><span style="color:#d8dee9">(item) </span><span style="color:#ff9fad">=&gt;</span><span style="color:#d8dee9"> </span><span style="color:#c7c5d3">{</span></span>
+<span class="line ins"><span style="color:#d8dee9">  </span><span style="color:#ff9fad">const</span><span style="color:#d8dee9"> </span><span style="color:#c7c5d3">{</span><span style="color:#d8dee9"> title</span><span style="color:#c7c5d3">,</span><span style="color:#d8dee9"> date</span><span style="color:#c7c5d3">,</span><span style="color:#d8dee9"> description</span><span style="color:#c7c5d3">,</span><span style="color:#d8dee9"> slug </span><span style="color:#c7c5d3">}</span><span style="color:#d8dee9"> </span><span style="color:#ff9fad">=</span><span style="color:#d8dee9"> item</span><span style="color:#c7c5d3">.</span><span style="color:#d8dee9">fields</span><span style="color:#c7c5d3">;</span></span>
+<span class="line ins"><span style="color:#d8dee9">  </span><span style="color:#ff9fad">return</span><span style="color:#d8dee9"> </span><span style="color:#c7c5d3">{</span></span>
+<span class="line ins"><span style="color:#d8dee9">    title</span><span style="color:#c7c5d3">,</span></span>
+<span class="line ins"><span style="color:#d8dee9">    slug</span><span style="color:#c7c5d3">,</span></span>
+<span class="line ins"><span style="color:#d8dee9">    description</span><span style="color:#c7c5d3">,</span></span>
+<span class="line ins"><span style="color:#d8dee9">    date</span><span style="color:#c7c5d3">:</span><span style="color:#d8dee9"> </span><span style="color:#ff9fad">new</span><span style="color:#d8dee9"> </span><span style="color:#86beff">Date</span><span style="color:#bbb8c9">(</span><span style="color:#d8dee9">date</span><span style="color:#bbb8c9">)</span><span style="color:#c7c5d3">.</span><span style="color:#86beff">toLocaleDateString</span><span style="color:#bbb8c9">()</span></span>
+<span class="line ins"><span style="color:#d8dee9">  </span><span style="color:#c7c5d3">};</span></span>
+<span class="line ins"><span style="color:#c7c5d3">}</span><span style="color:#bbb8c9">)</span><span style="color:#c7c5d3">;</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span></code></pre>
+</figure><p>Finally, you can use <code>posts</code> in your template to show a preview of each blog post.</p>
+<figure class="code-snippet has-title lang-astro">
+	<figcaption class="header"><span class="title">src/<wbr/>pages/<wbr/>index.astro</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> contentfulClient </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;../lib/contentful&quot;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">type</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> blogPost </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;../lib/contentful&quot;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> entries </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">await</span><span style="color:#D8DEE9"> contentfulClient</span><span style="color:#C7C5D3">.</span><span style="color:#66ADFF">getEntries</span><span style="color:#C7C5D3">&lt;</span><span style="color:#FFBD2E">blogPost</span><span style="color:#C7C5D3">&gt;</span><span style="color:#ABA8BD">(</span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">  content_type</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;blogPost&quot;</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#C7C5D3">}</span><span style="color:#ABA8BD">)</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> posts </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> entries</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">items</span><span style="color:#C7C5D3">.</span><span style="color:#66ADFF">map</span><span style="color:#ABA8BD">(</span><span style="color:#D8DEE9">(item) </span><span style="color:#FF657C">=&gt;</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> title</span><span style="color:#C7C5D3">,</span><span style="color:#D8DEE9"> date</span><span style="color:#C7C5D3">,</span><span style="color:#D8DEE9"> description</span><span style="color:#C7C5D3">,</span><span style="color:#D8DEE9"> slug </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> item</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">fields</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#FF657C">return</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">    title</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">    slug</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">    description</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">    date</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">new</span><span style="color:#D8DEE9"> </span><span style="color:#66ADFF">Date</span><span style="color:#ABA8BD">(</span><span style="color:#D8DEE9">date</span><span style="color:#ABA8BD">)</span><span style="color:#C7C5D3">.</span><span style="color:#66ADFF">toLocaleDateString</span><span style="color:#ABA8BD">()</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">};</span></span>
+<span class="line"><span style="color:#C7C5D3">}</span><span style="color:#ABA8BD">)</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line ins"><span style="color:#c7c5d3">&lt;</span><span style="color:#ff9fad">html</span><span style="color:#d8dee9"> </span><span style="color:#ffbd2e">lang</span><span style="color:#c7c5d3">=</span><span style="color:#4fcfa1">&quot;en&quot;</span><span style="color:#c7c5d3">&gt;</span></span>
+<span class="line ins"><span style="color:#d8dee9">  </span><span style="color:#c7c5d3">&lt;</span><span style="color:#ff9fad">head</span><span style="color:#c7c5d3">&gt;</span></span>
+<span class="line ins"><span style="color:#d8dee9">    </span><span style="color:#c7c5d3">&lt;</span><span style="color:#ff9fad">title</span><span style="color:#c7c5d3">&gt;</span><span style="color:#d8dee9">My Blog</span><span style="color:#c7c5d3">&lt;/</span><span style="color:#ff9fad">title</span><span style="color:#c7c5d3">&gt;</span></span>
+<span class="line ins"><span style="color:#d8dee9">  </span><span style="color:#c7c5d3">&lt;/</span><span style="color:#ff9fad">head</span><span style="color:#c7c5d3">&gt;</span></span>
+<span class="line ins"><span style="color:#d8dee9">  </span><span style="color:#c7c5d3">&lt;</span><span style="color:#ff9fad">body</span><span style="color:#c7c5d3">&gt;</span></span>
+<span class="line ins"><span style="color:#d8dee9">    </span><span style="color:#c7c5d3">&lt;</span><span style="color:#ff9fad">h1</span><span style="color:#c7c5d3">&gt;</span><span style="color:#d8dee9">My Blog</span><span style="color:#c7c5d3">&lt;/</span><span style="color:#ff9fad">h1</span><span style="color:#c7c5d3">&gt;</span></span>
+<span class="line ins"><span style="color:#d8dee9">    </span><span style="color:#c7c5d3">&lt;</span><span style="color:#ff9fad">ul</span><span style="color:#c7c5d3">&gt;</span></span>
+<span class="line ins"><span style="color:#d8dee9">      </span><span style="color:#ff9fad">{</span><span style="color:#d8dee9">posts</span><span style="color:#c7c5d3">.</span><span style="color:#86beff">map</span><span style="color:#bbb8c9">(</span><span style="color:#d8dee9">(post) </span><span style="color:#ff9fad">=&gt;</span><span style="color:#d8dee9"> </span><span style="color:#bbb8c9">(</span></span>
+<span class="line ins"><span style="color:#d8dee9">        </span><span style="color:#c7c5d3">&lt;</span><span style="color:#ff9fad">li</span><span style="color:#c7c5d3">&gt;</span></span>
+<span class="line ins"><span style="color:#d8dee9">          </span><span style="color:#c7c5d3">&lt;</span><span style="color:#ff9fad">a</span><span style="color:#d8dee9"> </span><span style="color:#ffbd2e">href</span><span style="color:#ff9fad">={</span><span style="color:#c7c5d3">`</span><span style="color:#4fcfa1">/posts/</span><span style="color:#c7c5d3">${</span><span style="color:#d8dee9">slug</span><span style="color:#c7c5d3">}</span><span style="color:#4fcfa1">/</span><span style="color:#c7c5d3">`</span><span style="color:#ff9fad">}</span><span style="color:#c7c5d3">&gt;</span></span>
+<span class="line ins"><span style="color:#d8dee9">            </span><span style="color:#c7c5d3">&lt;</span><span style="color:#ff9fad">h2</span><span style="color:#c7c5d3">&gt;</span><span style="color:#ff9fad">{</span><span style="color:#d8dee9">title</span><span style="color:#ff9fad">}</span><span style="color:#c7c5d3">&lt;/</span><span style="color:#ff9fad">h2</span><span style="color:#c7c5d3">&gt;</span></span>
+<span class="line ins"><span style="color:#d8dee9">          </span><span style="color:#c7c5d3">&lt;/</span><span style="color:#ff9fad">a</span><span style="color:#c7c5d3">&gt;</span></span>
+<span class="line ins"><span style="color:#d8dee9">          </span><span style="color:#c7c5d3">&lt;</span><span style="color:#ff9fad">time</span><span style="color:#c7c5d3">&gt;</span><span style="color:#ff9fad">{</span><span style="color:#d8dee9">date</span><span style="color:#ff9fad">}</span><span style="color:#c7c5d3">&lt;/</span><span style="color:#ff9fad">time</span><span style="color:#c7c5d3">&gt;</span></span>
+<span class="line ins"><span style="color:#d8dee9">          </span><span style="color:#c7c5d3">&lt;</span><span style="color:#ff9fad">p</span><span style="color:#c7c5d3">&gt;</span><span style="color:#ff9fad">{</span><span style="color:#d8dee9">description</span><span style="color:#ff9fad">}</span><span style="color:#c7c5d3">&lt;/</span><span style="color:#ff9fad">p</span><span style="color:#c7c5d3">&gt;</span></span>
+<span class="line ins"><span style="color:#d8dee9">        </span><span style="color:#c7c5d3">&lt;/</span><span style="color:#ff9fad">li</span><span style="color:#c7c5d3">&gt;</span></span>
+<span class="line ins"><span style="color:#d8dee9">      </span><span style="color:#bbb8c9">))</span><span style="color:#ff9fad">}</span></span>
+<span class="line ins"><span style="color:#d8dee9">    </span><span style="color:#c7c5d3">&lt;/</span><span style="color:#ff9fad">ul</span><span style="color:#c7c5d3">&gt;</span></span>
+<span class="line ins"><span style="color:#d8dee9">  </span><span style="color:#c7c5d3">&lt;/</span><span style="color:#ff9fad">body</span><span style="color:#c7c5d3">&gt;</span></span>
+<span class="line ins"><span style="color:#c7c5d3">&lt;/</span><span style="color:#ff9fad">html</span><span style="color:#c7c5d3">&gt;</span></span></code></pre>
+</figure><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="generating-individual-blog-posts">Generating individual blog posts</h3><a class="anchor-link" href="#generating-individual-blog-posts"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Generating individual blog posts</span></a></div><p>Use the same method to fetch data your data from Contentful as above, but this time, on a page that will create a unique page route for each blog post.</p><div class="heading-wrapper level-h4" tabindex="-1"><h4 id="static-site-generation">Static site generation</h4><a class="anchor-link" href="#static-site-generation"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Static site generation</span></a></div><p>If you’re using Astro’s default static mode, you’ll use <a href="/en/core-concepts/routing/#dynamic-routes">dynamic routes</a> and the <code>getStaticPaths()</code> function. This function will be called at build time to generate the list of paths that become pages.</p><p>Create a new file named <code>[slug].astro</code> in <code>src/pages/posts/</code>.</p><p>As you did on <code>index.astro</code>, import the <code>BlogPost</code> interface and <code>contentfulClient</code> from <code>src/lib/contentful.ts</code>.</p><p>This time, fetch your data inside a <code>getStaticPaths()</code> function.</p>
+<figure class="code-snippet has-title lang-astro">
+	<figcaption class="header"><span class="title">src/<wbr/>pages/<wbr/>posts/<wbr/>[slug].astro</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> contentfulClient </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;../../lib/contentful&quot;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">type</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> blogPostFields </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;../../lib/contentful&quot;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF657C">export</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">async</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">function</span><span style="color:#D8DEE9"> </span><span style="color:#66ADFF">getStaticPaths</span><span style="color:#D8DEE9">() </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> entries </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">await</span><span style="color:#D8DEE9"> contentfulClient</span><span style="color:#C7C5D3">.</span><span style="color:#66ADFF">getEntries</span><span style="color:#C7C5D3">&lt;</span><span style="color:#FFBD2E">blogPost</span><span style="color:#C7C5D3">&gt;</span><span style="color:#ABA8BD">(</span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">    content_type</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;blogPost&quot;</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">}</span><span style="color:#ABA8BD">)</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#C7C5D3">}</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span></code></pre>
+</figure><p>Then, map each item to an object with a <code>params</code> and <code>props</code> property. The <code>params</code> property will be used to generate the URL of the page and the <code>props</code> property will be passed to the page component as props.</p>
+<figure class="code-snippet has-title lang-astro">
+	<figcaption class="header"><span class="title">src/<wbr/>pages/<wbr/>posts/<wbr/>[slug].astro</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> contentfulClient </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;../../lib/contentful&quot;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line ins"><span style="color:#ff9fad">import</span><span style="color:#d8dee9"> </span><span style="color:#c7c5d3">{</span><span style="color:#d8dee9"> documentToHtmlString </span><span style="color:#c7c5d3">}</span><span style="color:#d8dee9"> </span><span style="color:#ff9fad">from</span><span style="color:#d8dee9"> </span><span style="color:#4fcfa1">&quot;@contentful/rich-text-html-renderer&quot;</span><span style="color:#c7c5d3">;</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">type</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> blogPostFields </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;../../lib/contentful&quot;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF657C">export</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">async</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">function</span><span style="color:#D8DEE9"> </span><span style="color:#66ADFF">getStaticPaths</span><span style="color:#D8DEE9">() </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> entries </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">await</span><span style="color:#D8DEE9"> contentfulClient</span><span style="color:#C7C5D3">.</span><span style="color:#66ADFF">getEntries</span><span style="color:#C7C5D3">&lt;</span><span style="color:#FFBD2E">blogPostFields</span><span style="color:#C7C5D3">&gt;</span><span style="color:#ABA8BD">(</span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">    content_type</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;blogPost&quot;</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">}</span><span style="color:#ABA8BD">)</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"></span>
+<span class="line ins"><span style="color:#d8dee9">  </span><span style="color:#ff9fad">const</span><span style="color:#d8dee9"> pages </span><span style="color:#ff9fad">=</span><span style="color:#d8dee9"> entries</span><span style="color:#c7c5d3">.</span><span style="color:#d8dee9">items</span><span style="color:#c7c5d3">.</span><span style="color:#86beff">map</span><span style="color:#bbb8c9">(</span><span style="color:#d8dee9">(item) </span><span style="color:#ff9fad">=&gt;</span><span style="color:#d8dee9"> </span><span style="color:#bbb8c9">(</span><span style="color:#c7c5d3">{</span></span>
+<span class="line ins"><span style="color:#d8dee9">    params</span><span style="color:#c7c5d3">:</span><span style="color:#d8dee9"> </span><span style="color:#c7c5d3">{</span><span style="color:#d8dee9"> slug</span><span style="color:#c7c5d3">:</span><span style="color:#d8dee9"> item</span><span style="color:#c7c5d3">.</span><span style="color:#d8dee9">fields</span><span style="color:#c7c5d3">.</span><span style="color:#d8dee9">slug </span><span style="color:#c7c5d3">},</span></span>
+<span class="line ins"><span style="color:#d8dee9">    props</span><span style="color:#c7c5d3">:</span><span style="color:#d8dee9"> </span><span style="color:#c7c5d3">{</span></span>
+<span class="line ins"><span style="color:#d8dee9">      title</span><span style="color:#c7c5d3">:</span><span style="color:#d8dee9"> item</span><span style="color:#c7c5d3">.</span><span style="color:#d8dee9">fields</span><span style="color:#c7c5d3">.</span><span style="color:#d8dee9">title</span><span style="color:#c7c5d3">,</span></span>
+<span class="line ins"><span style="color:#d8dee9">      content</span><span style="color:#c7c5d3">:</span><span style="color:#d8dee9"> </span><span style="color:#86beff">documentToHtmlString</span><span style="color:#bbb8c9">(</span><span style="color:#d8dee9">item</span><span style="color:#c7c5d3">.</span><span style="color:#d8dee9">fields</span><span style="color:#c7c5d3">.</span><span style="color:#d8dee9">content</span><span style="color:#bbb8c9">)</span><span style="color:#c7c5d3">,</span></span>
+<span class="line ins"><span style="color:#d8dee9">      date</span><span style="color:#c7c5d3">:</span><span style="color:#d8dee9"> </span><span style="color:#ff9fad">new</span><span style="color:#d8dee9"> </span><span style="color:#86beff">Date</span><span style="color:#bbb8c9">(</span><span style="color:#d8dee9">item</span><span style="color:#c7c5d3">.</span><span style="color:#d8dee9">fields</span><span style="color:#c7c5d3">.</span><span style="color:#d8dee9">date</span><span style="color:#bbb8c9">)</span><span style="color:#c7c5d3">.</span><span style="color:#86beff">toLocaleDateString</span><span style="color:#bbb8c9">()</span><span style="color:#c7c5d3">,</span></span>
+<span class="line ins"><span style="color:#d8dee9">    </span><span style="color:#c7c5d3">},</span></span>
+<span class="line ins"><span style="color:#d8dee9">  </span><span style="color:#c7c5d3">}</span><span style="color:#bbb8c9">))</span><span style="color:#c7c5d3">;</span></span>
+<span class="line ins"><span style="color:#d8dee9">  </span><span style="color:#ff9fad">return</span><span style="color:#d8dee9"> pages</span><span style="color:#c7c5d3">;</span></span>
+<span class="line"><span style="color:#C7C5D3">}</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span></code></pre>
+</figure><p>The property inside <code>params</code> must match the name of the dynamic route. Since our filename is <code>[slug].astro</code>, we use <code>slug</code>.</p><p>In our example, the <code>props</code> object passes three properties to the page:</p><ul>
+<li>title (a string)</li>
+<li>content (a rich text Document converted to HTML using <code>documentToHtmlString</code>)</li>
+<li>date (formatted using the <code>Date</code> constructor)</li>
+</ul><p>Finally, you can use the page <code>props</code> to display your blog post.</p>
+<figure class="code-snippet has-title lang-astro">
+	<figcaption class="header"><span class="title">src/<wbr/>pages/<wbr/>posts/<wbr/>[slug].astro</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> contentfulClient </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;../../lib/contentful&quot;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> documentToHtmlString </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;@contentful/rich-text-html-renderer&quot;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">type</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> blogPost </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;../../lib/contentful&quot;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF657C">export</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">async</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">function</span><span style="color:#D8DEE9"> </span><span style="color:#66ADFF">getStaticPaths</span><span style="color:#D8DEE9">() </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> items </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">await</span><span style="color:#D8DEE9"> contentfulClient</span><span style="color:#C7C5D3">.</span><span style="color:#66ADFF">getEntries</span><span style="color:#C7C5D3">&lt;</span><span style="color:#FFBD2E">blogPost</span><span style="color:#C7C5D3">&gt;</span><span style="color:#ABA8BD">(</span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">    content_type</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;blogPost&quot;</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">}</span><span style="color:#ABA8BD">)</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> pages </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> items</span><span style="color:#C7C5D3">.</span><span style="color:#66ADFF">map</span><span style="color:#ABA8BD">(</span><span style="color:#D8DEE9">(item) </span><span style="color:#FF657C">=&gt;</span><span style="color:#D8DEE9"> </span><span style="color:#ABA8BD">(</span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">    params</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> slug</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> item</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">fields</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">slug </span><span style="color:#C7C5D3">},</span></span>
+<span class="line"><span style="color:#D8DEE9">    props</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">      title</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> item</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">fields</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">title</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">      content</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#66ADFF">documentToHtmlString</span><span style="color:#ABA8BD">(</span><span style="color:#D8DEE9">item</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">fields</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">content</span><span style="color:#ABA8BD">)</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">      date</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">new</span><span style="color:#D8DEE9"> </span><span style="color:#66ADFF">Date</span><span style="color:#ABA8BD">(</span><span style="color:#D8DEE9">item</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">fields</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">date</span><span style="color:#ABA8BD">)</span><span style="color:#C7C5D3">.</span><span style="color:#66ADFF">toLocaleDateString</span><span style="color:#ABA8BD">()</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">},</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">}</span><span style="color:#ABA8BD">))</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#FF657C">return</span><span style="color:#D8DEE9"> pages</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#C7C5D3">}</span></span>
+<span class="line"></span>
+<span class="line ins"><span style="color:#ff9fad">const</span><span style="color:#d8dee9"> </span><span style="color:#c7c5d3">{</span><span style="color:#d8dee9"> content</span><span style="color:#c7c5d3">,</span><span style="color:#d8dee9"> title</span><span style="color:#c7c5d3">,</span><span style="color:#d8dee9"> date </span><span style="color:#c7c5d3">}</span><span style="color:#d8dee9"> </span><span style="color:#ff9fad">=</span><span style="color:#d8dee9"> Astro</span><span style="color:#c7c5d3">.</span><span style="color:#d8dee9">props</span><span style="color:#c7c5d3">;</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line ins"><span style="color:#c7c5d3">&lt;</span><span style="color:#ff9fad">html</span><span style="color:#d8dee9"> </span><span style="color:#ffbd2e">lang</span><span style="color:#c7c5d3">=</span><span style="color:#4fcfa1">&quot;en&quot;</span><span style="color:#c7c5d3">&gt;</span></span>
+<span class="line ins"><span style="color:#d8dee9">  </span><span style="color:#c7c5d3">&lt;</span><span style="color:#ff9fad">head</span><span style="color:#c7c5d3">&gt;</span></span>
+<span class="line ins"><span style="color:#d8dee9">    </span><span style="color:#c7c5d3">&lt;</span><span style="color:#ff9fad">title</span><span style="color:#c7c5d3">&gt;</span><span style="color:#ff9fad">{</span><span style="color:#d8dee9">title</span><span style="color:#ff9fad">}</span><span style="color:#c7c5d3">&lt;/</span><span style="color:#ff9fad">title</span><span style="color:#c7c5d3">&gt;</span></span>
+<span class="line ins"><span style="color:#d8dee9">  </span><span style="color:#c7c5d3">&lt;/</span><span style="color:#ff9fad">head</span><span style="color:#c7c5d3">&gt;</span></span>
+<span class="line ins"><span style="color:#d8dee9">  </span><span style="color:#c7c5d3">&lt;</span><span style="color:#ff9fad">body</span><span style="color:#c7c5d3">&gt;</span></span>
+<span class="line ins"><span style="color:#d8dee9">    </span><span style="color:#c7c5d3">&lt;</span><span style="color:#ff9fad">h1</span><span style="color:#c7c5d3">&gt;</span><span style="color:#ff9fad">{</span><span style="color:#d8dee9">title</span><span style="color:#ff9fad">}</span><span style="color:#c7c5d3">&lt;/</span><span style="color:#ff9fad">h1</span><span style="color:#c7c5d3">&gt;</span></span>
+<span class="line ins"><span style="color:#d8dee9">    </span><span style="color:#c7c5d3">&lt;</span><span style="color:#ff9fad">time</span><span style="color:#c7c5d3">&gt;</span><span style="color:#ff9fad">{</span><span style="color:#d8dee9">date</span><span style="color:#ff9fad">}</span><span style="color:#c7c5d3">&lt;/</span><span style="color:#ff9fad">time</span><span style="color:#c7c5d3">&gt;</span></span>
+<span class="line ins"><span style="color:#d8dee9">    </span><span style="color:#c7c5d3">&lt;</span><span style="color:#ff9fad">article</span><span style="color:#d8dee9"> </span><span style="color:#ffbd2e">set:html</span><span style="color:#c7c5d3">=</span><span style="color:#ff9fad">{</span><span style="color:#d8dee9">content</span><span style="color:#ff9fad">}</span><span style="color:#d8dee9"> </span><span style="color:#c7c5d3">/&gt;</span></span>
+<span class="line ins"><span style="color:#d8dee9">  </span><span style="color:#c7c5d3">&lt;/</span><span style="color:#ff9fad">body</span><span style="color:#c7c5d3">&gt;</span></span>
+<span class="line ins"><span style="color:#c7c5d3">&lt;/</span><span style="color:#ff9fad">html</span><span style="color:#c7c5d3">&gt;</span></span></code></pre>
+</figure><p>Navigate to <a href="http://localhost:3000/posts/astro-is-amazing/">http://localhost:3000/posts/astro-is-amazing/</a> to make sure your dynamic route is working!</p><div class="heading-wrapper level-h4" tabindex="-1"><h4 id="server-side-rendering">Server side rendering</h4><a class="anchor-link" href="#server-side-rendering"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Server side rendering</span></a></div><p>If you’ve <a href="/en/guides/server-side-rendering/#enabling-ssr-in-your-project">opted in to SSR mode</a>, you will use a dynamic route that uses a <code>slug</code> parameter to fetch the data from Contentful.</p><p>Create a <code>[slug].astro</code> page in <code>src/pages/posts</code>. Use <a href="/en/reference/api-reference/#astroparams"><code>Astro.params</code></a> to get the slug from the URL, then pass that to <code>getEntries</code>:</p>
+<figure class="code-snippet has-title lang-astro">
+	<figcaption class="header"><span class="title">src/<wbr/>pages/<wbr/>posts/<wbr/>[slug].astro</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> contentfulClient </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;../../lib/contentful&quot;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">type</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> BlogPost </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;../../lib/contentful&quot;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> slug </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> Astro</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">params</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> data </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">await</span><span style="color:#D8DEE9"> contentfulClient</span><span style="color:#C7C5D3">.</span><span style="color:#66ADFF">getEntries</span><span style="color:#C7C5D3">&lt;</span><span style="color:#FFBD2E">BlogPost</span><span style="color:#C7C5D3">&gt;</span><span style="color:#ABA8BD">(</span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">  content_type</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;blogPost&quot;</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#16C082">&quot;fields.slug&quot;</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> slug</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#C7C5D3">}</span><span style="color:#ABA8BD">)</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span></code></pre>
+</figure><p>If the entry is not found, you can redirect the user to the 404 page using <a href="/en/guides/server-side-rendering/#astroredirect"><code>Astro.redirect</code></a>.</p>
+<figure class="code-snippet has-title lang-astro">
+	<figcaption class="header"><span class="title">src/<wbr/>pages/<wbr/>posts/<wbr/>[slug].astro</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> contentfulClient </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;../../lib/contentful&quot;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">type</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> BlogPost </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;../../lib/contentful&quot;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> slug </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> Astro</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">params</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"></span>
+<span class="line ins"><span style="color:#ff9fad">try</span><span style="color:#d8dee9"> </span><span style="color:#c7c5d3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> data </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">await</span><span style="color:#D8DEE9"> contentfulClient</span><span style="color:#C7C5D3">.</span><span style="color:#66ADFF">getEntries</span><span style="color:#C7C5D3">&lt;</span><span style="color:#FFBD2E">BlogPost</span><span style="color:#C7C5D3">&gt;</span><span style="color:#ABA8BD">(</span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">    content_type</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;blogPost&quot;</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#16C082">&quot;fields.slug&quot;</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> slug</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">}</span><span style="color:#ABA8BD">)</span><span style="color:#C7C5D3">;</span></span>
+<span class="line ins"><span style="color:#c7c5d3">}</span><span style="color:#d8dee9"> </span><span style="color:#ff9fad">catch</span><span style="color:#d8dee9"> </span><span style="color:#bbb8c9">(</span><span style="color:#d8dee9">error</span><span style="color:#bbb8c9">)</span><span style="color:#d8dee9"> </span><span style="color:#c7c5d3">{</span></span>
+<span class="line ins"><span style="color:#d8dee9">  </span><span style="color:#ff9fad">return</span><span style="color:#d8dee9"> Astro</span><span style="color:#c7c5d3">.</span><span style="color:#86beff">redirect</span><span style="color:#bbb8c9">(</span><span style="color:#4fcfa1">&quot;/404&quot;</span><span style="color:#bbb8c9">)</span><span style="color:#c7c5d3">;</span></span>
+<span class="line"><span style="color:#C7C5D3">}</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span></code></pre>
+</figure><p>To pass post data to the template section, create a <code>post</code> object outside the <code>try/catch</code> block.</p><p>Use <code>documentToHtmlString</code> to convert <code>content</code> from a Document to HTML, and use the Date constructor to format the date. <code>title</code> can be left as-is. Then, add these properties to your <code>post</code> object.</p>
+<figure class="code-snippet has-title lang-astro">
+	<figcaption class="header"><span class="title">src/<wbr/>pages/<wbr/>posts/<wbr/>[slug].astro</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> Layout </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;../../layouts/Layout.astro&quot;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> contentfulClient </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;../../lib/contentful&quot;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> documentToHtmlString </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;@contentful/rich-text-html-renderer&quot;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">type</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> blogPost </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;../../lib/contentful&quot;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"></span>
+<span class="line ins"><span style="color:#ff9fad">let</span><span style="color:#d8dee9"> post</span><span style="color:#c7c5d3">;</span></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> slug </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> Astro</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">params</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#FF657C">try</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> data </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">await</span><span style="color:#D8DEE9"> contentfulClient</span><span style="color:#C7C5D3">.</span><span style="color:#66ADFF">getEntries</span><span style="color:#C7C5D3">&lt;</span><span style="color:#FFBD2E">blogPost</span><span style="color:#C7C5D3">&gt;</span><span style="color:#ABA8BD">(</span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">    content_type</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;blogPost&quot;</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#16C082">&quot;fields.slug&quot;</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> slug</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">}</span><span style="color:#ABA8BD">)</span><span style="color:#C7C5D3">;</span></span>
+<span class="line ins"><span style="color:#d8dee9">  </span><span style="color:#ff9fad">const</span><span style="color:#d8dee9"> </span><span style="color:#c7c5d3">{</span><span style="color:#d8dee9"> title</span><span style="color:#c7c5d3">,</span><span style="color:#d8dee9"> date</span><span style="color:#c7c5d3">,</span><span style="color:#d8dee9"> content </span><span style="color:#c7c5d3">}</span><span style="color:#d8dee9"> </span><span style="color:#ff9fad">=</span><span style="color:#d8dee9"> data</span><span style="color:#c7c5d3">.</span><span style="color:#d8dee9">items</span><span style="color:#bbb8c9">[</span><span style="color:#ebcb8b">0</span><span style="color:#bbb8c9">]</span><span style="color:#c7c5d3">.</span><span style="color:#d8dee9">fields</span><span style="color:#c7c5d3">;</span></span>
+<span class="line ins"><span style="color:#d8dee9">  post </span><span style="color:#ff9fad">=</span><span style="color:#d8dee9"> </span><span style="color:#c7c5d3">{</span></span>
+<span class="line ins"><span style="color:#d8dee9">    title</span><span style="color:#c7c5d3">,</span></span>
+<span class="line ins"><span style="color:#d8dee9">    date</span><span style="color:#c7c5d3">:</span><span style="color:#d8dee9"> </span><span style="color:#ff9fad">new</span><span style="color:#d8dee9"> </span><span style="color:#86beff">Date</span><span style="color:#bbb8c9">(</span><span style="color:#d8dee9">date</span><span style="color:#bbb8c9">)</span><span style="color:#c7c5d3">.</span><span style="color:#86beff">toLocaleDateString</span><span style="color:#bbb8c9">()</span><span style="color:#c7c5d3">,</span></span>
+<span class="line ins"><span style="color:#d8dee9">    content</span><span style="color:#c7c5d3">:</span><span style="color:#d8dee9"> </span><span style="color:#86beff">documentToHtmlString</span><span style="color:#bbb8c9">(</span><span style="color:#d8dee9">content</span><span style="color:#bbb8c9">)</span><span style="color:#c7c5d3">,</span></span>
+<span class="line ins"><span style="color:#d8dee9">  </span><span style="color:#c7c5d3">};</span></span>
+<span class="line"><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">catch</span><span style="color:#D8DEE9"> </span><span style="color:#ABA8BD">(</span><span style="color:#D8DEE9">error</span><span style="color:#ABA8BD">)</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#FF657C">return</span><span style="color:#D8DEE9"> Astro</span><span style="color:#C7C5D3">.</span><span style="color:#66ADFF">redirect</span><span style="color:#ABA8BD">(</span><span style="color:#16C082">&quot;/404&quot;</span><span style="color:#ABA8BD">)</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#C7C5D3">}</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span></code></pre>
+</figure><p>Finally, you can reference <code>post</code> to display your blog post in the template section.</p>
+<figure class="code-snippet has-title lang-astro">
+	<figcaption class="header"><span class="title">src/<wbr/>pages/<wbr/>posts/<wbr/>[slug].astro</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> Layout </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;../../layouts/Layout.astro&quot;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> contentfulClient </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;../../lib/contentful&quot;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> documentToHtmlString </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;@contentful/rich-text-html-renderer&quot;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">type</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> blogPost </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;../../lib/contentful&quot;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF657C">let</span><span style="color:#D8DEE9"> post</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> slug </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> Astro</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">params</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#FF657C">try</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> data </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">await</span><span style="color:#D8DEE9"> contentfulClient</span><span style="color:#C7C5D3">.</span><span style="color:#66ADFF">getEntries</span><span style="color:#C7C5D3">&lt;</span><span style="color:#FFBD2E">blogPost</span><span style="color:#C7C5D3">&gt;</span><span style="color:#ABA8BD">(</span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">    content_type</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;blogPost&quot;</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#16C082">&quot;fields.slug&quot;</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> slug</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">}</span><span style="color:#ABA8BD">)</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> title</span><span style="color:#C7C5D3">,</span><span style="color:#D8DEE9"> date</span><span style="color:#C7C5D3">,</span><span style="color:#D8DEE9"> content </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> data</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">items</span><span style="color:#ABA8BD">[</span><span style="color:#EBCB8B">0</span><span style="color:#ABA8BD">]</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">fields</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#D8DEE9">  post </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">    title</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">    date</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">new</span><span style="color:#D8DEE9"> </span><span style="color:#66ADFF">Date</span><span style="color:#ABA8BD">(</span><span style="color:#D8DEE9">date</span><span style="color:#ABA8BD">)</span><span style="color:#C7C5D3">.</span><span style="color:#66ADFF">toLocaleDateString</span><span style="color:#ABA8BD">()</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">    content</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#66ADFF">documentToHtmlString</span><span style="color:#ABA8BD">(</span><span style="color:#D8DEE9">content</span><span style="color:#ABA8BD">)</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">};</span></span>
+<span class="line"><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">catch</span><span style="color:#D8DEE9"> </span><span style="color:#ABA8BD">(</span><span style="color:#D8DEE9">error</span><span style="color:#ABA8BD">)</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#FF657C">return</span><span style="color:#D8DEE9"> Astro</span><span style="color:#C7C5D3">.</span><span style="color:#66ADFF">redirect</span><span style="color:#ABA8BD">(</span><span style="color:#16C082">&quot;/404&quot;</span><span style="color:#ABA8BD">)</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#C7C5D3">}</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line ins"><span style="color:#c7c5d3">&lt;</span><span style="color:#ff9fad">html</span><span style="color:#d8dee9"> </span><span style="color:#ffbd2e">lang</span><span style="color:#c7c5d3">=</span><span style="color:#4fcfa1">&quot;en&quot;</span><span style="color:#c7c5d3">&gt;</span></span>
+<span class="line ins"><span style="color:#d8dee9">  </span><span style="color:#c7c5d3">&lt;</span><span style="color:#ff9fad">head</span><span style="color:#c7c5d3">&gt;</span></span>
+<span class="line ins"><span style="color:#d8dee9">    </span><span style="color:#c7c5d3">&lt;</span><span style="color:#ff9fad">title</span><span style="color:#c7c5d3">&gt;</span><span style="color:#ff9fad">{</span><span style="color:#d8dee9">post</span><span style="color:#c7c5d3">?.</span><span style="color:#d8dee9">title</span><span style="color:#ff9fad">}</span><span style="color:#c7c5d3">&lt;/</span><span style="color:#ff9fad">title</span><span style="color:#c7c5d3">&gt;</span></span>
+<span class="line ins"><span style="color:#d8dee9">  </span><span style="color:#c7c5d3">&lt;/</span><span style="color:#ff9fad">head</span><span style="color:#c7c5d3">&gt;</span></span>
+<span class="line ins"><span style="color:#d8dee9">  </span><span style="color:#c7c5d3">&lt;</span><span style="color:#ff9fad">body</span><span style="color:#c7c5d3">&gt;</span></span>
+<span class="line ins"><span style="color:#d8dee9">    </span><span style="color:#c7c5d3">&lt;</span><span style="color:#ff9fad">h1</span><span style="color:#c7c5d3">&gt;</span><span style="color:#ff9fad">{</span><span style="color:#d8dee9">post</span><span style="color:#c7c5d3">?.</span><span style="color:#d8dee9">title</span><span style="color:#ff9fad">}</span><span style="color:#c7c5d3">&lt;/</span><span style="color:#ff9fad">h1</span><span style="color:#c7c5d3">&gt;</span></span>
+<span class="line ins"><span style="color:#d8dee9">    </span><span style="color:#c7c5d3">&lt;</span><span style="color:#ff9fad">time</span><span style="color:#c7c5d3">&gt;</span><span style="color:#ff9fad">{</span><span style="color:#d8dee9">post</span><span style="color:#c7c5d3">?.</span><span style="color:#d8dee9">date</span><span style="color:#ff9fad">}</span><span style="color:#c7c5d3">&lt;/</span><span style="color:#ff9fad">time</span><span style="color:#c7c5d3">&gt;</span></span>
+<span class="line ins"><span style="color:#d8dee9">    </span><span style="color:#c7c5d3">&lt;</span><span style="color:#ff9fad">article</span><span style="color:#d8dee9"> </span><span style="color:#ffbd2e">set:html</span><span style="color:#c7c5d3">=</span><span style="color:#ff9fad">{</span><span style="color:#d8dee9">post</span><span style="color:#c7c5d3">?.</span><span style="color:#d8dee9">content</span><span style="color:#ff9fad">}</span><span style="color:#d8dee9"> </span><span style="color:#c7c5d3">/&gt;</span></span>
+<span class="line ins"><span style="color:#d8dee9">  </span><span style="color:#c7c5d3">&lt;/</span><span style="color:#ff9fad">body</span><span style="color:#c7c5d3">&gt;</span></span>
+<span class="line ins"><span style="color:#c7c5d3">&lt;/</span><span style="color:#ff9fad">html</span><span style="color:#c7c5d3">&gt;</span></span></code></pre>
+</figure><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="publishing-your-site">Publishing your site</h3><a class="anchor-link" href="#publishing-your-site"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Publishing your site</span></a></div><p>To deploy your website, visit our <a href="/en/guides/deploy/">deployment guides</a> and follow the instructions for your preferred hosting provider.</p><div class="heading-wrapper level-h4" tabindex="-1"><h4 id="rebuild-on-contentful-changes">Rebuild on Contentful changes</h4><a class="anchor-link" href="#rebuild-on-contentful-changes"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Rebuild on Contentful changes</span></a></div><p>If your project is using Astro’s default static mode, you will need to set up a webhook to trigger a new build when your content changes. If you are using Netlify or Vercel as your hosting provider, you can use its webhook feature to trigger a new build from Contentful events.</p><div class="heading-wrapper level-h5" tabindex="-1"><h5 id="netlify">Netlify</h5><a class="anchor-link" href="#netlify"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Netlify</span></a></div><p>To set up a webhook in Netlify:</p><ol>
+<li>
+<p>Go to your site dashboard and click on <strong>Build & deploy</strong>.</p>
+</li>
+<li>
+<p>Under the <strong>Continuous Deployment</strong> tab, find the <strong>Build hooks</strong> section and click on <strong>Add build hook</strong>.</p>
+</li>
+<li>
+<p>Provide a name for your webhook and select the branch you want to trigger the build on. Click on <strong>Save</strong> and copy the generated URL.</p>
+</li>
+</ol><div class="heading-wrapper level-h5" tabindex="-1"><h5 id="vercel">Vercel</h5><a class="anchor-link" href="#vercel"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Vercel</span></a></div><p>To set up a webhook in Vercel:</p><ol>
+<li>
+<p>Go to your project dashboard and click on <strong>Settings</strong>.</p>
+</li>
+<li>
+<p>Under the <strong>Git</strong> tab, find the <strong>Deploy Hooks</strong> section.</p>
+</li>
+<li>
+<p>Provide a name for your webhook and the branch you want to trigger the build on. Click <strong>Add</strong> and copy the generated URL.</p>
+</li>
+</ol><div class="heading-wrapper level-h5" tabindex="-1"><h5 id="adding-a-webhook-to-contentful">Adding a webhook to Contentful</h5><a class="anchor-link" href="#adding-a-webhook-to-contentful"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Adding a webhook to Contentful</span></a></div><p>In your Contentful space <strong>settings</strong>, click on the <strong>Webhooks</strong> tab and create a new webhook by clicking the <strong>Add Webhook</strong> button. Provide a name for your webhook and paste the webhook URL you copied in the previous section. Finally, hit <strong>Save</strong> to create the webhook.</p><p>Now, whenever you publish a new blog post in Contentful, a new build will be triggered and your blog will be updated.</p><h2 class="astro-UUNPUKEN">More CMS guides
+</h2><section class="cms-nav astro-3ETKNB4S">
+	<section class="cards-nav astro-3ETKNB4S astro-GMBXUO6P">
+	
+	<ul class="fluid-grid fluid-grid--minimal astro-7LFSRJY5">
+	<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .3em .25em .25em;">
+			<img src="/logos/storyblok.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/en/guides/cms/storyblok/" aria-current="false" class="astro-7CCKPCAY">
+				Storyblok
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .05em;">
+			<img src="/logos/contentful.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/en/guides/cms/contentful/" aria-current="page" class="astro-7CCKPCAY">
+				Contentful
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .1875em;">
+			<img src="/logos/buttercms.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/en/guides/cms/buttercms/" aria-current="false" class="astro-7CCKPCAY">
+				ButterCMS
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .25em;">
+			<img src="/logos/builderio.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/en/guides/cms/builderio/" aria-current="false" class="astro-7CCKPCAY">
+				Builder.io
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: 0 .1em;">
+			<img src="/logos/directus.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/en/guides/cms/directus/" aria-current="false" class="astro-7CCKPCAY">
+				Directus
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .125em;">
+			<img src="/logos/ghost.png" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/en/guides/cms/ghost/" aria-current="false" class="astro-7CCKPCAY">
+				Ghost
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .1625em;">
+			<img src="/logos/netlify-cms.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/en/guides/cms/netlify-cms/" aria-current="false" class="astro-7CCKPCAY">
+				Netlify CMS
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .3em .25em .3em .3em;">
+			<img src="/logos/payload.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/en/guides/cms/payload/" aria-current="false" class="astro-7CCKPCAY">
+				Payload CMS
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .25em;">
+			<img src="/logos/prismic.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/en/guides/cms/prismic/" aria-current="false" class="astro-7CCKPCAY">
+				Prismic
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: 0 .1em;">
+			<img src="/logos/sanity.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/en/guides/cms/sanity/" aria-current="false" class="astro-7CCKPCAY">
+				Sanity
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .2em;">
+			<img src="/logos/wordpress.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/en/guides/cms/wordpress/" aria-current="false" class="astro-7CCKPCAY">
+				WordPress
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+
+</ul>
+
+
+</section>
+
+
+</section>
+
+
+		</section>
+		
+	</article>
+</div>
+
+
+				<span id="docsearch-lvl0" hidden class="astro-KR5WJSBZ">Learn</span>
+			</div>
+		</main>
+		<div class="main-column astro-KR5WJSBZ">
+		</div>
+	</body></html>
+

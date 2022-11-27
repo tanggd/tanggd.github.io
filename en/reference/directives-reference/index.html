@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en" class="initial astro-KR5WJSBZ">
+	<head>
+		<!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="hsl(256, 44%, 15%)" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="hsl(273, 37%, 93%)" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="alternate icon" type="image/x-icon" href="/favicon.ico">
+<link rel="sitemap" href="/sitemap-index.xml">
+
+<!-- Global CSS -->
+<link rel="stylesheet" href="/theme.css">
+<link rel="stylesheet" href="/index.css">
+
+<!-- Scrollable a11y code helper -->
+<script type="module" src="/make-scrollable-code-focusable.js"></script>
+
+<!-- This is intentionally inlined to avoid FOUC -->
+
+
+<!-- Double-click to highlight code blocks (inline only). -->
+
+<!-- Fathom - beautiful, simple website analytics -->
+<script src="https://certain-quality.astro.build/script.js" data-site="EZBHTSIG" defer></script>
+
+		<!-- Page Metadata --><link rel="canonical" href="https://tanggd.github.io/en/reference/directives-reference/">
+
+
+<link rel="alternate" href="https://tanggd.github.io/en/reference/directives-reference/" hreflang="en"><link rel="alternate" href="https://tanggd.github.io/zh-cn/reference/directives-reference/" hreflang="zh-CN">
+
+<!-- Algolia docsearch language facet -->
+<meta name="docsearch:language" content="en">
+
+<!-- OpenGraph Tags -->
+<meta property="og:title" content="Template Directives Reference">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tanggd.github.io/en/reference/directives-reference/">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://tanggd.github.io/open-graph/en/reference/directives-reference.png">
+<meta property="og:image:alt" content="">
+<meta name="description" property="og:description" content="Build faster websites with less client-side Javascript.">
+<meta property="og:site_name" content="Astro Documentation">
+
+<!-- Twitter Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="astrodotbuild">
+<meta name="twitter:title" content="Template Directives Reference">
+<meta name="twitter:description" content="Build faster websites with less client-side Javascript.">
+<meta name="twitter:image" content="https://tanggd.github.io/open-graph/en/reference/directives-reference.png">
+<meta name="twitter:image:alt" content="">
+
+<!--
+  TODO: Add json+ld data, maybe https://schema.org/APIReference makes sense?
+  Docs: https://developers.google.com/search/docs/advanced/structured-data/intro-structured-data
+  https://www.npmjs.com/package/schema-dts seems like a great resource for implementing this.
+  Even better, there’s a React component that integrates with `schema-dts`: https://github.com/google/react-schemaorg
+-->
+
+		<title>Template Directives Reference 🚀 Astro Documentation</title>
+		
+		<script>
+			// This code was migrated/copied from ThemToggleBotton to make the
+			// dark mode toggle instant, vs. hidden inside of a Preact useEffect() call.
+			const theme = (() => {
+				if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+					return localStorage.getItem('theme');
+				}
+				if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+					return 'dark';
+				}
+				return 'light';
+			})();
+			if (theme === 'light') {
+				document.documentElement.classList.remove('theme-dark');
+			} else {
+				document.documentElement.classList.add('theme-dark');
+			}
+		</script>
+	<link rel="stylesheet" href="/assets/404.6d6787e2.css" />
+<link rel="stylesheet" href="/assets/alpinejs.6dd7e965.css" />
+<link rel="stylesheet" href="/assets/auto.444a50d9.css" />
+<link rel="stylesheet" href="/assets/builderio.d1870a6c.css" />
+<link rel="stylesheet" href="/assets/builderio.fb4fe658.css" />
+<link rel="stylesheet" href="/assets/builderio.1507b30a.css" /><script type="module" src="/hoisted.66b9b87c.js"></script></head>
+
+	<body class="astro-KR5WJSBZ">
+		<header class="astro-I6GUSDXI">
+	<a href="#article" class="sr-only focus:not-sr-only skiplink astro-VODYIZTE">
+	<span class="astro-VODYIZTE">Skip to Content
+</span>
+</a>
+
+
+	<nav class="nav-wrapper astro-I6GUSDXI" aria-label="Top">
+		<div dir="ltr" lang="en" class="logo flex astro-I6GUSDXI">
+			<ul class="astro-I6GUSDXI">
+				<li class="astro-I6GUSDXI">
+					<a class="docs astro-I6GUSDXI" href="/en/getting-started/">
+						<span class="sr-only astro-I6GUSDXI">Docs</span>
+						<svg xmlns="http://www.w3.org/2000/svg" width="226" height="102" viewBox="0 0 226 102" fill="none" class="astro-I6GUSDXI">
+							<path class="docs-path astro-I6GUSDXI" fill="currentColor" d="M25.805 68c14.688 0 24.883-8.41 24.883-21.14 0-12.786-9.62-19.756-24.653-19.756H0V68h25.805zm-14.17-33.005H24.25c8.352 0 14.17 4.09 14.17 12.039 0 8.236-5.3 13.075-14.113 13.075H11.635V34.995zM82.673 69.382c16.704 0 27.418-8.582 27.418-21.83 0-13.248-10.771-21.83-27.418-21.83-16.589 0-27.418 8.582-27.418 21.83 0 13.19 10.83 21.83 27.418 21.83zm0-8.64c-9.1 0-15.149-5.299-15.149-13.19 0-7.891 6.048-13.19 15.15-13.19 9.1 0 15.205 5.299 15.205 13.19 0 7.891-6.105 13.19-15.206 13.19zM141.497 69.382c13.306 0 22.637-5.299 25.978-14.572l-11.866-2.535c-1.67 5.415-6.393 8.295-13.709 8.295-9.216 0-15.033-5.127-15.033-13.018 0-8.006 5.702-13.018 14.918-13.018 7.43 0 12.154 3.053 13.709 8.64l12.038-2.13c-2.707-9.562-12.268-15.322-25.574-15.322-16.128 0-27.302 9.043-27.302 22.003 0 13.133 10.425 21.657 26.841 21.657zM194.94 69.382c14.745 0 23.212-5.01 23.212-14.054 0-7.603-4.665-10.944-15.955-12.096l-11.289-1.094c-5.242-.576-6.97-1.556-6.97-4.09 0-2.765 3.456-4.262 9.792-4.262 7.834 0 13.709 2.476 16.762 6.508l7.315-6.163c-5.069-5.702-13.133-8.41-23.501-8.41-13.997 0-21.888 4.781-21.888 12.903 0 7.546 4.781 11.232 14.803 12.326l12.557 1.383c4.896.518 6.624 1.555 6.624 4.09 0 3.225-3.456 4.723-10.886 4.723-8.352 0-14.688-3.226-18.087-8.007l-8.294 5.818c4.205 6.451 13.709 10.425 25.805 10.425z"></path>
+						</svg>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<style>astro-island,astro-slot{display:contents}</style><script>(self.Astro=self.Astro||{}).visible=(s,c,n)=>{const r=async()=>{await(await s())()};let i=new IntersectionObserver(e=>{for(const t of e)if(!!t.isIntersecting){i.disconnect(),r();break}});for(let e=0;e<n.children.length;e++){const t=n.children[e];i.observe(t)}},window.dispatchEvent(new Event("astro:visible"));var l;{const c={0:t=>t,1:t=>JSON.parse(t,o),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(JSON.parse(t,o)),5:t=>new Set(JSON.parse(t,o)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(JSON.parse(t)),9:t=>new Uint16Array(JSON.parse(t)),10:t=>new Uint32Array(JSON.parse(t))},o=(t,s)=>{if(t===""||!Array.isArray(s))return s;const[e,n]=s;return e in c?c[e](n):void 0};customElements.get("astro-island")||customElements.define("astro-island",(l=class extends HTMLElement{constructor(){super(...arguments);this.hydrate=()=>{if(!this.hydrator||this.parentElement&&this.parentElement.closest("astro-island[ssr]"))return;const s=this.querySelectorAll("astro-slot"),e={},n=this.querySelectorAll("template[data-astro-template]");for(const r of n){const i=r.closest(this.tagName);!i||!i.isSameNode(this)||(e[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(const r of s){const i=r.closest(this.tagName);!i||!i.isSameNode(this)||(e[r.getAttribute("name")||"default"]=r.innerHTML)}const a=this.hasAttribute("props")?JSON.parse(this.getAttribute("props"),o):{};this.hydrator(this)(this.Component,a,e,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),window.removeEventListener("astro:hydrate",this.hydrate),window.dispatchEvent(new CustomEvent("astro:hydrate"))}}connectedCallback(){!this.hasAttribute("await-children")||this.firstChild?this.childrenConnectedCallback():new MutationObserver((s,e)=>{e.disconnect(),this.childrenConnectedCallback()}).observe(this,{childList:!0})}async childrenConnectedCallback(){window.addEventListener("astro:hydrate",this.hydrate);let s=this.getAttribute("before-hydration-url");s&&await import(s),this.start()}start(){const s=JSON.parse(this.getAttribute("opts")),e=this.getAttribute("client");if(Astro[e]===void 0){window.addEventListener(`astro:${e}`,()=>this.start(),{once:!0});return}Astro[e](async()=>{const n=this.getAttribute("renderer-url"),[a,{default:r}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),i=this.getAttribute("component-export")||"default";if(!i.includes("."))this.Component=a[i];else{this.Component=a;for(const d of i.split("."))this.Component=this.Component[d]}return this.hydrator=r,this.hydrate},s,this)}attributeChangedCallback(){this.hydrator&&this.hydrate()}},l.observedAttributes=["props"],l))}</script><astro-island uid="2tcXi2" component-url="/ThemeToggleButton.6de6281e.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{&quot;labels&quot;:[0,{&quot;useLight&quot;:[0,&quot;Use light theme&quot;],&quot;useDark&quot;:[0,&quot;Use dark theme&quot;]}],&quot;isInsideHeader&quot;:[0,true]}" ssr="" client="visible" opts="{&quot;name&quot;:&quot;ThemeToggleButton&quot;,&quot;value&quot;:true}" await-children=""><div class="theme-toggle hide-toggle-on-smaller-screens"><label title="Use light theme" class=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path></svg><input type="radio" name="theme-toggle" aria-label="Use light theme" value="light"/></label><label title="Use dark theme" class=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg><input type="radio" name="theme-toggle" aria-label="Use dark theme" value="dark"/></label></div></astro-island>
+		<!-- {lang && <LanguageSelect lang={lang} client:idle />} -->
+		<!-- 
+			TODO：搜索功能
+			后期再做，暂时隐藏
+			参考文档 https://blog.csdn.net/weixin_40026797/article/details/126063524 -->
+		<!-- <Search {lang} labels={docsearchStrings} /> -->
+		<a class="astro astro-I6GUSDXI" href="https://github.com/tanggd" target="_blank" rel="noopener noreferrer">
+			<img src="/assets/github.4e28406c.svg" alt="github" class="astro-I6GUSDXI">
+		</a>
+		<script>(self.Astro=self.Astro||{}).idle=t=>{const e=async()=>{await(await t())()};"requestIdleCallback"in window?window.requestIdleCallback(e):setTimeout(e,200)},window.dispatchEvent(new Event("astro:idle"));</script><astro-island uid="Z1Iw7D6" component-url="/SidebarToggle.2303dca7.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{}" ssr="" client="idle" opts="{&quot;name&quot;:&quot;SidebarToggle&quot;,&quot;value&quot;:true}" await-children=""><button id="menu-toggle" class="header-button" type="button" aria-pressed="false"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg><span class="sr-only">Toggle sidebar</span></button></astro-island>
+	</nav>
+</header>
+
+
+		<main class="layout astro-KR5WJSBZ">
+			<aside id="left-sidebar" class="sidebar astro-KR5WJSBZ">
+				
+					<nav aria-label="Primary" class="astro-VHM34O3D">
+	<script>(self.Astro=self.Astro||{}).load=a=>{(async()=>await(await a())())()},window.dispatchEvent(new Event("astro:load"));</script><astro-island uid="Z1KQCLa" component-url="/SidebarToggleTabGroup.2446d59c.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{&quot;defaultActiveTab&quot;:[0,&quot;learn&quot;],&quot;labels&quot;:[0,{&quot;learn&quot;:[0,&quot;Learn&quot;],&quot;api&quot;:[0,&quot;Tools&quot;]}]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;SidebarToggleTabGroup&quot;,&quot;value&quot;:true}" await-children=""><div class="TabGroup"><button class="active">Learn</button><button class="">Tools</button></div></astro-island>
+	<ul class="nav-groups astro-VHM34O3D">
+		<li class="nav-group learn active astro-Q2W3FM2V">
+			<details open class="astro-Q2W3FM2V">
+				<summary class="nav-group-title astro-Q2W3FM2V">
+					<h2 class="astro-Q2W3FM2V">
+						CSS
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 1 16 16" width="16" height="16" aria-hidden="true" class="astro-Q2W3FM2V">
+							<path fill-rule="evenodd" d="M6.22 3.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 010-1.06z" class="astro-Q2W3FM2V"></path>
+						</svg>
+					</h2>
+				</summary>
+				<ul class="astro-Q2W3FM2V">
+					<li class="nav-link astro-Q2W3FM2V">
+							<a href="/en/css/xxx/" aria-current="false" data-current-parent="false" class="astro-Q2W3FM2V">
+								CSS世界 <sup class="fallback astro-Q2W3FM2V">EN</sup>
+							</a>
+						</li>
+				</ul>
+			</details>
+		</li>
+
+
+		<li class="nav-group api astro-Q2W3FM2V">
+			<details open class="astro-Q2W3FM2V">
+				<summary class="nav-group-title astro-Q2W3FM2V">
+					<h2 class="astro-Q2W3FM2V">
+						小工具
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 1 16 16" width="16" height="16" aria-hidden="true" class="astro-Q2W3FM2V">
+							<path fill-rule="evenodd" d="M6.22 3.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 010-1.06z" class="astro-Q2W3FM2V"></path>
+						</svg>
+					</h2>
+				</summary>
+				<ul class="astro-Q2W3FM2V">
+					<li class="nav-link astro-Q2W3FM2V">
+							<a href="/en/tools/make-certificate-photos/" aria-current="false" data-current-parent="false" class="astro-Q2W3FM2V">
+								制作证件照 <sup class="fallback astro-Q2W3FM2V">EN</sup>
+							</a>
+						</li>
+				</ul>
+			</details>
+		</li>
+
+
+		<li style="text-align: center;" class="astro-VHM34O3D">
+			<astro-island uid="1IhUvw" component-url="/ThemeToggleButton.6de6281e.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{&quot;labels&quot;:[0,{&quot;useLight&quot;:[0,&quot;Use light theme&quot;],&quot;useDark&quot;:[0,&quot;Use dark theme&quot;]}]}" ssr="" client="visible" opts="{&quot;name&quot;:&quot;ThemeToggleButton&quot;,&quot;value&quot;:true}" await-children=""><div class="theme-toggle "><label title="Use light theme" class=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path></svg><input type="radio" name="theme-toggle" aria-label="Use light theme" value="light"/></label><label title="Use dark theme" class=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg><input type="radio" name="theme-toggle" aria-label="Use dark theme" value="dark"/></label></div></astro-island>
+		</li>
+	</ul>
+</nav>
+
+
+
+
+				
+			</aside>
+			<aside id="right-sidebar" class="sidebar astro-KR5WJSBZ">
+				<script>(self.Astro=self.Astro||{}).media=(s,a)=>{const t=async()=>{await(await s())()};if(a.value){const e=matchMedia(a.value);e.matches?t():e.addEventListener("change",t,{once:!0})}},window.dispatchEvent(new Event("astro:media"));</script><nav aria-label="Secondary" class="astro-TFI5F24A">
+	<astro-island uid="HrPfe" component-url="/TableOfContents.dc58575b.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{&quot;headings&quot;:[1,&quot;[[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;rules\&quot;],\&quot;text\&quot;:[0,\&quot;Rules\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;common-directives\&quot;],\&quot;text\&quot;:[0,\&quot;Common Directives\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;classlist\&quot;],\&quot;text\&quot;:[0,\&quot;class:list\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;sethtml\&quot;],\&quot;text\&quot;:[0,\&quot;set:html\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;settext\&quot;],\&quot;text\&quot;:[0,\&quot;set:text\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;client-directives\&quot;],\&quot;text\&quot;:[0,\&quot;Client Directives\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;clientload\&quot;],\&quot;text\&quot;:[0,\&quot;client:load\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;clientidle\&quot;],\&quot;text\&quot;:[0,\&quot;client:idle\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;clientvisible\&quot;],\&quot;text\&quot;:[0,\&quot;client:visible\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;clientmedia\&quot;],\&quot;text\&quot;:[0,\&quot;client:media\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;clientonly\&quot;],\&quot;text\&quot;:[0,\&quot;client:only\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;script--style-directives\&quot;],\&quot;text\&quot;:[0,\&quot;Script &amp; Style Directives\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;isglobal\&quot;],\&quot;text\&quot;:[0,\&quot;is:global\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;isinline\&quot;],\&quot;text\&quot;:[0,\&quot;is:inline\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;definevars\&quot;],\&quot;text\&quot;:[0,\&quot;define:vars\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;advanced-directives\&quot;],\&quot;text\&quot;:[0,\&quot;Advanced Directives\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;israw\&quot;],\&quot;text\&quot;:[0,\&quot;is:raw\&quot;]}]]&quot;],&quot;labels&quot;:[0,{&quot;onThisPage&quot;:[0,&quot;On this page&quot;],&quot;overview&quot;:[0,&quot;Overview&quot;]}],&quot;isMobile&quot;:[0,false]}" ssr="" client="media" opts="{&quot;name&quot;:&quot;TableOfContents&quot;,&quot;value&quot;:&quot;(min-width: 50em)&quot;}" await-children=""><h2 class="heading" id="on-this-page-heading">On this page</h2><ul><li class="header-link depth-2 current-header-link"><a href="#overview">Overview</a></li><li class="header-link depth-2"><a href="#rules">Rules</a></li><li class="header-link depth-2"><a href="#common-directives">Common Directives</a></li><li class="header-link depth-3"><a href="#classlist">class:list</a></li><li class="header-link depth-3"><a href="#sethtml">set:html</a></li><li class="header-link depth-3"><a href="#settext">set:text</a></li><li class="header-link depth-2"><a href="#client-directives">Client Directives</a></li><li class="header-link depth-3"><a href="#clientload">client:load</a></li><li class="header-link depth-3"><a href="#clientidle">client:idle</a></li><li class="header-link depth-3"><a href="#clientvisible">client:visible</a></li><li class="header-link depth-3"><a href="#clientmedia">client:media</a></li><li class="header-link depth-3"><a href="#clientonly">client:only</a></li><li class="header-link depth-2"><a href="#script--style-directives">Script &amp; Style Directives</a></li><li class="header-link depth-3"><a href="#isglobal">is:global</a></li><li class="header-link depth-3"><a href="#isinline">is:inline</a></li><li class="header-link depth-3"><a href="#definevars">define:vars</a></li><li class="header-link depth-2"><a href="#advanced-directives">Advanced Directives</a></li><li class="header-link depth-3"><a href="#israw">is:raw</a></li></ul></astro-island>
+</nav>
+
+
+			</aside>
+			<div id="main-content" class="main-column astro-KR5WJSBZ">
+				<div dir="ltr" class="astro-2XBDZOYQ">
+	<div class="fixed-mobile-bar astro-2XBDZOYQ" dir="ltr">
+					<nav>
+						<astro-island uid="j3v4e" component-url="/TableOfContents.dc58575b.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{&quot;headings&quot;:[1,&quot;[[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;rules\&quot;],\&quot;text\&quot;:[0,\&quot;Rules\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;common-directives\&quot;],\&quot;text\&quot;:[0,\&quot;Common Directives\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;classlist\&quot;],\&quot;text\&quot;:[0,\&quot;class:list\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;sethtml\&quot;],\&quot;text\&quot;:[0,\&quot;set:html\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;settext\&quot;],\&quot;text\&quot;:[0,\&quot;set:text\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;client-directives\&quot;],\&quot;text\&quot;:[0,\&quot;Client Directives\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;clientload\&quot;],\&quot;text\&quot;:[0,\&quot;client:load\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;clientidle\&quot;],\&quot;text\&quot;:[0,\&quot;client:idle\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;clientvisible\&quot;],\&quot;text\&quot;:[0,\&quot;client:visible\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;clientmedia\&quot;],\&quot;text\&quot;:[0,\&quot;client:media\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;clientonly\&quot;],\&quot;text\&quot;:[0,\&quot;client:only\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;script--style-directives\&quot;],\&quot;text\&quot;:[0,\&quot;Script &amp; Style Directives\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;isglobal\&quot;],\&quot;text\&quot;:[0,\&quot;is:global\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;isinline\&quot;],\&quot;text\&quot;:[0,\&quot;is:inline\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;definevars\&quot;],\&quot;text\&quot;:[0,\&quot;define:vars\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;advanced-directives\&quot;],\&quot;text\&quot;:[0,\&quot;Advanced Directives\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;israw\&quot;],\&quot;text\&quot;:[0,\&quot;is:raw\&quot;]}]]&quot;],&quot;labels&quot;:[0,{&quot;onThisPage&quot;:[0,&quot;On this page&quot;],&quot;overview&quot;:[0,&quot;Overview&quot;]}],&quot;isMobile&quot;:[0,true]}" ssr="" client="media" opts="{&quot;name&quot;:&quot;TableOfContents&quot;,&quot;value&quot;:&quot;(max-width: 72em)&quot;}" await-children=""><details class="toc-mobile-container"><summary class="toc-mobile-header"><div class="toc-mobile-header-content"><div class="toc-toggle"><h2 class="heading" id="on-this-page-heading">On this page</h2><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 1 16 16" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M6.22 3.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 010-1.06z"></path></svg></div></div></summary><ul><li class="header-link depth-2 current-header-link"><a href="#overview">Overview</a></li><li class="header-link depth-2"><a href="#rules">Rules</a></li><li class="header-link depth-2"><a href="#common-directives">Common Directives</a></li><li class="header-link depth-3"><a href="#classlist">class:list</a></li><li class="header-link depth-3"><a href="#sethtml">set:html</a></li><li class="header-link depth-3"><a href="#settext">set:text</a></li><li class="header-link depth-2"><a href="#client-directives">Client Directives</a></li><li class="header-link depth-3"><a href="#clientload">client:load</a></li><li class="header-link depth-3"><a href="#clientidle">client:idle</a></li><li class="header-link depth-3"><a href="#clientvisible">client:visible</a></li><li class="header-link depth-3"><a href="#clientmedia">client:media</a></li><li class="header-link depth-3"><a href="#clientonly">client:only</a></li><li class="header-link depth-2"><a href="#script--style-directives">Script &amp; Style Directives</a></li><li class="header-link depth-3"><a href="#isglobal">is:global</a></li><li class="header-link depth-3"><a href="#isinline">is:inline</a></li><li class="header-link depth-3"><a href="#definevars">define:vars</a></li><li class="header-link depth-2"><a href="#advanced-directives">Advanced Directives</a></li><li class="header-link depth-3"><a href="#israw">is:raw</a></li></ul></details></astro-island>
+					</nav>
+				</div><div class="spacer astro-2XBDZOYQ"></div>
+	<article id="article" class="content astro-2XBDZOYQ">
+		<section class="main-section astro-2XBDZOYQ">
+			<header class="astro-2XBDZOYQ">
+				
+				<h1 class="content-title astro-2XBDZOYQ" id="overview">Template Directives Reference</h1>
+				
+			</header>
+			
+			<p><strong>Template directives</strong> are a special kind of HTML attribute available inside of any Astro component template (<code>.astro</code> files), and some can also be used in <code>.mdx</code> files.</p><p>Template directives are used to control an element or component’s behavior in some way. A template directive could enable some compiler feature that makes your life easier (like using <code>class:list</code> instead of <code>class</code>). Or, a directive could tell the Astro compiler to do something special with that component (like hydrating with <code>client:load</code>).</p><p>This page describes all of the template directives available to you in Astro, and how they work.</p><div class="heading-wrapper level-h2" tabindex="-1"><h2 id="rules">Rules</h2><a class="anchor-link" href="#rules"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Rules</span></a></div><p>For a template directive to be valid, it must:</p><ul>
+<li>Include a colon <code>:</code> in its name, using the form <code>X:Y</code> (ex: <code>client:load</code>).</li>
+<li>Be visible to the compiler (ex: <code>&lt;X {...attr}&gt;</code> would not work if <code>attr</code> contained a directive).</li>
+</ul><p>Some template directives, but not all, can take a custom value:</p><ul>
+<li><code>&lt;X client:load /&gt;</code> (takes no value)</li>
+<li><code>&lt;X class:list={['some-css-class']} /&gt;</code> (takes an array)</li>
+</ul><p>A template directive is never included directly in the final HTML output of a component.</p><div class="heading-wrapper level-h2" tabindex="-1"><h2 id="common-directives">Common Directives</h2><a class="anchor-link" href="#common-directives"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Common Directives</span></a></div><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="classlist"><code>class:list</code></h3><a class="anchor-link" href="#classlist"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled class:list</span></a></div><p><code>class:list={...}</code> takes an array of class values and converts them into a class string. This is inspired by @lukeed’s popular <a href="https://github.com/lukeed/clsx">clsx</a> helper library, but built directly into Astro itself.</p><p><code>class:list</code> takes an array of several different possible value kinds:</p><ul>
+<li><code>string</code>: Added to the element <code>class</code></li>
+<li><code>Object</code>: All truthy keys are added to the element <code>class</code></li>
+<li><code>Array</code>: flattened</li>
+<li><code>Set</code>: flattened</li>
+</ul>
+<figure class="code-snippet lang-astro">
+	<figcaption class="header"></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">&lt;!-- This --&gt;</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">span</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">class:list</span><span style="color:#C7C5D3">=</span><span style="color:#FF657C">{</span><span style="color:#ABA8BD">[</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;hello goodbye&#39;</span><span style="color:#C7C5D3">,</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> hello</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">true</span><span style="color:#C7C5D3">,</span><span style="color:#D8DEE9"> world</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">true</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">},</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">new</span><span style="color:#D8DEE9"> </span><span style="color:#66ADFF">Set</span><span style="color:#ABA8BD">([</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;hello&#39;</span><span style="color:#C7C5D3">,</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;friend&#39;</span><span style="color:#D8DEE9"> </span><span style="color:#ABA8BD">])</span><span style="color:#D8DEE9"> </span><span style="color:#ABA8BD">]</span><span style="color:#FF657C">}</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">/&gt;</span></span>
+<span class="line"><span style="color:#ABA8BD">&lt;!-- Becomes --&gt;</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">span</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">class</span><span style="color:#C7C5D3">=</span><span style="color:#16C082">&quot;hello goodbye world friend&quot;</span><span style="color:#C7C5D3">&gt;&lt;/</span><span style="color:#FF657C">span</span><span style="color:#C7C5D3">&gt;</span></span></code></pre>
+</figure><p>Duplicate values are removed automatically.</p><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="sethtml"><code>set:html</code></h3><a class="anchor-link" href="#sethtml"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled set:html</span></a></div><p><code>set:html={string}</code> injects an HTML string into an element, similar to setting <code>el.innerHTML</code>.</p><p><strong>The value is not automatically escaped by Astro!</strong> Be sure that you trust the value, or that you have escaped it manually before passing it to the template. Forgetting to do this will open you up to <a href="https://owasp.org/www-community/attacks/xss/">Cross Site Scripting (XSS) attacks.</a></p>
+<figure class="code-snippet lang-astro">
+	<figcaption class="header"></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> rawHTMLString </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;Hello &lt;strong&gt;World&lt;/strong&gt;&quot;</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">h1</span><span style="color:#C7C5D3">&gt;</span><span style="color:#FF657C">{</span><span style="color:#D8DEE9">rawHTMLString</span><span style="color:#FF657C">}</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">h1</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#ABA8BD">&lt;!-- Output: &lt;h1&gt;Hello &amp;lt;strong&amp;gt;World&amp;lt;/strong&amp;gt;&lt;/h1&gt; --&gt;</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">h1</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">set:html</span><span style="color:#C7C5D3">=</span><span style="color:#FF657C">{</span><span style="color:#D8DEE9">rawHTMLString</span><span style="color:#FF657C">}</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">/&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#ABA8BD">&lt;!-- Output: &lt;h1&gt;Hello &lt;strong&gt;World&lt;/strong&gt;&lt;/h1&gt; --&gt;</span></span></code></pre>
+</figure><p>You can also use <code>set:html</code> on a <code>&lt;Fragment&gt;</code> to avoid adding an unnecessary wrapper element. This can be especially useful when fetching HTML from a CMS.</p>
+<figure class="code-snippet lang-astro">
+	<figcaption class="header"></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> cmsContent </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">await</span><span style="color:#D8DEE9"> </span><span style="color:#66ADFF">fetchHTMLFromMyCMS</span><span style="color:#ABA8BD">()</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FFBD2E">Fragment</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">set:html</span><span style="color:#C7C5D3">=</span><span style="color:#FF657C">{</span><span style="color:#D8DEE9">cmsContent</span><span style="color:#FF657C">}</span><span style="color:#C7C5D3">&gt;</span></span></code></pre>
+</figure><p><code>set:html={Promise&lt;string&gt;}</code> injects an HTML string into an element that is wrapped in a Promise.</p><p>This can be used to inject HTML stored externally, such as in a database.</p>
+<figure class="code-snippet lang-astro">
+	<figcaption class="header"></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> api </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;../db/api.js&#39;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">article</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">set:html</span><span style="color:#C7C5D3">=</span><span style="color:#FF657C">{</span><span style="color:#D8DEE9">api</span><span style="color:#C7C5D3">.</span><span style="color:#66ADFF">getArticle</span><span style="color:#ABA8BD">(</span><span style="color:#D8DEE9">Astro</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">props</span><span style="color:#C7C5D3">.</span><span style="color:#D8DEE9">id</span><span style="color:#ABA8BD">)</span><span style="color:#FF657C">}</span><span style="color:#C7C5D3">&gt;&lt;/</span><span style="color:#FF657C">article</span><span style="color:#C7C5D3">&gt;</span></span></code></pre>
+</figure><p><code>set:html={Promise&lt;Response&gt;}</code> injects a <a href="https://developer.mozilla.org/en-US/docs/Web/API/Response">Response</a> into an element.</p><p>This is most helpful when using <code>fetch()</code>. For example, fetching old posts from a previous static-site generator.</p>
+<figure class="code-snippet lang-astro">
+	<figcaption class="header"></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">article</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">set:html</span><span style="color:#C7C5D3">=</span><span style="color:#FF657C">{</span><span style="color:#66ADFF">fetch</span><span style="color:#ABA8BD">(</span><span style="color:#16C082">&#39;http://example/old-posts/making-soup.html&#39;</span><span style="color:#ABA8BD">)</span><span style="color:#FF657C">}</span><span style="color:#C7C5D3">&gt;&lt;/</span><span style="color:#FF657C">article</span><span style="color:#C7C5D3">&gt;</span></span></code></pre>
+</figure><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="settext"><code>set:text</code></h3><a class="anchor-link" href="#settext"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled set:text</span></a></div><p><code>set:text={string}</code> injects a text string into an element, similar to setting <code>el.innerText</code>. Unlike <code>set:html</code>, the <code>string</code> value that is passed is automatically escaped by Astro.</p><p>This is equivalent to just passing a variable into a template expression directly (ex: <code>&lt;div&gt;{someText}&lt;/div&gt;</code>) and therefore this directive is not commonly used.</p><div class="heading-wrapper level-h2" tabindex="-1"><h2 id="client-directives">Client Directives</h2><a class="anchor-link" href="#client-directives"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Client Directives</span></a></div><p>These directives control how <a href="/en/core-concepts/framework-components/">UI Framework components</a> are hydrated on the page.</p><p>By default, a UI Framework component is not hydrated in the client. If no <code>client:*</code> directive is provided, its HTML is rendered onto the page without JavaScript.</p><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="clientload"><code>client:load</code></h3><a class="anchor-link" href="#clientload"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled client:load</span></a></div><ul>
+<li><strong>Priority:</strong> High</li>
+<li><strong>Useful for:</strong> Immediately-visible UI elements that need to be interactive as soon as possible.</li>
+</ul><p>Load and hydrate the component JavaScript immediately on page load.</p>
+<figure class="code-snippet lang-astro">
+	<figcaption class="header"></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FFBD2E">BuyButton</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">client:load</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">/&gt;</span></span></code></pre>
+</figure><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="clientidle"><code>client:idle</code></h3><a class="anchor-link" href="#clientidle"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled client:idle</span></a></div><ul>
+<li><strong>Priority:</strong> Medium</li>
+<li><strong>Useful for:</strong> Lower-priority UI elements that don’t need to be immediately interactive.</li>
+</ul><p>Load and hydrate the component JavaScript once the page is done with its initial load and the <code>requestIdleCallback</code> event has fired. If you are in a browser that doesn’t support <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/requestIdleCallback"><code>requestIdleCallback</code></a>, then the document <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/load_event"><code>load</code></a> event is used.</p>
+<figure class="code-snippet lang-astro">
+	<figcaption class="header"></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FFBD2E">ShowHideButton</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">client:idle</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">/&gt;</span></span></code></pre>
+</figure><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="clientvisible"><code>client:visible</code></h3><a class="anchor-link" href="#clientvisible"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled client:visible</span></a></div><ul>
+<li><strong>Priority:</strong> Low</li>
+<li><strong>Useful for:</strong> Low-priority UI elements that are either far down the page (“below the fold”) or so resource-intensive to load that you would prefer not to load them at all if the user never saw the element.</li>
+</ul><p>Load and hydrate the component JavaScript once the component has entered the user’s viewport. This uses an <code>IntersectionObserver</code> internally to keep track of visibility.</p>
+<figure class="code-snippet lang-astro">
+	<figcaption class="header"></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FFBD2E">HeavyImageCarousel</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">client:visible</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">/&gt;</span></span></code></pre>
+</figure><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="clientmedia"><code>client:media</code></h3><a class="anchor-link" href="#clientmedia"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled client:media</span></a></div><ul>
+<li><strong>Priority:</strong> Low</li>
+<li><strong>Useful for:</strong> Sidebar toggles, or other elements that might only be visible on certain screen sizes.</li>
+</ul><p><code>client:media={string}</code> loads and hydrates the component JavaScript once a certain CSS media query is met.</p><aside class="content note astro-J4JMU3BW" aria-label="Note">
+	<p class="title astro-J4JMU3BW" aria-hidden="true">
+		<span class="icon astro-J4JMU3BW">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" width="16" height="16" class="astro-J4JMU3BW">
+				<path fill-rule="evenodd" d="M0 3.75C0 2.784.784 2 1.75 2h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0114.25 14H1.75A1.75 1.75 0 010 12.25v-8.5zm1.75-.25a.25.25 0 00-.25.25v8.5c0 .138.112.25.25.25h12.5a.25.25 0 00.25-.25v-8.5a.25.25 0 00-.25-.25H1.75zM3.5 6.25a.75.75 0 01.75-.75h7a.75.75 0 010 1.5h-7a.75.75 0 01-.75-.75zm.75 2.25a.75.75 0 000 1.5h4a.75.75 0 000-1.5h-4z" class="astro-J4JMU3BW"></path>
+			</svg>
+		</span>
+		Note
+	</p>
+	<section class="astro-J4JMU3BW">
+		<p>If the component is already hidden and shown by a media query in your CSS, then it can be easier to just use <code>client:visible</code> and not pass that same media query into the directive.</p>
+	</section>
+</aside>
+
+
+<figure class="code-snippet lang-astro">
+	<figcaption class="header"></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FFBD2E">SidebarToggle</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">client:media</span><span style="color:#C7C5D3">=</span><span style="color:#16C082">&quot;(max-width: 50em)&quot;</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">/&gt;</span></span></code></pre>
+</figure><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="clientonly"><code>client:only</code></h3><a class="anchor-link" href="#clientonly"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled client:only</span></a></div><p><code>client:only={string}</code> <strong>skips</strong> HTML server-rendering, and renders only on the client. It acts similar to <code>client:load</code> in that it loads, renders and hydrates the component immediately on page load.</p><p><strong>You must pass the component’s correct framework as a value!</strong> Because Astro doesn’t run the component during your build / on the server, Astro doesn’t know what framework your component uses unless you tell it explicitly.</p>
+<figure class="code-snippet lang-astro">
+	<figcaption class="header"></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FFBD2E">SomeReactComponent</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">client:only</span><span style="color:#C7C5D3">=</span><span style="color:#16C082">&quot;react&quot;</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">/&gt;</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FFBD2E">SomePreactComponent</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">client:only</span><span style="color:#C7C5D3">=</span><span style="color:#16C082">&quot;preact&quot;</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">/&gt;</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FFBD2E">SomeSvelteComponent</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">client:only</span><span style="color:#C7C5D3">=</span><span style="color:#16C082">&quot;svelte&quot;</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">/&gt;</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FFBD2E">SomeVueComponent</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">client:only</span><span style="color:#C7C5D3">=</span><span style="color:#16C082">&quot;vue&quot;</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">/&gt;</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FFBD2E">SomeSolidComponent</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">client:only</span><span style="color:#C7C5D3">=</span><span style="color:#16C082">&quot;solid-js&quot;</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">/&gt;</span></span></code></pre>
+</figure><div class="heading-wrapper level-h2" tabindex="-1"><h2 id="script--style-directives">Script & Style Directives</h2><a class="anchor-link" href="#script--style-directives"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Script &amp; Style Directives</span></a></div><p>These directives can only be used on HTML <code>&lt;script&gt;</code> and <code>&lt;style&gt;</code> tags, to control how your client-side JavaScript and CSS are handled on the page.</p><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="isglobal"><code>is:global</code></h3><a class="anchor-link" href="#isglobal"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled is:global</span></a></div><p>By default, Astro automatically scopes <code>&lt;style&gt;</code> CSS rules to the component. You can opt-out of this behavior with the <code>is:global</code> directive.</p><p><code>is:global</code> makes the contents of a <code>&lt;style&gt;</code> tag apply globally on the page when the component is included. This disables Astro’s CSS scoping system. This is equivalent to wrapping all of the selectors within a <code>&lt;style&gt;</code> tag with <code>:global()</code>.</p><p>You can combine <code>&lt;style&gt;</code> and <code>&lt;style is:global&gt;</code> together in the same component, to create some global style rules while still scoping most of your component CSS.</p><p>📚 See the <a href="/en/guides/styling/#global-styles">Styling & CSS</a> page for more details about how global styles work.</p>
+<figure class="code-snippet lang-astro">
+	<figcaption class="header"></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">style</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">is:global</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#FF657C">body</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">a</span><span style="color:#D8DEE9"> {</span><span style="color:#EBCB8B"> </span><span style="color:#23B1AF">color</span><span style="color:#C7C5D3">:</span><span style="color:#EBCB8B"> </span><span style="color:#FF657C">red</span><span style="color:#C7C5D3">;</span><span style="color:#EBCB8B"> </span><span style="color:#D8DEE9">}</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">style</span><span style="color:#C7C5D3">&gt;</span></span></code></pre>
+</figure><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="isinline"><code>is:inline</code></h3><a class="anchor-link" href="#isinline"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled is:inline</span></a></div><p>By default, Astro will process, optimize, and bundle any <code>&lt;script&gt;</code> and <code>&lt;style&gt;</code> tags that it sees on the page. You can opt-out of this behavior with the <code>is:inline</code> directive.</p><p><code>is:inline</code> tells Astro to leave the <code>&lt;script&gt;</code> or <code>&lt;style&gt;</code> tag as-is in the final output HTML. The contents will not be processed, optimized, or bundled. This limits some Astro features, like importing an npm package or using a compile-to-CSS language like Sass.</p><p>The <code>is:inline</code> directive means that <code>&lt;style&gt;</code> and <code>&lt;script&gt;</code> tags:</p><ul>
+<li>Will not be bundled into an external file. This means that <a href="https://javascript.info/script-async-defer">attributes like <code>defer</code></a> which control the loading of an external file will have no effect.</li>
+<li>Will not be deduplicated—the element will appear as many times as it is rendered.</li>
+<li>Will not have its <code>import</code>/<code>@import</code>/<code>url()</code> references resolved relative to the <code>.astro</code> file.</li>
+<li>Will be rendered in the final output HTML exactly where it is authored.</li>
+<li>Styles will be global and not scoped to the component.</li>
+</ul><aside class="content caution astro-J4JMU3BW" aria-label="Caution">
+	<p class="title astro-J4JMU3BW" aria-hidden="true">
+		<span class="icon astro-J4JMU3BW">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 1 18 18" width="16" height="16" class="astro-J4JMU3BW">
+				<path fill-rule="evenodd" d="M8.9 1.5C8.7 1.2 8.4 1 8 1s-.7.2-.9.5l-7 12a1 1 0 0 0 0 1c.2.3.6.5 1 .5H15c.4 0 .7-.2.9-.5a1 1 0 0 0 0-1l-7-12zM9 13H7v-2h2v2zm0-3H7V6h2v4z" class="astro-J4JMU3BW"></path>
+			</svg>
+		</span>
+		Caution
+	</p>
+	<section class="astro-J4JMU3BW">
+		<p>The <code>is:inline</code> directive is implied whenever any attribute other than <code>src</code> is used on a <code>&lt;script&gt;</code> or <code>&lt;style&gt;</code> tag.</p>
+	</section>
+</aside>
+
+
+<figure class="code-snippet lang-astro">
+	<figcaption class="header"></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">style</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">is:inline</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#ABA8BD">/* inline: relative &amp; npm package imports are not supported. */</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">@</span><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;/assets/some-public-styles.css&#39;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#FF657C">span</span><span style="color:#D8DEE9"> {</span><span style="color:#EBCB8B"> </span><span style="color:#23B1AF">color</span><span style="color:#C7C5D3">:</span><span style="color:#EBCB8B"> </span><span style="color:#FF657C">green</span><span style="color:#C7C5D3">;</span><span style="color:#EBCB8B"> </span><span style="color:#D8DEE9">}</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">style</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">script</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">is:inline</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#ABA8BD">/* inline: relative &amp; npm package imports are not supported. */</span></span>
+<span class="line"><span style="color:#D8DEE9">  console</span><span style="color:#C7C5D3">.</span><span style="color:#66ADFF">log</span><span style="color:#ABA8BD">(</span><span style="color:#16C082">&#39;I am inlined right here in the final output HTML.&#39;</span><span style="color:#ABA8BD">)</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">script</span><span style="color:#C7C5D3">&gt;</span></span></code></pre>
+</figure><p>📚 See how <a href="/en/core-concepts/astro-components/#client-side-scripts">client-side scripts</a> work in Astro components.</p><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="definevars"><code>define:vars</code></h3><a class="anchor-link" href="#definevars"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled define:vars</span></a></div><p><code>define:vars={...}</code> can pass server-side variables from your component frontmatter into the client <code>&lt;script&gt;</code> or <code>&lt;style&gt;</code> tags. Any JSON-serializable front matter variable is supported, including <code>props</code> passed to your component through <code>Astro.props</code>. Values are serialized with <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify"><code>JSON.stringify()</code></a>.</p>
+<figure class="code-snippet lang-astro">
+	<figcaption class="header"></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> foregroundColor </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;rgb(221 243 228)&quot;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> backgroundColor </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;rgb(24 121 78)&quot;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#FF657C">const</span><span style="color:#D8DEE9"> message </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;Astro is awesome!&quot;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">style</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">define:vars</span><span style="color:#C7C5D3">=</span><span style="color:#FF657C">{</span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> textColor</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> foregroundColor</span><span style="color:#C7C5D3">,</span><span style="color:#D8DEE9"> backgroundColor </span><span style="color:#C7C5D3">}</span><span style="color:#FF657C">}</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#FF657C">h1</span><span style="color:#D8DEE9"> {</span></span>
+<span class="line"><span style="color:#EBCB8B">    </span><span style="color:#23B1AF">background-color</span><span style="color:#C7C5D3">:</span><span style="color:#EBCB8B"> </span><span style="color:#66ADFF">var</span><span style="color:#D8DEE9">(--backgroundColor)</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#EBCB8B">    </span><span style="color:#23B1AF">color</span><span style="color:#C7C5D3">:</span><span style="color:#EBCB8B"> </span><span style="color:#66ADFF">var</span><span style="color:#D8DEE9">(--textColor)</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#EBCB8B">  </span><span style="color:#D8DEE9">}</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">style</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">script</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">define:vars</span><span style="color:#C7C5D3">=</span><span style="color:#FF657C">{</span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> message </span><span style="color:#C7C5D3">}</span><span style="color:#FF657C">}</span><span style="color:#C7C5D3">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#66ADFF">alert</span><span style="color:#ABA8BD">(</span><span style="color:#D8DEE9">message</span><span style="color:#ABA8BD">)</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">script</span><span style="color:#C7C5D3">&gt;</span></span></code></pre>
+</figure><aside class="content caution astro-J4JMU3BW" aria-label="Caution">
+	<p class="title astro-J4JMU3BW" aria-hidden="true">
+		<span class="icon astro-J4JMU3BW">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 1 18 18" width="16" height="16" class="astro-J4JMU3BW">
+				<path fill-rule="evenodd" d="M8.9 1.5C8.7 1.2 8.4 1 8 1s-.7.2-.9.5l-7 12a1 1 0 0 0 0 1c.2.3.6.5 1 .5H15c.4 0 .7-.2.9-.5a1 1 0 0 0 0-1l-7-12zM9 13H7v-2h2v2zm0-3H7V6h2v4z" class="astro-J4JMU3BW"></path>
+			</svg>
+		</span>
+		Caution
+	</p>
+	<section class="astro-J4JMU3BW">
+		<p>Using <code>define:vars</code> on a <code>&lt;script&gt;</code> or <code>&lt;style&gt;</code> tag implies the <a href="#isinline"><code>is:inline</code> directive</a>, which means your scripts or styles won’t be bundled and will be inlined directly into the HTML.</p><p>This is because when Astro bundles a script, it includes and runs the script once even if you include the component containing the script multiple times on one page. <code>define:vars</code> requires a script to rerun with each set of values, so Astro creates an inline script instead.</p><p>For scripts, try <a href="/en/guides/client-side-scripts/#pass-frontmatter-variables-to-scripts">passing variables to scripts manually</a> instead.</p>
+	</section>
+</aside>
+
+<div class="heading-wrapper level-h2" tabindex="-1"><h2 id="advanced-directives">Advanced Directives</h2><a class="anchor-link" href="#advanced-directives"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Advanced Directives</span></a></div><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="israw"><code>is:raw</code></h3><a class="anchor-link" href="#israw"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled is:raw</span></a></div><p><code>is:raw</code> instructs the Astro compiler to treat any children of that element as text. This means that all special Astro templating syntax will be ignored inside of this component.</p><p>For example, if you had a custom Katex component that converted some text to HTML, you could have users do this:</p>
+<figure class="code-snippet lang-astro">
+	<figcaption class="header"></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> Katex </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;../components/Katex.astro&#39;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#ABA8BD">---</span></span>
+<span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FFBD2E">Katex</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">is:raw</span><span style="color:#C7C5D3">&gt;</span><span style="color:#D8DEE9">Some conflicting {syntax} here</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FFBD2E">Katex</span><span style="color:#C7C5D3">&gt;</span></span></code></pre>
+</figure>
+		</section>
+		
+	</article>
+</div>
+
+
+				<span id="docsearch-lvl0" hidden class="astro-KR5WJSBZ">Reference</span>
+			</div>
+		</main>
+		<div class="main-column astro-KR5WJSBZ">
+		</div>
+	</body></html>

@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en" class="initial astro-KR5WJSBZ">
+	<head>
+		<!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="hsl(256, 44%, 15%)" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="hsl(273, 37%, 93%)" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="alternate icon" type="image/x-icon" href="/favicon.ico">
+<link rel="sitemap" href="/sitemap-index.xml">
+
+<!-- Global CSS -->
+<link rel="stylesheet" href="/theme.css">
+<link rel="stylesheet" href="/index.css">
+
+<!-- Scrollable a11y code helper -->
+<script type="module" src="/make-scrollable-code-focusable.js"></script>
+
+<!-- This is intentionally inlined to avoid FOUC -->
+
+
+<!-- Double-click to highlight code blocks (inline only). -->
+
+<!-- Fathom - beautiful, simple website analytics -->
+<script src="https://certain-quality.astro.build/script.js" data-site="EZBHTSIG" defer></script>
+
+		<!-- Page Metadata --><link rel="canonical" href="https://tanggd.github.io/en/guides/integrations-guide/preact/">
+
+
+<link rel="alternate" href="https://tanggd.github.io/en/guides/integrations-guide/preact/" hreflang="en"><link rel="alternate" href="https://tanggd.github.io/zh-cn/guides/integrations-guide/preact/" hreflang="zh-CN">
+
+<!-- Algolia docsearch language facet -->
+<meta name="docsearch:language" content="en">
+
+<!-- OpenGraph Tags -->
+<meta property="og:title" content="@astrojs/preact">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tanggd.github.io/en/guides/integrations-guide/preact/">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://tanggd.github.io/open-graph/en/guides/integrations-guide/preact.png">
+<meta property="og:image:alt" content="">
+<meta name="description" property="og:description" content="Learn how to use the @astrojs/preact framework integration to extend component support in your Astro project.">
+<meta property="og:site_name" content="Astro Documentation">
+
+<!-- Twitter Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="astrodotbuild">
+<meta name="twitter:title" content="@astrojs/preact">
+<meta name="twitter:description" content="Learn how to use the @astrojs/preact framework integration to extend component support in your Astro project.">
+<meta name="twitter:image" content="https://tanggd.github.io/open-graph/en/guides/integrations-guide/preact.png">
+<meta name="twitter:image:alt" content="">
+
+<!--
+  TODO: Add json+ld data, maybe https://schema.org/APIReference makes sense?
+  Docs: https://developers.google.com/search/docs/advanced/structured-data/intro-structured-data
+  https://www.npmjs.com/package/schema-dts seems like a great resource for implementing this.
+  Even better, there’s a React component that integrates with `schema-dts`: https://github.com/google/react-schemaorg
+-->
+
+		<title>@astrojs/preact 🚀 Astro Documentation</title>
+		
+		<script>
+			// This code was migrated/copied from ThemToggleBotton to make the
+			// dark mode toggle instant, vs. hidden inside of a Preact useEffect() call.
+			const theme = (() => {
+				if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+					return localStorage.getItem('theme');
+				}
+				if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+					return 'dark';
+				}
+				return 'light';
+			})();
+			if (theme === 'light') {
+				document.documentElement.classList.remove('theme-dark');
+			} else {
+				document.documentElement.classList.add('theme-dark');
+			}
+		</script>
+	<link rel="stylesheet" href="/assets/404.6d6787e2.css" />
+<link rel="stylesheet" href="/assets/auto.444a50d9.css" />
+<link rel="stylesheet" href="/assets/alpinejs.6dd7e965.css" />
+<link rel="stylesheet" href="/assets/builderio.b64bc458.css" />
+<link rel="stylesheet" href="/assets/builderio.d1870a6c.css" />
+<link rel="stylesheet" href="/assets/builderio.273de9b9.css" />
+<link rel="stylesheet" href="/assets/builderio.fb4fe658.css" />
+<link rel="stylesheet" href="/assets/builderio.1507b30a.css" />
+<link rel="stylesheet" href="/assets/alpinejs.38dd9f86.css" />
+<link rel="stylesheet" href="/assets/alpinejs.72d31541.css" /><script type="module" src="/hoisted.66b9b87c.js"></script></head>
+
+	<body class="astro-KR5WJSBZ">
+		<header class="astro-I6GUSDXI">
+	<a href="#article" class="sr-only focus:not-sr-only skiplink astro-VODYIZTE">
+	<span class="astro-VODYIZTE">Skip to Content
+</span>
+</a>
+
+
+	<nav class="nav-wrapper astro-I6GUSDXI" aria-label="Top">
+		<div dir="ltr" lang="en" class="logo flex astro-I6GUSDXI">
+			<ul class="astro-I6GUSDXI">
+				<li class="astro-I6GUSDXI">
+					<a class="docs astro-I6GUSDXI" href="/en/getting-started/">
+						<span class="sr-only astro-I6GUSDXI">Docs</span>
+						<svg xmlns="http://www.w3.org/2000/svg" width="226" height="102" viewBox="0 0 226 102" fill="none" class="astro-I6GUSDXI">
+							<path class="docs-path astro-I6GUSDXI" fill="currentColor" d="M25.805 68c14.688 0 24.883-8.41 24.883-21.14 0-12.786-9.62-19.756-24.653-19.756H0V68h25.805zm-14.17-33.005H24.25c8.352 0 14.17 4.09 14.17 12.039 0 8.236-5.3 13.075-14.113 13.075H11.635V34.995zM82.673 69.382c16.704 0 27.418-8.582 27.418-21.83 0-13.248-10.771-21.83-27.418-21.83-16.589 0-27.418 8.582-27.418 21.83 0 13.19 10.83 21.83 27.418 21.83zm0-8.64c-9.1 0-15.149-5.299-15.149-13.19 0-7.891 6.048-13.19 15.15-13.19 9.1 0 15.205 5.299 15.205 13.19 0 7.891-6.105 13.19-15.206 13.19zM141.497 69.382c13.306 0 22.637-5.299 25.978-14.572l-11.866-2.535c-1.67 5.415-6.393 8.295-13.709 8.295-9.216 0-15.033-5.127-15.033-13.018 0-8.006 5.702-13.018 14.918-13.018 7.43 0 12.154 3.053 13.709 8.64l12.038-2.13c-2.707-9.562-12.268-15.322-25.574-15.322-16.128 0-27.302 9.043-27.302 22.003 0 13.133 10.425 21.657 26.841 21.657zM194.94 69.382c14.745 0 23.212-5.01 23.212-14.054 0-7.603-4.665-10.944-15.955-12.096l-11.289-1.094c-5.242-.576-6.97-1.556-6.97-4.09 0-2.765 3.456-4.262 9.792-4.262 7.834 0 13.709 2.476 16.762 6.508l7.315-6.163c-5.069-5.702-13.133-8.41-23.501-8.41-13.997 0-21.888 4.781-21.888 12.903 0 7.546 4.781 11.232 14.803 12.326l12.557 1.383c4.896.518 6.624 1.555 6.624 4.09 0 3.225-3.456 4.723-10.886 4.723-8.352 0-14.688-3.226-18.087-8.007l-8.294 5.818c4.205 6.451 13.709 10.425 25.805 10.425z"></path>
+						</svg>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<style>astro-island,astro-slot{display:contents}</style><script>(self.Astro=self.Astro||{}).visible=(s,c,n)=>{const r=async()=>{await(await s())()};let i=new IntersectionObserver(e=>{for(const t of e)if(!!t.isIntersecting){i.disconnect(),r();break}});for(let e=0;e<n.children.length;e++){const t=n.children[e];i.observe(t)}},window.dispatchEvent(new Event("astro:visible"));var l;{const c={0:t=>t,1:t=>JSON.parse(t,o),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(JSON.parse(t,o)),5:t=>new Set(JSON.parse(t,o)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(JSON.parse(t)),9:t=>new Uint16Array(JSON.parse(t)),10:t=>new Uint32Array(JSON.parse(t))},o=(t,s)=>{if(t===""||!Array.isArray(s))return s;const[e,n]=s;return e in c?c[e](n):void 0};customElements.get("astro-island")||customElements.define("astro-island",(l=class extends HTMLElement{constructor(){super(...arguments);this.hydrate=()=>{if(!this.hydrator||this.parentElement&&this.parentElement.closest("astro-island[ssr]"))return;const s=this.querySelectorAll("astro-slot"),e={},n=this.querySelectorAll("template[data-astro-template]");for(const r of n){const i=r.closest(this.tagName);!i||!i.isSameNode(this)||(e[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(const r of s){const i=r.closest(this.tagName);!i||!i.isSameNode(this)||(e[r.getAttribute("name")||"default"]=r.innerHTML)}const a=this.hasAttribute("props")?JSON.parse(this.getAttribute("props"),o):{};this.hydrator(this)(this.Component,a,e,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),window.removeEventListener("astro:hydrate",this.hydrate),window.dispatchEvent(new CustomEvent("astro:hydrate"))}}connectedCallback(){!this.hasAttribute("await-children")||this.firstChild?this.childrenConnectedCallback():new MutationObserver((s,e)=>{e.disconnect(),this.childrenConnectedCallback()}).observe(this,{childList:!0})}async childrenConnectedCallback(){window.addEventListener("astro:hydrate",this.hydrate);let s=this.getAttribute("before-hydration-url");s&&await import(s),this.start()}start(){const s=JSON.parse(this.getAttribute("opts")),e=this.getAttribute("client");if(Astro[e]===void 0){window.addEventListener(`astro:${e}`,()=>this.start(),{once:!0});return}Astro[e](async()=>{const n=this.getAttribute("renderer-url"),[a,{default:r}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),i=this.getAttribute("component-export")||"default";if(!i.includes("."))this.Component=a[i];else{this.Component=a;for(const d of i.split("."))this.Component=this.Component[d]}return this.hydrator=r,this.hydrate},s,this)}attributeChangedCallback(){this.hydrator&&this.hydrate()}},l.observedAttributes=["props"],l))}</script><astro-island uid="2tcXi2" component-url="/ThemeToggleButton.6de6281e.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{&quot;labels&quot;:[0,{&quot;useLight&quot;:[0,&quot;Use light theme&quot;],&quot;useDark&quot;:[0,&quot;Use dark theme&quot;]}],&quot;isInsideHeader&quot;:[0,true]}" ssr="" client="visible" opts="{&quot;name&quot;:&quot;ThemeToggleButton&quot;,&quot;value&quot;:true}" await-children=""><div class="theme-toggle hide-toggle-on-smaller-screens"><label title="Use light theme" class=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path></svg><input type="radio" name="theme-toggle" aria-label="Use light theme" value="light"/></label><label title="Use dark theme" class=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg><input type="radio" name="theme-toggle" aria-label="Use dark theme" value="dark"/></label></div></astro-island>
+		<!-- {lang && <LanguageSelect lang={lang} client:idle />} -->
+		<!-- 
+			TODO：搜索功能
+			后期再做，暂时隐藏
+			参考文档 https://blog.csdn.net/weixin_40026797/article/details/126063524 -->
+		<!-- <Search {lang} labels={docsearchStrings} /> -->
+		<a class="astro astro-I6GUSDXI" href="https://github.com/tanggd" target="_blank" rel="noopener noreferrer">
+			<img src="/assets/github.4e28406c.svg" alt="github" class="astro-I6GUSDXI">
+		</a>
+		<script>(self.Astro=self.Astro||{}).idle=t=>{const e=async()=>{await(await t())()};"requestIdleCallback"in window?window.requestIdleCallback(e):setTimeout(e,200)},window.dispatchEvent(new Event("astro:idle"));</script><astro-island uid="Z1Iw7D6" component-url="/SidebarToggle.2303dca7.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{}" ssr="" client="idle" opts="{&quot;name&quot;:&quot;SidebarToggle&quot;,&quot;value&quot;:true}" await-children=""><button id="menu-toggle" class="header-button" type="button" aria-pressed="false"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg><span class="sr-only">Toggle sidebar</span></button></astro-island>
+	</nav>
+</header>
+
+
+		<main class="layout astro-KR5WJSBZ">
+			<aside id="left-sidebar" class="sidebar astro-KR5WJSBZ">
+				
+					<nav aria-label="Primary" class="astro-VHM34O3D">
+	<script>(self.Astro=self.Astro||{}).load=a=>{(async()=>await(await a())())()},window.dispatchEvent(new Event("astro:load"));</script><astro-island uid="Z1KQCLa" component-url="/SidebarToggleTabGroup.2446d59c.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{&quot;defaultActiveTab&quot;:[0,&quot;learn&quot;],&quot;labels&quot;:[0,{&quot;learn&quot;:[0,&quot;Learn&quot;],&quot;api&quot;:[0,&quot;Tools&quot;]}]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;SidebarToggleTabGroup&quot;,&quot;value&quot;:true}" await-children=""><div class="TabGroup"><button class="active">Learn</button><button class="">Tools</button></div></astro-island>
+	<ul class="nav-groups astro-VHM34O3D">
+		<li class="nav-group learn active astro-Q2W3FM2V">
+			<details open class="astro-Q2W3FM2V">
+				<summary class="nav-group-title astro-Q2W3FM2V">
+					<h2 class="astro-Q2W3FM2V">
+						CSS
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 1 16 16" width="16" height="16" aria-hidden="true" class="astro-Q2W3FM2V">
+							<path fill-rule="evenodd" d="M6.22 3.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 010-1.06z" class="astro-Q2W3FM2V"></path>
+						</svg>
+					</h2>
+				</summary>
+				<ul class="astro-Q2W3FM2V">
+					<li class="nav-link astro-Q2W3FM2V">
+							<a href="/en/css/xxx/" aria-current="false" data-current-parent="false" class="astro-Q2W3FM2V">
+								CSS世界 <sup class="fallback astro-Q2W3FM2V">EN</sup>
+							</a>
+						</li>
+				</ul>
+			</details>
+		</li>
+
+
+		<li class="nav-group api astro-Q2W3FM2V">
+			<details open class="astro-Q2W3FM2V">
+				<summary class="nav-group-title astro-Q2W3FM2V">
+					<h2 class="astro-Q2W3FM2V">
+						小工具
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 1 16 16" width="16" height="16" aria-hidden="true" class="astro-Q2W3FM2V">
+							<path fill-rule="evenodd" d="M6.22 3.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 010-1.06z" class="astro-Q2W3FM2V"></path>
+						</svg>
+					</h2>
+				</summary>
+				<ul class="astro-Q2W3FM2V">
+					<li class="nav-link astro-Q2W3FM2V">
+							<a href="/en/tools/make-certificate-photos/" aria-current="false" data-current-parent="false" class="astro-Q2W3FM2V">
+								制作证件照 <sup class="fallback astro-Q2W3FM2V">EN</sup>
+							</a>
+						</li>
+				</ul>
+			</details>
+		</li>
+
+
+		<li style="text-align: center;" class="astro-VHM34O3D">
+			<astro-island uid="1IhUvw" component-url="/ThemeToggleButton.6de6281e.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{&quot;labels&quot;:[0,{&quot;useLight&quot;:[0,&quot;Use light theme&quot;],&quot;useDark&quot;:[0,&quot;Use dark theme&quot;]}]}" ssr="" client="visible" opts="{&quot;name&quot;:&quot;ThemeToggleButton&quot;,&quot;value&quot;:true}" await-children=""><div class="theme-toggle "><label title="Use light theme" class=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path></svg><input type="radio" name="theme-toggle" aria-label="Use light theme" value="light"/></label><label title="Use dark theme" class=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg><input type="radio" name="theme-toggle" aria-label="Use dark theme" value="dark"/></label></div></astro-island>
+		</li>
+	</ul>
+</nav>
+
+
+
+
+				
+			</aside>
+			<aside id="right-sidebar" class="sidebar astro-KR5WJSBZ">
+				<script>(self.Astro=self.Astro||{}).media=(s,a)=>{const t=async()=>{await(await s())()};if(a.value){const e=matchMedia(a.value);e.matches?t():e.addEventListener("change",t,{once:!0})}},window.dispatchEvent(new Event("astro:media"));</script><nav aria-label="Secondary" class="astro-TFI5F24A">
+	<astro-island uid="7wnWl" component-url="/TableOfContents.dc58575b.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{&quot;headings&quot;:[1,&quot;[[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;why-preact\&quot;],\&quot;text\&quot;:[0,\&quot;Why Preact?\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;installation\&quot;],\&quot;text\&quot;:[0,\&quot;Installation\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;quick-install\&quot;],\&quot;text\&quot;:[0,\&quot;Quick Install\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;manual-install\&quot;],\&quot;text\&quot;:[0,\&quot;Manual Install\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;usage\&quot;],\&quot;text\&quot;:[0,\&quot;Usage\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;configuration\&quot;],\&quot;text\&quot;:[0,\&quot;Configuration\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;compat\&quot;],\&quot;text\&quot;:[0,\&quot;compat\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;examples\&quot;],\&quot;text\&quot;:[0,\&quot;Examples\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;troubleshooting\&quot;],\&quot;text\&quot;:[0,\&quot;Troubleshooting\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;contributing\&quot;],\&quot;text\&quot;:[0,\&quot;Contributing\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;changelog\&quot;],\&quot;text\&quot;:[0,\&quot;Changelog\&quot;]}]]&quot;],&quot;labels&quot;:[0,{&quot;onThisPage&quot;:[0,&quot;On this page&quot;],&quot;overview&quot;:[0,&quot;Overview&quot;]}],&quot;isMobile&quot;:[0,false]}" ssr="" client="media" opts="{&quot;name&quot;:&quot;TableOfContents&quot;,&quot;value&quot;:&quot;(min-width: 50em)&quot;}" await-children=""><h2 class="heading" id="on-this-page-heading">On this page</h2><ul><li class="header-link depth-2 current-header-link"><a href="#overview">Overview</a></li><li class="header-link depth-2"><a href="#why-preact">Why Preact?</a></li><li class="header-link depth-2"><a href="#installation">Installation</a></li><li class="header-link depth-3"><a href="#quick-install">Quick Install</a></li><li class="header-link depth-3"><a href="#manual-install">Manual Install</a></li><li class="header-link depth-2"><a href="#usage">Usage</a></li><li class="header-link depth-2"><a href="#configuration">Configuration</a></li><li class="header-link depth-3"><a href="#compat">compat</a></li><li class="header-link depth-2"><a href="#examples">Examples</a></li><li class="header-link depth-2"><a href="#troubleshooting">Troubleshooting</a></li><li class="header-link depth-2"><a href="#contributing">Contributing</a></li><li class="header-link depth-2"><a href="#changelog">Changelog</a></li></ul></astro-island>
+</nav>
+
+
+			</aside>
+			<div id="main-content" class="main-column astro-KR5WJSBZ">
+				<div dir="ltr" class="astro-2XBDZOYQ">
+	<div class="fixed-mobile-bar astro-2XBDZOYQ" dir="ltr">
+					<nav>
+						<astro-island uid="Z2lr7C1" component-url="/TableOfContents.dc58575b.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{&quot;headings&quot;:[1,&quot;[[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;why-preact\&quot;],\&quot;text\&quot;:[0,\&quot;Why Preact?\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;installation\&quot;],\&quot;text\&quot;:[0,\&quot;Installation\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;quick-install\&quot;],\&quot;text\&quot;:[0,\&quot;Quick Install\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;manual-install\&quot;],\&quot;text\&quot;:[0,\&quot;Manual Install\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;usage\&quot;],\&quot;text\&quot;:[0,\&quot;Usage\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;configuration\&quot;],\&quot;text\&quot;:[0,\&quot;Configuration\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;compat\&quot;],\&quot;text\&quot;:[0,\&quot;compat\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;examples\&quot;],\&quot;text\&quot;:[0,\&quot;Examples\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;troubleshooting\&quot;],\&quot;text\&quot;:[0,\&quot;Troubleshooting\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;contributing\&quot;],\&quot;text\&quot;:[0,\&quot;Contributing\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;changelog\&quot;],\&quot;text\&quot;:[0,\&quot;Changelog\&quot;]}]]&quot;],&quot;labels&quot;:[0,{&quot;onThisPage&quot;:[0,&quot;On this page&quot;],&quot;overview&quot;:[0,&quot;Overview&quot;]}],&quot;isMobile&quot;:[0,true]}" ssr="" client="media" opts="{&quot;name&quot;:&quot;TableOfContents&quot;,&quot;value&quot;:&quot;(max-width: 72em)&quot;}" await-children=""><details class="toc-mobile-container"><summary class="toc-mobile-header"><div class="toc-mobile-header-content"><div class="toc-toggle"><h2 class="heading" id="on-this-page-heading">On this page</h2><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 1 16 16" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M6.22 3.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 010-1.06z"></path></svg></div></div></summary><ul><li class="header-link depth-2 current-header-link"><a href="#overview">Overview</a></li><li class="header-link depth-2"><a href="#why-preact">Why Preact?</a></li><li class="header-link depth-2"><a href="#installation">Installation</a></li><li class="header-link depth-3"><a href="#quick-install">Quick Install</a></li><li class="header-link depth-3"><a href="#manual-install">Manual Install</a></li><li class="header-link depth-2"><a href="#usage">Usage</a></li><li class="header-link depth-2"><a href="#configuration">Configuration</a></li><li class="header-link depth-3"><a href="#compat">compat</a></li><li class="header-link depth-2"><a href="#examples">Examples</a></li><li class="header-link depth-2"><a href="#troubleshooting">Troubleshooting</a></li><li class="header-link depth-2"><a href="#contributing">Contributing</a></li><li class="header-link depth-2"><a href="#changelog">Changelog</a></li></ul></details></astro-island>
+					</nav>
+				</div><div class="spacer astro-2XBDZOYQ"></div>
+	<article id="article" class="content astro-2XBDZOYQ">
+		<section class="main-section astro-2XBDZOYQ">
+			<header class="astro-2XBDZOYQ">
+				
+				<h1 class="content-title astro-2XBDZOYQ" id="overview"><span class="scope">@astrojs/</span><wbr>preact</h1>
+				<aside class="pkg-info astro-H4EWV3I5">
+		<span>v1.2.0</span>
+		<a href="https://github.com/withastro/astro/tree/main/packages/integrations/preact/" class="astro-H4EWV3I5">
+			<svg aria-hidden="true" viewBox="0 0 496 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" class="astro-H4EWV3I5">
+				<path fill="currentColor" d="M166 397c0 2-2 4-5 4-4 0-6-1-6-4 0-2 2-3 5-3 3-1 6 1 6 3zm-31-4c-1 2 1 4 4 5s6 0 6-2-1-5-4-5c-3-1-5 0-6 2zm44-2c-3 1-5 3-5 5 1 2 3 3 6 3 3-1 5-3 5-5s-3-3-6-3zM245 8A240 240 0 0 0 0 252c0 111 70 206 170 239 12 2 17-5 17-12v-61s-70 15-85-30c0 0-12-29-28-37 0 0-23-15 2-15 0 0 24 2 38 26 22 38 59 27 73 21 2-16 9-28 16-34-56-6-112-14-112-111 0-27 7-41 23-59-2-6-11-33 3-67 21-7 69 27 69 27a237 237 0 0 1 126 0s48-34 69-27c13 34 5 61 2 67 16 18 26 32 26 59 0 97-59 105-115 111 9 8 17 23 17 46v84c0 6 5 14 17 12a248 248 0 0 0 168-239C496 113 384 8 245 8zM97 353c-1 1-1 3 1 5 1 2 4 2 5 1s1-3-1-5c-1-2-4-2-5-1zm-11-8 3 4c1 1 3 0 4-1s0-3-2-4-4 0-5 1zm33 35c-2 2-1 5 1 7s5 2 7 1c1-2 0-5-2-7s-5-2-6-1zm-12-14v6c2 2 5 3 6 2 2-1 2-4 0-6-1-3-4-4-6-2z" class="astro-H4EWV3I5"></path>
+			</svg>GitHub
+		</a>
+		<a href="https://www.npmjs.com/package/@astrojs/preact" class="astro-H4EWV3I5">
+			<svg aria-hidden="true" viewBox="0 -20 576 512" height="2em" width="2em" xmlns="http://www.w3.org/2000/svg" class="astro-H4EWV3I5">
+				<path fill="currentColor" d="M288 288h-32v-64h32v64zm288-128v192H288v32H160v-32H0V160h576zm-416 32H32v128h64v-96h32v96h32V192zm160 0H192v160h64v-32h64V192zm224 0H352v128h64v-96h32v96h32v-96h32v96h32V192z" class="astro-H4EWV3I5"></path>
+			</svg>npm
+		</a>
+		<a href="https://github.com/withastro/astro/tree/main/packages/integrations/preact/CHANGELOG.md" class="astro-H4EWV3I5">
+			<svg aria-hidden="true" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" class="astro-H4EWV3I5">
+				<path fill="currentColor" fill-rule="evenodd" d="M2.75 1.5a.25.25 0 0 0-.25.25v12.5c0 .14.11.25.25.25h10.5a.25.25 0 0 0 .25-.25V4.66a.25.25 0 0 0-.07-.17L10.5 1.57a.25.25 0 0 0-.17-.07H2.75zM1 1.75C1 .78 1.78 0 2.75 0h7.59c.46 0 .9.18 1.23.51l2.92 2.92c.33.32.51.77.51 1.23v9.59A1.75 1.75 0 0 1 13.25 16H2.75A1.75 1.75 0 0 1 1 14.25V1.75zm7 1.5a.75.75 0 0 1 .75.75v1.5h1.5a.75.75 0 0 1 0 1.5h-1.5v1.5a.75.75 0 0 1-1.5 0V7h-1.5a.75.75 0 0 1 0-1.5h1.5V4A.75.75 0 0 1 8 3.25zm-3 8a.75.75 0 0 1 .75-.75h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1-.75-.75z" class="astro-H4EWV3I5"></path>
+			</svg>Changelog
+
+		</a>
+	</aside>
+			</header>
+			
+			<p>This <strong><a href="/en/guides/integrations-guide/">Astro integration</a></strong> enables server-side rendering and client-side hydration for your <a href="https://preactjs.com/">Preact</a> components.</p><div class="heading-wrapper level-h2" tabindex="-1"><h2 id="why-preact">Why Preact?</h2><a class="anchor-link" href="#why-preact"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Why Preact?</span></a></div><p>Preact is a library that lets you build interactive UI components for the web. If you want to build interactive features on your site using JavaScript, you may prefer using its component format instead of using browser APIs directly.</p><p>Preact is also a great choice if you have previously used React. Preact provides the same API as React, but in a much smaller 3kB package. It even supports rendering many React components using the <code>compat</code> configuration option (see below).</p><p><strong>Want to learn more about Preact before using this integration?</strong><br>
+Check out <a href="https://preactjs.com/tutorial">“Learn Preact in 10 minutes”</a>, an interactive tutorial on their website.</p><div class="heading-wrapper level-h2" tabindex="-1"><h2 id="installation">Installation</h2><a class="anchor-link" href="#installation"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Installation</span></a></div><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="quick-install">Quick Install</h3><a class="anchor-link" href="#quick-install"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Quick Install</span></a></div><p>The <code>astro add</code> command-line tool automates the installation for you. Run one of the following commands in a new terminal window. (If you aren’t sure which package manager you’re using, run the first command.) Then, follow the prompts, and type “y” in the terminal (meaning “yes”) for each one.</p>
+<figure class="code-snippet is-terminal lang-sh">
+	<figcaption class="header"></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD"># Using NPM</span></span>
+<span class="line"><span style="color:#D8DEE9">npx astro add preact</span></span>
+<span class="line"><span style="color:#ABA8BD"># Using Yarn</span></span>
+<span class="line"><span style="color:#D8DEE9">yarn astro add preact</span></span>
+<span class="line"><span style="color:#ABA8BD"># Using PNPM</span></span>
+<span class="line"><span style="color:#D8DEE9">pnpm astro add preact</span></span></code></pre>
+</figure><p>If you run into any issues, <a href="https://github.com/withastro/astro/issues">feel free to report them to us on GitHub</a> and try the manual installation steps below.</p><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="manual-install">Manual Install</h3><a class="anchor-link" href="#manual-install"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Manual Install</span></a></div><p>First, install the <code>@astrojs/preact</code> package using your package manager. If you’re using npm or aren’t sure, run this in the terminal:</p>
+<figure class="code-snippet is-terminal lang-sh">
+	<figcaption class="header"></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#D8DEE9">npm install @astrojs/preact</span></span></code></pre>
+</figure><p>Most package managers will install associated peer dependencies as well. Still, if you see a “Cannot find package ‘preact’” (or similar) warning when you start up Astro, you’ll need to install Preact:</p>
+<figure class="code-snippet is-terminal lang-sh">
+	<figcaption class="header"></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#D8DEE9">npm install preact</span></span></code></pre>
+</figure><p>Then, apply this integration to your <code>astro.config.*</code> file using the <code>integrations</code> property:</p>
+<figure class="code-snippet has-title lang-js">
+	<figcaption class="header"><span class="title">astro.config.mjs</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">defineConfig</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;astro/config&#39;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">preact</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;@astrojs/preact&#39;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF657C">export</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">default</span><span style="color:#D8DEE9"> </span><span style="color:#66ADFF">defineConfig</span><span style="color:#D8DEE9">(</span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#C7C5D3">  </span><span style="color:#ABA8BD">// ...</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#66ADFF">integrations</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> [</span><span style="color:#66ADFF">preact</span><span style="color:#D8DEE9">()]</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9">)</span><span style="color:#C7C5D3">;</span></span></code></pre>
+</figure><div class="heading-wrapper level-h2" tabindex="-1"><h2 id="usage">Usage</h2><a class="anchor-link" href="#usage"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Usage</span></a></div><p>To use your first Preact component in Astro, head to our <a href="/en/core-concepts/framework-components/#using-framework-components">UI framework documentation</a>. You’ll explore:</p><ul>
+<li>📦 how framework components are loaded,</li>
+<li>💧 client-side hydration options, and</li>
+<li>🤝 opportunities to mix and nest frameworks together</li>
+</ul><p>Also check our <a href="/en/guides/integrations-guide/">Astro Integration Documentation</a> for more on integrations.</p><div class="heading-wrapper level-h2" tabindex="-1"><h2 id="configuration">Configuration</h2><a class="anchor-link" href="#configuration"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Configuration</span></a></div><p>The Astro Preact integration handles how Preact components are rendered and it has its own options. Change these in the <code>astro.config.mjs</code> file which is where your project’s integration settings live.</p><p>For basic usage, you do not need to configure the Preact integration.</p><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="compat">compat</h3><a class="anchor-link" href="#compat"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled compat</span></a></div><p>You can enable <code>preact/compat</code>, Preact’s compatibility layer for rendering React components without needing to install or ship React’s larger libraries to your users’ web browsers.</p><p>To do so, pass an object to the Preact integration and set <code>compat: true</code>.</p>
+<figure class="code-snippet has-title lang-js">
+	<figcaption class="header"><span class="title">astro.config.mjs</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">defineConfig</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;astro/config&#39;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">preact</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;@astrojs/preact&#39;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF657C">export</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">default</span><span style="color:#D8DEE9"> </span><span style="color:#66ADFF">defineConfig</span><span style="color:#D8DEE9">(</span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#66ADFF">integrations</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> [</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#66ADFF">preact</span><span style="color:#D8DEE9">(</span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> </span><span style="color:#66ADFF">compat</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">true</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9">)</span></span>
+<span class="line"><span style="color:#D8DEE9">  ]</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9">)</span><span style="color:#C7C5D3">;</span></span></code></pre>
+</figure><p>With the <code>compat</code> option enabled, the Preact integration will render React components as well as Preact components in your project and also allow you to import React components inside Preact components. Read more in <a href="https://preactjs.com/guide/v10/switching-to-preact">“Switching to Preact (from React)”</a> on the Preact website.</p><p>When importing React component libraries, in order to swap out the <code>react</code> and <code>react-dom</code> dependencies as <code>preact/compat</code>, you can use <a href="https://docs.npmjs.com/cli/v8/configuring-npm/package-json#overrides"><code>overrides</code></a> to do so.</p>
+<figure class="code-snippet lang-js">
+	<figcaption class="header"></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">// package.json</span></span>
+<span class="line"><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#16C082">&quot;overrides&quot;</span><span style="color:#D8DEE9">: </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#16C082">&quot;react&quot;</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;npm:@preact/compat@latest&quot;</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#16C082">&quot;react-dom&quot;</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&quot;npm:@preact/compat@latest&quot;</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">}</span></span>
+<span class="line"><span style="color:#C7C5D3">}</span></span></code></pre>
+</figure><p>Check out the <a href="https://pnpm.io/package_json#pnpmoverrides"><code>pnpm</code> overrides</a> and <a href="https://yarnpkg.com/configuration/manifest#resolutions"><code>yarn</code> resolutions</a> docs for their respective overrides features.</p><aside class="content note astro-J4JMU3BW" aria-label="Note">
+	<p class="title astro-J4JMU3BW" aria-hidden="true">
+		<span class="icon astro-J4JMU3BW">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" width="16" height="16" class="astro-J4JMU3BW">
+				<path fill-rule="evenodd" d="M0 3.75C0 2.784.784 2 1.75 2h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0114.25 14H1.75A1.75 1.75 0 010 12.25v-8.5zm1.75-.25a.25.25 0 00-.25.25v8.5c0 .138.112.25.25.25h12.5a.25.25 0 00.25-.25v-8.5a.25.25 0 00-.25-.25H1.75zM3.5 6.25a.75.75 0 01.75-.75h7a.75.75 0 010 1.5h-7a.75.75 0 01-.75-.75zm.75 2.25a.75.75 0 000 1.5h4a.75.75 0 000-1.5h-4z" class="astro-J4JMU3BW"></path>
+			</svg>
+		</span>
+		Note
+	</p>
+	<section class="astro-J4JMU3BW">
+		<p>Currently, the <code>compat</code> option only works for React libraries that export code as ESM. If an error happens during build-time, try adding the library to <code>vite.ssr.noExternal: ['the-react-library']</code> in your <code>astro.config.mjs</code> file.</p>
+	</section>
+</aside>
+
+<div class="heading-wrapper level-h2" tabindex="-1"><h2 id="examples">Examples</h2><a class="anchor-link" href="#examples"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Examples</span></a></div><ul>
+<li>The <a href="https://github.com/withastro/astro/tree/latest/examples/framework-preact">Astro Preact example</a> shows how to use an interactive Preact component in an Astro project.</li>
+<li>The <a href="https://github.com/withastro/astro/tree/latest/examples/with-nanostores">Astro Nanostores example</a> shows how to share state between different components — and even different frameworks! — in an Astro project.</li>
+</ul><div class="heading-wrapper level-h2" tabindex="-1"><h2 id="troubleshooting">Troubleshooting</h2><a class="anchor-link" href="#troubleshooting"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Troubleshooting</span></a></div><p>For help, check out the <code>#support</code> channel on <a href="https://astro.build/chat">Discord</a>. Our friendly Support Squad members are here to help!</p><p>You can also check our <a href="/en/guides/integrations-guide/">Astro Integration Documentation</a> for more on integrations.</p><div class="heading-wrapper level-h2" tabindex="-1"><h2 id="contributing">Contributing</h2><a class="anchor-link" href="#contributing"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Contributing</span></a></div><p>This package is maintained by Astro’s Core team. You’re welcome to submit an issue or PR!</p><div class="heading-wrapper level-h2" tabindex="-1"><h2 id="changelog">Changelog</h2><a class="anchor-link" href="#changelog"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Changelog</span></a></div><p>See <a href="https://github.com/withastro/astro/tree/main/packages/integrations/preact/CHANGELOG.md">CHANGELOG.md</a> for a history of changes to this integration.</p><h2 class="astro-H4EWV3I5">
+		More Integrations
+
+	</h2><section class="integrations-nav astro-27EST7XR">
+	<section class="cards-nav astro-27EST7XR astro-GMBXUO6P">
+	<h3 class="astro-27EST7XR">UI Frameworks</h3>
+	<ul class="fluid-grid fluid-grid--minimal astro-7LFSRJY5">
+	<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .1875em;">
+			<img src="/logos/alpine-js.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/en/guides/integrations-guide/alpinejs/" aria-current="false" class="astro-7CCKPCAY">
+				<span class="scope">@astrojs/</span><wbr>alpinejs
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .1875em;">
+			<img src="/logos/lit.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/en/guides/integrations-guide/lit/" aria-current="false" class="astro-7CCKPCAY">
+				<span class="scope">@astrojs/</span><wbr>lit
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .1875em;">
+			<img src="/logos/preact.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/en/guides/integrations-guide/preact/" aria-current="page" class="astro-7CCKPCAY">
+				<span class="scope">@astrojs/</span><wbr>preact
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .2em;">
+			<img src="/logos/react.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/en/guides/integrations-guide/react/" aria-current="false" class="astro-7CCKPCAY">
+				<span class="scope">@astrojs/</span><wbr>react
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .1875em;">
+			<img src="/logos/solid.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/en/guides/integrations-guide/solid-js/" aria-current="false" class="astro-7CCKPCAY">
+				<span class="scope">@astrojs/</span><wbr>solid&#8288;-&#8288;js
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .1875em;">
+			<img src="/logos/svelte.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/en/guides/integrations-guide/svelte/" aria-current="false" class="astro-7CCKPCAY">
+				<span class="scope">@astrojs/</span><wbr>svelte
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .3em .2em .2em;">
+			<img src="/logos/vue.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/en/guides/integrations-guide/vue/" aria-current="false" class="astro-7CCKPCAY">
+				<span class="scope">@astrojs/</span><wbr>vue
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+
+</ul>
+
+
+</section>
+
+<section class="cards-nav astro-27EST7XR astro-GMBXUO6P">
+	<h3 class="astro-27EST7XR">SSR Adapters</h3>
+	<ul class="fluid-grid fluid-grid--minimal astro-7LFSRJY5">
+	<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .1875em;">
+			<img src="/logos/cloudflare-pages.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/en/guides/integrations-guide/cloudflare/" aria-current="false" class="astro-7CCKPCAY">
+				<span class="scope">@astrojs/</span><wbr>cloudflare
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: 0;">
+			<img src="/logos/deno.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/en/guides/integrations-guide/deno/" aria-current="false" class="astro-7CCKPCAY">
+				<span class="scope">@astrojs/</span><wbr>deno
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .1625em;">
+			<img src="/logos/netlify.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/en/guides/integrations-guide/netlify/" aria-current="false" class="astro-7CCKPCAY">
+				<span class="scope">@astrojs/</span><wbr>netlify
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .1875em;">
+			<img src="/logos/node.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/en/guides/integrations-guide/node/" aria-current="false" class="astro-7CCKPCAY">
+				<span class="scope">@astrojs/</span><wbr>node
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .3em .3em .35em;">
+			<img src="/logos/vercel.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/en/guides/integrations-guide/vercel/" aria-current="false" class="astro-7CCKPCAY">
+				<span class="scope">@astrojs/</span><wbr>vercel
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+
+</ul>
+
+
+</section>
+
+<section class="cards-nav astro-27EST7XR astro-GMBXUO6P">
+	<h3 class="astro-27EST7XR">Others</h3>
+	<ul class="fluid-grid fluid-grid--minimal astro-7LFSRJY5">
+	<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .1875em;">
+			<img src="/logos/astro-image.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/en/guides/integrations-guide/image/" aria-current="false" class="astro-7CCKPCAY">
+				<span class="scope">@astrojs/</span><wbr>image
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .1em;">
+			<img src="/logos/mdx.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/en/guides/integrations-guide/mdx/" aria-current="false" class="astro-7CCKPCAY">
+				<span class="scope">@astrojs/</span><wbr>mdx
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .2em .2em .25em .25em;">
+			<img src="/logos/partytown.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/en/guides/integrations-guide/partytown/" aria-current="false" class="astro-7CCKPCAY">
+				<span class="scope">@astrojs/</span><wbr>partytown
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .25em;">
+			<img src="/logos/prefetch.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/en/guides/integrations-guide/prefetch/" aria-current="false" class="astro-7CCKPCAY">
+				<span class="scope">@astrojs/</span><wbr>prefetch
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .1875em .25em .25em;">
+			<img src="/logos/sitemap.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/en/guides/integrations-guide/sitemap/" aria-current="false" class="astro-7CCKPCAY">
+				<span class="scope">@astrojs/</span><wbr>sitemap
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .1875em;">
+			<img src="/logos/tailwind.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/en/guides/integrations-guide/tailwind/" aria-current="false" class="astro-7CCKPCAY">
+				<span class="scope">@astrojs/</span><wbr>tailwind
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+
+</ul>
+
+
+</section>
+
+
+</section>
+
+
+		</section>
+		
+	</article>
+</div>
+
+
+				<span id="docsearch-lvl0" hidden class="astro-KR5WJSBZ">Integration Guides</span>
+			</div>
+		</main>
+		<div class="main-column astro-KR5WJSBZ">
+		</div>
+	</body></html>
+

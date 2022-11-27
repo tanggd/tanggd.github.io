@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="zh-CN" class="initial astro-KR5WJSBZ">
+	<head>
+		<!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="hsl(256, 44%, 15%)" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="hsl(273, 37%, 93%)" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="alternate icon" type="image/x-icon" href="/favicon.ico">
+<link rel="sitemap" href="/sitemap-index.xml">
+
+<!-- Global CSS -->
+<link rel="stylesheet" href="/theme.css">
+<link rel="stylesheet" href="/index.css">
+
+<!-- Scrollable a11y code helper -->
+<script type="module" src="/make-scrollable-code-focusable.js"></script>
+
+<!-- This is intentionally inlined to avoid FOUC -->
+
+
+<!-- Double-click to highlight code blocks (inline only). -->
+
+<!-- Fathom - beautiful, simple website analytics -->
+<script src="https://certain-quality.astro.build/script.js" data-site="EZBHTSIG" defer></script>
+
+		<!-- Page Metadata --><link rel="canonical" href="https://tanggd.github.io/en/guides/integrations-guide/tailwind/">
+
+
+<link rel="alternate" href="https://tanggd.github.io/en/guides/integrations-guide/tailwind/" hreflang="en"><link rel="alternate" href="https://tanggd.github.io/zh-cn/guides/integrations-guide/tailwind/" hreflang="zh-CN">
+
+<!-- Algolia docsearch language facet -->
+<meta name="docsearch:language" content="en">
+
+<!-- OpenGraph Tags -->
+<meta property="og:title" content="@astrojs/tailwind">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tanggd.github.io/en/guides/integrations-guide/tailwind/">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://tanggd.github.io/open-graph/en/guides/integrations-guide/tailwind.png">
+<meta property="og:image:alt" content="">
+<meta name="description" property="og:description" content="Learn how to use the @astrojs/tailwind integration in your Astro project.">
+<meta property="og:site_name" content="Astro 文档">
+
+<!-- Twitter Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="astrodotbuild">
+<meta name="twitter:title" content="@astrojs/tailwind">
+<meta name="twitter:description" content="Learn how to use the @astrojs/tailwind integration in your Astro project.">
+<meta name="twitter:image" content="https://tanggd.github.io/open-graph/en/guides/integrations-guide/tailwind.png">
+<meta name="twitter:image:alt" content="">
+
+<!--
+  TODO: Add json+ld data, maybe https://schema.org/APIReference makes sense?
+  Docs: https://developers.google.com/search/docs/advanced/structured-data/intro-structured-data
+  https://www.npmjs.com/package/schema-dts seems like a great resource for implementing this.
+  Even better, there’s a React component that integrates with `schema-dts`: https://github.com/google/react-schemaorg
+-->
+
+		<title>@astrojs/tailwind 🚀 Astro 文档</title>
+		
+		<script>
+			// This code was migrated/copied from ThemToggleBotton to make the
+			// dark mode toggle instant, vs. hidden inside of a Preact useEffect() call.
+			const theme = (() => {
+				if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+					return localStorage.getItem('theme');
+				}
+				if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+					return 'dark';
+				}
+				return 'light';
+			})();
+			if (theme === 'light') {
+				document.documentElement.classList.remove('theme-dark');
+			} else {
+				document.documentElement.classList.add('theme-dark');
+			}
+		</script>
+	<link rel="stylesheet" href="/assets/404.6d6787e2.css" />
+<link rel="stylesheet" href="/assets/builderio.d1870a6c.css" />
+<link rel="stylesheet" href="/assets/1.6704f5b4.css" />
+<link rel="stylesheet" href="/assets/1.991d08ef.css" />
+<link rel="stylesheet" href="/assets/alpinejs.6dd7e965.css" />
+<link rel="stylesheet" href="/assets/builderio.fb4fe658.css" />
+<link rel="stylesheet" href="/assets/builderio.1507b30a.css" />
+<link rel="stylesheet" href="/assets/index.16def24c.css" />
+<link rel="stylesheet" href="/assets/alpinejs.72d31541.css" />
+<link rel="stylesheet" href="/assets/builderio.1ae522cb.css" />
+<link rel="stylesheet" href="/assets/builderio.b64bc458.css" />
+<link rel="stylesheet" href="/assets/builderio.273de9b9.css" />
+<link rel="stylesheet" href="/assets/1.82a0ea88.css" />
+<link rel="stylesheet" href="/assets/alpinejs.38dd9f86.css" />
+<link rel="stylesheet" href="/assets/aws.a70cc2c3.css" />
+<link rel="stylesheet" href="/assets/builderio.66e01f42.css" />
+<link rel="stylesheet" href="/assets/index.5f19c5b3.css" />
+<link rel="stylesheet" href="/assets/sharing-state.21559701.css" />
+<link rel="stylesheet" href="/assets/auto.444a50d9.css" />
+<link rel="stylesheet" href="/assets/aws.7883a754.css" />
+<link rel="stylesheet" href="/assets/getting-started.91454097.css" />
+<link rel="stylesheet" href="/assets/islands.9a7a18c3.css" /><script type="module" src="/hoisted.5da8b481.js"></script></head>
+
+	<body class="astro-KR5WJSBZ">
+		<header class="astro-I6GUSDXI">
+	<a href="#article" class="sr-only focus:not-sr-only skiplink astro-VODYIZTE">
+	<span class="astro-VODYIZTE">跳转到内容
+</span>
+</a>
+
+
+	<nav class="nav-wrapper astro-I6GUSDXI" aria-label="导航顶部">
+		<div dir="ltr" lang="en" class="logo flex astro-I6GUSDXI">
+			<ul class="astro-I6GUSDXI">
+				<li class="astro-I6GUSDXI">
+					<a class="docs astro-I6GUSDXI" href="/zh-cn/getting-started/">
+						<span class="sr-only astro-I6GUSDXI">Docs</span>
+						<svg xmlns="http://www.w3.org/2000/svg" width="226" height="102" viewBox="0 0 226 102" fill="none" class="astro-I6GUSDXI">
+							<path class="docs-path astro-I6GUSDXI" fill="currentColor" d="M25.805 68c14.688 0 24.883-8.41 24.883-21.14 0-12.786-9.62-19.756-24.653-19.756H0V68h25.805zm-14.17-33.005H24.25c8.352 0 14.17 4.09 14.17 12.039 0 8.236-5.3 13.075-14.113 13.075H11.635V34.995zM82.673 69.382c16.704 0 27.418-8.582 27.418-21.83 0-13.248-10.771-21.83-27.418-21.83-16.589 0-27.418 8.582-27.418 21.83 0 13.19 10.83 21.83 27.418 21.83zm0-8.64c-9.1 0-15.149-5.299-15.149-13.19 0-7.891 6.048-13.19 15.15-13.19 9.1 0 15.205 5.299 15.205 13.19 0 7.891-6.105 13.19-15.206 13.19zM141.497 69.382c13.306 0 22.637-5.299 25.978-14.572l-11.866-2.535c-1.67 5.415-6.393 8.295-13.709 8.295-9.216 0-15.033-5.127-15.033-13.018 0-8.006 5.702-13.018 14.918-13.018 7.43 0 12.154 3.053 13.709 8.64l12.038-2.13c-2.707-9.562-12.268-15.322-25.574-15.322-16.128 0-27.302 9.043-27.302 22.003 0 13.133 10.425 21.657 26.841 21.657zM194.94 69.382c14.745 0 23.212-5.01 23.212-14.054 0-7.603-4.665-10.944-15.955-12.096l-11.289-1.094c-5.242-.576-6.97-1.556-6.97-4.09 0-2.765 3.456-4.262 9.792-4.262 7.834 0 13.709 2.476 16.762 6.508l7.315-6.163c-5.069-5.702-13.133-8.41-23.501-8.41-13.997 0-21.888 4.781-21.888 12.903 0 7.546 4.781 11.232 14.803 12.326l12.557 1.383c4.896.518 6.624 1.555 6.624 4.09 0 3.225-3.456 4.723-10.886 4.723-8.352 0-14.688-3.226-18.087-8.007l-8.294 5.818c4.205 6.451 13.709 10.425 25.805 10.425z"></path>
+						</svg>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<style>astro-island,astro-slot{display:contents}</style><script>(self.Astro=self.Astro||{}).visible=(s,c,n)=>{const r=async()=>{await(await s())()};let i=new IntersectionObserver(e=>{for(const t of e)if(!!t.isIntersecting){i.disconnect(),r();break}});for(let e=0;e<n.children.length;e++){const t=n.children[e];i.observe(t)}},window.dispatchEvent(new Event("astro:visible"));var l;{const c={0:t=>t,1:t=>JSON.parse(t,o),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(JSON.parse(t,o)),5:t=>new Set(JSON.parse(t,o)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(JSON.parse(t)),9:t=>new Uint16Array(JSON.parse(t)),10:t=>new Uint32Array(JSON.parse(t))},o=(t,s)=>{if(t===""||!Array.isArray(s))return s;const[e,n]=s;return e in c?c[e](n):void 0};customElements.get("astro-island")||customElements.define("astro-island",(l=class extends HTMLElement{constructor(){super(...arguments);this.hydrate=()=>{if(!this.hydrator||this.parentElement&&this.parentElement.closest("astro-island[ssr]"))return;const s=this.querySelectorAll("astro-slot"),e={},n=this.querySelectorAll("template[data-astro-template]");for(const r of n){const i=r.closest(this.tagName);!i||!i.isSameNode(this)||(e[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(const r of s){const i=r.closest(this.tagName);!i||!i.isSameNode(this)||(e[r.getAttribute("name")||"default"]=r.innerHTML)}const a=this.hasAttribute("props")?JSON.parse(this.getAttribute("props"),o):{};this.hydrator(this)(this.Component,a,e,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),window.removeEventListener("astro:hydrate",this.hydrate),window.dispatchEvent(new CustomEvent("astro:hydrate"))}}connectedCallback(){!this.hasAttribute("await-children")||this.firstChild?this.childrenConnectedCallback():new MutationObserver((s,e)=>{e.disconnect(),this.childrenConnectedCallback()}).observe(this,{childList:!0})}async childrenConnectedCallback(){window.addEventListener("astro:hydrate",this.hydrate);let s=this.getAttribute("before-hydration-url");s&&await import(s),this.start()}start(){const s=JSON.parse(this.getAttribute("opts")),e=this.getAttribute("client");if(Astro[e]===void 0){window.addEventListener(`astro:${e}`,()=>this.start(),{once:!0});return}Astro[e](async()=>{const n=this.getAttribute("renderer-url"),[a,{default:r}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),i=this.getAttribute("component-export")||"default";if(!i.includes("."))this.Component=a[i];else{this.Component=a;for(const d of i.split("."))this.Component=this.Component[d]}return this.hydrator=r,this.hydrate},s,this)}attributeChangedCallback(){this.hydrator&&this.hydrate()}},l.observedAttributes=["props"],l))}</script><astro-island uid="Zp9foH" component-url="/ThemeToggleButton.6de6281e.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{&quot;labels&quot;:[0,{&quot;useLight&quot;:[0,&quot;使用浅色主题&quot;],&quot;useDark&quot;:[0,&quot;使用深色主题&quot;]}],&quot;isInsideHeader&quot;:[0,true]}" ssr="" client="visible" opts="{&quot;name&quot;:&quot;ThemeToggleButton&quot;,&quot;value&quot;:true}" await-children=""><div class="theme-toggle hide-toggle-on-smaller-screens"><label title="使用浅色主题" class=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path></svg><input type="radio" name="theme-toggle" aria-label="使用浅色主题" value="light"/></label><label title="使用深色主题" class=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg><input type="radio" name="theme-toggle" aria-label="使用深色主题" value="dark"/></label></div></astro-island>
+		<!-- {lang && <LanguageSelect lang={lang} client:idle />} -->
+		<!-- 
+			TODO：搜索功能
+			后期再做，暂时隐藏
+			参考文档 https://blog.csdn.net/weixin_40026797/article/details/126063524 -->
+		<!-- <Search {lang} labels={docsearchStrings} /> -->
+		<a class="astro astro-I6GUSDXI" href="https://github.com/tanggd" target="_blank" rel="noopener noreferrer">
+			<img src="/assets/github.4e28406c.svg" alt="github" class="astro-I6GUSDXI">
+		</a>
+		<script>(self.Astro=self.Astro||{}).idle=t=>{const e=async()=>{await(await t())()};"requestIdleCallback"in window?window.requestIdleCallback(e):setTimeout(e,200)},window.dispatchEvent(new Event("astro:idle"));</script><astro-island uid="Z1Iw7D6" component-url="/SidebarToggle.2303dca7.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{}" ssr="" client="idle" opts="{&quot;name&quot;:&quot;SidebarToggle&quot;,&quot;value&quot;:true}" await-children=""><button id="menu-toggle" class="header-button" type="button" aria-pressed="false"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg><span class="sr-only">Toggle sidebar</span></button></astro-island>
+	</nav>
+</header>
+
+
+		<main class="layout astro-KR5WJSBZ">
+			<aside id="left-sidebar" class="sidebar astro-KR5WJSBZ">
+				
+					<nav aria-label="站点导航" class="astro-VHM34O3D">
+	<script>(self.Astro=self.Astro||{}).load=a=>{(async()=>await(await a())())()},window.dispatchEvent(new Event("astro:load"));</script><astro-island uid="14sDdn" component-url="/SidebarToggleTabGroup.2446d59c.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{&quot;defaultActiveTab&quot;:[0,&quot;learn&quot;],&quot;labels&quot;:[0,{&quot;learn&quot;:[0,&quot;学习&quot;],&quot;api&quot;:[0,&quot;工具&quot;]}]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;SidebarToggleTabGroup&quot;,&quot;value&quot;:true}" await-children=""><div class="TabGroup"><button class="active">学习</button><button class="">工具</button></div></astro-island>
+	<ul class="nav-groups astro-VHM34O3D">
+		<li class="nav-group learn active astro-Q2W3FM2V">
+			<details open class="astro-Q2W3FM2V">
+				<summary class="nav-group-title astro-Q2W3FM2V">
+					<h2 class="astro-Q2W3FM2V">
+						CSS
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 1 16 16" width="16" height="16" aria-hidden="true" class="astro-Q2W3FM2V">
+							<path fill-rule="evenodd" d="M6.22 3.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 010-1.06z" class="astro-Q2W3FM2V"></path>
+						</svg>
+					</h2>
+				</summary>
+				<ul class="astro-Q2W3FM2V">
+					<li class="nav-link astro-Q2W3FM2V">
+							<a href="/zh-cn/css/xxx/" aria-current="false" data-current-parent="false" class="astro-Q2W3FM2V">
+								CSS世界 
+							</a>
+						</li>
+				</ul>
+			</details>
+		</li>
+
+
+		<li class="nav-group api astro-Q2W3FM2V">
+			<details open class="astro-Q2W3FM2V">
+				<summary class="nav-group-title astro-Q2W3FM2V">
+					<h2 class="astro-Q2W3FM2V">
+						小工具
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 1 16 16" width="16" height="16" aria-hidden="true" class="astro-Q2W3FM2V">
+							<path fill-rule="evenodd" d="M6.22 3.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 010-1.06z" class="astro-Q2W3FM2V"></path>
+						</svg>
+					</h2>
+				</summary>
+				<ul class="astro-Q2W3FM2V">
+					<li class="nav-link astro-Q2W3FM2V">
+							<a href="/zh-cn/tools/make-certificate-photos/" aria-current="false" data-current-parent="false" class="astro-Q2W3FM2V">
+								制作证件照 
+							</a>
+						</li>
+				</ul>
+			</details>
+		</li>
+
+
+		<li style="text-align: center;" class="astro-VHM34O3D">
+			<astro-island uid="1MlLjn" component-url="/ThemeToggleButton.6de6281e.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{&quot;labels&quot;:[0,{&quot;useLight&quot;:[0,&quot;使用浅色主题&quot;],&quot;useDark&quot;:[0,&quot;使用深色主题&quot;]}]}" ssr="" client="visible" opts="{&quot;name&quot;:&quot;ThemeToggleButton&quot;,&quot;value&quot;:true}" await-children=""><div class="theme-toggle "><label title="使用浅色主题" class=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path></svg><input type="radio" name="theme-toggle" aria-label="使用浅色主题" value="light"/></label><label title="使用深色主题" class=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg><input type="radio" name="theme-toggle" aria-label="使用深色主题" value="dark"/></label></div></astro-island>
+		</li>
+	</ul>
+</nav>
+
+
+
+
+				
+			</aside>
+			<aside id="right-sidebar" class="sidebar astro-KR5WJSBZ">
+				<script>(self.Astro=self.Astro||{}).media=(s,a)=>{const t=async()=>{await(await s())()};if(a.value){const e=matchMedia(a.value);e.matches?t():e.addEventListener("change",t,{once:!0})}},window.dispatchEvent(new Event("astro:media"));</script><nav aria-label="目录" class="astro-TFI5F24A">
+	<astro-island uid="2w75FQ" component-url="/TableOfContents.dc58575b.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{&quot;headings&quot;:[1,&quot;[[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;why-tailwind\&quot;],\&quot;text\&quot;:[0,\&quot;Why Tailwind?\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;installation\&quot;],\&quot;text\&quot;:[0,\&quot;Installation\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;quick-install\&quot;],\&quot;text\&quot;:[0,\&quot;Quick Install\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;manual-install\&quot;],\&quot;text\&quot;:[0,\&quot;Manual Install\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;usage\&quot;],\&quot;text\&quot;:[0,\&quot;Usage\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;configuration\&quot;],\&quot;text\&quot;:[0,\&quot;Configuration\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;configuring-tailwind\&quot;],\&quot;text\&quot;:[0,\&quot;Configuring Tailwind\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;configuring-the-integration\&quot;],\&quot;text\&quot;:[0,\&quot;Configuring the Integration\&quot;]}],[0,{\&quot;depth\&quot;:[0,4],\&quot;slug\&quot;:[0,\&quot;configpath\&quot;],\&quot;text\&quot;:[0,\&quot;config.path\&quot;]}],[0,{\&quot;depth\&quot;:[0,4],\&quot;slug\&quot;:[0,\&quot;configapplybasestyles\&quot;],\&quot;text\&quot;:[0,\&quot;config.applyBaseStyles\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;examples\&quot;],\&quot;text\&quot;:[0,\&quot;Examples\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;troubleshooting\&quot;],\&quot;text\&quot;:[0,\&quot;Troubleshooting\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;class-does-not-exist-with-apply-directives\&quot;],\&quot;text\&quot;:[0,\&quot;Class does not exist with @apply directives\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;class-based-modifiers-do-not-work-with-apply-directives\&quot;],\&quot;text\&quot;:[0,\&quot;Class-based modifiers do not work with @apply directives\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;others\&quot;],\&quot;text\&quot;:[0,\&quot;Others\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;contributing\&quot;],\&quot;text\&quot;:[0,\&quot;Contributing\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;changelog\&quot;],\&quot;text\&quot;:[0,\&quot;Changelog\&quot;]}]]&quot;],&quot;labels&quot;:[0,{&quot;onThisPage&quot;:[0,&quot;在本页内&quot;],&quot;overview&quot;:[0,&quot;概述&quot;]}],&quot;isMobile&quot;:[0,false]}" ssr="" client="media" opts="{&quot;name&quot;:&quot;TableOfContents&quot;,&quot;value&quot;:&quot;(min-width: 50em)&quot;}" await-children=""><h2 class="heading" id="on-this-page-heading">在本页内</h2><ul><li class="header-link depth-2 current-header-link"><a href="#overview">概述</a></li><li class="header-link depth-2"><a href="#why-tailwind">Why Tailwind?</a></li><li class="header-link depth-2"><a href="#installation">Installation</a></li><li class="header-link depth-3"><a href="#quick-install">Quick Install</a></li><li class="header-link depth-3"><a href="#manual-install">Manual Install</a></li><li class="header-link depth-2"><a href="#usage">Usage</a></li><li class="header-link depth-2"><a href="#configuration">Configuration</a></li><li class="header-link depth-3"><a href="#configuring-tailwind">Configuring Tailwind</a></li><li class="header-link depth-3"><a href="#configuring-the-integration">Configuring the Integration</a></li><li class="header-link depth-2"><a href="#examples">Examples</a></li><li class="header-link depth-2"><a href="#troubleshooting">Troubleshooting</a></li><li class="header-link depth-3"><a href="#class-does-not-exist-with-apply-directives">Class does not exist with @apply directives</a></li><li class="header-link depth-3"><a href="#class-based-modifiers-do-not-work-with-apply-directives">Class-based modifiers do not work with @apply directives</a></li><li class="header-link depth-3"><a href="#others">Others</a></li><li class="header-link depth-2"><a href="#contributing">Contributing</a></li><li class="header-link depth-2"><a href="#changelog">Changelog</a></li></ul></astro-island>
+</nav>
+
+
+			</aside>
+			<div id="main-content" class="main-column astro-KR5WJSBZ">
+				<div dir="ltr" lang="en" class="astro-2XBDZOYQ">
+	<div class="fixed-mobile-bar astro-2XBDZOYQ" dir="ltr">
+					<nav>
+						<astro-island uid="VWW9k" component-url="/TableOfContents.dc58575b.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{&quot;headings&quot;:[1,&quot;[[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;why-tailwind\&quot;],\&quot;text\&quot;:[0,\&quot;Why Tailwind?\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;installation\&quot;],\&quot;text\&quot;:[0,\&quot;Installation\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;quick-install\&quot;],\&quot;text\&quot;:[0,\&quot;Quick Install\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;manual-install\&quot;],\&quot;text\&quot;:[0,\&quot;Manual Install\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;usage\&quot;],\&quot;text\&quot;:[0,\&quot;Usage\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;configuration\&quot;],\&quot;text\&quot;:[0,\&quot;Configuration\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;configuring-tailwind\&quot;],\&quot;text\&quot;:[0,\&quot;Configuring Tailwind\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;configuring-the-integration\&quot;],\&quot;text\&quot;:[0,\&quot;Configuring the Integration\&quot;]}],[0,{\&quot;depth\&quot;:[0,4],\&quot;slug\&quot;:[0,\&quot;configpath\&quot;],\&quot;text\&quot;:[0,\&quot;config.path\&quot;]}],[0,{\&quot;depth\&quot;:[0,4],\&quot;slug\&quot;:[0,\&quot;configapplybasestyles\&quot;],\&quot;text\&quot;:[0,\&quot;config.applyBaseStyles\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;examples\&quot;],\&quot;text\&quot;:[0,\&quot;Examples\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;troubleshooting\&quot;],\&quot;text\&quot;:[0,\&quot;Troubleshooting\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;class-does-not-exist-with-apply-directives\&quot;],\&quot;text\&quot;:[0,\&quot;Class does not exist with @apply directives\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;class-based-modifiers-do-not-work-with-apply-directives\&quot;],\&quot;text\&quot;:[0,\&quot;Class-based modifiers do not work with @apply directives\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;others\&quot;],\&quot;text\&quot;:[0,\&quot;Others\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;contributing\&quot;],\&quot;text\&quot;:[0,\&quot;Contributing\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;changelog\&quot;],\&quot;text\&quot;:[0,\&quot;Changelog\&quot;]}]]&quot;],&quot;labels&quot;:[0,{&quot;onThisPage&quot;:[0,&quot;在本页内&quot;],&quot;overview&quot;:[0,&quot;概述&quot;]}],&quot;isMobile&quot;:[0,true]}" ssr="" client="media" opts="{&quot;name&quot;:&quot;TableOfContents&quot;,&quot;value&quot;:&quot;(max-width: 72em)&quot;}" await-children=""><details class="toc-mobile-container"><summary class="toc-mobile-header"><div class="toc-mobile-header-content"><div class="toc-toggle"><h2 class="heading" id="on-this-page-heading">在本页内</h2><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 1 16 16" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M6.22 3.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 010-1.06z"></path></svg></div></div></summary><ul><li class="header-link depth-2 current-header-link"><a href="#overview">概述</a></li><li class="header-link depth-2"><a href="#why-tailwind">Why Tailwind?</a></li><li class="header-link depth-2"><a href="#installation">Installation</a></li><li class="header-link depth-3"><a href="#quick-install">Quick Install</a></li><li class="header-link depth-3"><a href="#manual-install">Manual Install</a></li><li class="header-link depth-2"><a href="#usage">Usage</a></li><li class="header-link depth-2"><a href="#configuration">Configuration</a></li><li class="header-link depth-3"><a href="#configuring-tailwind">Configuring Tailwind</a></li><li class="header-link depth-3"><a href="#configuring-the-integration">Configuring the Integration</a></li><li class="header-link depth-2"><a href="#examples">Examples</a></li><li class="header-link depth-2"><a href="#troubleshooting">Troubleshooting</a></li><li class="header-link depth-3"><a href="#class-does-not-exist-with-apply-directives">Class does not exist with @apply directives</a></li><li class="header-link depth-3"><a href="#class-based-modifiers-do-not-work-with-apply-directives">Class-based modifiers do not work with @apply directives</a></li><li class="header-link depth-3"><a href="#others">Others</a></li><li class="header-link depth-2"><a href="#contributing">Contributing</a></li><li class="header-link depth-2"><a href="#changelog">Changelog</a></li></ul></details></astro-island>
+					</nav>
+				</div><div class="spacer astro-2XBDZOYQ"></div>
+	<article id="article" class="content astro-2XBDZOYQ">
+		<section class="main-section astro-2XBDZOYQ">
+			<header class="astro-2XBDZOYQ">
+				
+				<h1 class="content-title astro-2XBDZOYQ" id="overview"><span class="scope">@astrojs/</span><wbr>tailwind</h1>
+				<aside class="pkg-info astro-H4EWV3I5">
+		<span>v2.1.3</span>
+		<a href="https://github.com/withastro/astro/tree/main/packages/integrations/tailwind/" class="astro-H4EWV3I5">
+			<svg aria-hidden="true" viewBox="0 0 496 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" class="astro-H4EWV3I5">
+				<path fill="currentColor" d="M166 397c0 2-2 4-5 4-4 0-6-1-6-4 0-2 2-3 5-3 3-1 6 1 6 3zm-31-4c-1 2 1 4 4 5s6 0 6-2-1-5-4-5c-3-1-5 0-6 2zm44-2c-3 1-5 3-5 5 1 2 3 3 6 3 3-1 5-3 5-5s-3-3-6-3zM245 8A240 240 0 0 0 0 252c0 111 70 206 170 239 12 2 17-5 17-12v-61s-70 15-85-30c0 0-12-29-28-37 0 0-23-15 2-15 0 0 24 2 38 26 22 38 59 27 73 21 2-16 9-28 16-34-56-6-112-14-112-111 0-27 7-41 23-59-2-6-11-33 3-67 21-7 69 27 69 27a237 237 0 0 1 126 0s48-34 69-27c13 34 5 61 2 67 16 18 26 32 26 59 0 97-59 105-115 111 9 8 17 23 17 46v84c0 6 5 14 17 12a248 248 0 0 0 168-239C496 113 384 8 245 8zM97 353c-1 1-1 3 1 5 1 2 4 2 5 1s1-3-1-5c-1-2-4-2-5-1zm-11-8 3 4c1 1 3 0 4-1s0-3-2-4-4 0-5 1zm33 35c-2 2-1 5 1 7s5 2 7 1c1-2 0-5-2-7s-5-2-6-1zm-12-14v6c2 2 5 3 6 2 2-1 2-4 0-6-1-3-4-4-6-2z" class="astro-H4EWV3I5"></path>
+			</svg>GitHub
+		</a>
+		<a href="https://www.npmjs.com/package/@astrojs/tailwind" class="astro-H4EWV3I5">
+			<svg aria-hidden="true" viewBox="0 -20 576 512" height="2em" width="2em" xmlns="http://www.w3.org/2000/svg" class="astro-H4EWV3I5">
+				<path fill="currentColor" d="M288 288h-32v-64h32v64zm288-128v192H288v32H160v-32H0V160h576zm-416 32H32v128h64v-96h32v96h32V192zm160 0H192v160h64v-32h64V192zm224 0H352v128h64v-96h32v96h32v-96h32v96h32V192z" class="astro-H4EWV3I5"></path>
+			</svg>npm
+		</a>
+		<a href="https://github.com/withastro/astro/tree/main/packages/integrations/tailwind/CHANGELOG.md" class="astro-H4EWV3I5">
+			<svg aria-hidden="true" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" class="astro-H4EWV3I5">
+				<path fill="currentColor" fill-rule="evenodd" d="M2.75 1.5a.25.25 0 0 0-.25.25v12.5c0 .14.11.25.25.25h10.5a.25.25 0 0 0 .25-.25V4.66a.25.25 0 0 0-.07-.17L10.5 1.57a.25.25 0 0 0-.17-.07H2.75zM1 1.75C1 .78 1.78 0 2.75 0h7.59c.46 0 .9.18 1.23.51l2.92 2.92c.33.32.51.77.51 1.23v9.59A1.75 1.75 0 0 1 13.25 16H2.75A1.75 1.75 0 0 1 1 14.25V1.75zm7 1.5a.75.75 0 0 1 .75.75v1.5h1.5a.75.75 0 0 1 0 1.5h-1.5v1.5a.75.75 0 0 1-1.5 0V7h-1.5a.75.75 0 0 1 0-1.5h1.5V4A.75.75 0 0 1 8 3.25zm-3 8a.75.75 0 0 1 .75-.75h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1-.75-.75z" class="astro-H4EWV3I5"></path>
+			</svg>Changelog
+
+		</a>
+	</aside>
+			</header>
+			<div lang="zh-CN" dir="ltr" class="astro-2XBDZOYQ">
+						<aside class="content note astro-J4JMU3BW" aria-label="注意">
+	<p class="title astro-J4JMU3BW" aria-hidden="true">
+		<span class="icon astro-J4JMU3BW">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" width="16" height="16" class="astro-J4JMU3BW">
+				<path fill-rule="evenodd" d="M0 3.75C0 2.784.784 2 1.75 2h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0114.25 14H1.75A1.75 1.75 0 010 12.25v-8.5zm1.75-.25a.25.25 0 00-.25.25v8.5c0 .138.112.25.25.25h12.5a.25.25 0 00.25-.25v-8.5a.25.25 0 00-.25-.25H1.75zM3.5 6.25a.75.75 0 01.75-.75h7a.75.75 0 010 1.5h-7a.75.75 0 01-.75-.75zm.75 2.25a.75.75 0 000 1.5h4a.75.75 0 000-1.5h-4z" class="astro-J4JMU3BW"></path>
+			</svg>
+		</span>
+		注意
+	</p>
+	<section class="astro-J4JMU3BW">
+		此页暂不支持你的语言，我们将为你展示英文页面。你可以帮忙翻译它！
+<a href="https://github.com/withastro/docs/blob/main/TRANSLATING.md">了解更多关于贡献的内容
+
+	</a>
+	</section>
+</aside>
+
+
+					</div>
+			<p>This <strong><a href="/en/guides/integrations-guide/">Astro integration</a></strong> brings <a href="https://tailwindcss.com/">Tailwind’s</a> utility CSS classes to every <code>.astro</code> file and <a href="/en/core-concepts/framework-components/">framework component</a> in your project, along with support for the Tailwind configuration file.</p><div class="heading-wrapper level-h2" tabindex="-1"><h2 id="why-tailwind">Why Tailwind?</h2><a class="anchor-link" href="#why-tailwind"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Why Tailwind?</span></a></div><p>Tailwind lets you use utility classes instead of writing CSS. These utility classes are mostly one-to-one with a certain CSS property setting: for example, adding the <code>text-lg</code> to an element is equivalent to setting <code>font-size: 1.125rem</code> in CSS. You might find it easier to write and maintain your styles using these predefined utility classes!</p><p>If you don’t like those predefined settings, you can <a href="https://tailwindcss.com/docs/configuration">customize the Tailwind configuration file</a> to your project’s design requirements. For example, if the “large text” in your design is actually <code>2rem</code>, you can <a href="https://tailwindcss.com/docs/font-size#customizing-your-theme">change the <code>lg</code> fontSize setting</a> to <code>2rem</code>.</p><p>Tailwind is also a great choice to add styles to React, Preact, or Solid components, which don’t support a <code>&lt;style&gt;</code> tag in the component file.</p><p>Note: it’s generally discouraged to use both Tailwind and another styling method (e.g. Styled Components) in the same file.</p><div class="heading-wrapper level-h2" tabindex="-1"><h2 id="installation">Installation</h2><a class="anchor-link" href="#installation"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Installation</span></a></div><video controls>
+	<source src="https://user-images.githubusercontent.com/4033662/197398760-8fd30eff-4d13-449d-a598-00a6a1ac4644.mp4" type="video/mp4">
+	<track label="English" src="/captions/en/197398760-8fd30eff-4d13-449d-a598-00a6a1ac4644.vtt" kind="captions" srclang="en" default>
+</video><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="quick-install">Quick Install</h3><a class="anchor-link" href="#quick-install"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Quick Install</span></a></div><p>The <code>astro add</code> command-line tool automates the installation for you. Run one of the following commands in a new terminal window. (If you aren’t sure which package manager you’re using, run the first command.) Then, follow the prompts, and type “y” in the terminal (meaning “yes”) for each one.</p>
+<figure class="code-snippet is-terminal lang-sh">
+	<figcaption class="header"></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD"># Using NPM</span></span>
+<span class="line"><span style="color:#D8DEE9">npx astro add tailwind</span></span>
+<span class="line"><span style="color:#ABA8BD"># Using Yarn</span></span>
+<span class="line"><span style="color:#D8DEE9">yarn astro add tailwind</span></span>
+<span class="line"><span style="color:#ABA8BD"># Using PNPM</span></span>
+<span class="line"><span style="color:#D8DEE9">pnpm astro add tailwind</span></span></code></pre>
+</figure><p>If you run into any issues, <a href="https://github.com/withastro/astro/issues">feel free to report them to us on GitHub</a> and try the manual installation steps below.</p><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="manual-install">Manual Install</h3><a class="anchor-link" href="#manual-install"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Manual Install</span></a></div><p>First, install the <code>@astrojs/tailwind</code> and <code>tailwindcss</code> packages using your package manager. If you’re using npm or aren’t sure, run this in the terminal:</p>
+<figure class="code-snippet is-terminal lang-sh">
+	<figcaption class="header"></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#D8DEE9">npm install @astrojs/tailwind tailwindcss</span></span></code></pre>
+</figure><p>Then, apply this integration to your <code>astro.config.*</code> file using the <code>integrations</code> property:</p>
+<figure class="code-snippet has-title lang-js">
+	<figcaption class="header"><span class="title">astro.config.mjs</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">defineConfig</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;astro/config&#39;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">tailwind</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;@astrojs/tailwind&#39;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF657C">export</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">default</span><span style="color:#D8DEE9"> </span><span style="color:#66ADFF">defineConfig</span><span style="color:#D8DEE9">(</span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#C7C5D3">  </span><span style="color:#ABA8BD">// ...</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#66ADFF">integrations</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> [</span><span style="color:#66ADFF">tailwind</span><span style="color:#D8DEE9">()]</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9">)</span><span style="color:#C7C5D3">;</span></span></code></pre>
+</figure><div class="heading-wrapper level-h2" tabindex="-1"><h2 id="usage">Usage</h2><a class="anchor-link" href="#usage"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Usage</span></a></div><p>When you install the integration, Tailwind’s utility classes should be ready to go right away. Head to the <a href="https://tailwindcss.com/docs/utility-first">Tailwind docs</a> to learn how to use Tailwind, and if you see a utility class you want to try, add it to any HTML element to your project!</p><video controls>
+	<source src="https://user-images.githubusercontent.com/4033662/169918388-8ed153b2-0ba0-4b24-b861-d6e1cc800b6c.mp4" type="video/mp4">
+	
+</video><div class="heading-wrapper level-h2" tabindex="-1"><h2 id="configuration">Configuration</h2><a class="anchor-link" href="#configuration"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Configuration</span></a></div><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="configuring-tailwind">Configuring Tailwind</h3><a class="anchor-link" href="#configuring-tailwind"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Configuring Tailwind</span></a></div><p>If you used the Quick Install instructions and said yes to each prompt, you’ll see a <code>tailwind.config.cjs</code> file in your project’s root directory. Use this file for your Tailwind configuration changes. You can learn how to customize Tailwind using this file <a href="https://tailwindcss.com/docs/configuration">in the Tailwind docs</a>.</p><p>If it isn’t there, you add your own <code>tailwind.config.(js|cjs|mjs)</code> file to the root directory and the integration will use its configurations. This can be great if you already have Tailwind configured in another project and want to bring those settings over to this one.</p><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="configuring-the-integration">Configuring the Integration</h3><a class="anchor-link" href="#configuring-the-integration"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Configuring the Integration</span></a></div><p>The Astro Tailwind integration handles the communication between Astro and Tailwind and it has its own options. Change these in the <code>astro.config.mjs</code> file (<em>not</em> the Tailwind configuration file) which is where your project’s integration settings live.</p><div class="heading-wrapper level-h4" tabindex="-1"><h4 id="configpath">config.path</h4><a class="anchor-link" href="#configpath"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled config.path</span></a></div><p>If you want to use a different Tailwind configuration file instead of the default <code>tailwind.config.(js|cjs|mjs)</code>, specify that file’s location using this integration’s <code>config.path</code> option. If <code>config.path</code> is relative, it will be resolved relative to the root.</p><aside class="content caution astro-J4JMU3BW" aria-label="警告">
+	<p class="title astro-J4JMU3BW" aria-hidden="true">
+		<span class="icon astro-J4JMU3BW">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 1 18 18" width="16" height="16" class="astro-J4JMU3BW">
+				<path fill-rule="evenodd" d="M8.9 1.5C8.7 1.2 8.4 1 8 1s-.7.2-.9.5l-7 12a1 1 0 0 0 0 1c.2.3.6.5 1 .5H15c.4 0 .7-.2.9-.5a1 1 0 0 0 0-1l-7-12zM9 13H7v-2h2v2zm0-3H7V6h2v4z" class="astro-J4JMU3BW"></path>
+			</svg>
+		</span>
+		警告
+	</p>
+	<section class="astro-J4JMU3BW">
+		<p>Changing this isn’t recommended since it can cause problems with other tools that integrate with Tailwind, like the official Tailwind VSCode extension.</p>
+	</section>
+</aside>
+
+
+<figure class="code-snippet has-title lang-js">
+	<figcaption class="header"><span class="title">astro.config.mjs</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#FF657C">import</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">tailwind</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">from</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;@astrojs/tailwind&#39;</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF657C">export</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">default</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#66ADFF">integrations</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> [</span><span style="color:#66ADFF">tailwind</span><span style="color:#D8DEE9">(</span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#C7C5D3">    </span><span style="color:#ABA8BD">// Example: Provide a custom path to a Tailwind config file</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#66ADFF">config</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> </span><span style="color:#66ADFF">path</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;./custom-config.cjs&#39;</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">},</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9">)]</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#C7C5D3">}</span></span></code></pre>
+</figure><div class="heading-wrapper level-h4" tabindex="-1"><h4 id="configapplybasestyles">config.applyBaseStyles</h4><a class="anchor-link" href="#configapplybasestyles"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled config.applyBaseStyles</span></a></div><p>By default, the integration imports a basic <code>base.css</code> file on every page of your project. This basic CSS file includes the three main <code>@tailwind</code> directives:</p>
+<figure class="code-snippet lang-css">
+	<figcaption class="header"></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD">/* The integration&#39;s default injected base.css file */</span></span>
+<span class="line"><span style="color:#C7C5D3">@</span><span style="color:#FF657C">tailwind</span><span style="color:#D8DEE9"> base</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#C7C5D3">@</span><span style="color:#FF657C">tailwind</span><span style="color:#D8DEE9"> components</span><span style="color:#C7C5D3">;</span></span>
+<span class="line"><span style="color:#C7C5D3">@</span><span style="color:#FF657C">tailwind</span><span style="color:#D8DEE9"> utilities</span><span style="color:#C7C5D3">;</span></span></code></pre>
+</figure><p>To disable this default behavior, set <code>config.applyBaseStyles</code> to <code>false</code>. This can be useful if you need to define your own <code>base.css</code> file (to include a <a href="https://tailwindcss.com/docs/functions-and-directives#layer"><code>@layer</code> directive</a>, for example). This can also be useful if you do not want <code>base.css</code> to be imported on every page of your project.</p>
+<figure class="code-snippet has-title lang-js">
+	<figcaption class="header"><span class="title">astro.config.mjs</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#FF657C">export</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">default</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#66ADFF">integrations</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> [</span><span style="color:#66ADFF">tailwind</span><span style="color:#D8DEE9">(</span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#C7C5D3">    </span><span style="color:#ABA8BD">// Example: Disable injecting a basic `base.css` import on every page.</span></span>
+<span class="line"><span style="color:#C7C5D3">    </span><span style="color:#ABA8BD">// Useful if you need to define and/or import your own custom `base.css`.</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#66ADFF">config</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> </span><span style="color:#66ADFF">applyBaseStyles</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">false</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">},</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9">)]</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#C7C5D3">}</span></span></code></pre>
+</figure><p>You can now <a href="/en/guides/styling/#import-a-local-stylesheet">import your own <code>base.css</code> as a local stylesheet</a>.</p><div class="heading-wrapper level-h2" tabindex="-1"><h2 id="examples">Examples</h2><a class="anchor-link" href="#examples"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Examples</span></a></div><ul>
+<li>The <a href="https://github.com/withastro/astro/tree/latest/examples/with-tailwindcss?on=github">Astro Tailwind Starter</a> gets you up and running with a base for your project that uses Tailwind for styling</li>
+<li>Astro’s homepage uses Tailwind. Check out its <a href="https://github.com/withastro/astro.build/blob/main/tailwind.config.cjs">Tailwind configuration file</a> or an <a href="https://github.com/withastro/astro.build/blob/main/src/components/IntegrationCard.astro">example component</a></li>
+<li>The <a href="https://github.com/one-aalam/astro-ink">Astro Ink</a>, <a href="https://github.com/iozcelik/SarissaBlogAstroStarter">Sarissa Blog</a>, and <a href="https://github.com/robertguss/Astro-Theme-Creek">Creek</a> themes use Tailwind for styling</li>
+<li><a href="https://github.com/search?q=%22%40astrojs%2Ftailwind%22+filename%3Apackage.json&type=Code">Browse Astro Tailwind projects on GitHub</a> for more examples!</li>
+</ul><div class="heading-wrapper level-h2" tabindex="-1"><h2 id="troubleshooting">Troubleshooting</h2><a class="anchor-link" href="#troubleshooting"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Troubleshooting</span></a></div><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="class-does-not-exist-with-apply-directives">Class does not exist with <code>@apply</code> directives</h3><a class="anchor-link" href="#class-does-not-exist-with-apply-directives"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Class does not exist with @apply directives</span></a></div><p>When using the <code>@apply</code> directive in an Astro, Vue, Svelte, or another component integration’s <code>&lt;style&gt;</code> tag, it may generate errors about your custom Tailwind class not existing and cause your build to fail.</p><p>error   The <code>text-special</code> class does not exist. If <code>text-special</code> is a custom class, make sure it is defined within a <code>@layer</code> directive.</p><p><a href="https://tailwindcss.com/docs/functions-and-directives#using-apply-with-per-component-css">Instead of using <code>@layer</code> directives in a global stylesheet</a>, define your custom styles by adding a plugin to your Tailwind config to fix it:</p>
+<figure class="code-snippet has-title lang-js">
+	<figcaption class="header"><span class="title">tailwind.config.cjs</span></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#FFBD2E">module</span><span style="color:#C7C5D3">.</span><span style="color:#FFBD2E">exports</span><span style="color:#D8DEE9"> </span><span style="color:#FF657C">=</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#C7C5D3">  </span><span style="color:#ABA8BD">// ...</span></span>
+<span class="line"><span style="color:#D8DEE9">  </span><span style="color:#66ADFF">plugins</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> [</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#FF657C">function</span><span style="color:#D8DEE9"> (</span><span style="color:#C7C5D3">{</span><span style="color:#D8DEE9"> addComponents</span><span style="color:#C7C5D3">,</span><span style="color:#D8DEE9"> theme </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9">) </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">      </span><span style="color:#66ADFF">addComponents</span><span style="color:#D8DEE9">(</span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">        </span><span style="color:#16C082">&#39;.btn&#39;</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#C7C5D3">{</span></span>
+<span class="line"><span style="color:#D8DEE9">          </span><span style="color:#66ADFF">padding</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#66ADFF">theme</span><span style="color:#D8DEE9">(</span><span style="color:#16C082">&#39;spacing.4&#39;</span><span style="color:#D8DEE9">)</span><span style="color:#C7C5D3">,</span></span>
+<span class="line"><span style="color:#D8DEE9">          </span><span style="color:#66ADFF">margin</span><span style="color:#C7C5D3">:</span><span style="color:#D8DEE9"> </span><span style="color:#16C082">&#39;auto&#39;</span></span>
+<span class="line"><span style="color:#D8DEE9">        </span><span style="color:#C7C5D3">}</span></span>
+<span class="line"><span style="color:#D8DEE9">      </span><span style="color:#C7C5D3">}</span><span style="color:#D8DEE9">)</span></span>
+<span class="line"><span style="color:#D8DEE9">    </span><span style="color:#C7C5D3">}</span></span>
+<span class="line"><span style="color:#D8DEE9">  ]</span></span>
+<span class="line"><span style="color:#C7C5D3">}</span></span></code></pre>
+</figure><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="class-based-modifiers-do-not-work-with-apply-directives">Class-based modifiers do not work with <code>@apply</code> directives</h3><a class="anchor-link" href="#class-based-modifiers-do-not-work-with-apply-directives"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Class-based modifiers do not work with @apply directives</span></a></div><p>Certain Tailwind classes with modifiers rely on combining classes across multiple elements. For example, <code>group-hover:text-gray</code> compiles to <code>.group:hover .text-gray</code>. When this is used with the <code>@apply</code> directive in Astro <code>&lt;style&gt;</code> tags, the compiled styles are removed from the build output because they do not match any markup in the <code>.astro</code> file. The same issue may also happen in framework components that support scoped styles like Vue and Svelte.</p><p>To fix this, you can use inline classes instead:</p>
+<figure class="code-snippet lang-html">
+	<figcaption class="header"></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#C7C5D3">&lt;</span><span style="color:#FF657C">p</span><span style="color:#D8DEE9"> </span><span style="color:#FFBD2E">class</span><span style="color:#C7C5D3">=</span><span style="color:#16C082">&quot;text-black group-hover:text-gray&quot;</span><span style="color:#C7C5D3">&gt;</span><span style="color:#D8DEE9">Astro</span><span style="color:#C7C5D3">&lt;/</span><span style="color:#FF657C">p</span><span style="color:#C7C5D3">&gt;</span></span></code></pre>
+</figure><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="others">Others</h3><a class="anchor-link" href="#others"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Others</span></a></div><ul>
+<li>If your installation doesn’t seem to be working, try restarting the dev server.</li>
+<li>If you edit and save a file and don’t see your site update accordingly, try refreshing the page.</li>
+<li>If refreshing the page doesn’t update your preview, or if a new installation doesn’t seem to be working, then restart the dev server.</li>
+</ul><p>For help, check out the <code>#support</code> channel on <a href="https://astro.build/chat">Discord</a>. Our friendly Support Squad members are here to help!</p><p>You can also check our <a href="/en/guides/integrations-guide/">Astro Integration Documentation</a> for more on integrations.</p><div class="heading-wrapper level-h2" tabindex="-1"><h2 id="contributing">Contributing</h2><a class="anchor-link" href="#contributing"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Contributing</span></a></div><p>This package is maintained by Astro’s Core team. You’re welcome to submit an issue or PR!</p><div class="heading-wrapper level-h2" tabindex="-1"><h2 id="changelog">Changelog</h2><a class="anchor-link" href="#changelog"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Changelog</span></a></div><p>See <a href="https://github.com/withastro/astro/tree/main/packages/integrations/tailwind/CHANGELOG.md">CHANGELOG.md</a> for a history of changes to this integration.</p><h2 class="astro-H4EWV3I5">
+		更多集成
+
+	</h2><section class="integrations-nav astro-27EST7XR">
+	<section class="cards-nav astro-27EST7XR astro-GMBXUO6P">
+	<h3 class="astro-27EST7XR">UI 框架</h3>
+	<ul class="fluid-grid fluid-grid--minimal astro-7LFSRJY5">
+	<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .1875em;">
+			<img src="/logos/alpine-js.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/zh-cn/guides/integrations-guide/alpinejs/" aria-current="false" class="astro-7CCKPCAY">
+				<span class="scope">@astrojs/</span><wbr>alpinejs
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .1875em;">
+			<img src="/logos/lit.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/zh-cn/guides/integrations-guide/lit/" aria-current="false" class="astro-7CCKPCAY">
+				<span class="scope">@astrojs/</span><wbr>lit
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .1875em;">
+			<img src="/logos/preact.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/zh-cn/guides/integrations-guide/preact/" aria-current="false" class="astro-7CCKPCAY">
+				<span class="scope">@astrojs/</span><wbr>preact
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .2em;">
+			<img src="/logos/react.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/zh-cn/guides/integrations-guide/react/" aria-current="false" class="astro-7CCKPCAY">
+				<span class="scope">@astrojs/</span><wbr>react
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .1875em;">
+			<img src="/logos/solid.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/zh-cn/guides/integrations-guide/solid-js/" aria-current="false" class="astro-7CCKPCAY">
+				<span class="scope">@astrojs/</span><wbr>solid&#8288;-&#8288;js
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .1875em;">
+			<img src="/logos/svelte.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/zh-cn/guides/integrations-guide/svelte/" aria-current="false" class="astro-7CCKPCAY">
+				<span class="scope">@astrojs/</span><wbr>svelte
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .3em .2em .2em;">
+			<img src="/logos/vue.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/zh-cn/guides/integrations-guide/vue/" aria-current="false" class="astro-7CCKPCAY">
+				<span class="scope">@astrojs/</span><wbr>vue
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+
+</ul>
+
+
+</section>
+
+<section class="cards-nav astro-27EST7XR astro-GMBXUO6P">
+	<h3 class="astro-27EST7XR">SSR 适配器</h3>
+	<ul class="fluid-grid fluid-grid--minimal astro-7LFSRJY5">
+	<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .1875em;">
+			<img src="/logos/cloudflare-pages.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/zh-cn/guides/integrations-guide/cloudflare/" aria-current="false" class="astro-7CCKPCAY">
+				<span class="scope">@astrojs/</span><wbr>cloudflare
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: 0;">
+			<img src="/logos/deno.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/zh-cn/guides/integrations-guide/deno/" aria-current="false" class="astro-7CCKPCAY">
+				<span class="scope">@astrojs/</span><wbr>deno
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .1625em;">
+			<img src="/logos/netlify.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/zh-cn/guides/integrations-guide/netlify/" aria-current="false" class="astro-7CCKPCAY">
+				<span class="scope">@astrojs/</span><wbr>netlify
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .1875em;">
+			<img src="/logos/node.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/zh-cn/guides/integrations-guide/node/" aria-current="false" class="astro-7CCKPCAY">
+				<span class="scope">@astrojs/</span><wbr>node
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .3em .3em .35em;">
+			<img src="/logos/vercel.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/zh-cn/guides/integrations-guide/vercel/" aria-current="false" class="astro-7CCKPCAY">
+				<span class="scope">@astrojs/</span><wbr>vercel
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+
+</ul>
+
+
+</section>
+
+<section class="cards-nav astro-27EST7XR astro-GMBXUO6P">
+	<h3 class="astro-27EST7XR">其他</h3>
+	<ul class="fluid-grid fluid-grid--minimal astro-7LFSRJY5">
+	<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .1875em;">
+			<img src="/logos/astro-image.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/zh-cn/guides/integrations-guide/image/" aria-current="false" class="astro-7CCKPCAY">
+				<span class="scope">@astrojs/</span><wbr>image
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .1em;">
+			<img src="/logos/mdx.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/zh-cn/guides/integrations-guide/mdx/" aria-current="false" class="astro-7CCKPCAY">
+				<span class="scope">@astrojs/</span><wbr>mdx
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .2em .2em .25em .25em;">
+			<img src="/logos/partytown.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/zh-cn/guides/integrations-guide/partytown/" aria-current="false" class="astro-7CCKPCAY">
+				<span class="scope">@astrojs/</span><wbr>partytown
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .25em;">
+			<img src="/logos/prefetch.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/zh-cn/guides/integrations-guide/prefetch/" aria-current="false" class="astro-7CCKPCAY">
+				<span class="scope">@astrojs/</span><wbr>prefetch
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .1875em .25em .25em;">
+			<img src="/logos/sitemap.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/zh-cn/guides/integrations-guide/sitemap/" aria-current="false" class="astro-7CCKPCAY">
+				<span class="scope">@astrojs/</span><wbr>sitemap
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+<li class="card card--minimal astro-GMBXUO6P astro-7CCKPCAY">
+	<div class="logo circle astro-3KAM4QAA" style="--logo-size: 4rem; --logo-padding: .1875em;">
+			<img src="/logos/tailwind.svg" alt="" loading="lazy" decoding="async" width="64" height="64" class="astro-3KAM4QAA">
+		</div>
+
+
+	<div class="stack astro-7CCKPCAY">
+		<h3 class="astro-7CCKPCAY">
+			<a href="/zh-cn/guides/integrations-guide/tailwind/" aria-current="page" class="astro-7CCKPCAY">
+				<span class="scope">@astrojs/</span><wbr>tailwind
+			</a>
+		</h3>
+		
+	</div>
+</li>
+
+
+</ul>
+
+
+</section>
+
+
+</section>
+
+
+		</section>
+		
+	</article>
+</div>
+
+
+				<span id="docsearch-lvl0" hidden class="astro-KR5WJSBZ">Integration Guides</span>
+			</div>
+		</main>
+		<div class="main-column astro-KR5WJSBZ">
+		</div>
+	</body></html>
+

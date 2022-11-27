@@ -1,0 +1,1 @@
+import{r as o}from"./chunks/index.489a0169.js";import{j as e}from"./chunks/jsx-runtime.d04579fd.js";function c({children:t}){const[s,r]=o.exports.useState(!1);return e.exports.jsxs(e.exports.Fragment,{children:[e.exports.jsx("input",{className:"sr-only",type:"checkbox",disabled:s,checked:s,onClick:()=>r(!0)}),e.exports.jsx("span",{children:t})]})}export{c as default};

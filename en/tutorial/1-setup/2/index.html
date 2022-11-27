@@ -1,0 +1,1980 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en" class="initial astro-KR5WJSBZ">
+	<head>
+		<!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="hsl(256, 44%, 15%)" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="hsl(273, 37%, 93%)" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="alternate icon" type="image/x-icon" href="/favicon.ico">
+<link rel="sitemap" href="/sitemap-index.xml">
+
+<!-- Global CSS -->
+<link rel="stylesheet" href="/theme.css">
+<link rel="stylesheet" href="/index.css">
+
+<!-- Scrollable a11y code helper -->
+<script type="module" src="/make-scrollable-code-focusable.js"></script>
+
+<!-- This is intentionally inlined to avoid FOUC -->
+
+
+<!-- Double-click to highlight code blocks (inline only). -->
+
+<!-- Fathom - beautiful, simple website analytics -->
+<script src="https://certain-quality.astro.build/script.js" data-site="EZBHTSIG" defer></script>
+
+		<!-- Page Metadata --><link rel="canonical" href="https://tanggd.github.io/en/tutorial/1-setup/2/">
+
+
+<link rel="alternate" href="https://tanggd.github.io/en/tutorial/1-setup/2/" hreflang="en"><link rel="alternate" href="https://tanggd.github.io/zh-cn/tutorial/1-setup/2/" hreflang="zh-CN">
+
+<!-- Algolia docsearch language facet -->
+<meta name="docsearch:language" content="en">
+
+<!-- OpenGraph Tags -->
+<meta property="og:title" content="Create your first Astro project">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tanggd.github.io/en/tutorial/1-setup/2/">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://tanggd.github.io/open-graph/en/tutorial/1-setup/2.png">
+<meta property="og:image:alt" content="">
+<meta name="description" property="og:description" content="Tutorial: Build your first Astro blog —
+Create a new project for the Astro tutorial and get ready to code">
+<meta property="og:site_name" content="Astro Documentation">
+
+<!-- Twitter Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="astrodotbuild">
+<meta name="twitter:title" content="Create your first Astro project">
+<meta name="twitter:description" content="Tutorial: Build your first Astro blog —
+Create a new project for the Astro tutorial and get ready to code">
+<meta name="twitter:image" content="https://tanggd.github.io/open-graph/en/tutorial/1-setup/2.png">
+<meta name="twitter:image:alt" content="">
+
+<!--
+  TODO: Add json+ld data, maybe https://schema.org/APIReference makes sense?
+  Docs: https://developers.google.com/search/docs/advanced/structured-data/intro-structured-data
+  https://www.npmjs.com/package/schema-dts seems like a great resource for implementing this.
+  Even better, there’s a React component that integrates with `schema-dts`: https://github.com/google/react-schemaorg
+-->
+
+		<title>Create your first Astro project 🚀 Astro Documentation</title>
+		
+		<script>
+			// This code was migrated/copied from ThemToggleBotton to make the
+			// dark mode toggle instant, vs. hidden inside of a Preact useEffect() call.
+			const theme = (() => {
+				if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+					return localStorage.getItem('theme');
+				}
+				if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+					return 'dark';
+				}
+				return 'light';
+			})();
+			if (theme === 'light') {
+				document.documentElement.classList.remove('theme-dark');
+			} else {
+				document.documentElement.classList.add('theme-dark');
+			}
+		</script>
+	<link rel="stylesheet" href="/assets/404.6d6787e2.css" />
+<link rel="stylesheet" href="/assets/builderio.b64bc458.css" />
+<link rel="stylesheet" href="/assets/1.6704f5b4.css" />
+<link rel="stylesheet" href="/assets/1.991d08ef.css" />
+<link rel="stylesheet" href="/assets/alpinejs.6dd7e965.css" />
+<link rel="stylesheet" href="/assets/auto.444a50d9.css" />
+<link rel="stylesheet" href="/assets/index.16def24c.css" />
+<link rel="stylesheet" href="/assets/builderio.d1870a6c.css" />
+<link rel="stylesheet" href="/assets/builderio.fb4fe658.css" />
+<link rel="stylesheet" href="/assets/1.82a0ea88.css" />
+<link rel="stylesheet" href="/assets/sharing-state.21559701.css" /><script type="module" src="/hoisted.5da8b481.js"></script></head>
+
+	<body class="astro-KR5WJSBZ">
+		<header class="astro-I6GUSDXI">
+	<a href="#article" class="sr-only focus:not-sr-only skiplink astro-VODYIZTE">
+	<span class="astro-VODYIZTE">Skip to Content
+</span>
+</a>
+
+
+	<nav class="nav-wrapper astro-I6GUSDXI" aria-label="Top">
+		<div dir="ltr" lang="en" class="logo flex astro-I6GUSDXI">
+			<ul class="astro-I6GUSDXI">
+				<li class="astro-I6GUSDXI">
+					<a class="docs astro-I6GUSDXI" href="/en/getting-started/">
+						<span class="sr-only astro-I6GUSDXI">Docs</span>
+						<svg xmlns="http://www.w3.org/2000/svg" width="226" height="102" viewBox="0 0 226 102" fill="none" class="astro-I6GUSDXI">
+							<path class="docs-path astro-I6GUSDXI" fill="currentColor" d="M25.805 68c14.688 0 24.883-8.41 24.883-21.14 0-12.786-9.62-19.756-24.653-19.756H0V68h25.805zm-14.17-33.005H24.25c8.352 0 14.17 4.09 14.17 12.039 0 8.236-5.3 13.075-14.113 13.075H11.635V34.995zM82.673 69.382c16.704 0 27.418-8.582 27.418-21.83 0-13.248-10.771-21.83-27.418-21.83-16.589 0-27.418 8.582-27.418 21.83 0 13.19 10.83 21.83 27.418 21.83zm0-8.64c-9.1 0-15.149-5.299-15.149-13.19 0-7.891 6.048-13.19 15.15-13.19 9.1 0 15.205 5.299 15.205 13.19 0 7.891-6.105 13.19-15.206 13.19zM141.497 69.382c13.306 0 22.637-5.299 25.978-14.572l-11.866-2.535c-1.67 5.415-6.393 8.295-13.709 8.295-9.216 0-15.033-5.127-15.033-13.018 0-8.006 5.702-13.018 14.918-13.018 7.43 0 12.154 3.053 13.709 8.64l12.038-2.13c-2.707-9.562-12.268-15.322-25.574-15.322-16.128 0-27.302 9.043-27.302 22.003 0 13.133 10.425 21.657 26.841 21.657zM194.94 69.382c14.745 0 23.212-5.01 23.212-14.054 0-7.603-4.665-10.944-15.955-12.096l-11.289-1.094c-5.242-.576-6.97-1.556-6.97-4.09 0-2.765 3.456-4.262 9.792-4.262 7.834 0 13.709 2.476 16.762 6.508l7.315-6.163c-5.069-5.702-13.133-8.41-23.501-8.41-13.997 0-21.888 4.781-21.888 12.903 0 7.546 4.781 11.232 14.803 12.326l12.557 1.383c4.896.518 6.624 1.555 6.624 4.09 0 3.225-3.456 4.723-10.886 4.723-8.352 0-14.688-3.226-18.087-8.007l-8.294 5.818c4.205 6.451 13.709 10.425 25.805 10.425z"></path>
+						</svg>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<style>astro-island,astro-slot{display:contents}</style><script>(self.Astro=self.Astro||{}).visible=(s,c,n)=>{const r=async()=>{await(await s())()};let i=new IntersectionObserver(e=>{for(const t of e)if(!!t.isIntersecting){i.disconnect(),r();break}});for(let e=0;e<n.children.length;e++){const t=n.children[e];i.observe(t)}},window.dispatchEvent(new Event("astro:visible"));var l;{const c={0:t=>t,1:t=>JSON.parse(t,o),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(JSON.parse(t,o)),5:t=>new Set(JSON.parse(t,o)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(JSON.parse(t)),9:t=>new Uint16Array(JSON.parse(t)),10:t=>new Uint32Array(JSON.parse(t))},o=(t,s)=>{if(t===""||!Array.isArray(s))return s;const[e,n]=s;return e in c?c[e](n):void 0};customElements.get("astro-island")||customElements.define("astro-island",(l=class extends HTMLElement{constructor(){super(...arguments);this.hydrate=()=>{if(!this.hydrator||this.parentElement&&this.parentElement.closest("astro-island[ssr]"))return;const s=this.querySelectorAll("astro-slot"),e={},n=this.querySelectorAll("template[data-astro-template]");for(const r of n){const i=r.closest(this.tagName);!i||!i.isSameNode(this)||(e[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(const r of s){const i=r.closest(this.tagName);!i||!i.isSameNode(this)||(e[r.getAttribute("name")||"default"]=r.innerHTML)}const a=this.hasAttribute("props")?JSON.parse(this.getAttribute("props"),o):{};this.hydrator(this)(this.Component,a,e,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),window.removeEventListener("astro:hydrate",this.hydrate),window.dispatchEvent(new CustomEvent("astro:hydrate"))}}connectedCallback(){!this.hasAttribute("await-children")||this.firstChild?this.childrenConnectedCallback():new MutationObserver((s,e)=>{e.disconnect(),this.childrenConnectedCallback()}).observe(this,{childList:!0})}async childrenConnectedCallback(){window.addEventListener("astro:hydrate",this.hydrate);let s=this.getAttribute("before-hydration-url");s&&await import(s),this.start()}start(){const s=JSON.parse(this.getAttribute("opts")),e=this.getAttribute("client");if(Astro[e]===void 0){window.addEventListener(`astro:${e}`,()=>this.start(),{once:!0});return}Astro[e](async()=>{const n=this.getAttribute("renderer-url"),[a,{default:r}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),i=this.getAttribute("component-export")||"default";if(!i.includes("."))this.Component=a[i];else{this.Component=a;for(const d of i.split("."))this.Component=this.Component[d]}return this.hydrator=r,this.hydrate},s,this)}attributeChangedCallback(){this.hydrator&&this.hydrate()}},l.observedAttributes=["props"],l))}</script><astro-island uid="2tcXi2" component-url="/ThemeToggleButton.6de6281e.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{&quot;labels&quot;:[0,{&quot;useLight&quot;:[0,&quot;Use light theme&quot;],&quot;useDark&quot;:[0,&quot;Use dark theme&quot;]}],&quot;isInsideHeader&quot;:[0,true]}" ssr="" client="visible" opts="{&quot;name&quot;:&quot;ThemeToggleButton&quot;,&quot;value&quot;:true}" await-children=""><div class="theme-toggle hide-toggle-on-smaller-screens"><label title="Use light theme" class=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path></svg><input type="radio" name="theme-toggle" aria-label="Use light theme" value="light"/></label><label title="Use dark theme" class=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg><input type="radio" name="theme-toggle" aria-label="Use dark theme" value="dark"/></label></div></astro-island>
+		<!-- {lang && <LanguageSelect lang={lang} client:idle />} -->
+		<!-- 
+			TODO：搜索功能
+			后期再做，暂时隐藏
+			参考文档 https://blog.csdn.net/weixin_40026797/article/details/126063524 -->
+		<!-- <Search {lang} labels={docsearchStrings} /> -->
+		<a class="astro astro-I6GUSDXI" href="https://github.com/tanggd" target="_blank" rel="noopener noreferrer">
+			<img src="/assets/github.4e28406c.svg" alt="github" class="astro-I6GUSDXI">
+		</a>
+		<script>(self.Astro=self.Astro||{}).idle=t=>{const e=async()=>{await(await t())()};"requestIdleCallback"in window?window.requestIdleCallback(e):setTimeout(e,200)},window.dispatchEvent(new Event("astro:idle"));</script><astro-island uid="Z1Iw7D6" component-url="/SidebarToggle.2303dca7.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{}" ssr="" client="idle" opts="{&quot;name&quot;:&quot;SidebarToggle&quot;,&quot;value&quot;:true}" await-children=""><button id="menu-toggle" class="header-button" type="button" aria-pressed="false"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg><span class="sr-only">Toggle sidebar</span></button></astro-island>
+	</nav>
+</header>
+
+
+		<main class="layout astro-KR5WJSBZ">
+			<aside id="left-sidebar" class="sidebar astro-KR5WJSBZ">
+				
+					<nav aria-label="Primary" class="astro-VHM34O3D">
+	<script>(self.Astro=self.Astro||{}).load=a=>{(async()=>await(await a())())()},window.dispatchEvent(new Event("astro:load"));</script><astro-island uid="Z1KQCLa" component-url="/SidebarToggleTabGroup.2446d59c.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{&quot;defaultActiveTab&quot;:[0,&quot;learn&quot;],&quot;labels&quot;:[0,{&quot;learn&quot;:[0,&quot;Learn&quot;],&quot;api&quot;:[0,&quot;Tools&quot;]}]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;SidebarToggleTabGroup&quot;,&quot;value&quot;:true}" await-children=""><div class="TabGroup"><button class="active">Learn</button><button class="">Tools</button></div></astro-island>
+	<ul class="nav-groups astro-VHM34O3D">
+		<li class="nav-group learn active astro-Q2W3FM2V">
+			<details open class="astro-Q2W3FM2V">
+				<summary class="nav-group-title astro-Q2W3FM2V">
+					<h2 class="astro-Q2W3FM2V">
+						CSS
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 1 16 16" width="16" height="16" aria-hidden="true" class="astro-Q2W3FM2V">
+							<path fill-rule="evenodd" d="M6.22 3.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 010-1.06z" class="astro-Q2W3FM2V"></path>
+						</svg>
+					</h2>
+				</summary>
+				<ul class="astro-Q2W3FM2V">
+					<li class="nav-link astro-Q2W3FM2V">
+							<a href="/en/css/xxx/" aria-current="false" data-current-parent="false" class="astro-Q2W3FM2V">
+								CSS世界 <sup class="fallback astro-Q2W3FM2V">EN</sup>
+							</a>
+						</li>
+				</ul>
+			</details>
+		</li>
+
+
+		<li class="nav-group api astro-Q2W3FM2V">
+			<details open class="astro-Q2W3FM2V">
+				<summary class="nav-group-title astro-Q2W3FM2V">
+					<h2 class="astro-Q2W3FM2V">
+						小工具
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 1 16 16" width="16" height="16" aria-hidden="true" class="astro-Q2W3FM2V">
+							<path fill-rule="evenodd" d="M6.22 3.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 010-1.06z" class="astro-Q2W3FM2V"></path>
+						</svg>
+					</h2>
+				</summary>
+				<ul class="astro-Q2W3FM2V">
+					<li class="nav-link astro-Q2W3FM2V">
+							<a href="/en/tools/make-certificate-photos/" aria-current="false" data-current-parent="false" class="astro-Q2W3FM2V">
+								制作证件照 <sup class="fallback astro-Q2W3FM2V">EN</sup>
+							</a>
+						</li>
+				</ul>
+			</details>
+		</li>
+
+
+		<li style="text-align: center;" class="astro-VHM34O3D">
+			<astro-island uid="1IhUvw" component-url="/ThemeToggleButton.6de6281e.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{&quot;labels&quot;:[0,{&quot;useLight&quot;:[0,&quot;Use light theme&quot;],&quot;useDark&quot;:[0,&quot;Use dark theme&quot;]}]}" ssr="" client="visible" opts="{&quot;name&quot;:&quot;ThemeToggleButton&quot;,&quot;value&quot;:true}" await-children=""><div class="theme-toggle "><label title="Use light theme" class=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path></svg><input type="radio" name="theme-toggle" aria-label="Use light theme" value="light"/></label><label title="Use dark theme" class=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg><input type="radio" name="theme-toggle" aria-label="Use dark theme" value="dark"/></label></div></astro-island>
+		</li>
+	</ul>
+</nav>
+
+
+
+
+				
+			</aside>
+			<aside id="right-sidebar" class="sidebar astro-KR5WJSBZ">
+				<nav class="right-sidebar astro-X3VF2BSP">
+	<h1 class="astro-X3VF2BSP">Tutorial Tracker
+</h1>
+	<div class="tutorial-nav astro-HZTDZRZA">
+	<tabbed-content class="astro-EFTOUTAV">
+	<ul class="tab-list astro-EFTOUTAV">
+		<li>
+	<a href="#sidebar__tutorial-unit-nav-panel-0" class="tab-link">
+		<unit-progress-icon data-paths="[&#34;/en/tutorial/0-introduction&#34;,&#34;/en/tutorial/0-introduction/1&#34;]" class="astro-WYDCZZH4">
+	<span class="sr-only astro-WYDCZZH4">
+		Unit
+		0
+		(<span class="sr-done-count astro-WYDCZZH4">0</span>/2
+		Complete)
+	</span>
+	<svg viewBox="0 0 100 100" width="32" height="32" aria-hidden="true" class="astro-WYDCZZH4">
+		<path d="M62.02823198017092,88.14867802992907 A40,40 0 0 0 62.02823198017092,11.85132197007092" class="segment astro-WYDCZZH4"></path><path d="M37.97176801982905,11.851321970070934 A40,40 0 0 0 37.971768019829085,88.14867802992907" class="segment astro-WYDCZZH4"></path>
+		<text x="50" y="54" class="astro-WYDCZZH4">0</text>
+	</svg>
+</unit-progress-icon>
+
+
+
+
+	</a>
+</li><li>
+	<a href="#sidebar__tutorial-unit-nav-panel-1" data-initial class="tab-link">
+		<unit-progress-icon data-paths="[&#34;/en/tutorial/1-setup&#34;,&#34;/en/tutorial/1-setup/1&#34;,&#34;/en/tutorial/1-setup/2&#34;,&#34;/en/tutorial/1-setup/3&#34;,&#34;/en/tutorial/1-setup/4&#34;,&#34;/en/tutorial/1-setup/5&#34;]" class="astro-WYDCZZH4">
+	<span class="sr-only astro-WYDCZZH4">
+		Unit
+		1
+		(<span class="sr-done-count astro-WYDCZZH4">0</span>/6
+		Complete)
+	</span>
+	<svg viewBox="0 0 100 100" width="32" height="32" aria-hidden="true" class="astro-WYDCZZH4">
+		<path d="M77.0236083046264,20.508906527595038 A40,40 0 0 0 62.02823198017092,11.85132197007092" class="segment astro-WYDCZZH4"></path><path d="M89.05184028479734,58.65758455752412 A40,40 0 0 0 89.05184028479734,41.34241544247588" class="segment astro-WYDCZZH4"></path><path d="M62.02823198017092,88.14867802992907 A40,40 0 0 0 77.0236083046264,79.49109347240497" class="segment astro-WYDCZZH4"></path><path d="M22.97639169537359,79.49109347240497 A40,40 0 0 0 37.971768019829085,88.14867802992907" class="segment astro-WYDCZZH4"></path><path d="M10.948159715202664,41.3424154424759 A40,40 0 0 0 10.948159715202664,58.65758455752411" class="segment astro-WYDCZZH4"></path><path d="M37.97176801982905,11.851321970070934 A40,40 0 0 0 22.976391695373586,20.50890652759504" class="segment astro-WYDCZZH4"></path>
+		<text x="50" y="54" class="astro-WYDCZZH4">1</text>
+	</svg>
+</unit-progress-icon>
+
+
+
+
+	</a>
+</li><li>
+	<a href="#sidebar__tutorial-unit-nav-panel-2" class="tab-link">
+		<unit-progress-icon data-paths="[&#34;/en/tutorial/2-pages&#34;,&#34;/en/tutorial/2-pages/1&#34;,&#34;/en/tutorial/2-pages/2&#34;,&#34;/en/tutorial/2-pages/3&#34;,&#34;/en/tutorial/2-pages/4&#34;,&#34;/en/tutorial/2-pages/5&#34;]" class="astro-WYDCZZH4">
+	<span class="sr-only astro-WYDCZZH4">
+		Unit
+		2
+		(<span class="sr-done-count astro-WYDCZZH4">0</span>/6
+		Complete)
+	</span>
+	<svg viewBox="0 0 100 100" width="32" height="32" aria-hidden="true" class="astro-WYDCZZH4">
+		<path d="M77.0236083046264,20.508906527595038 A40,40 0 0 0 62.02823198017092,11.85132197007092" class="segment astro-WYDCZZH4"></path><path d="M89.05184028479734,58.65758455752412 A40,40 0 0 0 89.05184028479734,41.34241544247588" class="segment astro-WYDCZZH4"></path><path d="M62.02823198017092,88.14867802992907 A40,40 0 0 0 77.0236083046264,79.49109347240497" class="segment astro-WYDCZZH4"></path><path d="M22.97639169537359,79.49109347240497 A40,40 0 0 0 37.971768019829085,88.14867802992907" class="segment astro-WYDCZZH4"></path><path d="M10.948159715202664,41.3424154424759 A40,40 0 0 0 10.948159715202664,58.65758455752411" class="segment astro-WYDCZZH4"></path><path d="M37.97176801982905,11.851321970070934 A40,40 0 0 0 22.976391695373586,20.50890652759504" class="segment astro-WYDCZZH4"></path>
+		<text x="50" y="54" class="astro-WYDCZZH4">2</text>
+	</svg>
+</unit-progress-icon>
+
+
+
+
+	</a>
+</li><li>
+	<a href="#sidebar__tutorial-unit-nav-panel-3" class="tab-link">
+		<unit-progress-icon data-paths="[&#34;/en/tutorial/3-components&#34;,&#34;/en/tutorial/3-components/1&#34;,&#34;/en/tutorial/3-components/2&#34;,&#34;/en/tutorial/3-components/3&#34;,&#34;/en/tutorial/3-components/4&#34;]" class="astro-WYDCZZH4">
+	<span class="sr-only astro-WYDCZZH4">
+		Unit
+		3
+		(<span class="sr-done-count astro-WYDCZZH4">0</span>/5
+		Complete)
+	</span>
+	<svg viewBox="0 0 100 100" width="32" height="32" aria-hidden="true" class="astro-WYDCZZH4">
+		<path d="M82.56462073425277,26.77188177156241 A40,40 0 0 0 62.02823198017092,11.85132197007092" class="segment astro-WYDCZZH4"></path><path d="M82.1542744246887,73.79291147005365 A40,40 0 0 0 89.99847692256685,49.650938580065045" class="segment astro-WYDCZZH4"></path><path d="M37.307813743796316,87.93294620824798 A40,40 0 0 0 62.69218625620369,87.93294620824797" class="segment astro-WYDCZZH4"></path><path d="M10.001523077433149,49.65093858006505 A40,40 0 0 0 17.845725575311306,73.79291147005365" class="segment astro-WYDCZZH4"></path><path d="M37.97176801982905,11.851321970070934 A40,40 0 0 0 17.43537926574723,26.77188177156241" class="segment astro-WYDCZZH4"></path>
+		<text x="50" y="54" class="astro-WYDCZZH4">3</text>
+	</svg>
+</unit-progress-icon>
+
+
+
+
+	</a>
+</li><li>
+	<a href="#sidebar__tutorial-unit-nav-panel-4" class="tab-link">
+		<unit-progress-icon data-paths="[&#34;/en/tutorial/4-layouts&#34;,&#34;/en/tutorial/4-layouts/1&#34;,&#34;/en/tutorial/4-layouts/2&#34;,&#34;/en/tutorial/4-layouts/3&#34;]" class="astro-WYDCZZH4">
+	<span class="sr-only astro-WYDCZZH4">
+		Unit
+		4
+		(<span class="sr-done-count astro-WYDCZZH4">0</span>/4
+		Complete)
+	</span>
+	<svg viewBox="0 0 100 100" width="32" height="32" aria-hidden="true" class="astro-WYDCZZH4">
+		<path d="M88.14867802992907,37.97176801982907 A40,40 0 0 0 62.02823198017092,11.85132197007092" class="segment astro-WYDCZZH4"></path><path d="M62.02823198017092,88.14867802992907 A40,40 0 0 0 88.14867802992907,62.02823198017093" class="segment astro-WYDCZZH4"></path><path d="M11.851321970070927,62.02823198017093 A40,40 0 0 0 37.971768019829085,88.14867802992907" class="segment astro-WYDCZZH4"></path><path d="M37.97176801982905,11.851321970070934 A40,40 0 0 0 11.85132197007092,37.97176801982908" class="segment astro-WYDCZZH4"></path>
+		<text x="50" y="54" class="astro-WYDCZZH4">4</text>
+	</svg>
+</unit-progress-icon>
+
+
+
+
+	</a>
+</li><li>
+	<a href="#sidebar__tutorial-unit-nav-panel-5" class="tab-link">
+		<unit-progress-icon data-paths="[&#34;/en/tutorial/5-astro-api&#34;,&#34;/en/tutorial/5-astro-api/1&#34;,&#34;/en/tutorial/5-astro-api/2&#34;,&#34;/en/tutorial/5-astro-api/3&#34;,&#34;/en/tutorial/5-astro-api/4&#34;]" class="astro-WYDCZZH4">
+	<span class="sr-only astro-WYDCZZH4">
+		Unit
+		5
+		(<span class="sr-done-count astro-WYDCZZH4">0</span>/5
+		Complete)
+	</span>
+	<svg viewBox="0 0 100 100" width="32" height="32" aria-hidden="true" class="astro-WYDCZZH4">
+		<path d="M82.56462073425277,26.77188177156241 A40,40 0 0 0 62.02823198017092,11.85132197007092" class="segment astro-WYDCZZH4"></path><path d="M82.1542744246887,73.79291147005365 A40,40 0 0 0 89.99847692256685,49.650938580065045" class="segment astro-WYDCZZH4"></path><path d="M37.307813743796316,87.93294620824798 A40,40 0 0 0 62.69218625620369,87.93294620824797" class="segment astro-WYDCZZH4"></path><path d="M10.001523077433149,49.65093858006505 A40,40 0 0 0 17.845725575311306,73.79291147005365" class="segment astro-WYDCZZH4"></path><path d="M37.97176801982905,11.851321970070934 A40,40 0 0 0 17.43537926574723,26.77188177156241" class="segment astro-WYDCZZH4"></path>
+		<text x="50" y="54" class="astro-WYDCZZH4">5</text>
+	</svg>
+</unit-progress-icon>
+
+
+
+
+	</a>
+</li><li>
+	<a href="#sidebar__tutorial-unit-nav-panel-6" class="tab-link">
+		<unit-progress-icon data-paths="[&#34;/en/tutorial/6-islands&#34;,&#34;/en/tutorial/6-islands/1&#34;,&#34;/en/tutorial/6-islands/2&#34;,&#34;/en/tutorial/6-islands/3&#34;]" class="astro-WYDCZZH4">
+	<span class="sr-only astro-WYDCZZH4">
+		Unit
+		6
+		(<span class="sr-done-count astro-WYDCZZH4">0</span>/4
+		Complete)
+	</span>
+	<svg viewBox="0 0 100 100" width="32" height="32" aria-hidden="true" class="astro-WYDCZZH4">
+		<path d="M88.14867802992907,37.97176801982907 A40,40 0 0 0 62.02823198017092,11.85132197007092" class="segment astro-WYDCZZH4"></path><path d="M62.02823198017092,88.14867802992907 A40,40 0 0 0 88.14867802992907,62.02823198017093" class="segment astro-WYDCZZH4"></path><path d="M11.851321970070927,62.02823198017093 A40,40 0 0 0 37.971768019829085,88.14867802992907" class="segment astro-WYDCZZH4"></path><path d="M37.97176801982905,11.851321970070934 A40,40 0 0 0 11.85132197007092,37.97176801982908" class="segment astro-WYDCZZH4"></path>
+		<text x="50" y="54" class="astro-WYDCZZH4">6</text>
+	</svg>
+</unit-progress-icon>
+
+
+
+
+	</a>
+</li>
+	</ul>
+
+	<div class="panels astro-EFTOUTAV">
+		<section id="sidebar__tutorial-unit-nav-panel-0" class="astro-APDE7NIN">
+	<div class="unit astro-HZTDZRZA">
+						<h2 class="heading astro-HZTDZRZA">Welcome, world!</h2>
+						<ol class="lessons astro-HZTDZRZA">
+							<li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/0-introduction/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/0-introduction" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											0. Build your first Astro Blog
+										</a>
+									</div>
+									
+								</li><li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/0-introduction/1/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/0-introduction/1" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											1. About this Tutorial
+										</a>
+									</div>
+									
+								</li>
+						</ol>
+					</div>
+</section>
+
+<section data-initial id="sidebar__tutorial-unit-nav-panel-1" class="astro-APDE7NIN">
+	<div class="unit astro-HZTDZRZA">
+						<h2 class="heading astro-HZTDZRZA">Create and deploy your first Astro site</h2>
+						<ol class="lessons astro-HZTDZRZA">
+							<li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/1-setup/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/1-setup" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											0. Check in: Unit 1 - Setup
+										</a>
+									</div>
+									
+								</li><li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/1-setup/1/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/1-setup/1" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											1. Prepare your dev environment
+										</a>
+									</div>
+									
+								</li><li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/1-setup/2/" aria-current="true" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/1-setup/2" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											2. Create your first Astro project
+										</a>
+									</div>
+									<ul class="on-this-page astro-HZTDZRZA">
+											<li class="header-link astro-HZTDZRZA">
+														<a href="#launch-the-astro-setup-wizard" class="astro-HZTDZRZA">Launch the Astro setup wizard</a>
+													</li><li class="header-link astro-HZTDZRZA">
+														<a href="#open-your-project-in-vs-code" class="astro-HZTDZRZA">Open your project in VS Code</a>
+													</li><li class="header-link astro-HZTDZRZA">
+														<a href="#run-astro-in-dev-mode" class="astro-HZTDZRZA">Run Astro in dev mode</a>
+													</li><li class="header-link astro-HZTDZRZA">
+														<a href="#view-a-preview-of-your-website" class="astro-HZTDZRZA">View a preview of your website</a>
+													</li><li class="header-link astro-HZTDZRZA">
+														<a href="#checklist" class="astro-HZTDZRZA">Checklist</a>
+													</li>
+										</ul>
+								</li><li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/1-setup/3/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/1-setup/3" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											3. Write your first line of Astro
+										</a>
+									</div>
+									
+								</li><li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/1-setup/4/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/1-setup/4" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											4. Store your repository online
+										</a>
+									</div>
+									
+								</li><li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/1-setup/5/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/1-setup/5" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											5. Deploy your site to the web
+										</a>
+									</div>
+									
+								</li>
+						</ol>
+					</div>
+</section>
+
+<section id="sidebar__tutorial-unit-nav-panel-2" class="astro-APDE7NIN">
+	<div class="unit astro-HZTDZRZA">
+						<h2 class="heading astro-HZTDZRZA">Add, style and link to pages on your site</h2>
+						<ol class="lessons astro-HZTDZRZA">
+							<li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/2-pages/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/2-pages" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											0. Check in: Unit 2 - Pages
+										</a>
+									</div>
+									
+								</li><li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/2-pages/1/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/2-pages/1" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											1. Create your first Astro page
+										</a>
+									</div>
+									
+								</li><li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/2-pages/2/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/2-pages/2" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											2. Write your first Markdown blog post
+										</a>
+									</div>
+									
+								</li><li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/2-pages/3/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/2-pages/3" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											3. Add dynamic content about you
+										</a>
+									</div>
+									
+								</li><li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/2-pages/4/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/2-pages/4" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											4. Style your About page
+										</a>
+									</div>
+									
+								</li><li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/2-pages/5/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/2-pages/5" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											5. Add site-wide styling
+										</a>
+									</div>
+									
+								</li>
+						</ol>
+					</div>
+</section>
+
+<section id="sidebar__tutorial-unit-nav-panel-3" class="astro-APDE7NIN">
+	<div class="unit astro-HZTDZRZA">
+						<h2 class="heading astro-HZTDZRZA">Build and design with Astro UI components</h2>
+						<ol class="lessons astro-HZTDZRZA">
+							<li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/3-components/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/3-components" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											0. Check in: Unit 3 - Components
+										</a>
+									</div>
+									
+								</li><li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/3-components/1/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/3-components/1" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											1. Make a reusable Navigation component
+										</a>
+									</div>
+									
+								</li><li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/3-components/2/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/3-components/2" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											2. Create a social media footer
+										</a>
+									</div>
+									
+								</li><li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/3-components/3/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/3-components/3" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											3. Build it yourself - Header
+										</a>
+									</div>
+									
+								</li><li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/3-components/4/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/3-components/4" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											4. Send your first script to the browser
+										</a>
+									</div>
+									
+								</li>
+						</ol>
+					</div>
+</section>
+
+<section id="sidebar__tutorial-unit-nav-panel-4" class="astro-APDE7NIN">
+	<div class="unit astro-HZTDZRZA">
+						<h2 class="heading astro-HZTDZRZA">Save time and energy with reusable page layouts</h2>
+						<ol class="lessons astro-HZTDZRZA">
+							<li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/4-layouts/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/4-layouts" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											0. Check in: Unit 4 - Layouts
+										</a>
+									</div>
+									
+								</li><li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/4-layouts/1/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/4-layouts/1" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											1. Build your first layout
+										</a>
+									</div>
+									
+								</li><li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/4-layouts/2/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/4-layouts/2" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											2. Create and pass data to a custom blog layout
+										</a>
+									</div>
+									
+								</li><li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/4-layouts/3/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/4-layouts/3" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											3. Combine layouts to get the best of both worlds
+										</a>
+									</div>
+									
+								</li>
+						</ol>
+					</div>
+</section>
+
+<section id="sidebar__tutorial-unit-nav-panel-5" class="astro-APDE7NIN">
+	<div class="unit astro-HZTDZRZA">
+						<h2 class="heading astro-HZTDZRZA">Beef up your blog</h2>
+						<ol class="lessons astro-HZTDZRZA">
+							<li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/5-astro-api/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/5-astro-api" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											0. Check in: Unit 5 - Astro API
+										</a>
+									</div>
+									
+								</li><li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/5-astro-api/1/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/5-astro-api/1" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											1. Create a blog post archive
+										</a>
+									</div>
+									
+								</li><li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/5-astro-api/2/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/5-astro-api/2" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											2. Generate tag pages
+										</a>
+									</div>
+									
+								</li><li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/5-astro-api/3/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/5-astro-api/3" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											3. Build a tag index page
+										</a>
+									</div>
+									
+								</li><li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/5-astro-api/4/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/5-astro-api/4" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											4. Add an RSS feed
+										</a>
+									</div>
+									
+								</li>
+						</ol>
+					</div>
+</section>
+
+<section id="sidebar__tutorial-unit-nav-panel-6" class="astro-APDE7NIN">
+	<div class="unit astro-HZTDZRZA">
+						<h2 class="heading astro-HZTDZRZA">Set sail for Astro islands</h2>
+						<ol class="lessons astro-HZTDZRZA">
+							<li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/6-islands/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/6-islands" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											0. Check in: Unit 6 - Astro Islands
+										</a>
+									</div>
+									
+								</li><li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/6-islands/1/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/6-islands/1" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											1. Build your first Astro island
+										</a>
+									</div>
+									
+								</li><li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/6-islands/2/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/6-islands/2" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											2. Back on dry land. Take your blog from day to night, no island required!
+										</a>
+									</div>
+									
+								</li><li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/6-islands/3/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/6-islands/3" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											3. Congratulations!
+										</a>
+									</div>
+									
+								</li>
+						</ol>
+					</div>
+</section>
+
+
+	</div>
+</tabbed-content>
+
+
+
+
+</div>
+
+
+	<div class="feedback astro-X3VF2BSP">
+		<button data-feedback-fish data-feedback-fish-url="/en/tutorial/1-setup/2" class="astro-EADDOY63">
+	Give us feedback
+
+</button>
+
+
+
+	</div>
+</nav>
+
+
+			</aside>
+			<div id="main-content" class="main-column astro-KR5WJSBZ">
+				<div dir="ltr" class="astro-2XBDZOYQ">
+	<div class="fixed-mobile-bar astro-2XBDZOYQ" dir="ltr">
+					<nav class="astro-ESZWT3QH">
+	<details class="tut-mobile-container astro-ESZWT3QH">
+		<summary class="tut-mobile-header astro-ESZWT3QH">
+			<div class="tut-mobile-header-content astro-ESZWT3QH">
+				<div class="tut-toggle astro-ESZWT3QH">
+					<h2 class="heading astro-ESZWT3QH">
+						Tutorial Tracker
+
+					</h2>
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 1 16 16" width="16" height="16" aria-hidden="true" class="astro-ESZWT3QH">
+						<path fill-rule="evenodd" d="M6.22 3.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 010-1.06z" class="astro-ESZWT3QH"></path>
+					</svg>
+				</div>
+			</div>
+		</summary>
+		<div class="tut-nav-content astro-ESZWT3QH">
+			<div class="tutorial-nav astro-HZTDZRZA">
+	<tabbed-content class="astro-EFTOUTAV">
+	<ul class="tab-list astro-EFTOUTAV">
+		<li>
+	<a href="#mobile__tutorial-unit-nav-panel-0" class="tab-link">
+		<unit-progress-icon data-paths="[&#34;/en/tutorial/0-introduction&#34;,&#34;/en/tutorial/0-introduction/1&#34;]" class="astro-WYDCZZH4">
+	<span class="sr-only astro-WYDCZZH4">
+		Unit
+		0
+		(<span class="sr-done-count astro-WYDCZZH4">0</span>/2
+		Complete)
+	</span>
+	<svg viewBox="0 0 100 100" width="32" height="32" aria-hidden="true" class="astro-WYDCZZH4">
+		<path d="M62.02823198017092,88.14867802992907 A40,40 0 0 0 62.02823198017092,11.85132197007092" class="segment astro-WYDCZZH4"></path><path d="M37.97176801982905,11.851321970070934 A40,40 0 0 0 37.971768019829085,88.14867802992907" class="segment astro-WYDCZZH4"></path>
+		<text x="50" y="54" class="astro-WYDCZZH4">0</text>
+	</svg>
+</unit-progress-icon>
+
+
+
+
+	</a>
+</li><li>
+	<a href="#mobile__tutorial-unit-nav-panel-1" data-initial class="tab-link">
+		<unit-progress-icon data-paths="[&#34;/en/tutorial/1-setup&#34;,&#34;/en/tutorial/1-setup/1&#34;,&#34;/en/tutorial/1-setup/2&#34;,&#34;/en/tutorial/1-setup/3&#34;,&#34;/en/tutorial/1-setup/4&#34;,&#34;/en/tutorial/1-setup/5&#34;]" class="astro-WYDCZZH4">
+	<span class="sr-only astro-WYDCZZH4">
+		Unit
+		1
+		(<span class="sr-done-count astro-WYDCZZH4">0</span>/6
+		Complete)
+	</span>
+	<svg viewBox="0 0 100 100" width="32" height="32" aria-hidden="true" class="astro-WYDCZZH4">
+		<path d="M77.0236083046264,20.508906527595038 A40,40 0 0 0 62.02823198017092,11.85132197007092" class="segment astro-WYDCZZH4"></path><path d="M89.05184028479734,58.65758455752412 A40,40 0 0 0 89.05184028479734,41.34241544247588" class="segment astro-WYDCZZH4"></path><path d="M62.02823198017092,88.14867802992907 A40,40 0 0 0 77.0236083046264,79.49109347240497" class="segment astro-WYDCZZH4"></path><path d="M22.97639169537359,79.49109347240497 A40,40 0 0 0 37.971768019829085,88.14867802992907" class="segment astro-WYDCZZH4"></path><path d="M10.948159715202664,41.3424154424759 A40,40 0 0 0 10.948159715202664,58.65758455752411" class="segment astro-WYDCZZH4"></path><path d="M37.97176801982905,11.851321970070934 A40,40 0 0 0 22.976391695373586,20.50890652759504" class="segment astro-WYDCZZH4"></path>
+		<text x="50" y="54" class="astro-WYDCZZH4">1</text>
+	</svg>
+</unit-progress-icon>
+
+
+
+
+	</a>
+</li><li>
+	<a href="#mobile__tutorial-unit-nav-panel-2" class="tab-link">
+		<unit-progress-icon data-paths="[&#34;/en/tutorial/2-pages&#34;,&#34;/en/tutorial/2-pages/1&#34;,&#34;/en/tutorial/2-pages/2&#34;,&#34;/en/tutorial/2-pages/3&#34;,&#34;/en/tutorial/2-pages/4&#34;,&#34;/en/tutorial/2-pages/5&#34;]" class="astro-WYDCZZH4">
+	<span class="sr-only astro-WYDCZZH4">
+		Unit
+		2
+		(<span class="sr-done-count astro-WYDCZZH4">0</span>/6
+		Complete)
+	</span>
+	<svg viewBox="0 0 100 100" width="32" height="32" aria-hidden="true" class="astro-WYDCZZH4">
+		<path d="M77.0236083046264,20.508906527595038 A40,40 0 0 0 62.02823198017092,11.85132197007092" class="segment astro-WYDCZZH4"></path><path d="M89.05184028479734,58.65758455752412 A40,40 0 0 0 89.05184028479734,41.34241544247588" class="segment astro-WYDCZZH4"></path><path d="M62.02823198017092,88.14867802992907 A40,40 0 0 0 77.0236083046264,79.49109347240497" class="segment astro-WYDCZZH4"></path><path d="M22.97639169537359,79.49109347240497 A40,40 0 0 0 37.971768019829085,88.14867802992907" class="segment astro-WYDCZZH4"></path><path d="M10.948159715202664,41.3424154424759 A40,40 0 0 0 10.948159715202664,58.65758455752411" class="segment astro-WYDCZZH4"></path><path d="M37.97176801982905,11.851321970070934 A40,40 0 0 0 22.976391695373586,20.50890652759504" class="segment astro-WYDCZZH4"></path>
+		<text x="50" y="54" class="astro-WYDCZZH4">2</text>
+	</svg>
+</unit-progress-icon>
+
+
+
+
+	</a>
+</li><li>
+	<a href="#mobile__tutorial-unit-nav-panel-3" class="tab-link">
+		<unit-progress-icon data-paths="[&#34;/en/tutorial/3-components&#34;,&#34;/en/tutorial/3-components/1&#34;,&#34;/en/tutorial/3-components/2&#34;,&#34;/en/tutorial/3-components/3&#34;,&#34;/en/tutorial/3-components/4&#34;]" class="astro-WYDCZZH4">
+	<span class="sr-only astro-WYDCZZH4">
+		Unit
+		3
+		(<span class="sr-done-count astro-WYDCZZH4">0</span>/5
+		Complete)
+	</span>
+	<svg viewBox="0 0 100 100" width="32" height="32" aria-hidden="true" class="astro-WYDCZZH4">
+		<path d="M82.56462073425277,26.77188177156241 A40,40 0 0 0 62.02823198017092,11.85132197007092" class="segment astro-WYDCZZH4"></path><path d="M82.1542744246887,73.79291147005365 A40,40 0 0 0 89.99847692256685,49.650938580065045" class="segment astro-WYDCZZH4"></path><path d="M37.307813743796316,87.93294620824798 A40,40 0 0 0 62.69218625620369,87.93294620824797" class="segment astro-WYDCZZH4"></path><path d="M10.001523077433149,49.65093858006505 A40,40 0 0 0 17.845725575311306,73.79291147005365" class="segment astro-WYDCZZH4"></path><path d="M37.97176801982905,11.851321970070934 A40,40 0 0 0 17.43537926574723,26.77188177156241" class="segment astro-WYDCZZH4"></path>
+		<text x="50" y="54" class="astro-WYDCZZH4">3</text>
+	</svg>
+</unit-progress-icon>
+
+
+
+
+	</a>
+</li><li>
+	<a href="#mobile__tutorial-unit-nav-panel-4" class="tab-link">
+		<unit-progress-icon data-paths="[&#34;/en/tutorial/4-layouts&#34;,&#34;/en/tutorial/4-layouts/1&#34;,&#34;/en/tutorial/4-layouts/2&#34;,&#34;/en/tutorial/4-layouts/3&#34;]" class="astro-WYDCZZH4">
+	<span class="sr-only astro-WYDCZZH4">
+		Unit
+		4
+		(<span class="sr-done-count astro-WYDCZZH4">0</span>/4
+		Complete)
+	</span>
+	<svg viewBox="0 0 100 100" width="32" height="32" aria-hidden="true" class="astro-WYDCZZH4">
+		<path d="M88.14867802992907,37.97176801982907 A40,40 0 0 0 62.02823198017092,11.85132197007092" class="segment astro-WYDCZZH4"></path><path d="M62.02823198017092,88.14867802992907 A40,40 0 0 0 88.14867802992907,62.02823198017093" class="segment astro-WYDCZZH4"></path><path d="M11.851321970070927,62.02823198017093 A40,40 0 0 0 37.971768019829085,88.14867802992907" class="segment astro-WYDCZZH4"></path><path d="M37.97176801982905,11.851321970070934 A40,40 0 0 0 11.85132197007092,37.97176801982908" class="segment astro-WYDCZZH4"></path>
+		<text x="50" y="54" class="astro-WYDCZZH4">4</text>
+	</svg>
+</unit-progress-icon>
+
+
+
+
+	</a>
+</li><li>
+	<a href="#mobile__tutorial-unit-nav-panel-5" class="tab-link">
+		<unit-progress-icon data-paths="[&#34;/en/tutorial/5-astro-api&#34;,&#34;/en/tutorial/5-astro-api/1&#34;,&#34;/en/tutorial/5-astro-api/2&#34;,&#34;/en/tutorial/5-astro-api/3&#34;,&#34;/en/tutorial/5-astro-api/4&#34;]" class="astro-WYDCZZH4">
+	<span class="sr-only astro-WYDCZZH4">
+		Unit
+		5
+		(<span class="sr-done-count astro-WYDCZZH4">0</span>/5
+		Complete)
+	</span>
+	<svg viewBox="0 0 100 100" width="32" height="32" aria-hidden="true" class="astro-WYDCZZH4">
+		<path d="M82.56462073425277,26.77188177156241 A40,40 0 0 0 62.02823198017092,11.85132197007092" class="segment astro-WYDCZZH4"></path><path d="M82.1542744246887,73.79291147005365 A40,40 0 0 0 89.99847692256685,49.650938580065045" class="segment astro-WYDCZZH4"></path><path d="M37.307813743796316,87.93294620824798 A40,40 0 0 0 62.69218625620369,87.93294620824797" class="segment astro-WYDCZZH4"></path><path d="M10.001523077433149,49.65093858006505 A40,40 0 0 0 17.845725575311306,73.79291147005365" class="segment astro-WYDCZZH4"></path><path d="M37.97176801982905,11.851321970070934 A40,40 0 0 0 17.43537926574723,26.77188177156241" class="segment astro-WYDCZZH4"></path>
+		<text x="50" y="54" class="astro-WYDCZZH4">5</text>
+	</svg>
+</unit-progress-icon>
+
+
+
+
+	</a>
+</li><li>
+	<a href="#mobile__tutorial-unit-nav-panel-6" class="tab-link">
+		<unit-progress-icon data-paths="[&#34;/en/tutorial/6-islands&#34;,&#34;/en/tutorial/6-islands/1&#34;,&#34;/en/tutorial/6-islands/2&#34;,&#34;/en/tutorial/6-islands/3&#34;]" class="astro-WYDCZZH4">
+	<span class="sr-only astro-WYDCZZH4">
+		Unit
+		6
+		(<span class="sr-done-count astro-WYDCZZH4">0</span>/4
+		Complete)
+	</span>
+	<svg viewBox="0 0 100 100" width="32" height="32" aria-hidden="true" class="astro-WYDCZZH4">
+		<path d="M88.14867802992907,37.97176801982907 A40,40 0 0 0 62.02823198017092,11.85132197007092" class="segment astro-WYDCZZH4"></path><path d="M62.02823198017092,88.14867802992907 A40,40 0 0 0 88.14867802992907,62.02823198017093" class="segment astro-WYDCZZH4"></path><path d="M11.851321970070927,62.02823198017093 A40,40 0 0 0 37.971768019829085,88.14867802992907" class="segment astro-WYDCZZH4"></path><path d="M37.97176801982905,11.851321970070934 A40,40 0 0 0 11.85132197007092,37.97176801982908" class="segment astro-WYDCZZH4"></path>
+		<text x="50" y="54" class="astro-WYDCZZH4">6</text>
+	</svg>
+</unit-progress-icon>
+
+
+
+
+	</a>
+</li>
+	</ul>
+
+	<div class="panels astro-EFTOUTAV">
+		<section id="mobile__tutorial-unit-nav-panel-0" class="astro-APDE7NIN">
+	<div class="unit astro-HZTDZRZA">
+						<h2 class="heading astro-HZTDZRZA">Welcome, world!</h2>
+						<ol class="lessons astro-HZTDZRZA">
+							<li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/0-introduction/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/0-introduction" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											0. Build your first Astro Blog
+										</a>
+									</div>
+									
+								</li><li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/0-introduction/1/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/0-introduction/1" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											1. About this Tutorial
+										</a>
+									</div>
+									
+								</li>
+						</ol>
+					</div>
+</section>
+
+<section data-initial id="mobile__tutorial-unit-nav-panel-1" class="astro-APDE7NIN">
+	<div class="unit astro-HZTDZRZA">
+						<h2 class="heading astro-HZTDZRZA">Create and deploy your first Astro site</h2>
+						<ol class="lessons astro-HZTDZRZA">
+							<li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/1-setup/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/1-setup" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											0. Check in: Unit 1 - Setup
+										</a>
+									</div>
+									
+								</li><li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/1-setup/1/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/1-setup/1" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											1. Prepare your dev environment
+										</a>
+									</div>
+									
+								</li><li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/1-setup/2/" aria-current="true" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/1-setup/2" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											2. Create your first Astro project
+										</a>
+									</div>
+									<ul class="on-this-page astro-HZTDZRZA">
+											<li class="header-link astro-HZTDZRZA">
+														<a href="#launch-the-astro-setup-wizard" class="astro-HZTDZRZA">Launch the Astro setup wizard</a>
+													</li><li class="header-link astro-HZTDZRZA">
+														<a href="#open-your-project-in-vs-code" class="astro-HZTDZRZA">Open your project in VS Code</a>
+													</li><li class="header-link astro-HZTDZRZA">
+														<a href="#run-astro-in-dev-mode" class="astro-HZTDZRZA">Run Astro in dev mode</a>
+													</li><li class="header-link astro-HZTDZRZA">
+														<a href="#view-a-preview-of-your-website" class="astro-HZTDZRZA">View a preview of your website</a>
+													</li><li class="header-link astro-HZTDZRZA">
+														<a href="#checklist" class="astro-HZTDZRZA">Checklist</a>
+													</li>
+										</ul>
+								</li><li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/1-setup/3/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/1-setup/3" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											3. Write your first line of Astro
+										</a>
+									</div>
+									
+								</li><li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/1-setup/4/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/1-setup/4" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											4. Store your repository online
+										</a>
+									</div>
+									
+								</li><li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/1-setup/5/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/1-setup/5" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											5. Deploy your site to the web
+										</a>
+									</div>
+									
+								</li>
+						</ol>
+					</div>
+</section>
+
+<section id="mobile__tutorial-unit-nav-panel-2" class="astro-APDE7NIN">
+	<div class="unit astro-HZTDZRZA">
+						<h2 class="heading astro-HZTDZRZA">Add, style and link to pages on your site</h2>
+						<ol class="lessons astro-HZTDZRZA">
+							<li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/2-pages/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/2-pages" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											0. Check in: Unit 2 - Pages
+										</a>
+									</div>
+									
+								</li><li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/2-pages/1/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/2-pages/1" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											1. Create your first Astro page
+										</a>
+									</div>
+									
+								</li><li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/2-pages/2/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/2-pages/2" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											2. Write your first Markdown blog post
+										</a>
+									</div>
+									
+								</li><li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/2-pages/3/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/2-pages/3" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											3. Add dynamic content about you
+										</a>
+									</div>
+									
+								</li><li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/2-pages/4/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/2-pages/4" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											4. Style your About page
+										</a>
+									</div>
+									
+								</li><li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/2-pages/5/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/2-pages/5" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											5. Add site-wide styling
+										</a>
+									</div>
+									
+								</li>
+						</ol>
+					</div>
+</section>
+
+<section id="mobile__tutorial-unit-nav-panel-3" class="astro-APDE7NIN">
+	<div class="unit astro-HZTDZRZA">
+						<h2 class="heading astro-HZTDZRZA">Build and design with Astro UI components</h2>
+						<ol class="lessons astro-HZTDZRZA">
+							<li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/3-components/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/3-components" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											0. Check in: Unit 3 - Components
+										</a>
+									</div>
+									
+								</li><li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/3-components/1/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/3-components/1" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											1. Make a reusable Navigation component
+										</a>
+									</div>
+									
+								</li><li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/3-components/2/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/3-components/2" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											2. Create a social media footer
+										</a>
+									</div>
+									
+								</li><li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/3-components/3/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/3-components/3" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											3. Build it yourself - Header
+										</a>
+									</div>
+									
+								</li><li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/3-components/4/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/3-components/4" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											4. Send your first script to the browser
+										</a>
+									</div>
+									
+								</li>
+						</ol>
+					</div>
+</section>
+
+<section id="mobile__tutorial-unit-nav-panel-4" class="astro-APDE7NIN">
+	<div class="unit astro-HZTDZRZA">
+						<h2 class="heading astro-HZTDZRZA">Save time and energy with reusable page layouts</h2>
+						<ol class="lessons astro-HZTDZRZA">
+							<li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/4-layouts/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/4-layouts" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											0. Check in: Unit 4 - Layouts
+										</a>
+									</div>
+									
+								</li><li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/4-layouts/1/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/4-layouts/1" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											1. Build your first layout
+										</a>
+									</div>
+									
+								</li><li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/4-layouts/2/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/4-layouts/2" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											2. Create and pass data to a custom blog layout
+										</a>
+									</div>
+									
+								</li><li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/4-layouts/3/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/4-layouts/3" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											3. Combine layouts to get the best of both worlds
+										</a>
+									</div>
+									
+								</li>
+						</ol>
+					</div>
+</section>
+
+<section id="mobile__tutorial-unit-nav-panel-5" class="astro-APDE7NIN">
+	<div class="unit astro-HZTDZRZA">
+						<h2 class="heading astro-HZTDZRZA">Beef up your blog</h2>
+						<ol class="lessons astro-HZTDZRZA">
+							<li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/5-astro-api/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/5-astro-api" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											0. Check in: Unit 5 - Astro API
+										</a>
+									</div>
+									
+								</li><li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/5-astro-api/1/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/5-astro-api/1" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											1. Create a blog post archive
+										</a>
+									</div>
+									
+								</li><li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/5-astro-api/2/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/5-astro-api/2" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											2. Generate tag pages
+										</a>
+									</div>
+									
+								</li><li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/5-astro-api/3/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/5-astro-api/3" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											3. Build a tag index page
+										</a>
+									</div>
+									
+								</li><li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/5-astro-api/4/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/5-astro-api/4" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											4. Add an RSS feed
+										</a>
+									</div>
+									
+								</li>
+						</ol>
+					</div>
+</section>
+
+<section id="mobile__tutorial-unit-nav-panel-6" class="astro-APDE7NIN">
+	<div class="unit astro-HZTDZRZA">
+						<h2 class="heading astro-HZTDZRZA">Set sail for Astro islands</h2>
+						<ol class="lessons astro-HZTDZRZA">
+							<li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/6-islands/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/6-islands" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											0. Check in: Unit 6 - Astro Islands
+										</a>
+									</div>
+									
+								</li><li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/6-islands/1/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/6-islands/1" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											1. Build your first Astro island
+										</a>
+									</div>
+									
+								</li><li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/6-islands/2/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/6-islands/2" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											2. Back on dry land. Take your blog from day to night, no island required!
+										</a>
+									</div>
+									
+								</li><li class="astro-HZTDZRZA">
+									<div class="header-link astro-HZTDZRZA">
+										<a href="/en/tutorial/6-islands/3/" class="astro-HZTDZRZA">
+											<check-mark data-path="/en/tutorial/6-islands/3" data-todo-label="To-do" data-done-label="Complete" class="astro-H2QUU4RF">
+	<span class="sr-only astro-H2QUU4RF">To-do</span>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill-rule="evenodd" aria-hidden="true" class="astro-H2QUU4RF">
+		<path d="M8 16c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" class="astro-H2QUU4RF"></path>
+	</svg>
+</check-mark>
+
+
+
+
+											3. Congratulations!
+										</a>
+									</div>
+									
+								</li>
+						</ol>
+					</div>
+</section>
+
+
+	</div>
+</tabbed-content>
+
+
+
+
+</div>
+
+
+		</div>
+	</details>
+	<div class="feedback astro-ESZWT3QH">
+		<button data-feedback-fish data-feedback-fish-url="/en/tutorial/1-setup/2" class="astro-EADDOY63">
+	Give us feedback
+
+</button>
+
+
+
+	</div>
+</nav>
+
+
+				</div><div class="spacer astro-2XBDZOYQ"></div>
+	<article id="article" class="content astro-2XBDZOYQ">
+		<section class="main-section astro-2XBDZOYQ">
+			<header class="astro-2XBDZOYQ">
+				<p class="unit astro-L4B3OGCF">
+			1 • Create and deploy your first Astro site
+		</p>
+				<h1 class="content-title astro-2XBDZOYQ" id="overview">Create your first Astro project</h1>
+				
+			</header>
+			
+			<div class="goals astro-3UD5WAOP">
+	<p class="title astro-3UD5WAOP">
+		<span class="icon astro-3UD5WAOP" aria-hidden="true">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="2 0 24 24" width="24" height="24" class="astro-3UD5WAOP">
+				<path fill-rule="evenodd" d="M3 6a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6zm1.5 4.5v-4h4v4h-4z" class="astro-3UD5WAOP"></path>
+				<path d="M12.75 5.5a.75.75 0 0 0 0 1.5h7.5a.75.75 0 0 0 0-1.5h-7.5zm0 6a.75.75 0 0 0 0 1.5h7.5a.75.75 0 0 0 0-1.5h-7.5zm0 6a.75.75 0 0 0 0 1.5h7.5a.75.75 0 0 0 0-1.5h-7.5zm-2.97-2.53a.75.75 0 0 1 0 1.06l-3.5 3.5a.75.75 0 0 1-1.06 0l-2-2a.75.75 0 1 1 1.06-1.06l1.47 1.47 2.97-2.97a.75.75 0 0 1 1.06 0z" class="astro-3UD5WAOP"></path>
+			</svg>
+		</span>
+		Get ready to…
+	</p>
+	<ul>
+<li>Run the <code>create astro</code> setup wizard to create a new Astro project</li>
+<li>Start the Astro server in development (dev) mode</li>
+<li>View a live preview of your website in your browser</li>
+</ul>
+</div>
+
+<div class="heading-wrapper level-h2" tabindex="-1"><h2 id="launch-the-astro-setup-wizard">Launch the Astro setup wizard</h2><a class="anchor-link" href="#launch-the-astro-setup-wizard"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Launch the Astro setup wizard</span></a></div><p>The preferred way to create a new Astro site is through our <code>create astro</code> setup wizard.</p><ol>
+<li>
+<p>In the command line of your terminal, run the following command using your preferred package manager:</p>
+<astro-island uid="ZaJ2lX" component-url="/Tabs.2df3b852.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{&quot;sharedStore&quot;:[0,&quot;package-managers&quot;]}" ssr="" client="visible" opts="{&quot;name&quot;:&quot;Tabs&quot;,&quot;value&quot;:true}" await-children=""><div class="_container_8folw_1"><div class="_tab-scroll-overflow_8folw_6"><div class="_tablist_8folw_31 TabGroup no-flex" role="tablist"><button aria-selected="true" tabindex="0" role="tab" type="button" class="_tab_8folw_6" id="24-tab.npm"><astro-slot name="tab.npm">npm</astro-slot></button><button aria-selected="false" tabindex="-1" role="tab" type="button" class="_tab_8folw_6" id="24-tab.pnpm"><astro-slot name="tab.pnpm">pnpm</astro-slot></button><button aria-selected="false" tabindex="-1" role="tab" type="button" class="_tab_8folw_6" id="24-tab.yarn"><astro-slot name="tab.yarn">Yarn</astro-slot></button><span class="_selectedIndicator_8folw_35" aria-hidden="true"></span></div></div><div role="tabpanel" aria-labelledby="24-tab.npm" class="_tabpanel_8folw_27"><astro-slot name="panel.npm">
+<figure class="code-snippet is-terminal lang-shell">
+	<figcaption class="header"></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD"># create a new project with npm</span></span>
+<span class="line"><span style="color:#D8DEE9">npm create astro@latest</span></span></code></pre>
+</figure></astro-slot></div><div hidden="" role="tabpanel" aria-labelledby="24-tab.pnpm" class="_tabpanel_8folw_27"><astro-slot name="panel.pnpm">
+<figure class="code-snippet is-terminal lang-shell">
+	<figcaption class="header"></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD"># create a new project with pnpm</span></span>
+<span class="line"><span style="color:#D8DEE9">pnpm create astro@latest</span></span></code></pre>
+</figure></astro-slot></div><div hidden="" role="tabpanel" aria-labelledby="24-tab.yarn" class="_tabpanel_8folw_27"><astro-slot name="panel.yarn">
+<figure class="code-snippet is-terminal lang-shell">
+	<figcaption class="header"></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#ABA8BD"># create a new project with yarn</span></span>
+<span class="line"><span style="color:#D8DEE9">yarn create astro</span></span></code></pre>
+</figure></astro-slot></div></div></astro-island>
+</li>
+<li>
+<p>Confirm <code>y</code> to install <code>create-astro</code></p>
+</li>
+<li>
+<p>When the prompt asks, “Where would you like to create your new project?” type in the name of a folder to create a new directory for your project, e.g.
+<code>./tutorial</code></p>
+<aside class="content note astro-J4JMU3BW" aria-label="Note">
+	<p class="title astro-J4JMU3BW" aria-hidden="true">
+		<span class="icon astro-J4JMU3BW">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" width="16" height="16" class="astro-J4JMU3BW">
+				<path fill-rule="evenodd" d="M0 3.75C0 2.784.784 2 1.75 2h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0114.25 14H1.75A1.75 1.75 0 010 12.25v-8.5zm1.75-.25a.25.25 0 00-.25.25v8.5c0 .138.112.25.25.25h12.5a.25.25 0 00.25-.25v-8.5a.25.25 0 00-.25-.25H1.75zM3.5 6.25a.75.75 0 01.75-.75h7a.75.75 0 010 1.5h-7a.75.75 0 01-.75-.75zm.75 2.25a.75.75 0 000 1.5h4a.75.75 0 000-1.5h-4z" class="astro-J4JMU3BW"></path>
+			</svg>
+		</span>
+		Note
+	</p>
+	<section class="astro-J4JMU3BW">
+		<p>A new Astro project can only be created in a completely empty folder, so choose a name for your folder that does not already exist!</p>
+	</section>
+</aside>
+
+
+</li>
+<li>
+<p>You will see a short list of starter templates to choose from. Use the arrow keys (up and down) to navigate to the “Empty Project” template, and then press return (enter) to submit your choice.</p>
+</li>
+<li>
+<p>When the prompt asks, “Would you like to install dependencies?” type <code>y</code>.</p>
+</li>
+<li>
+<p>When the prompt asks, “Would you like to initialize a new git repository?” type <code>y</code>.</p>
+</li>
+<li>
+<p>When the prompt asks you to choose a TypeScript option, select “Relaxed.”</p>
+</li>
+</ol><p>When the install wizard is complete, you no longer need this terminal. You can now open VS Code to continue.</p><div class="heading-wrapper level-h2" tabindex="-1"><h2 id="open-your-project-in-vs-code">Open your project in VS Code</h2><a class="anchor-link" href="#open-your-project-in-vs-code"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Open your project in VS Code</span></a></div><ol>
+<li>
+<p>Open VS Code. You will be prompted to open a folder. Choose the folder that you created during the setup wizard.</p>
+</li>
+<li>
+<p>If this is your first time opening an Astro project, you should see a notification asking if you would like to install recommended extensions. Click to see the recommended extensions, and choose the <a href="https://marketplace.visualstudio.com/items?itemName=astro-build.astro-vscode">Astro language support extension</a>. This will provide syntax highlighting and autocompletions for your Astro code.</p>
+</li>
+<li>
+<p>Make sure the terminal is visible and that you can see the command prompt, such as:</p>
+
+<figure class="code-snippet is-terminal lang-sh">
+	<figcaption class="header"></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#D8DEE9">user@machine:</span><span style="color:#FF657C">~</span><span style="color:#D8DEE9">/tutorial$</span></span></code></pre>
+</figure>
+<aside class="content tip astro-J4JMU3BW" aria-label="Keyboard shortcut">
+	<p class="title astro-J4JMU3BW" aria-hidden="true">
+		<span class="icon astro-J4JMU3BW">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" width="16" height="16" class="astro-J4JMU3BW">
+				<path fill-rule="evenodd" d="M14 0a8.8 8.8 0 0 0-6 2.6l-.5.4-.9 1H3.3a1.8 1.8 0 0 0-1.5.8L.1 7.6a.8.8 0 0 0 .4 1.1l3.1 1 .2.1 2.4 2.4.1.2 1 3a.8.8 0 0 0 1 .5l2.9-1.7a1.8 1.8 0 0 0 .8-1.5V9.5l1-1 .4-.4A8.8 8.8 0 0 0 16 2v-.1A1.8 1.8 0 0 0 14.2 0h-.1zm-3.5 10.6-.3.2L8 12.3l.5 1.8 2-1.2a.3.3 0 0 0 .1-.2v-2zM3.7 8.1l1.5-2.3.2-.3h-2a.3.3 0 0 0-.3.1l-1.2 2 1.8.5zm5.2-4.5a7.3 7.3 0 0 1 5.2-2.1h.1a.3.3 0 0 1 .3.3v.1a7.3 7.3 0 0 1-2.1 5.2l-.5.4a15.2 15.2 0 0 1-2.5 2L7.1 11 5 9l1.5-2.3a15.3 15.3 0 0 1 2-2.5l.4-.5zM12 5a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm-8.4 9.6a1.5 1.5 0 1 0-2.2-2.2 7 7 0 0 0-1.1 3 .2.2 0 0 0 .3.3c.6 0 2.2-.4 3-1.1z" class="astro-J4JMU3BW"></path>
+			</svg>
+		</span>
+		Keyboard shortcut
+	</p>
+	<section class="astro-J4JMU3BW">
+		<p>To toggle the visibility of the terminal, use <kbd>Ctrl + J</kbd> (macOS: <kbd>Cmd ⌘ + J</kbd>).</p>
+	</section>
+</aside>
+
+
+</li>
+</ol><p>You can now use the terminal built right into this window, instead of your computer’s Terminal app, for the rest of this tutorial.</p><div class="heading-wrapper level-h2" tabindex="-1"><h2 id="run-astro-in-dev-mode">Run Astro in dev mode</h2><a class="anchor-link" href="#run-astro-in-dev-mode"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Run Astro in dev mode</span></a></div><p>In order to preview your project files <em>as a website</em> while you work, you will need Astro to be running in development (dev) mode.</p><div class="heading-wrapper level-h3" tabindex="-1"><h3 id="start-the-dev-server">Start the dev server</h3><a class="anchor-link" href="#start-the-dev-server"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Start the dev server</span></a></div><ol>
+<li>
+<p>Run the command to start the Astro dev server by typing into VS Code’s terminal:</p>
+<astro-island uid="ZvYNWw" component-url="/Tabs.2df3b852.js" component-export="default" renderer-url="/client.c9c5242d.js" props="{&quot;sharedStore&quot;:[0,&quot;package-managers&quot;]}" ssr="" client="visible" opts="{&quot;name&quot;:&quot;Tabs&quot;,&quot;value&quot;:true}" await-children=""><div class="_container_8folw_1"><div class="_tab-scroll-overflow_8folw_6"><div class="_tablist_8folw_31 TabGroup no-flex" role="tablist"><button aria-selected="true" tabindex="0" role="tab" type="button" class="_tab_8folw_6" id="25-tab.npm"><astro-slot name="tab.npm">npm</astro-slot></button><button aria-selected="false" tabindex="-1" role="tab" type="button" class="_tab_8folw_6" id="25-tab.pnpm"><astro-slot name="tab.pnpm">pnpm</astro-slot></button><button aria-selected="false" tabindex="-1" role="tab" type="button" class="_tab_8folw_6" id="25-tab.yarn"><astro-slot name="tab.yarn">Yarn</astro-slot></button><span class="_selectedIndicator_8folw_35" aria-hidden="true"></span></div></div><div role="tabpanel" aria-labelledby="25-tab.npm" class="_tabpanel_8folw_27"><astro-slot name="panel.npm">
+<figure class="code-snippet is-terminal lang-shell">
+	<figcaption class="header"></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#D8DEE9">npm run dev</span></span></code></pre>
+</figure></astro-slot></div><div hidden="" role="tabpanel" aria-labelledby="25-tab.pnpm" class="_tabpanel_8folw_27"><astro-slot name="panel.pnpm">
+<figure class="code-snippet is-terminal lang-shell">
+	<figcaption class="header"></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#D8DEE9">pnpm run dev</span></span></code></pre>
+</figure></astro-slot></div><div hidden="" role="tabpanel" aria-labelledby="25-tab.yarn" class="_tabpanel_8folw_27"><astro-slot name="panel.yarn">
+<figure class="code-snippet is-terminal lang-shell">
+	<figcaption class="header"></figcaption>
+	<pre class="astro-code" style="background-color: #312749; overflow-x: auto;"><code><span class="line"><span style="color:#D8DEE9">yarn run dev</span></span></code></pre>
+</figure></astro-slot></div></div></astro-island>
+<p>Now you should see confirmation in the terminal that Astro is running in dev mode. 🚀</p>
+</li>
+</ol><div class="heading-wrapper level-h2" tabindex="-1"><h2 id="view-a-preview-of-your-website">View a preview of your website</h2><a class="anchor-link" href="#view-a-preview-of-your-website"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled View a preview of your website</span></a></div><p>Your project files contain all the code necessary to display an Astro website, but the browser is responsible for displaying your code as web pages.</p><ol>
+<li>
+<p>Click on the <code>localhost</code> link in your terminal window to see a live preview of your new Astro website!</p>
+<p>(Astro uses <code>https://localhost:3000</code> by default if port 3000 is available.)</p>
+<p>Here’s what the Astro “Empty Project” starter website should look like in the browser preview:</p>
+<p><img src="/tutorial/minimal.png" alt="A blank white page with the word Astro at the top."></p>
+</li>
+</ol><aside class="content tip astro-J4JMU3BW" aria-label="Using the Astro dev server">
+	<p class="title astro-J4JMU3BW" aria-hidden="true">
+		<span class="icon astro-J4JMU3BW">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" width="16" height="16" class="astro-J4JMU3BW">
+				<path fill-rule="evenodd" d="M14 0a8.8 8.8 0 0 0-6 2.6l-.5.4-.9 1H3.3a1.8 1.8 0 0 0-1.5.8L.1 7.6a.8.8 0 0 0 .4 1.1l3.1 1 .2.1 2.4 2.4.1.2 1 3a.8.8 0 0 0 1 .5l2.9-1.7a1.8 1.8 0 0 0 .8-1.5V9.5l1-1 .4-.4A8.8 8.8 0 0 0 16 2v-.1A1.8 1.8 0 0 0 14.2 0h-.1zm-3.5 10.6-.3.2L8 12.3l.5 1.8 2-1.2a.3.3 0 0 0 .1-.2v-2zM3.7 8.1l1.5-2.3.2-.3h-2a.3.3 0 0 0-.3.1l-1.2 2 1.8.5zm5.2-4.5a7.3 7.3 0 0 1 5.2-2.1h.1a.3.3 0 0 1 .3.3v.1a7.3 7.3 0 0 1-2.1 5.2l-.5.4a15.2 15.2 0 0 1-2.5 2L7.1 11 5 9l1.5-2.3a15.3 15.3 0 0 1 2-2.5l.4-.5zM12 5a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm-8.4 9.6a1.5 1.5 0 1 0-2.2-2.2 7 7 0 0 0-1.1 3 .2.2 0 0 0 .3.3c.6 0 2.2-.4 3-1.1z" class="astro-J4JMU3BW"></path>
+			</svg>
+		</span>
+		Using the Astro dev server
+	</p>
+	<section class="astro-J4JMU3BW">
+		<p>While the Astro server is running in dev mode, you will NOT be able to run commands in your terminal window. Instead, this pane will give you feedback as you preview your site.</p><p>You can stop the dev server at any time and return to the command prompt by typing <kbd>Ctrl + C</kbd> in the terminal.</p><p>Sometimes the dev server will stop on its own while you are working. If your live preview stops working, go back to the terminal and restart the dev server by typing <code>npm run dev</code>.</p>
+	</section>
+</aside>
+
+<div class="highlight-box content astro-KW3NPAMX" style="--box-icon-url: url('/tutorial/check-list.svg');">
+	<section class="astro-KW3NPAMX">
+		<div class="heading-wrapper level-h2" tabindex="-1"><h2 id="checklist">Checklist</h2><a class="anchor-link" href="#checklist"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Checklist</span></a></div><check-list data-key="default" class="astro-25RJNCSX">
+	<div class="checklist astro-25RJNCSX"><ul class="contains-task-list">
+<li class="task-list-item"><label><input type="checkbox" disabled><span> I can create a new Astro project.</span></label></li>
+<li class="task-list-item"><label><input type="checkbox" disabled><span> I can start the Astro dev server.</span></label></li>
+</ul></div>
+	
+</check-list>
+
+
+
+
+	</section>
+</div>
+
+<div class="heading-wrapper level-h3" tabindex="-1"><h3 id="resources">Resources</h3><a class="anchor-link" href="#resources"><span class="anchor-icon" aria-hidden="true"><svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentcolor" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span><span class="sr-only">Section titled Resources</span></a></div><ul>
+<li>
+<p><a href="https://code.visualstudio.com/docs/introvideos/basics">Getting Started with Visual Studio Code</a> <span class="badge neutral astro-7UPTKOT4">external</span>
+
+ — a video tutorial for installing, setting up and working with VS Code</p>
+</li>
+</ul>
+		</section>
+		<aside class="next-previous-nav astro-2XBDZOYQ">
+					
+					<a class="rtl astro-WQ72IEV2" rel="next" href="/en/tutorial/1-setup/3/">
+	
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" height="32" width="32" fill="currentColor" class="astro-WQ72IEV2">
+				<path d="M438.6 278.6l-160 160C272.4 444.9 264.2 448 256 448s-16.38-3.125-22.62-9.375c-12.5-12.5-12.5-32.75 0-45.25L338.8 288H32C14.33 288 .0016 273.7 .0016 256S14.33 224 32 224h306.8l-105.4-105.4c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l160 160C451.1 245.9 451.1 266.1 438.6 278.6z" class="astro-WQ72IEV2"></path>
+			</svg>
+	<div class="copy astro-WQ72IEV2">
+		<div class="heading astro-WQ72IEV2">
+			Next Page
+
+		</div>
+		<div class="name astro-WQ72IEV2">Write your first line of Astro</div>
+	</div>
+</a>
+
+
+				</aside>
+	</article>
+</div>
+
+
+				<span id="docsearch-lvl0" hidden class="astro-KR5WJSBZ">Tutorials</span>
+			</div>
+		</main>
+		<div class="main-column astro-KR5WJSBZ">
+		</div>
+	</body></html>
+
